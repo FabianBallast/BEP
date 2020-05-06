@@ -32,7 +32,10 @@ class help_layout(QtWidgets.QWidget):
         self.tuner = QtWidgets.QLineEdit(self)
         self.tuner.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.8), int(width * 0.4), int(height * 0.05)))
         self.tuner.setFont(font)
-        self.tuner.setValidator(QtGui.QIntValidator(0, 100))
+        self.tuner.setValidator(QtGui.QIntValidator(0, 99))
+        self.tuner.setText("50")
+        self.tuner.setMaxLength(2)
+        self.tuner.setStyleSheet("QLineEdit {background-color: rgba(0, 0, 0, 0); color: rgb(255, 255, 255)}")
 
     def create_button(self):
 

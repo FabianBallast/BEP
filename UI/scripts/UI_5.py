@@ -201,13 +201,12 @@ if __name__ == "__main__":
     MainWindow_1 = QtWidgets.QMainWindow()
     ui.setupUi_1(MainWindow_1)    
     MainWindow_1.showFullScreen()
+
+    MainWindow_2 = QtWidgets.QMainWindow()
+    ui.setupUi_2(MainWindow_2)
     
     if screen == 2:
-        MainWindow_2 = QtWidgets.QMainWindow()
-        ui.setupUi_2(MainWindow_2)
         MainWindow_2.move(monitor_2.left(), monitor_2.top())
         MainWindow_2.showFullScreen()
     
-
-
     sys.exit(app.exec_())
