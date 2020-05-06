@@ -43,7 +43,7 @@ class map_layout(QtWidgets.QWidget):
 
         self.map_picture = QtWidgets.QLabel(self)
         self.map_picture.setGeometry(QtCore.QRect(0, 0, width, height))
-        self.map_picture.setPixmap(QtGui.QPixmap("./img/bg_1.jpg"))
+        self.map_picture.setPixmap(QtGui.QPixmap("../img/bg_1.jpg"))
         self.map_picture.setScaledContents(True)
         self.map_picture.lower()
 
@@ -69,7 +69,7 @@ class map_layout(QtWidgets.QWidget):
         power_demand = round(power_demand, 0) if self.value_progress_bar > 0 else 0
 
         val = int(6 + min(power_demand, 4) if solar_power > 2 else 1 + min(power_demand, 4)) 
-        self.map_picture.setPixmap(QtGui.QPixmap(f"./img/bg_{str(val)}.jpg"))
+        self.map_picture.setPixmap(QtGui.QPixmap(f"../img/bg_{str(val)}.jpg"))
     
     def update_leds(self, solar, wind, demand, diff):
         
