@@ -1,11 +1,13 @@
 #!/usr/bin/env python
-"""This class is the main component for the map-page.
-All components for this page are placed on this widget."""
+"""This module contains the main component for the map-page.
+   All components for this page are placed on this widget."""
 
 from PyQt5 import QtWidgets, QtCore, QtGui
-from pyqt_led import Led
+from pyqt_led import Led    # pylint: disable=W0611
 
-class map_layout(QtWidgets.QWidget):
+class MapLayout(QtWidgets.QWidget):
+    """This class inherits from a QWidget.
+       It contains all components on this page."""
 
     def __init__(self, MainWindow, parent):
         super().__init__(parent)
@@ -18,8 +20,10 @@ class map_layout(QtWidgets.QWidget):
         width = parent.width()
         height = parent.height()
         
-        self.x_pos = [int(width * x) for x in [.340, .515, .685, .090, .890, .090, .528, .718, .925]]
-        self.y_pos = [int(height * y) for y in [0.06, 0.06, 0.06, 0.26, 0.32, 0.62, 0.765, 0.78, 0.78]]
+        self.x_pos = [int(width * x) for x in [.34, .515, .685, .09, .89, 
+                                               .09, .528, .718, .925]]
+        self.y_pos = [int(height * y) for y in [0.06, 0.060, 0.06, 0.26, 0.32, 
+                                                0.62, 0.765, 0.78, 0.78]]
         self.diameter = int(width * 0.03)
 
         self.value_progress_bar = 51
@@ -32,15 +36,22 @@ class map_layout(QtWidgets.QWidget):
         """Create all the LED's and place them in the correct spot."""
 
         for i in range(len(self.x_pos)):
-            exec(f"self.LED_{i+1} = Led(parent=self, on_color=Led.{self.color_on}, off_color=Led.{self.color_off}, shape=Led.{self.shape}, build='debug', ind={i})")
-            exec(f"self.LED_{i+1}.setGeometry(QtCore.QRect({self.x_pos[i]}, {self.y_pos[i]}, {self.diameter}, {self.diameter}))")
+            exec(f"self.LED_{i+1} = Led(parent=self," 
+                                  f"on_color=Led.{self.color_on}," 
+                                  f"off_color=Led.{self.color_off},"
+                                  f"shape=Led.{self.shape}," 
+                                  f"build='debug'," 
+                                  f"ind={i})")
+            exec(f"self.LED_{i+1}.setGeometry(QtCore.QRect({self.x_pos[i]}, {self.y_pos[i]}," 
+                                                         f"{self.diameter}, {self.diameter}))")
             exec(f"self.LED_{i+1}.setCheckable(False)")
             
     def create_progress_bar(self, default_value, width, height):
         """Create the progress bar to visualize the amount of hydrogen stored."""
 
         self.storage_bar = QtWidgets.QProgressBar(self)
-        self.storage_bar.setGeometry(QtCore.QRect(int(width * 0.31), int(height * 0.5), int(width * 0.021), int(height * 0.25)))
+        self.storage_bar.setGeometry(QtCore.QRect(int(width * 0.310), int(height * 0.5), 
+                                                  int(width * 0.021), int(height * 0.25)))
         self.storage_bar.setProperty("value", default_value)
         self.storage_bar.setOrientation(QtCore.Qt.Vertical)
 
@@ -62,7 +73,7 @@ class map_layout(QtWidgets.QWidget):
         self.update_leds(solar, wind, demand, solar + wind - demand)
     
     def update_progress_bar(self, val):
-        """Üpdate the progress bar to match with the current data."""
+        """Update the progress bar to match with the current data."""
 
         val = val / 10
         self.value_progress_bar = max(min(self.value_progress_bar + val, 100), 0) 

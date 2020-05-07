@@ -5,6 +5,7 @@
     "python.linting.enabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
     "python.linting.pylintArgs": [
-        "--extension-pkg-whitelist=PyQt5"
+        "--extension-pkg-whitelist=PyQt5",
+        "--disable=C0303,W0122,C0330"
     ]
 }
