@@ -15,7 +15,6 @@
 # This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 # WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-"""
 def find_qt():
     import os, sys
 
@@ -35,40 +34,11 @@ def find_qt():
                     break
             else:
                 return
-
-    try:
-        os.add_dll_directory(dll_dir)
-    except AttributeError:
-        print("Not found!")
-"""
-
-def find_qt():
-    import os, sys
-
-    qtcore_dll = '\\Qt5Core.dll'
-
-    dll_dir = os.path.dirname(sys.executable)
-    if not os.path.isfile(dll_dir + qtcore_dll):
-        path = os.environ['PATH']
-
-        dll_dir = os.path.dirname(__file__) + '\\Qt\\bin'
-        if os.path.isfile(dll_dir + qtcore_dll):
-            path = dll_dir + ';' + path
-            os.environ['PATH'] = path
-        else:
-            for dll_dir in path.split(';'):
-                if os.path.isfile(dll_dir + qtcore_dll):
-                    break
-            else:
-                return
-
-    print(os.path.isfile(dll_dir + qtcore_dll))
     
     try:
         os.add_dll_directory(dll_dir)
-    except AttributeError as e:
-        print("Not found!")
-        print(e)
+    except AttributeError:
+        pass
 
 
 find_qt()

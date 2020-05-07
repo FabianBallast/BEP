@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from ...libs import PyQt5
+from PyQt5 import QtWidgets, QtCore, QtGui
+
 from ..graphs.graph_layout import graph_layout
 from ..map.map_layout import map_layout
 from ..data.data_manager import DataManager

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from ...libs import PyQt5
-#from ...libs.pyqt_led import Led
+from PyQt5 import QtWidgets, QtCore, QtGui
+from pyqt_led import Led
 
-class map_layout(PyQt5.QtWidgets.QWidget):
+class map_layout(QtWidgets.QWidget):
 
     def __init__(self, MainWindow, parent):
         super().__init__(parent)

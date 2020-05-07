@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.insert(1, '../libs')
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class ToolBarTop(QtWidgets.QToolBar):
