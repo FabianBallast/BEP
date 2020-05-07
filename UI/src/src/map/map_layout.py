@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+"""This class is the main component for the map-page.
+All components for this page are placed on this widget."""
 
 from PyQt5 import QtWidgets, QtCore, QtGui
 from pyqt_led import Led
@@ -20,7 +22,7 @@ class map_layout(QtWidgets.QWidget):
         self.y_pos = [int(height * y) for y in [0.06, 0.06, 0.06, 0.26, 0.32, 0.62, 0.765, 0.78, 0.78]]
         self.diameter = int(width * 0.03)
 
-        self.value_progress_bar = 50
+        self.value_progress_bar = 51
 
         self.create_leds()
         self.create_progress_bar(self.value_progress_bar, width, height)
@@ -43,7 +45,7 @@ class map_layout(QtWidgets.QWidget):
 
         self.map_picture = QtWidgets.QLabel(self)
         self.map_picture.setGeometry(QtCore.QRect(0, 0, width, height))
-        self.map_picture.setPixmap(QtGui.QPixmap("../img/bg_1.jpg"))
+        self.map_picture.setPixmap(QtGui.QPixmap(".../img/bg_1.jpg"))
         self.map_picture.setScaledContents(True)
         self.map_picture.lower()
 
