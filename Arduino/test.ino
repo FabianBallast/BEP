@@ -1,17 +1,23 @@
-#include <Servo.h>
+#include <HardwareSerial.h>
+#include <SoftwareSerial.h>
 
-int a = 5;
-int b = 5;
+int f = 5; //Hz
+double delayTime = 1 / f * 1000;
+
+Serial.println(delayTime);
+
+int PIN_LED = 7;
 
 void setup() {
 
-    Serial.println("start");
+    pinMode(PIN_LED, OUTPUT);
 }
 
 void loop() {
 
-
-
-    Serial.println("loop");
+    digitalWrite(PIN_LED, HIGH);
+    delay(delayTime);
+    digitalWrite(PIN_LED, LOW);
+    delay(delayTime);
 
 }
