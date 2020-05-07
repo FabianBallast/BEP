@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
     "programmer": "AVR ISP",
-    "sketch": "Arduino\\AC_dimmer\\AC_dimmer.ino",
+    "sketch": "Arduino\\libs\\AC_dimmer\\AC_dimmer.ino",
     "port": "COM3"
 }

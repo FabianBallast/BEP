@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.insert(1, '../libs')
 
 from scenario_handler import scenario_handler
 from scenario import scenario

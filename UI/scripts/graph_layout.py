@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.insert(1, '../libs')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
-import numpy as np
 
 class graph_layout(QtWidgets.QWidget):
 
