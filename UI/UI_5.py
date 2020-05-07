@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #from src.libs.PyQt5 import QtCore, QtGui, QtWidgets
-from src.libs import PyQt5
+#from src.libs import PyQt5
+from src.libs.PyQt5 import QtCore, QtGui, QtWidgets
 
 from src.src.map.map_layout import map_layout
 from src.src.graphs.graph_layout import graph_layout
