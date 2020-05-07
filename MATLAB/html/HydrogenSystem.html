@@ -1,0 +1,222 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HydrogenSystem</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-05-07"><meta name="DC.source" content="HydrogenSystem.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">fprintf(<span class="string">'\n'</span>)
+
+
+<span class="comment">%pv = nRT</span>
+efihjefihe
+
+
+<span class="comment">%hydrogen has 142 MJ/kg energy density</span>
+
+
+<span class="comment">%electrolyzer produces H2: 10 mL/min @ 1 A</span>
+<span class="comment">%                      O2:  5 mL/min @ 1 A</span>
+
+<span class="comment">%%%%%%%%%%%%%%%</span>
+v_H2 = 10  *1e-6; <span class="comment">%m3/min</span>
+voltage = 2; <span class="comment">%V</span>
+current = 1; <span class="comment">%A</span>
+<span class="comment">%%%%%%%%%%%%%%%</span>
+
+p = 1e5; <span class="comment">%approx 1 bar</span>
+R = 8.31446261815324; <span class="comment">%J / (K*mol)</span>
+T = 298; <span class="comment">%K</span>
+
+<span class="comment">%molair masses</span>
+mm_H2O = 18.01528 *1e-3;<span class="comment">%kg /mol</span>
+mm_H2  = 2.016    *1e-3;<span class="comment">%kg /mol</span>
+mm_O2  = 32.0     *1e-3;<span class="comment">%kg /mol</span>
+
+rho_H2O = 998; <span class="comment">%kg/m3 --&gt; 0.998 g/cm3 == g/mL</span>
+
+n_H2 = p*v_H2/(R*T);  <span class="comment">%mol H2 produces per min</span>
+
+
+<span class="comment">%2 H2O --&gt; 2 H2 + 1 O2</span>
+n_O2 = n_H2/2;
+n_H2O = n_H2;
+
+
+m_H2O = n_H2O*mm_H2O;       <span class="comment">%kg / min H2O used</span>
+v_H2O = m_H2O/rho_H2O;  <span class="comment">%m3/min H2O used</span>
+
+fprintf(<span class="string">'H2O usage electrolyzer @(%.0f mL/min H2 production):   %.2f mL/h \n'</span>,v_H2*1e6, v_H2O*1e6*60)
+
+<span class="comment">%%%%%%energy characteristics</span>
+P_in = voltage*current;
+m_H2 = n_H2*mm_H2;  <span class="comment">%kg /min</span>
+
+energy_density_H2 = 142e6; <span class="comment">%J/kg</span>
+energy_H2_production = m_H2*energy_density_H2;   <span class="comment">%J/min</span>
+power_H2_production = energy_H2_production/60;  <span class="comment">%W</span>
+
+efficiency = power_H2_production/ (P_in);
+
+
+<span class="comment">%%%%%%%%%%%%%%%%%%tank parameters</span>
+
+D_tank = 0.0335; <span class="comment">%m;   confirmed with geodriehoek + terugrekenen vanaf volumaire streepjes</span>
+h0 = 0.125; <span class="comment">%m;      reading van proximity sensor bij 0 gas in de tank</span>
+
+syms <span class="string">reading</span> <span class="comment">%is proximity sensor reading in m</span>
+
+v_H2_in_tank = (h0-reading)*(pi*(D_tank/2)^2);
+v_O2_in_tank = v_H2_in_tank/2;
+
+
+<span class="comment">%%%interesting</span>
+v_H2O_per_v_H2 = v_H2O/v_H2;
+H2_in_tank = 80*1e-6; <span class="comment">%m3</span>
+
+fprintf(<span class="string">'H2O production when using all hydrogen in tank:   %.2f mL \n'</span>,v_H2O_per_v_H2*H2_in_tank*1e6)
+</pre><pre class="codeoutput">
+</pre><pre class="codeoutput error">Unrecognized function or variable 'efihjefihe'.
+
+Error in HydrogenSystem (line 5)
+efihjefihe
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+fprintf('\n')
+
+
+%pv = nRT
+efihjefihe
+
+
+%hydrogen has 142 MJ/kg energy density
+
+
+%electrolyzer produces H2: 10 mL/min @ 1 A
+%                      O2:  5 mL/min @ 1 A
+
+%%%%%%%%%%%%%%%
+v_H2 = 10  *1e-6; %m3/min
+voltage = 2; %V
+current = 1; %A
+%%%%%%%%%%%%%%%
+
+p = 1e5; %approx 1 bar
+R = 8.31446261815324; %J / (K*mol)
+T = 298; %K
+
+%molair masses
+mm_H2O = 18.01528 *1e-3;%kg /mol
+mm_H2  = 2.016    *1e-3;%kg /mol
+mm_O2  = 32.0     *1e-3;%kg /mol
+
+rho_H2O = 998; %kg/m3 REPLACE_WITH_DASH_DASH> 0.998 g/cm3 == g/mL
+
+n_H2 = p*v_H2/(R*T);  %mol H2 produces per min
+
+
+%2 H2O REPLACE_WITH_DASH_DASH> 2 H2 + 1 O2
+n_O2 = n_H2/2;
+n_H2O = n_H2;
+
+
+m_H2O = n_H2O*mm_H2O;       %kg / min H2O used
+v_H2O = m_H2O/rho_H2O;  %m3/min H2O used
+
+fprintf('H2O usage electrolyzer @(%.0f mL/min H2 production):   %.2f mL/h \n',v_H2*1e6, v_H2O*1e6*60)
+
+%%%%%%energy characteristics
+P_in = voltage*current;
+m_H2 = n_H2*mm_H2;  %kg /min
+
+energy_density_H2 = 142e6; %J/kg
+energy_H2_production = m_H2*energy_density_H2;   %J/min
+power_H2_production = energy_H2_production/60;  %W
+
+efficiency = power_H2_production/ (P_in);
+
+
+%%%%%%%%%%%%%%%%%%tank parameters
+
+D_tank = 0.0335; %m;   confirmed with geodriehoek + terugrekenen vanaf volumaire streepjes
+h0 = 0.125; %m;      reading van proximity sensor bij 0 gas in de tank
+
+syms reading %is proximity sensor reading in m
+
+v_H2_in_tank = (h0-reading)*(pi*(D_tank/2)^2);
+v_O2_in_tank = v_H2_in_tank/2;
+
+
+%%%interesting
+v_H2O_per_v_H2 = v_H2O/v_H2;
+H2_in_tank = 80*1e-6; %m3
+
+fprintf('H2O production when using all hydrogen in tank:   %.2f mL \n',v_H2O_per_v_H2*H2_in_tank*1e6)
+
+
+
+
+##### SOURCE END #####
+--></body></html>
