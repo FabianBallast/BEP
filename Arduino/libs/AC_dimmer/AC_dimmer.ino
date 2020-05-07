@@ -1,4 +1,4 @@
-#include <RBDdimmer.h>
+#include "src/RBDdimmer/RBDdimmer.h"
 
 /**************
  *  RobotDyn

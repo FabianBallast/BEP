@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import sys
+sys.path.insert(1, '../libs')
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from map_layout import map_layout
 from graph_layout import graph_layout
