@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys
-sys.path.insert(1, '../libs')
+from ...libs import PyQt5
+#from ...libs.pyqt_led import Led
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from pyqt_led import Led
-
-class map_layout(QtWidgets.QWidget):
+class map_layout(PyQt5.QtWidgets.QWidget):
 
     def __init__(self, MainWindow, parent):
         super().__init__(parent)

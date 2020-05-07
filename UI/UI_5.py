@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
+#from src.libs.PyQt5 import QtCore, QtGui, QtWidgets
+from src.libs import PyQt5
 
-import sys
-sys.path.insert(1, '../libs')
-
-from PyQt5 import QtCore, QtGui, QtWidgets
-from map_layout import map_layout
-from graph_layout import graph_layout
-from scenario_layout import scenario_layout
-from manual_layout import manual_layout
-from data_manager import DataManager
-from toolbars import ToolBarTop, ToolBarBottom
-from help_layout import help_layout
-from second_screen_controller import SecondScreenController
+from src.src.map.map_layout import map_layout
+from src.src.graphs.graph_layout import graph_layout
+from src.src.scenarios.scenario_layout import scenario_layout
+from src.src.manual.manual_layout import manual_layout
+from src.src.data.data_manager import DataManager
+from src.src.toolbar.toolbars import ToolBarTop, ToolBarBottom
+from src.src.help.help_layout import help_layout
+from src.src.second_screen.second_screen_controller import SecondScreenController
 
 class Ui_MainWindow(object):
 

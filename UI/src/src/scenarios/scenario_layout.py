@@ -4,7 +4,7 @@ sys.path.insert(1, '../libs')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
-from scenario_creator import scenario_creator
+from ..scenarios.scenario_creator import scenario_creator
 
 class scenario_layout(QtWidgets.QWidget):
 

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.insert(1, '../libs')
-
-from scenario_handler import scenario_handler
-from scenario import scenario
+from ..scenarios.scenario_handler import scenario_handler
+from ..scenarios.scenario import scenario
 import numpy as np
 
 class scenario_creator():
