@@ -1,17 +1,14 @@
-# -*- coding: utf-8 -*-
+"""This module handles all the toolbars of the UI."""
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class ToolBarTop(QtWidgets.QToolBar):
+    """This class inherits from a QToolBar.
+       It contains all components for the toolbar at the top of the screen."""
 
-    def __init__(self, width, height):
+    def __init__(self, height):
         super().__init__()
-        self.setStyleSheet("QToolButton {background-color: rgba(0, 255, 0, 0); color: rgb(255, 255, 255)}"
-                           "QToolButton::hover {background-color: rgba(0, 255, 0, 50); color: rgb(255, 255, 255)}"
-                           "QToolButton::pressed {background-color: rgba(0, 255, 0, 100); color: rgb(255, 255, 255)}"
-                           "QToolBar {background-color: rgba(0, 0, 0, 0); border: none}")
-        
-        #self.setGeometry(QtCore.QRect(0, 0, width, int(height * 0.1)))
-        self.setFixedHeight(int(height * 0.1))
+              
+        self.setFixedHeight(int(height * 0.075))
         self.setMovable(False)
         self.button_list = []
         
@@ -22,13 +19,14 @@ class ToolBarTop(QtWidgets.QToolBar):
         self.add_buttons()
 
     def create_font(self, height):
+        """Creates the font used in the toolbar."""
         self.toolbar_font = QtGui.QFont()
         self.toolbar_font.setFamily("Segoe UI")
         self.toolbar_font.setPixelSize(int(0.035 * height))
         self.toolbar_font.setBold(True)
 
     def create_page_buttons(self):
-
+        """Creates the different buttons used in the toolbar for moving to different pages."""
         self.map_button = QtWidgets.QAction('Map')
         self.map_button.setFont(self.toolbar_font)
         self.button_list.append(self.map_button)
@@ -46,25 +44,31 @@ class ToolBarTop(QtWidgets.QToolBar):
         self.button_list.append(self.manual_control_button)
     
     def create_help_button(self):
+        """Creates the help button for the toolbar."""
         self.help_button = QtWidgets.QAction('Hulp')
         self.help_button.setFont(self.toolbar_font)
         self.button_list.append(self.help_button)
     
     def create_screen_button(self):
+        """Creates the button to go to the second screen page."""
         self.screen_button = QtWidgets.QAction('Tweede Scherm')
         self.screen_button.setFont(self.toolbar_font)
         self.button_list.append(self.screen_button)
     
     def create_spacer(self):
+        """Create two expending widgets (for left and right) 
+           to center the buttons on the toolbar."""
         self.spacer_left = QtWidgets.QWidget(self)
-        self.spacer_left.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        self.spacer_left.setSizePolicy(QtWidgets.QSizePolicy.Expanding, 
+                                       QtWidgets.QSizePolicy.Fixed)
 
         self.spacer_right = QtWidgets.QWidget(self)
-        self.spacer_right.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        self.spacer_right.setSizePolicy(QtWidgets.QSizePolicy.Expanding, 
+                                        QtWidgets.QSizePolicy.Fixed)
 
     
     def add_buttons(self):
-
+        """Add all buttons and spacers to the toolbar."""
         for i in range(len(self.button_list)):
             spacer = QtWidgets.QWidget(self)
             spacer.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
@@ -75,39 +79,30 @@ class ToolBarTop(QtWidgets.QToolBar):
         spacer.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         self.addWidget(spacer)
 
-
 class ToolBarBottom(QtWidgets.QToolBar):
+    """This class inherits from a QToolBar.
+       It contains all components for the toolbar at the bottom of the screen."""
 
     def __init__(self, width, height, data):
         super().__init__()
-        self.setStyleSheet("QToolButton {background-color: rgba(0, 255, 0, 0); color: rgb(255, 255, 255)}"
-                           "QToolButton::hover {background-color: rgba(0, 255, 0, 50); color: rgb(255, 255, 255)}"
-                           "QToolButton::pressed {background-color: rgba(0, 255, 0, 100); color: rgb(255, 255, 255)}"
-                           "QToolBar {background-color: rgba(0, 0, 0, 0); border: none}"
-                           "QWidget {background-color: rgba(0, 0, 0, 0)}"
-                           "QLabel {background-color: rgba(0, 0, 0, 0)}")
         
-        #self.setGeometry(QtCore.QRect(0, int(height * 0.8), width, int(height * 0.1)))
-        self.setFixedHeight(int(0.05*height))
+        self.setFixedHeight(int(0.075*height))
         self.setMovable(False)
         self.data = data
-        #self.setAllowedAreas(QtCore.Qt.BottomToolBarArea)
         
         self.create_font(height)
         self.create_labels(width)
-        #self.create_page_buttons()
-        #self.create_help_button()
-        #self.create_screen_button()
-        #self.add_buttons()
+        self.create_exit_button()
 
     def create_font(self, height):
+        """Create a font to use for the text."""
         self.toolbar_font = QtGui.QFont()
         self.toolbar_font.setFamily("Segoe UI")
         self.toolbar_font.setPixelSize(int(0.035 * height))
         self.toolbar_font.setBold(True)
     
     def create_labels(self, width):
-       
+        """Create a QLabel to display the current settings."""
         self.mode_title_label = QtWidgets.QLabel(self)
         self.mode_title_label.setFixedWidth(int(width * 0.25))
         self.mode_title_label.setFixedHeight(self.height())
@@ -124,19 +119,22 @@ class ToolBarBottom(QtWidgets.QToolBar):
         self.addWidget(self.mode_label)
 
         self.details_label = QtWidgets.QLabel(self)
-        self.details_label.setFixedWidth(int(width * 0.495))
+        self.details_label.setFixedWidth(int(width * 0.40))
         self.details_label.setFixedHeight(self.height())
         self.details_label.setText("")
         self.details_label.setFont(self.toolbar_font)  
         self.addWidget(self.details_label)
     
     def update_text(self):
-
-        mode, details = self.data.get_data()
+        """Update the toolbar to display the current settings."""
+        mode, details = self.data.get_mode()
 
         if mode == 'manual':
             self.mode_label.setText(f"{mode.capitalize()}")
-            self.details_label.setText("Zon: {:.0%}, Wind: {:.0%}, Vraag: {:.0%}".format(details[0]/100, details[1]/100, details[2]/100))
+            self.details_label.setText("Zon: {:.0%}, Wind: {:.0%}, Vraag: {:.0%}".format(
+                                                                                    details[0]/100, 
+                                                                                    details[1]/100, 
+                                                                                    details[2]/100))
         elif mode == 'scenario':
             self.mode_label.setText(f"{mode.capitalize()}")
             self.details_label.setText(f"{details}")
@@ -144,5 +142,11 @@ class ToolBarBottom(QtWidgets.QToolBar):
             self.mode_label.setText("Gestopt")
             self.details_label.setText("")
         else:
-            self.mode_label.setText(f"Onbekend")
+            self.mode_label.setText("Onbekend")
             self.details_label.setText("")
+    
+    def create_exit_button(self):
+        """Creates the button to go exit the application."""
+        self.exit_button = QtWidgets.QAction('Exit')
+        self.exit_button.setFont(self.toolbar_font)
+        self.addAction(self.exit_button)
