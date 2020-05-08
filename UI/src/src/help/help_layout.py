@@ -30,6 +30,7 @@ class HelpLayout(QtWidgets.QWidget):
         self.help_label.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.05), 
                                                  int(width * 0.6), int(height * 0.8)))
 
+
     def create_tuner(self, width, height):
         """Creates the LineEdit to enter the current volume of hydrogen stored."""
         font = QtGui.QFont()
@@ -52,8 +53,8 @@ class HelpLayout(QtWidgets.QWidget):
         self.cal_label.setText("Calibration:")
         self.cal_label.setFont(font)
         self.cal_label.setAlignment(QtCore.Qt.AlignRight)
-        self.cal_label.setGeometry(QtCore.QRect(int(width * 0.35), int(height * 0.80), 
-                                                int(width * 0.10), int(height * 0.05)))
+        self.cal_label.setGeometry(QtCore.QRect(int(width * 0.30), int(height * 0.80), 
+                                                int(width * 0.15), int(height * 0.05)))
 
         self.unit_label = QtWidgets.QLabel(self)
         self.unit_label.setText("mL")
@@ -76,5 +77,6 @@ class HelpLayout(QtWidgets.QWidget):
         self.calibrate_button.clicked.connect(self.calibrate)
     
     def calibrate(self):
+        """Update the data manager when the button is pressed."""
         self.data_manager.set_storage_value(int(self.tuner.text()))
         
