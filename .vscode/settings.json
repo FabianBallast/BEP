@@ -1,4 +1,11 @@
 {
-    "python.pythonPath": "C:\\Users\\fabia\\AppData\\Local\\Programs\\Python\\PythonClean\\python.exe",
-    "git.autofetch": true
+    "python.pythonPath": "C:\\Users\\fabia\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "git.autofetch": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=PyQt5",
+        "--disable=C0303,W0122,C0330"
+    ]
 }
