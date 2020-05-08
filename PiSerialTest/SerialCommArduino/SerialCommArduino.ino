@@ -1,5 +1,3 @@
-//#include <RBDdimmer.h>
-
 #include "ACdimmer.h" 
 
 #define COMM_SIZE_A 9
@@ -19,14 +17,19 @@ void loop() {
 //  comm_array[1] = 1;
 //  comm_array[2] = 3;
   
- while (Serial.available() < COMM_SIZE_A) {}
- for (int n=0; n<COMM_SIZE_A; n++)
-    comm_received[n] = Serial.read();
+ if (Serial.available() >= COMM_SIZE_A) {
+    for (int n=0; n<COMM_SIZE_A; n++)
+      comm_received[n] = Serial.read();
+    
+    set_fan_power(comm_received[0]);
+   }
+
+   
   
-  set_fan_power(50);
-  comm_sent[0] = comm_received[0] + comm_received[1] + comm_received[2];
-  comm_sent[1] = comm_received[3] + comm_received[4] + comm_received[5];
-  comm_sent[2] = comm_received[6] + comm_received[7] + comm_received[8];
+  delay(1000);
+  comm_sent[0] = get_fan_power();
+  comm_sent[1] = 0;
+  comm_sent[2] = 0;
   
   Serial.write(comm_sent, COMM_SIZE_P);
 }
