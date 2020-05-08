@@ -106,9 +106,9 @@ class ManualLayout(QtWidgets.QWidget):
         """Updates the data manager. 
            Is called when a Start/Stop button is pressed."""
         if self.main_window.sender().text() == 'Start':
-            self.data_manager.setData('manual', 
-                	                 [self.solar_power_slider.value(), 
-                                      self.wind_power_slider.value(), 
-                                      self.demand_power_slider.value()])
+            self.data_manager.set_mode('manual', 
+                	                   [self.solar_power_slider.value(), 
+                                        self.wind_power_slider.value(), 
+                                        self.demand_power_slider.value()])
         else:
-            self.data_manager.setData('stop', None)
+            self.data_manager.set_mode('stop', None)

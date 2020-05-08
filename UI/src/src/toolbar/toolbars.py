@@ -8,7 +8,7 @@ class ToolBarTop(QtWidgets.QToolBar):
     def __init__(self, height):
         super().__init__()
               
-        self.setFixedHeight(int(height * 0.1))
+        self.setFixedHeight(int(height * 0.075))
         self.setMovable(False)
         self.button_list = []
         
@@ -86,7 +86,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
     def __init__(self, width, height, data):
         super().__init__()
         
-        self.setFixedHeight(int(0.05*height))
+        self.setFixedHeight(int(0.075*height))
         self.setMovable(False)
         self.data = data
         
@@ -127,7 +127,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
     
     def update_text(self):
         """Update the toolbar to display the current settings."""
-        mode, details = self.data.get_data()
+        mode, details = self.data.get_mode()
 
         if mode == 'manual':
             self.mode_label.setText(f"{mode.capitalize()}")

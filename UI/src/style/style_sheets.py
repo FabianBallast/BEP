@@ -15,6 +15,10 @@ WINDOW_1 = """QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0,
             QLabel {background-color: rgba(0, 0, 0, 0);
                     color: rgb(255, 255, 255)}
             QSlider {background-color: rgba(255, 255, 255, 0)}
+            QSlider::handle:vertical {
+                                background: green;
+                                margin: 0 -4px;
+                                     }
             QLCDNumber {background-color: rgba(255, 255, 255, 0)}
             QCheckBox {background-color: rgba(255, 255, 255, 0);
                        color: rgb(255, 255, 255)}
@@ -27,6 +31,8 @@ WINDOW_1 = """QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0,
             QToolButton::pressed {background-color: rgba(0, 255, 0, 100);
                                   color: rgb(255, 255, 255)}
             QToolBar {background-color: rgba(0, 0, 0, 50); border: none}
-            QMessageBox {background-color: rgba(255, 255, 255, 50)} """
+            QMessageBox {background-color: rgba(255, 255, 255, 50)}
+            QLineEdit {background-color: rgba(0, 0, 0, 0);
+                       color: rgb(255, 255, 255); border: none}"""
 
 WINDOW_2 = WINDOW_1

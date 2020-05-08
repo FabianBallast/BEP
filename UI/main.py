@@ -62,7 +62,7 @@ class UiMainWindow(object):
         self.map = MapLayout(main_window_1, self.stacked_widget_1) 
         self.scenarios = ScenarioLayout(self.data, main_window_1, self.stacked_widget_1)
         self.manual_control = ManualLayout(self.data, main_window_1, self.stacked_widget_1)
-        self.help_page = HelpLayout(self.stacked_widget_1)
+        self.help_page = HelpLayout(self.data, self.stacked_widget_1)
         self.second_screen = SecondScreenController(self.stacked_widget_1)
 
         self.stacked_widget_1.addWidget(self.graphs_1)
@@ -88,8 +88,8 @@ class UiMainWindow(object):
 
         self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
-        self.data.connect(self.toolbar_bottom.update_text)
-        self.data.connect(self.graphs_1.new_mode)
+        self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
+        self.data.connect_for_mode_change(self.graphs_1.new_mode)
 
 
     def connect_pages_to_buttons(self):   
@@ -114,7 +114,7 @@ class UiMainWindow(object):
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, 
             QtWidgets.QMessageBox.No
         )
-        
+
         if reply == QtWidgets.QMessageBox.Yes:
             sys.exit()
     

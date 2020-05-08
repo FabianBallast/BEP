@@ -40,6 +40,7 @@ class ScenarioLayout(QtWidgets.QWidget):
         self.scenarios_list.setGeometry(QtCore.QRect(int(width * 0.05), int(height * 0.21), 
                                                      int(width * 0.37), int(height * 0.7)))
         self.scenarios_list.setFont(font)
+        self.scenarios_list.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.scenarios_list.currentRowChanged.connect(self.scenarios.update_current_scenario)
 
         for scenario in self.scenarios.get_scenario_list():
@@ -112,6 +113,6 @@ class ScenarioLayout(QtWidgets.QWidget):
     def update_data_manager(self):
         """If the buttons are pressed, the DataManager object should be updated."""
         if self.main_window.sender().text() == 'Start':
-            self.data_manager.setData('scenario', self.scenarios.get_current_scenario())
+            self.data_manager.set_mode('scenario', self.scenarios.get_current_scenario())
         else:
-            self.data_manager.setData('stop', None)
+            self.data_manager.set_mode('stop', None)

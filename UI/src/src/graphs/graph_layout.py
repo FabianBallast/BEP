@@ -111,7 +111,7 @@ class GraphLayout(QtWidgets.QWidget):
     def update_graph_1(self):
         """Update the graph on the main screen with new data."""
 
-        mode, details = self.data_manager.get_data()
+        mode, details = self.data_manager.get_mode()
         t_curr = self.time_past.elapsed() / 1000 #in s. 
 
         if mode == 'manual':
@@ -173,7 +173,7 @@ class GraphLayout(QtWidgets.QWidget):
     def new_mode(self):
         """When a new mode is selected, the graph is cleared."""
 
-        mode, _ = self.data_manager.get_data()
+        mode, _ = self.data_manager.get_mode()
 
         if self.prev_mode != mode or mode != 'manual':
             self.reset_graph()
