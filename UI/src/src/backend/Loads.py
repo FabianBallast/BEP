@@ -1,4 +1,7 @@
 #pip3 install adafruit-circuitpython-neopixel
+
+
+#wire LED on D18 (only on D18!)
 import time
 import board
 import neopixel
