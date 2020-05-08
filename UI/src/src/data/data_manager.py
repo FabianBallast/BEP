@@ -21,7 +21,8 @@ class DataManager():
         elif mode == 'stop':
             pass
         else:
-            raise ValueError(f"Mode should be either 'manual', 'scenario' or 'stop', but was equal to '{mode}'")
+            raise ValueError(f"Mode should be either 'manual', 'scenario' or 'stop',"
+                             f"but was equal to '{mode}'")
         
         self.mode_changed()
     

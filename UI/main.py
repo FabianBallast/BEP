@@ -55,6 +55,8 @@ class UiMainWindow(object):
         self.stacked_widget_2 = QtWidgets.QStackedWidget(central_widget_2)
         self.stacked_widget_2.setGeometry(QtCore.QRect(0, 0, geometry_2[0], geometry_2[1]))
         main_window_2.setCentralWidget(central_widget_2)
+
+        
     
     def create_pages(self, main_window_1, main_window_2):
         """Create the different pages for both screens."""
@@ -75,8 +77,8 @@ class UiMainWindow(object):
 
         self.graphs_2 = GraphLayout(self.data, main_window_2, 2, self.stacked_widget_2)
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
-        self.stacked_widget_2.addWidget(self.map_2)
         self.stacked_widget_2.addWidget(self.graphs_2)
+        self.stacked_widget_2.addWidget(self.map_2)
     
     def connect_special_actions(self):
         """Connect specific actions to each other."""
