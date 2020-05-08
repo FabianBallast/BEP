@@ -1,14 +1,12 @@
-#!/usr/bin/env python
 """This module contains the main component for the map-page.
    All components for this page are placed on this widget."""
 
 from PyQt5 import QtWidgets, QtCore, QtGui
-from pyqt_led import Led    # pylint: disable=W0611
+from pyqt_led import Led                                        #pylint: disable=W0611
 
 class MapLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
-       It contains all components on this page."""
-
+       It contains all components on the 'map' page."""
     def __init__(self, MainWindow, parent):
         super().__init__(parent)
         self.main_window = MainWindow
@@ -34,7 +32,6 @@ class MapLayout(QtWidgets.QWidget):
 
     def create_leds(self):
         """Create all the LED's and place them in the correct spot."""
-
         for i in range(len(self.x_pos)):
             exec(f"self.LED_{i+1} = Led(parent=self," 
                                   f"on_color=Led.{self.color_on}," 
@@ -48,7 +45,6 @@ class MapLayout(QtWidgets.QWidget):
             
     def create_progress_bar(self, default_value, width, height):
         """Create the progress bar to visualize the amount of hydrogen stored."""
-
         self.storage_bar = QtWidgets.QProgressBar(self)
         self.storage_bar.setGeometry(QtCore.QRect(int(width * 0.310), int(height * 0.5), 
                                                   int(width * 0.021), int(height * 0.25)))
@@ -57,7 +53,7 @@ class MapLayout(QtWidgets.QWidget):
 
     def create_background(self, width, height):
         """Create a label to display a background image."""
-        
+    
         self.map_picture = QtWidgets.QLabel(self)
         self.map_picture.setGeometry(QtCore.QRect(0, 0, width, height))
         self.map_picture.setPixmap(QtGui.QPixmap(".../img/bg_1.jpg"))
@@ -67,14 +63,12 @@ class MapLayout(QtWidgets.QWidget):
     def get_current_values(self, solar, wind, demand):
         """Update the map to match with the current data.
            Use multiple other functions to accomplish this."""
-
         self.update_progress_bar(solar + wind - demand)
         self.update_background(solar, demand)
         self.update_leds(solar, wind, demand, solar + wind - demand)
     
     def update_progress_bar(self, val):
         """Update the progress bar to match with the current data."""
-
         val = val / 10
         self.value_progress_bar = max(min(self.value_progress_bar + val, 100), 0) 
         self.storage_bar.setProperty('value', int(self.value_progress_bar))
@@ -82,7 +76,6 @@ class MapLayout(QtWidgets.QWidget):
     
     def update_background(self, solar_power, power_demand):
         """Update the background to match with the current data."""
-
         solar_power = round(solar_power, 0)
         power_demand = round(power_demand, 0) if self.value_progress_bar > 0 else 0
 
@@ -91,7 +84,6 @@ class MapLayout(QtWidgets.QWidget):
     
     def update_leds(self, solar, wind, demand, diff):
         """Update the LED's to match with the current data."""
-
         led_list = []
         solar = round(solar, 0)
         demand = round(demand, 0)

@@ -1,43 +1,51 @@
-# -*- coding: utf-8 -*-
+"""This module covers all help/safety information for the user."""
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class help_layout(QtWidgets.QWidget):
-
+class HelpLayout(QtWidgets.QWidget):
+    """This class inherits from a QWidget.
+       It contains all components on the 'help' page."""
     def __init__(self, parent):
         super().__init__()
     
         self.create_text(parent.width(), parent.height())
         self.create_tuner(parent.width(), parent.height())
-        #self.create_button()
+        self.create_button()
     
     def create_text(self, width, height):
+        """Creates the main info text with safety precautions."""
         font = QtGui.QFont()
         font.setPixelSize(int(height * 0.05))
         self.help_label = QtWidgets.QLabel(self)
         self.help_label.setText("Wees voorzichtig. \n\n\n"
                                 "1. Alleen bijvullen met gedemineraliseerd water.\n\n"
-                                "2. Raak alleen het besturingsscherm aan als de opstelling aan staat.  \n\n"
-                                "3. Zorg dat er altijd minstens één iemand aanwezig is om toezicht te houden op de opstelling. \n\n"
+                                "2. Raak alleen het besturingsscherm aan" 
+                                   "als de opstelling aan staat.\n\n"
+                                "3. Zorg dat er altijd minstens één iemand aanwezig is" 
+                                   "om toezicht te houden op de opstelling. \n\n"
                                 "4. Rook niet in de buurt van de opstelling. ")
         self.help_label.setFont(font)
         self.help_label.setAlignment(QtCore.Qt.AlignJustify)
         self.help_label.setWordWrap(True)
-        self.help_label.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.1), int(width * 0.6), int(height * 0.8)))
+        self.help_label.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.1), 
+                                                 int(width * 0.6), int(height * 0.8)))
 
     def create_tuner(self, width, height):
+        """Creates the LineEdit to enter the current volume of hydrogen stored."""
         font = QtGui.QFont()
         font.setPixelSize(int(height * 0.04))
 
         self.tuner = QtWidgets.QLineEdit(self)
-        self.tuner.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.8), int(width * 0.4), int(height * 0.05)))
+        self.tuner.setGeometry(QtCore.QRect(int(width * 0.2), int(height * 0.8), 
+                                            int(width * 0.4), int(height * 0.05)))
         self.tuner.setFont(font)
         self.tuner.setValidator(QtGui.QIntValidator(0, 99))
         self.tuner.setText("50")
         self.tuner.setMaxLength(2)
-        self.tuner.setStyleSheet("QLineEdit {background-color: rgba(0, 0, 0, 0); color: rgb(255, 255, 255)}")
+        self.tuner.setStyleSheet("QLineEdit {background-color: rgba(0, 0, 0, 0);"
+                                            "color: rgb(255, 255, 255)}")
 
     def create_button(self):
-
+        """Creates a button to confirm the entered value for the tuner."""
         help_button_font = QtGui.QFont()
         help_button_font.setFamily("Segoe UI")
         help_button_font.setPointSize(14)
