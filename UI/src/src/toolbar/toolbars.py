@@ -147,6 +147,6 @@ class ToolBarBottom(QtWidgets.QToolBar):
     
     def create_exit_button(self):
         """Creates the button to go exit the application."""
-        self.screen_button = QtWidgets.QAction('Exit')
-        self.screen_button.setFont(self.toolbar_font)
-        self.addAction(self.screen_button)
+        self.exit_button = QtWidgets.QAction('Exit')
+        self.exit_button.setFont(self.toolbar_font)
+        self.addAction(self.exit_button)

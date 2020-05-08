@@ -15,19 +15,15 @@ import src.style.style_sheets as sheet
 class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
     def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2):
-        self.width_1 = geometry_1[0]
-        self.height_1 = geometry_1[1]
-        self.width_2 = geometry_2[0]
-        self.height_2 = geometry_2[1]
-        self.data = DataManager()
 
+        self.data = DataManager()
         self.set_main_windows(geometry_1, geometry_2, main_window_1, main_window_2)
         self.add_toolbars_to_window(geometry_1, main_window_1)
         self.create_central_stacked_widgets(geometry_1, geometry_2, main_window_1, main_window_2)
         self.create_pages(main_window_1, main_window_2)
         self.connect_special_actions()
         self.connect_pages_to_buttons()
-        
+
     def set_main_windows(self, geometry_1, geometry_2, main_window_1, main_window_2):
         """Change the main windows to the desired format and settings."""
         main_window_1.resize(geometry_1[0], geometry_1[1])
@@ -89,6 +85,8 @@ class UiMainWindow(object):
         
         self.graphs_1.updater(self.graphs_2.update_graph_2)
         self.graphs_2.connect_for_current_values(self.map_2.get_current_values)
+
+        self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
         self.data.connect(self.toolbar_bottom.update_text)
         self.data.connect(self.graphs_1.new_mode)
@@ -106,6 +104,19 @@ class UiMainWindow(object):
     def change_screen(self):
         """Change the page on the second screen."""
         self.stacked_widget_2.setCurrentIndex(self.second_screen.get_selected_item())
+    
+    def close_app(self):
+        """Close app when button is pressed."""
+        reply = QtWidgets.QMessageBox.warning(
+            self.stacked_widget_1, 
+            "Exit Application", 
+            "Wil je afsluiten?", 
+            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, 
+            QtWidgets.QMessageBox.No
+        )
+        
+        if reply == QtWidgets.QMessageBox.Yes:
+            sys.exit()
     
 
 if __name__ == "__main__":
