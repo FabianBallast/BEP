@@ -1,9 +1,10 @@
 """This module contains the main component for the map-page.
    All components for this page are placed on this widget."""
-
+import os
+import pathlib
 from PyQt5 import QtWidgets, QtCore, QtGui
 from pyqt_led import Led                                        #pylint: disable=W0611
-import os
+
 class MapLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
        It contains all components on the 'map' page."""
@@ -14,6 +15,8 @@ class MapLayout(QtWidgets.QWidget):
         self.color_on = 'green'
         self.color_off = 'black'
         self.shape = 'circle'
+
+        self.base_path = os.path.join(pathlib.Path(__file__).parent.absolute(), '../../img/')
 
         width = parent.width()
         height = parent.height()
@@ -56,7 +59,10 @@ class MapLayout(QtWidgets.QWidget):
     
         self.map_picture = QtWidgets.QLabel(self)
         self.map_picture.setGeometry(QtCore.QRect(0, 0, width, height))
-        self.map_picture.setPixmap(QtGui.QPixmap("src/img/bg_1.jpg"))
+        #rel = '../../img/bg_1.jpg'
+        #path = os.path.join(pathlib.Path(__file__).parent.absolute(), rel)
+        #print(path)
+        self.map_picture.setPixmap(QtGui.QPixmap(self.base_path + 'bg_1.jpg'))
         self.map_picture.setScaledContents(True)
         self.map_picture.lower()
 
@@ -80,7 +86,7 @@ class MapLayout(QtWidgets.QWidget):
         power_demand = round(power_demand, 0) if self.value_progress_bar > 0 else 0
 
         val = int(6 + min(power_demand, 4) if solar_power > 2 else 1 + min(power_demand, 4)) 
-        self.map_picture.setPixmap(QtGui.QPixmap(f"src/img/bg_{str(val)}.jpg"))
+        self.map_picture.setPixmap(QtGui.QPixmap(self.base_path + f"bg_{str(val)}.jpg"))
     
     def update_leds(self, solar, wind, demand, diff):
         """Update the LED's to match with the current data."""

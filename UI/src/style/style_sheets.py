@@ -17,8 +17,16 @@ WINDOW_1 = """QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0,
             QSlider {background-color: rgba(255, 255, 255, 0)}
             QSlider::handle:vertical {
                                 background: green;
-                                margin: 0 -4px;
+                                margin: 0 -80px;
+                                border: 1px solid;
+                                height: 80px;
                                      }
+            QSlider::groove:vertical {
+                                background: yellow;
+                                width: 10px;
+                                margin: 0 -5px;
+                                
+                                     }    
             QLCDNumber {background-color: rgba(255, 255, 255, 0)}
             QCheckBox {background-color: rgba(255, 255, 255, 0);
                        color: rgb(255, 255, 255)}
