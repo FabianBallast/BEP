@@ -17,8 +17,8 @@ class SerialCommunicator:
                  'stest0':0,
                   'stest1':0}
         #comm protocol
-        self.sendOrder = ['windPower','stest0', 'stest1']
-        self.receiveOrder = ['start','currentWindPower','rtest0', 'end']
+        self.sendOrder = ['windPower', 'stest0', 'stest1']
+        self.receiveOrder = ['start', 'currentWindPower', 'rtest0', 'end']
         self.end_char_RP = 254
         self.start_char_RP = 255
         print('comm_size_to_Arduino', len(self.send))
@@ -30,7 +30,7 @@ class SerialCommunicator:
     def sendToArduino(self, **kwargs):
         for key, value in kwargs.items():
             self.send[key] = value
-        print('Sending',self.send)
+        print('Sending', self.send)
         
         array_to_send = [int(self.send[key]) for key in self.sendOrder]
         bytes_to_send = bytes(array_to_send)

@@ -33,6 +33,16 @@ class Scenario():
         """Return the different arrays for solar, wind en demand."""
         return self.solar, self.wind, self.demand
     
+    def get_values_at(self, time):
+        """Return the values from the scenario from a given time."""
+        time_end = self.time[-1]
+        frac = time / time_end
+        ind_raw = int((frac - round(frac, 0)) * (len(self.time) - 1))
+        ind = ind_raw
+        if ind >= len(self.time):
+            print(f"ind: {ind}, max: {len(self.time - 1)}")
+        return [round(self.solar[ind], 2), round(self.wind[ind], 2), round(self.demand[ind], 2)]
+    
     def summary_scenario(self, label):
         """Changes the text of the label to the summary of this scenario."""
         label.setText(self.summary)

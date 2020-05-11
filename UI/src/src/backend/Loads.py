@@ -20,8 +20,8 @@ pixels = neopixel.NeoPixel(
 PERC_PER_PIXEL = 100/num_pixels
 
 
-def load_set (set_value):
-    #input a value between 0 and 100
+def load_set(set_value):
+    """input a value between 0 and 100"""
 
     #pixels.clear()
     leds_on = set_value/PERC_PER_PIXEL
@@ -42,7 +42,7 @@ def load_set (set_value):
             pixels[pixel_index] = (0, 0, 0)
             print('LED', pixel_index, ' off' )
 
-    print('load' ,set_value)
+    print('load', set_value)
     pixels.show()
 
 if __name__ == '__main__':
