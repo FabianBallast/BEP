@@ -1,7 +1,7 @@
 #include "ACdimmer.h" 
 
-#define COMM_SIZE_A 9
-#define COMM_SIZE_P 3
+#define COMM_SIZE_A 3
+#define COMM_SIZE_P 4
 
 
 uint8_t comm_received[COMM_SIZE_A];
@@ -11,25 +11,30 @@ void setup() {
   Serial.begin(9600);
   Serial.flush();
   fan_setup();
+
+  comm_sent[0] = 255;
+  comm_sent[1] = 0;
+  comm_sent[2] = 0;
+  comm_sent[3] = 254;
 }
 void loop() {
 //  comm_array[0] = 2;
 //  comm_array[1] = 1;
 //  comm_array[2] = 3;
-  
+ 
+ comm_sent[1] = 0;
  if (Serial.available() >= COMM_SIZE_A) {
-    for (int n=0; n<COMM_SIZE_A; n++)
+    for (int n=0; n<COMM_SIZE_A; n++){
       comm_received[n] = Serial.read();
-    
+    }
     set_fan_power(comm_received[0]);
+    comm_sent[2] = 1;
    }
-
-   
   
-  delay(1000);
-  comm_sent[0] = get_fan_power();
-  comm_sent[1] = 0;
-  comm_sent[2] = 0;
+  
+  
+  comm_sent[1] = get_fan_power();
   
   Serial.write(comm_sent, COMM_SIZE_P);
+  delay(1000);
 }

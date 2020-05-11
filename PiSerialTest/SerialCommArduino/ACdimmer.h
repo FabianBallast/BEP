@@ -12,16 +12,13 @@ dimmerLamp FanDimmer(outputPin);
 
 
 void fan_setup() {
-  FanDimmer.begin(TOGGLE_MODE, ON); 
+  FanDimmer.begin(NORMAL_MODE, ON); 
   FanDimmer.setPower(80);
   FanDimmer.setState(ON);
 }
 
 void set_fan_power(byte set_value){
- 
-
-        FanDimmer.setPower(set_value);
-   // }
+         FanDimmer.setPower(set_value);
 }
 
 uint8_t get_fan_power(){
