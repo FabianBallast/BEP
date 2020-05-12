@@ -54,6 +54,7 @@ class GraphLayout(QtWidgets.QWidget):
         """"Create a plot to show all the graphs."""
 
         self.graph = pg.PlotWidget(self) 
+        self.graph.showGrid(x=True, y=True, alpha=1)
         self.graph.getPlotItem().getAxis('left').setPen('w')
         self.graph.getPlotItem().getAxis('bottom').setPen('w')
         if screen_number == 1:
