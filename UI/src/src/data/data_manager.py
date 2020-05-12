@@ -1,8 +1,9 @@
 """This module will handle all the data and the connection between the Pi and Arduino."""
 from PyQt5 import QtCore
-#from ..backend.readTankSensor import TankReader
-#from ..backend.SerialCommunicator import SerialCommunicator
-#from ..backend import loads
+from ..backend.read_tank_sensor import TankReader
+from ..backend.serial_communicator import SerialCommunicator
+from ..backend import Loads
+
 class DataManager():
     """This class contains all data."""
     def __init__(self):
@@ -20,8 +21,8 @@ class DataManager():
         self.sensor_readings_handlers = []
         self.storage_cal = 0
 
-        #self.tank_reader = TankReader()
-        #self.serial_connection = SerialCommunicator()
+        self.tank_reader = TankReader()
+        self.serial_connection = SerialCommunicator()
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
@@ -89,14 +90,15 @@ class DataManager():
         #print(f"Data for control: solar power: {values[0]}, wind power: {values[1]} and power demand: {values[2]}.") #pylint: disable=C0301
 
         #To do: sent data for solar panel to dimmer.
-        #self.serial_connection.send_to_arduino(windPower=values[1])
-        #Loads.load_set(values[2])
+        self.serial_connection.send_to_arduino(windPower=values[1])
+        Loads.load_set(values[2] * 20)
 
-        #readings = self.serial_connection.read_arduino()
+        readings = self.serial_connection.read_arduino()
         #readings = {'wind_power': 5,
         #            'solar_power': 2,
         #            'power_demand': 1}
-        readings = dict()
+        #readings = dict()
+        
         data = []
         sensors = ['solar_power', 'wind_power', 'power_demand']
 
@@ -109,8 +111,8 @@ class DataManager():
                 else:
                     data.append(values[sensors.index(sensor)])
 
-        #data.append(self.tank_reader.read_tank_level())
-        data.append(50) #Temp for tank_reader
+        data.append(self.tank_reader.read_tank_level())
+        #data.append(50) #Temp for tank_reader
         data.append(self.time_running.elapsed() / 1000)
 
        # print(f"Data from sensors: solar power: {data[0]}, wind power: {data[1]}, "

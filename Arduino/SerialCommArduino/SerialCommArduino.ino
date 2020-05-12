@@ -12,10 +12,10 @@ void setup() {
   Serial.flush();
   fan_setup();
 
-  comm_sent[0] = 255;
+  comm_sent[0] = 255;  //for communication protocal, DO NOT CHANGE
   comm_sent[1] = 0;
   comm_sent[2] = 0;
-  comm_sent[3] = 254;
+  comm_sent[3] = 254; //for communication protocal, DO NOT CHANGE
 }
 void loop() {
 //  comm_array[0] = 2;
@@ -36,5 +36,5 @@ void loop() {
   comm_sent[1] = get_fan_power();
   
   Serial.write(comm_sent, COMM_SIZE_P);
-  delay(1000);
+  delay(100);
 }
