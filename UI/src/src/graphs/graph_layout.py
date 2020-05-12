@@ -114,9 +114,9 @@ class GraphLayout(QtWidgets.QWidget):
             self.reset_graph()
         
         self.x_curr.append(readings[4])
-        self.solar.append(readings[1] * 20)
-        self.wind.append(readings[0] * 20)
-        self.demand.append(readings[2] * 20)
+        self.solar.append(readings[1])
+        self.wind.append(readings[0])
+        self.demand.append(readings[2])
         self.storage.append(readings[3])
 
         self.plot_in_other(self.x_curr, self.solar, self.wind, self.demand, self.storage)

@@ -2,7 +2,7 @@
 from PyQt5 import QtCore
 from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator import SerialCommunicator
-from ..backend import Loads
+from ..backend import loads
 
 class DataManager():
     """This class contains all data."""
@@ -87,17 +87,11 @@ class DataManager():
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control()
 
-        #print(f"Data for control: solar power: {values[0]}, wind power: {values[1]} and power demand: {values[2]}.") #pylint: disable=C0301
-
         #To do: sent data for solar panel to dimmer.
         self.serial_connection.send_to_arduino(windPower=values[1])
-        Loads.load_set(values[2] * 20)
+        loads.load_set(values[2])
 
         readings = self.serial_connection.read_arduino()
-        #readings = {'wind_power': 5,
-        #            'solar_power': 2,
-        #            'power_demand': 1}
-        #readings = dict()
         
         data = []
         sensors = ['solar_power', 'wind_power', 'power_demand']
@@ -106,18 +100,10 @@ class DataManager():
             if sensor in readings:
                 data.append(readings[sensor])
             else:
-                if self.mode == 'manual':
-                    data.append(values[sensors.index(sensor)] / 20)
-                else:
-                    data.append(values[sensors.index(sensor)])
+                data.append(values[sensors.index(sensor)])
 
         data.append(self.tank_reader.read_tank_level())
-        #data.append(50) #Temp for tank_reader
         data.append(self.time_running.elapsed() / 1000)
-
-       # print(f"Data from sensors: solar power: {data[0]}, wind power: {data[1]}, "
-       #                         f"power demand: {data[2]} and tank level: {data[3]}")
-
         self.send_sensor_readings(data)
     
 

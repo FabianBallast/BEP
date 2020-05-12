@@ -27,6 +27,7 @@ class SerialCommunicator:
         print('start char to Pi', self.START_CHAR_RP)
         print('end char to Pi', self.END_CHAR_RP)
         self.ser.flush()
+        self.last_data = dict()
     
     def send_to_arduino(self, **kwargs):
         """Send data to Arduino. Currently only windpower."""
@@ -62,8 +63,9 @@ class SerialCommunicator:
                     print("Correctly received: ", comm_array, " out of ", bytes_awaiting, ' bytes')
                     data = dict(zip(self.receive_order, comm_array))
                     print(data)
+                    self.last_data = data
                     return data
-        return dict()             
+        return self.last_data            
 
 
 if __name__ == '__main__':
