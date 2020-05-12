@@ -23,23 +23,23 @@ def load_set(set_value):
     #pixels.clear()
     leds_on = set_value/PERC_PER_PIXEL
     amount_pixels_fully_on = int(leds_on)
-    print(amount_pixels_fully_on, ' leds fully on, ', leds_on, ' total')
+    #print(amount_pixels_fully_on, ' leds fully on, ', leds_on, ' total')
     #set first pixels fully on
     for pixel_index in range(NUM_PIXELS):
         if pixel_index < amount_pixels_fully_on:
             pixels[pixel_index] = (255, 255, 255)
-            print('LED', pixel_index, 'on')
+            #print('LED', pixel_index, 'on')
 
         elif pixel_index == amount_pixels_fully_on:     #set 1 pixel partly on
             intensity_of_half_one = int((leds_on - amount_pixels_fully_on) * 255)
             pixels[pixel_index] = (intensity_of_half_one, intensity_of_half_one, intensity_of_half_one) #pylint: disable=C0301
-            print('LED', pixel_index, 100*(leds_on-amount_pixels_fully_on), '% on')
+            #print('LED', pixel_index, 100*(leds_on-amount_pixels_fully_on), '% on')
 
         else: #set rest of pixels fully off
             pixels[pixel_index] = (0, 0, 0)
-            print('LED', pixel_index, 'off')
+            #print('LED', pixel_index, 'off')
 
-    print('load', set_value)
+    #print('load', set_value)
     pixels.show()
 
 if __name__ == '__main__':
