@@ -110,7 +110,7 @@ class DataManager():
                     data.append(values[sensors.index(sensor)])
 
         #data.append(self.tank_reader.read_tank_level())
-        data.append(50)
+        data.append(50) #Temp for tank_reader
         data.append(self.time_running.elapsed() / 1000)
 
        # print(f"Data from sensors: solar power: {data[0]}, wind power: {data[1]}, "
