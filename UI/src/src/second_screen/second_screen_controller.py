@@ -4,7 +4,6 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 
 from ..graphs.graph_layout import GraphLayout
 from ..map.map_layout import MapLayout
-from ..data.data_manager import DataManager
 
 class SecondScreenController(QtWidgets.QWidget):
     """This class inherits from a QWidget.
@@ -56,15 +55,17 @@ class SecondScreenController(QtWidgets.QWidget):
         main_window = 'Does Nothing'
         self.graph_widget = QtWidgets.QWidget(self)
         self.graph_widget.setStyleSheet("background: rgba(0, 0, 0, 0)")
-        self.graph_widget.setGeometry(QtCore.QRect(int(width * 0.45), int(height*0.11), 
-                                                   int(width * 0.3), int(height * 0.3)))
-        GraphLayout(DataManager(), main_window, 2, self.graph_widget)
+        self.graph_widget.setGeometry(QtCore.QRect(int(width * 0.50), int(height*0.11), 
+                                                   int(width * 0.25), int(height * 0.3)))
+        GraphLayout(main_window, 2, self.graph_widget)
+        self.graph_widget.raise_()
      
         self.map_widget = QtWidgets.QWidget(self)
         self.map_widget.setStyleSheet("background: rgba(0, 0, 0, 0)")
-        self.map_widget.setGeometry(QtCore.QRect(int(width * 0.45), int(height*0.41), 
-                                                 int(width * 0.3), int(height * 0.3)))
+        self.map_widget.setGeometry(QtCore.QRect(int(width * 0.50), int(height*0.41), 
+                                                 int(width * 0.25), int(height * 0.3)))
         MapLayout(main_window, self.map_widget)
+        self.map_widget.raise_()
 
 
     def get_selected_item(self):

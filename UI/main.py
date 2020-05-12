@@ -60,7 +60,7 @@ class UiMainWindow(object):
     
     def create_pages(self, main_window_1, main_window_2):
         """Create the different pages for both screens."""
-        self.graphs_1 = GraphLayout(self.data, main_window_1, 1, self.stacked_widget_1)
+        self.graphs_1 = GraphLayout(main_window_1, 1, self.stacked_widget_1)
         self.map_1 = MapLayout(main_window_1, self.stacked_widget_1) 
         self.scenarios = ScenarioLayout(self.data, main_window_1, self.stacked_widget_1)
         self.manual_control = ManualLayout(self.data, main_window_1, self.stacked_widget_1)
@@ -75,24 +75,19 @@ class UiMainWindow(object):
         self.stacked_widget_1.addWidget(self.second_screen)
         self.stacked_widget_1.setCurrentIndex(4)
 
-        self.graphs_2 = GraphLayout(self.data, main_window_2, 2, self.stacked_widget_2)
+        self.graphs_2 = GraphLayout(main_window_2, 2, self.stacked_widget_2)
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
         self.stacked_widget_2.addWidget(self.graphs_2)
         self.stacked_widget_2.addWidget(self.map_2)
     
     def connect_special_actions(self):
         """Connect specific actions to each other."""
-        #self.graphs_1.connect_for_current_values(self.map.get_current_values)
         self.second_screen.accept_button.clicked.connect(self.change_screen)
-        
-        #self.graphs_1.updater(self.graphs_2.update_graph_2)
-        #self.graphs_2.connect_for_current_values(self.map_2.get_current_values)
         
         self.graphs_1.updater(self.graphs_2.update_graph_2)
         self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
         self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
-        #self.data.connect_for_mode_change(self.graphs_1.new_mode)
         self.data.connect_for_sensor_readings(self.map_1.get_current_values)
         self.data.connect_for_sensor_readings(self.graphs_1.update_graph_1)
         self.graphs_1.reset_button.clicked.connect(self.data.time_running.restart)

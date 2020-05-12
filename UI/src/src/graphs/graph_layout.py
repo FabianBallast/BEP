@@ -6,12 +6,11 @@ class GraphLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
        It contains all components on the 'graph' page."""
 
-    def __init__(self, dataManager, MainWindow, screen_number, parent):
+    def __init__(self, MainWindow, screen_number, parent):
 
         super().__init__(parent)
            
         self.main_window = MainWindow
-        #self.data_manager = dataManager
         self.send_values = lambda x, y, z: x+y+z
         self.plot_in_other = lambda x, y, z: x+y+z
                    
@@ -103,7 +102,6 @@ class GraphLayout(QtWidgets.QWidget):
         font.setPixelSize(int(height * 0.05))
         font.setBold(True)
         self.reset_button.setFont(font)
-        #self.reset_button.clicked.connect(self.reset_graph)
 
     def update_graph_1(self, readings):
         """Update the graph on the main screen with new data."""
@@ -145,18 +143,6 @@ class GraphLayout(QtWidgets.QWidget):
         self.storage = []
         self.x_curr = []
         self.scen_ind = 0
-        #self.time_past.restart()
-    
-    def new_mode(self):
-        """When a new mode is selected, the graph is cleared."""
-
-        mode, _ = self.data_manager.get_mode()
-
-        if self.prev_mode != mode or mode != 'manual':
-            self.reset_graph()
-        
-        self.prev_mode = mode
-
 
     def check_changed(self):
         """When a checkbox is checked/unchecked, the graph is updated."""

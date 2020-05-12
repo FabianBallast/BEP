@@ -2,7 +2,7 @@
 from PyQt5 import QtCore
 #from ..backend.readTankSensor import TankReader
 #from ..backend.SerialCommunicator import SerialCommunicator
-#from ..backend import Loads
+#from ..backend import loads
 class DataManager():
     """This class contains all data."""
     def __init__(self):
@@ -86,13 +86,13 @@ class DataManager():
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control()
 
-        #print(f"Data for control: solar power: {values[0]}, wind power: {values[1]} and power demand: {values[2]}.")
+        #print(f"Data for control: solar power: {values[0]}, wind power: {values[1]} and power demand: {values[2]}.") #pylint: disable=C0301
 
         #To do: sent data for solar panel to dimmer.
-        #self.serial_connection.sendToArduino(windPower=values[1])
+        #self.serial_connection.send_to_arduino(windPower=values[1])
         #Loads.load_set(values[2])
 
-        #readings = self.serial_connection.readArduino()
+        #readings = self.serial_connection.read_arduino()
         #readings = {'wind_power': 5,
         #            'solar_power': 2,
         #            'power_demand': 1}
@@ -109,7 +109,7 @@ class DataManager():
                 else:
                     data.append(values[sensors.index(sensor)])
 
-        #data.append(self.tank_reader.readTankLevel())
+        #data.append(self.tank_reader.read_tank_level())
         data.append(50)
         data.append(self.time_running.elapsed() / 1000)
 
