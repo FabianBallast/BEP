@@ -14,6 +14,18 @@ class HalogenLight:
     
     def set_light(self, set_value):
         """input value between 0-100"""
-        #self.pwm.ChangeDutyCycle(set_value)
+        #
         if ((set_value<20)&(set_value>0)):
             print("Warning, halogen light lifetime may be decreasing fast")
+
+    def adjust(self, set_value):
+        self.pwm.ChangeDutyCycle(set_value)
+
+    def animate(self, end_value, step_size=10):
+        if set_value>self.end_value:
+            intermediate_value = self.start_value+step_size
+            if intermediate_value>self.end_value:
+                intermediate_value = self.end_value
+            self.adjust(intermediate_value)
+        else:
+            adjust()
