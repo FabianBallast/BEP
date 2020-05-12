@@ -40,9 +40,9 @@ class Scenario():
         ind_raw = int((frac - round(frac, 0)) * (len(self.time) - 1))
         ind = ind_raw
 
-        val_raw = [self.solar[ind], self.wind[ind], self.demand[ind]]
-
-        return [round(map(x, 0, max(x), 0, 100), 0) for x in val_raw]
+        all_data = [self.solar, self.wind, self.demand]
+        val_raw = [mode[ind] for mode in all_data]
+        return [round(val_raw[x] * 100 / max(all_data[x]), 0) for x in range(len(val_raw))]
     
     def summary_scenario(self, label):
         """Changes the text of the label to the summary of this scenario."""

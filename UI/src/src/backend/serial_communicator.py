@@ -2,6 +2,8 @@
 
 import time
 import serial
+
+from ..dummy import dummy_serial
 #import numpy.random as rand
 #import loads
 
@@ -10,7 +12,12 @@ class SerialCommunicator:
     """This class represent the communication with the Arduino."""
     
     def __init__(self):
-        self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
+        try:
+            self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
+            self.CONNECTION = True
+        except serial.serialutil.SerialException:
+            self.ser = dummy_serial
+            self.CONNECTION = False
         #self.ser = serial.Serial('COM4', 9600, timeout=0
 
         #initial parameters
@@ -33,12 +40,12 @@ class SerialCommunicator:
         """Send data to Arduino. Currently only windpower."""
         for key, value in kwargs.items():
             self.send[key] = value
-        print('Sending', self.send)
+        #print('Sending', self.send)
         
         array_to_send = [int(self.send[key]) for key in self.send_order]
         bytes_to_send = bytes(array_to_send)
         
-        print('We sent', array_to_send)
+        #print('We sent', array_to_send)
         self.ser.write(bytes_to_send)
         return self.send
 

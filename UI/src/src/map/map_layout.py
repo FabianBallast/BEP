@@ -26,6 +26,7 @@ class MapLayout(QtWidgets.QWidget):
         self.y_pos = [int(height * y) for y in [0.06, 0.060, 0.06, 0.26, 0.32, 
                                                 0.62, 0.765, 0.78, 0.78]]
         self.diameter = int(width * 0.03)
+        self.value_progress_bar = 50
 
         self.create_leds()
         self.create_progress_bar(self.value_progress_bar, width, height)
@@ -78,6 +79,7 @@ class MapLayout(QtWidgets.QWidget):
         """Update the progress bar to match with the current data."""
         self.storage_bar.setProperty('value', val)
         self.storage_bar.update()
+        self.value_progress_bar = val
     
     def update_background(self, solar_power, power_demand):
         """Update the background to match with the current data."""
