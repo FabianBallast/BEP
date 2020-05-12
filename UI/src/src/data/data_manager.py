@@ -23,6 +23,7 @@ class DataManager():
 
         self.tank_reader = TankReader()
         self.serial_connection = SerialCommunicator()
+        self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
@@ -91,7 +92,10 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         loads.load_set(values[2])
 
-        readings = self.serial_connection.read_arduino()
+        if self.serial_connection.CONNECTION:
+            readings = self.serial_connection.read_arduino()
+        else:
+            readings = values.copy()
         
         data = []
         sensors = ['solar_power', 'wind_power', 'power_demand']
@@ -104,6 +108,7 @@ class DataManager():
 
         data.append(self.tank_reader.read_tank_level())
         data.append(self.time_running.elapsed() / 1000)
+        #print(data)
         self.send_sensor_readings(data)
     
 

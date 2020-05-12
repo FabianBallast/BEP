@@ -18,7 +18,7 @@ class GraphLayout(QtWidgets.QWidget):
         self.mode_nl = ['zon', 'wind', 'vraag', 'opslag']
         self.colors = ['255, 255, 255', '255, 0, 0', '255, 255, 0', '0, 255, 0']
         self.opa = ['255', '255', '255', '255']
-        self.width = '2'
+        self.width = '5'
         self.prev_mode = ''
 
         width = parent.width()
@@ -114,8 +114,8 @@ class GraphLayout(QtWidgets.QWidget):
             self.reset_graph()
         
         self.x_curr.append(readings[4])
-        self.solar.append(readings[1])
-        self.wind.append(readings[0])
+        self.solar.append(readings[0])
+        self.wind.append(readings[1])
         self.demand.append(readings[2])
         self.storage.append(readings[3])
 

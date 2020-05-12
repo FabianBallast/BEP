@@ -1,5 +1,10 @@
 """This class handles the sensor for reading the tank level."""
-import board
+try:
+    import board
+except NotImplementedError:
+    from ..dummy import dummy_board as board
+    from ..dummy import dummy_range_sensor as sensor
+
 import busio
 import adafruit_vl6180x
 import matplotlib.pyplot as plt
@@ -8,9 +13,12 @@ from matplotlib.animation import FuncAnimation
 class TankReader:
     """This class represents the sensor."""
     def __init__(self, N_FILTER=30):
-        i2c = busio.I2C(board.SCL, board.SDA)
-        #self.i2c = busio.I2C(board.D3, board.D2)
-        self.sensor = adafruit_vl6180x.VL6180X(i2c)
+
+        try:
+            i2c = busio.I2C(board.SCL, board.SDA)
+            self.sensor = adafruit_vl6180x.VL6180X(i2c)
+        except ModuleNotFoundError:
+            self.sensor = sensor
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=C0103
@@ -49,7 +57,7 @@ def plot_tank_level(i):                         #pylint: disable=unused-argument
     volume_data.append(h2_tank.read_tank_level())
     ax1.clear()
     
-    plt.ylim(0,80)
+    plt.ylim(0, 80)
     ax1.plot(volume_data)
 
 if __name__ == '__main__':

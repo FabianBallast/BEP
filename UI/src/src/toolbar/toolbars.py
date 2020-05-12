@@ -104,7 +104,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
     def create_labels(self, width):
         """Create a QLabel to display the current settings."""
         self.mode_title_label = QtWidgets.QLabel(self)
-        self.mode_title_label.setFixedWidth(int(width * 0.25))
+        self.mode_title_label.setFixedWidth(int(width * 0.10))
         self.mode_title_label.setFixedHeight(self.height())
         self.mode_title_label.setText("Modus: ")
         self.mode_title_label.setFont(self.toolbar_font)
@@ -112,38 +112,36 @@ class ToolBarBottom(QtWidgets.QToolBar):
         self.addWidget(self.mode_title_label)
 
         self.mode_label = QtWidgets.QLabel(self)
-        self.mode_label.setFixedWidth(int(width* 0.25))
+        self.mode_label.setFixedWidth(int(width* 0.50))
         self.mode_label.setFixedHeight(self.height())
         self.mode_label.setText("Gestopt")
         self.mode_label.setFont(self.toolbar_font)
         self.addWidget(self.mode_label)
 
-        self.details_label = QtWidgets.QLabel(self)
-        self.details_label.setFixedWidth(int(width * 0.40))
-        self.details_label.setFixedHeight(self.height())
-        self.details_label.setText("")
-        self.details_label.setFont(self.toolbar_font)  
-        self.addWidget(self.details_label)
+        if self.data.CONNECTED:
+            text = 'Ja'
+        else:
+            text = 'Nee'
+        self.connection_label = QtWidgets.QLabel(self)
+        self.connection_label.setFixedWidth(int(width * 0.30))
+        self.connection_label.setFixedHeight(self.height())
+        self.connection_label.setText(f"PI verbonden: {text}")
+        self.connection_label.setFont(self.toolbar_font)
+        self.addWidget(self.connection_label)
     
     def update_text(self):
         """Update the toolbar to display the current settings."""
         mode, details = self.data.get_mode()
 
         if mode == 'manual':
-            self.mode_label.setText(f"{mode.capitalize()}")
-            self.details_label.setText("Zon: {:.0%}, Wind: {:.0%}, Vraag: {:.0%}".format(
-                                                                                    details[0]/100, 
-                                                                                    details[1]/100, 
-                                                                                    details[2]/100))
+            self.mode_label.setText(f"{mode.capitalize()} (Zon: {details[0]}%, "
+                                    f"Wind: {details[1]}%, Vraag: {details[2]}%)")
         elif mode == 'scenario':
-            self.mode_label.setText(f"{mode.capitalize()}")
-            self.details_label.setText(f"{details}")
+            self.mode_label.setText(f"{mode.capitalize()} ({details})")
         elif mode == 'stop':
             self.mode_label.setText("Gestopt")
-            self.details_label.setText("")
         else:
             self.mode_label.setText("Onbekend")
-            self.details_label.setText("")
     
     def create_exit_button(self):
         """Creates the button to go exit the application."""

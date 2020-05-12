@@ -4,8 +4,12 @@
 #wire LED on D18 (only on D18!)
 
 import time
-import board
-import neopixel
+try:
+    import board
+    import neopixel
+except NotImplementedError:
+    from ..dummy import dummy_board as board
+    from ..dummy import dummy_pixel as neopixel
 
 
 LED_PIXELS_PIN = board.D18

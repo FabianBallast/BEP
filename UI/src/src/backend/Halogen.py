@@ -26,7 +26,7 @@ class HalogenLight:
     def animate(self, end_value, step_size=10):
         if set_value>self.end_value:
             intermediate_value = self.start_value+step_size
-            if intermediate_value>self.end_value:
+            if intermediate_value > self.end_value:
                 intermediate_value = self.end_value
             self.adjust(intermediate_value)
         else:
