@@ -7,7 +7,7 @@ class HalogenLight:
     """This class represents the halogen lamp."""
     def __init__(self, start_value = 0):
         """Wrapper for dimmable halogenlight with slow start."""
-        HALOGEN_MOSFET_PIN = 27                             #pylint: disable=C0103
+        HALOGEN_MOSFET_PIN = 18                             #pylint: disable=C0103
         IO.setmode(IO.BCM)
         IO.setup(HALOGEN_MOSFET_PIN, IO.OUT)
 
