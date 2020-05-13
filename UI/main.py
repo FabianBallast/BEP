@@ -67,7 +67,7 @@ class UiMainWindow(object):
         self.manual_control = ManualLayout(self.data, main_window_1, self.stacked_widget_1)
         self.help_page = HelpLayout(self.data, self.stacked_widget_1)
         self.second_screen = SecondScreenController(self.stacked_widget_1)
-        self.figures = Figures(self.stacked_widget_1)
+        self.figures_1 = Figures(self.stacked_widget_1)
 
         self.stacked_widget_1.addWidget(self.graphs_1)
         self.stacked_widget_1.addWidget(self.map_1)
@@ -75,26 +75,30 @@ class UiMainWindow(object):
         self.stacked_widget_1.addWidget(self.manual_control)
         self.stacked_widget_1.addWidget(self.help_page)
         self.stacked_widget_1.addWidget(self.second_screen)
-        self.stacked_widget_1.addWidget(self.figures)
+        self.stacked_widget_1.addWidget(self.figures_1)
         self.stacked_widget_1.setCurrentIndex(4)
 
         self.graphs_2 = GraphLayout(main_window_2, 2, self.stacked_widget_2)
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
+        self.figures_2 = Figures(self.stacked_widget_2)
         self.stacked_widget_2.addWidget(self.graphs_2)
         self.stacked_widget_2.addWidget(self.map_2)
+        self.stacked_widget_2.addWidget(self.figures_2)
     
     def connect_special_actions(self):
         """Connect specific actions to each other."""
         self.second_screen.accept_button.clicked.connect(self.change_screen)
-        
-        self.graphs_1.updater(self.graphs_2.update_graph_2)
         self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
         self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
         self.data.connect_for_sensor_readings(self.map_1.get_current_values)
-        self.data.connect_for_sensor_readings(self.graphs_1.update_graph_1)
-        self.data.connect_for_control_values(self.figures.update_input)
-        self.data.connect_for_sensor_readings(self.figures.update_system)
+        self.data.connect_for_sensor_readings(self.map_2.get_current_values)
+        self.data.connect_for_sensor_readings(self.graphs_1.update_graph)
+        self.data.connect_for_sensor_readings(self.graphs_2.update_graph)
+        self.data.connect_for_control_values(self.figures_1.update_input)
+        self.data.connect_for_sensor_readings(self.figures_1.update_system)
+        self.data.connect_for_control_values(self.figures_2.update_input)
+        self.data.connect_for_sensor_readings(self.figures_2.update_system)
         self.graphs_1.reset_button.clicked.connect(self.data.time_running.restart)
 
 

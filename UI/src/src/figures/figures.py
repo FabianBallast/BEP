@@ -8,12 +8,11 @@ class Figures(QtWidgets.QWidget):
        It contains all components on the 'figures' page."""
 
     def __init__(self, parent):
-        super().__init__() 
+        super().__init__(parent)
         self.create_fonts(parent.height())   
+        self.create_background(parent.width(), parent.height())
         self.create_input_text(parent.width(), parent.height())
-        #self.create_output_text(parent.width(), parent.height())
         self.create_system_text(parent.width(), parent.height())
-
     
     def create_fonts(self, height):
         """Create the fonts used for the figures."""
@@ -22,6 +21,23 @@ class Figures(QtWidgets.QWidget):
 
         self.text_font = QtGui.QFont()
         self.text_font.setPixelSize(int(height * 0.05))
+    
+    def create_background(self, width, height):
+        """Create background to highlight different areas."""
+        self.background_left_up = QtWidgets.QLabel(self)
+        self.background_left_up.setGeometry(QtCore.QRect(int(width * 0.03), int(height * 0.04),
+                                                         int(width * 0.34), int(height * 0.40)))
+        #self.background_left_up.setStyleSheet("background-color: rgba(255, 0, 0, 250)")
+
+        self.background_left_down = QtWidgets.QLabel(self)
+        self.background_left_down.setGeometry(QtCore.QRect(int(width * 0.03), int(height * 0.53),
+                                                         int(width * 0.34), int(height * 0.25)))
+        #self.background_left_down.setStyleSheet("background-color: rgba(0, 255, 0, 25)")
+
+        self.background_right = QtWidgets.QLabel(self)
+        self.background_right.setGeometry(QtCore.QRect(int(width * 0.475), int(height * 0.04),
+                                                       int(width * 0.40), int(height * 0.80)))
+        #self.background_right.setStyleSheet("background-color: rgba(255, 255, 0, 25)")
     
     def create_input_text(self, width, height):
         """Create the text to show the input power text."""
@@ -77,14 +93,14 @@ class Figures(QtWidgets.QWidget):
 
         self.system_text_left = QtWidgets.QLabel(self)
         self.system_text_left.setGeometry(QtCore.QRect(int(width * 0.50), int(height * 0.15),
-                                                       int(width * 0.30), int(height * 0.75)))
+                                                       int(width * 0.32), int(height * 0.75)))
         self.system_text_left.setFont(self.text_font)
         self.system_text_left.setText("Opbrengst/vraag:\n\n        Zon:\n        Wind:\n        Huizen/industrie:\n\n\n"
                                       "Waterstof:\n\n        Verbruik/productie:\n        Opslag:")
         self.system_text_left.setAlignment(QtCore.Qt.AlignTop)
 
         self.system_text_right = QtWidgets.QLabel(self)
-        self.system_text_right.setGeometry(QtCore.QRect(int(width * 0.80), int(height * 0.15),
+        self.system_text_right.setGeometry(QtCore.QRect(int(width * 0.82), int(height * 0.15),
                                                         int(width * 0.10), int(height * 0.75)))
         self.system_text_right.setFont(self.text_font)
         self.system_text_right.setText("\n\n0W\n0W\n0W\n\n\n\n\n\n0W\n50%")

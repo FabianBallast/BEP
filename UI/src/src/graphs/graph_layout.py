@@ -104,7 +104,7 @@ class GraphLayout(QtWidgets.QWidget):
         font.setBold(True)
         self.reset_button.setFont(font)
 
-    def update_graph_1(self, readings):
+    def update_graph(self, readings):
         """Update the graph on the main screen with new data."""
 
         if len(self.x_curr) == self.max_len:
@@ -119,21 +119,10 @@ class GraphLayout(QtWidgets.QWidget):
         self.demand.append(readings[2])
         self.storage.append(readings[3])
 
-        self.plot_in_other(self.x_curr, self.solar, self.wind, self.demand, self.storage)
-
         self.solar_graph.setData(self.x_curr, self.solar)
         self.wind_graph.setData(self.x_curr, self.wind)
         self.demand_graph.setData(self.x_curr, self.demand)
-        self.storage_graph.setData(self.x_curr, self.storage)
-    
-    def update_graph_2(self, time, solar, wind, demand, storage):
-        """Update the graph on the second screen with new data."""
-
-        self.solar_graph.setData(time, solar)
-        self.wind_graph.setData(time, wind)
-        self.demand_graph.setData(time, demand)
-        self.storage_graph.setData(time, storage)
-    
+        self.storage_graph.setData(self.x_curr, self.storage)    
 
     def reset_graph(self):
         """Clear the graph and all the data."""
