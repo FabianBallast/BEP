@@ -42,6 +42,10 @@ class ToolBarTop(QtWidgets.QToolBar):
         self.manual_control_button = QtWidgets.QAction("Handmatige Besturing")
         self.manual_control_button.setFont(self.toolbar_font)
         self.button_list.append(self.manual_control_button)
+
+        self.figure_button = QtWidgets.QAction("Cijfers")
+        self.figure_button.setFont(self.toolbar_font)
+        self.button_list.append(self.figure_button)
     
     def create_help_button(self):
         """Creates the help button for the toolbar."""

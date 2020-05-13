@@ -19,6 +19,7 @@ class DataManager():
 
         self.mode_changed_handlers = []
         self.sensor_readings_handlers = []
+        self.control_values_handlers = []
         self.storage_cal = 0
 
         self.tank_reader = TankReader()
@@ -83,10 +84,17 @@ class DataManager():
         """Execute all the connected functions that want to know when we get sensor data."""
         for handler in self.sensor_readings_handlers:
             handler(readings)
+    
+    def connect_for_control_values(self, handler):
+        """Add a function that want to get the control values."""
+        self.control_values_handlers.append(handler)
         
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control()
+
+        for handler in self.control_values_handlers:
+            handler(values)
 
         #To do: sent data for solar panel to dimmer.
         self.serial_connection.send_to_arduino(windPower=values[1])
