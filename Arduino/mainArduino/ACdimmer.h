@@ -5,10 +5,10 @@
 
 #include <RBDdimmer.h>
 
-#define outputPin  11 // D0-D1, D3-D20         
+#define dimmer_outPin  8 // D8 / D9 voor 2e output    
 #define zerocross  2 // (NOT CHANGABLE)   
 
-dimmerLamp FanDimmer(outputPin); 
+dimmerLamp FanDimmer(dimmer_outPin); 
 
 
 void fan_setup() {
@@ -18,7 +18,7 @@ void fan_setup() {
 }
 
 void set_fan_power(byte set_value){
-  value = map(set_value, 0, 100, 15, 95);
+  set_value = map(set_value, 0, 100, 15, 95);
   FanDimmer.setPower(set_value);
 }
 

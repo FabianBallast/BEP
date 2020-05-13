@@ -1,11 +1,11 @@
 #define COMM_SIZE_A 3
-#define COMM_SIZE_P 6
+#define COMM_SIZE_P 9
 
 
 uint8_t comm_received[COMM_SIZE_A]; 
 
-uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
-                                    //0   1  2  3  4   5
+uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
+                                    //0   1  2  3  4  5  6  7  8
 void serial_setup(){
   Serial.begin(9600);
   Serial.flush();

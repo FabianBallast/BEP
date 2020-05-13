@@ -26,7 +26,7 @@ class SerialCommunicator:
                      'stest1' : 0}
         #comm protocol
         self.send_order = ['windPower', 'stest0', 'stest1']
-        self.receive_order = ['start', 'solar_current', 'wind_current', 'fuel_cell_current','fan_power','end']
+        self.receive_order = ['start', 'solar_current', 'wind_current', 'load_current','electrolyzer_current','power_supply_current' 'fuel_cell_current','fan_power','end']
         self.END_CHAR_RP = 254                                                  #pylint: disable=C0103
         self.START_CHAR_RP = 255                                                #pylint: disable=C0103
         print('comm_size_to_Arduino', len(self.send))
