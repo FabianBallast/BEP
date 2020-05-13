@@ -10,6 +10,7 @@ from src.src.data.data_manager import DataManager
 from src.src.toolbar.toolbars import ToolBarTop, ToolBarBottom
 from src.src.help.help_layout import HelpLayout
 from src.src.second_screen.second_screen_controller import SecondScreenController
+from src.src.figures.figures import Figures
 import src.style.style_sheets as sheet
 
 class UiMainWindow(object):
@@ -66,6 +67,7 @@ class UiMainWindow(object):
         self.manual_control = ManualLayout(self.data, main_window_1, self.stacked_widget_1)
         self.help_page = HelpLayout(self.data, self.stacked_widget_1)
         self.second_screen = SecondScreenController(self.stacked_widget_1)
+        self.figures = Figures(self.stacked_widget_1)
 
         self.stacked_widget_1.addWidget(self.graphs_1)
         self.stacked_widget_1.addWidget(self.map_1)
@@ -73,6 +75,7 @@ class UiMainWindow(object):
         self.stacked_widget_1.addWidget(self.manual_control)
         self.stacked_widget_1.addWidget(self.help_page)
         self.stacked_widget_1.addWidget(self.second_screen)
+        self.stacked_widget_1.addWidget(self.figures)
         self.stacked_widget_1.setCurrentIndex(4)
 
         self.graphs_2 = GraphLayout(main_window_2, 2, self.stacked_widget_2)
@@ -90,6 +93,8 @@ class UiMainWindow(object):
         self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
         self.data.connect_for_sensor_readings(self.map_1.get_current_values)
         self.data.connect_for_sensor_readings(self.graphs_1.update_graph_1)
+        self.data.connect_for_control_values(self.figures.update_input)
+        self.data.connect_for_sensor_readings(self.figures.update_system)
         self.graphs_1.reset_button.clicked.connect(self.data.time_running.restart)
 
 
@@ -101,6 +106,7 @@ class UiMainWindow(object):
         self.toolbar_top.manual_control_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(3))      #pylint: disable=C0301
         self.toolbar_top.help_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(4))                #pylint: disable=C0301
         self.toolbar_top.screen_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(5))              #pylint: disable=C0301
+        self.toolbar_top.figure_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(6))              #pylint: disable=C0301
 
     def change_screen(self):
         """Change the page on the second screen."""
