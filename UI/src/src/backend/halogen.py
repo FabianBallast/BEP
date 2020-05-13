@@ -1,7 +1,11 @@
 """This module handler the halogen lamp."""
-import board
-import RPi.GPIO as IO
 from PyQt5 import QtCore
+try:
+    import board
+    import RPi.GPIO as IO
+except:
+    from ..dummy import dummy_board as board
+    from ..dummy import dummy_io as IO
 
 class HalogenLight:
     """This class represents the halogen lamp."""

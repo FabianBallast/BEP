@@ -11,6 +11,7 @@ try:
 except NotImplementedError:
     from ..dummy import dummy_board as board
     from ..dummy import dummy_pixel as neopixel
+    from ..dummy import dummy_io as IO
 
 
 #neopixel stick

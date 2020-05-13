@@ -17,12 +17,12 @@ class TankReader:
         try:
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
-        except ModuleNotFoundError:
-            self.sensor = sensor
         except ValueError:
             from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor
-            
+        except ModuleNotFoundError:
+            from ..dummy import dummy_range_sensor as sensor
+            self.sensor = sensor  
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=C0103
