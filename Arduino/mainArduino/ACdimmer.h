@@ -18,7 +18,8 @@ void fan_setup() {
 }
 
 void set_fan_power(byte set_value){
-         FanDimmer.setPower(set_value);
+  value = map(set_value, 0, 100, 15, 95);
+  FanDimmer.setPower(set_value);
 }
 
 uint8_t get_fan_power(){

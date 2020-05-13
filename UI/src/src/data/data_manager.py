@@ -3,6 +3,7 @@ from PyQt5 import QtCore
 from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator import SerialCommunicator
 from ..backend import loads
+from ..backend.halogen import HalogenLight
 
 class DataManager():
     """This class contains all data."""
@@ -21,6 +22,7 @@ class DataManager():
         self.sensor_readings_handlers = []
         self.storage_cal = 0
 
+        self.light = HalogenLight()
         self.tank_reader = TankReader()
         self.serial_connection = SerialCommunicator()
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
@@ -89,6 +91,8 @@ class DataManager():
         values = self.values_for_control()
 
         #To do: sent data for solar panel to dimmer.
+        self.light.set_light(values[0])
+        
         self.serial_connection.send_to_arduino(windPower=values[1])
         loads.load_set(values[2])
 

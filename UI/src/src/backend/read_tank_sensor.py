@@ -19,13 +19,16 @@ class TankReader:
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
         except ModuleNotFoundError:
             self.sensor = sensor
+        except ValueError:
+            from ..dummy import dummy_range_sensor as sensor
+            self.sensor = sensor
+            
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=C0103
 
         self.raw_data_queue = [self.sensor.range] * self.N_FILTER
 
-        
         D_TANK = 0.0335                                             #pylint: disable=C0103
         self.A_TANK = (3.1416*(D_TANK/2)**2)*1e3                    #pylint: disable=C0103
         self.V0 = 110
@@ -35,7 +38,7 @@ class TankReader:
     def set_calibrate(self, volume):
         """Calibrate sensor with actual value."""
         current_reading = self.read_range()
-        self.corr = volume - (self.V0- current_reading * self.A_TANK) * self.A_TANK
+        self.corr = volume - (self.V0- current_reading * self.A_TANK)
     
     def read_range(self):
         """Return the range from the sensor."""
@@ -49,7 +52,6 @@ class TankReader:
         """Return the volume in the tank."""
         current_reading = self.read_range() 
         volume = (self.V0- current_reading * self.A_TANK) + self.corr
-        #self.volume_data.append(volume)
         return volume
 
 def plot_tank_level(i):                         #pylint: disable=unused-argument

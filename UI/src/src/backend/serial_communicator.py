@@ -26,7 +26,7 @@ class SerialCommunicator:
                      'stest1' : 0}
         #comm protocol
         self.send_order = ['windPower', 'stest0', 'stest1']
-        self.receive_order = ['start', 'wind_power', 'rtest0', 'end']
+        self.receive_order = ['start', 'solar_current', 'wind_current', 'fuel_cell_current','fan_power','end']
         self.END_CHAR_RP = 254                                                  #pylint: disable=C0103
         self.START_CHAR_RP = 255                                                #pylint: disable=C0103
         print('comm_size_to_Arduino', len(self.send))
@@ -67,9 +67,9 @@ class SerialCommunicator:
                 if not comm_array[0] == self.START_CHAR_RP:
                     print("Received ", bytes_awaiting, " bytes incorrectly: ", comm_array)
                 else:
-                    print("Correctly received: ", comm_array, " out of ", bytes_awaiting, ' bytes')
+                   # print("Correctly received: ", comm_array, " out of ", bytes_awaiting, ' bytes')
                     data = dict(zip(self.receive_order, comm_array))
-                    print(data)
+                  #  print(data)
                     self.last_data = data
                     return data
         return self.last_data            
