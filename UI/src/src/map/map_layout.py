@@ -84,7 +84,7 @@ class MapLayout(QtWidgets.QWidget):
         solar_power = round(solar_power, 0)
         power_demand = round(power_demand, 0) if self.value_progress_bar > 0 else 0
 
-        val = 6 + min(math.floor(power_demand / 20), 4) if solar_power > 50 else 1 + min(math.floor(power_demand / 20), 4)
+        val = 6 + min(math.floor(power_demand / 20), 4) if solar_power > 50 else 1 + min(math.floor(power_demand / 20), 4) #pylint: disable=line-too-long
         self.map_picture.setPixmap(QtGui.QPixmap(self.base_path + f"bg_{str(val)}.jpg"))
     
     def update_leds(self, solar, wind, demand, diff):

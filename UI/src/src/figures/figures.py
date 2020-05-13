@@ -95,7 +95,7 @@ class Figures(QtWidgets.QWidget):
         self.system_text_left.setGeometry(QtCore.QRect(int(width * 0.50), int(height * 0.15),
                                                        int(width * 0.32), int(height * 0.75)))
         self.system_text_left.setFont(self.text_font)
-        self.system_text_left.setText("Opbrengst/vraag:\n\n        Zon:\n        Wind:\n        Huizen/industrie:\n\n\n"
+        self.system_text_left.setText("Opbrengst/vraag:\n\n        Zon:\n        Wind:\n        Huizen/industrie:\n\n\n" #pylint: disable=line-too-long
                                       "Waterstof:\n\n        Verbruik/productie:\n        Opslag:")
         self.system_text_left.setAlignment(QtCore.Qt.AlignTop)
 
@@ -108,12 +108,12 @@ class Figures(QtWidgets.QWidget):
     
     def update_input(self, input_values):
         """Update the text related to the input/output of the system."""
-        self.input_text_right.setText(f"\n\n{input_values[0]}%\n{input_values[1]}%\n\n\n\n\n\n{input_values[2]}%")
+        self.input_text_right.setText(f"\n\n{input_values[0]}%\n{input_values[1]}%\n\n\n\n\n\n{input_values[2]}%") #pylint: disable=line-too-long
     
     def update_system(self, sensor_values):
         """Update the text related to the sensors."""
         self.system_text_right.setText(f"\n\n{round(sensor_values[0] / 20, 1)}W\n"
                                        f"{round(sensor_values[1] / 20, 1)}W\n"
                                        f"{round(sensor_values[2] / 20, 1)}W\n\n\n\n\n"
-                                       f"{round((sensor_values[0] + sensor_values[1] - sensor_values[2]) / 20, 1)}W\n"
+                                       f"{round((sensor_values[0] + sensor_values[1] - sensor_values[2]) / 20, 1)}W\n" #pylint: disable=line-too-long
                                        f"{round(sensor_values[3], 1)}%")

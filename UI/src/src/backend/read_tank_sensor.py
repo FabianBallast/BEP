@@ -2,13 +2,14 @@
 try:
     import board
 except NotImplementedError:
-    from ..dummy import dummy_board as board
-    from ..dummy import dummy_range_sensor as sensor
+    from ..dummy import dummy_board as board                            #pylint: disable=relative-beyond-top-level
 
 import busio
 import adafruit_vl6180x
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+
+from ..dummy import dummy_range_sensor as sensor                        #pylint: disable=relative-beyond-top-level
 
 class TankReader:
     """This class represents the sensor."""
@@ -18,20 +19,18 @@ class TankReader:
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
         except ValueError:
-            from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor
         except ModuleNotFoundError:
-            from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor  
         
         #Main loop print
-        self.N_FILTER = N_FILTER                                    #pylint: disable=C0103
+        self.N_FILTER = N_FILTER                                    #pylint: disable=invalid-name
 
         self.raw_data_queue = [self.sensor.range] * self.N_FILTER
 
-        D_TANK = 0.0335                                             #pylint: disable=C0103
-        self.A_TANK = (3.1416*(D_TANK/2)**2)*1e3                    #pylint: disable=C0103
-        self.V0 = 110
+        D_TANK = 0.0335                                             #pylint: disable=invalid-name
+        self.A_TANK = (3.1416*(D_TANK/2)**2)*1e3                    #pylint: disable=invalid-name
+        self.V0 = 110                                               #pylint: disable=invalid-name
         
         self.corr = 0
     

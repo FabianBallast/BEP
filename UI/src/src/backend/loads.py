@@ -9,9 +9,9 @@ try:
     import neopixel
     import RPi.GPIO as IO
 except NotImplementedError:
-    from ..dummy import dummy_board as board
-    from ..dummy import dummy_pixel as neopixel
-    from ..dummy import dummy_io as IO
+    from ..dummy import dummy_board as board                   #pylint: disable=relative-beyond-top-level
+    from ..dummy import dummy_pixel as neopixel                #pylint: disable=relative-beyond-top-level
+    from ..dummy import dummy_io as IO                         #pylint: disable=relative-beyond-top-level 
 
 
 LED_PIXELS_PIN = board.D18

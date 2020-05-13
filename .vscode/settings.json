@@ -7,6 +7,6 @@
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=PyQt5",
         "--disable=C0303,W0122,C0330,W0201,R0902",
-        "--ignore=dummy_board.py,dummy_pixel.py,dummy_range.py,dummy_serial.py,dummy_serial.py"
+        "--ignore=dummy_board.py,dummy_pixel.py,dummy_range.py,dummy_serial.py,dummy_io.py"
     ]
 }
