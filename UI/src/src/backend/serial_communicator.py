@@ -3,7 +3,6 @@
 import time
 import serial
 
-from ..dummy import dummy_serial
 #import numpy.random as rand
 #import loads
 
@@ -13,9 +12,11 @@ class SerialCommunicator:
     
     def __init__(self):
         try:
-            self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
+            #self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
+            self.ser = serial.Serial('COM5', 9600, timeout=0)
             self.CONNECTION = True
         except serial.serialutil.SerialException:
+            from ..dummy import dummy_serial
             self.ser = dummy_serial
             self.CONNECTION = False
         #self.ser = serial.Serial('COM4', 9600, timeout=0
@@ -26,7 +27,8 @@ class SerialCommunicator:
                      'stest1' : 0}
         #comm protocol
         self.send_order = ['windPower', 'stest0', 'stest1']
-        self.receive_order = ['start', 'solar_current', 'wind_current', 'load_current','electrolyzer_current','power_supply_current' 'fuel_cell_current','fan_power','end']
+        self.receive_order = ['start', 'solar_current', 'wind_current', 'load_current','electrolyzer_current',
+                    'power_supply_current', 'fuel_cell_current','fan_power', 'electrolyzer_voltage', 'fuel_cell_voltage','end']
         self.END_CHAR_RP = 254                                                  #pylint: disable=C0103
         self.START_CHAR_RP = 255                                                #pylint: disable=C0103
         print('comm_size_to_Arduino', len(self.send))
@@ -69,7 +71,7 @@ class SerialCommunicator:
                 else:
                    # print("Correctly received: ", comm_array, " out of ", bytes_awaiting, ' bytes')
                     data = dict(zip(self.receive_order, comm_array))
-                  #  print(data)
+                    print(data)
                     self.last_data = data
                     return data
         return self.last_data            
