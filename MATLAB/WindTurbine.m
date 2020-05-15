@@ -47,22 +47,15 @@ fprintf('Reynolds number of inflow turbine:   %.2f\n',Reynolds_turbine)
 %%%%%%% DC MOTOR BEREKENINGEN %%%%%%%%
 C_T = 0.6;
 n = rpm_desired_turbine/60; %omw/s
-%turbine_torque = C_T*rho*n^2*diameter_fan^4*1000; %mNm
 turbine_thrust = 1000*0.5*rho*(pi/4*diameter_fan^2)*air_speed_turbine_in^2*C_T; %N
 turbine_torque = turbine_thrust*diameter_fan/2;
 fprintf('Torque deliverd by turbine:          %.2f mNm \n',turbine_torque) %given lambda = 2.1
 
 max_torque = 11.67; %mNm
-noload_voltage = 0;
+nominal_voltage = 12; %V
+noload_voltage = 6; %V
 min_current = 0.05; %A
 max_current = 0.54; %A
-nominal_voltage = 12; %V
-
-% nominal_voltage = 3; %V
-% noload_voltage = 1.7; %V
-% max_torque = 1; %mNm
-% min_current = 0.11; %A
-% max_current = 1.16; %A
 
 %%%%% Kt and torque estimates %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 omega_noload = 220*2*pi; %rad/s
@@ -93,6 +86,7 @@ fprintf('Rotational speed of DC motor:        %.2f rpm \n',omega)
 
 back_emf = k_t_motor/1000*omega*(pi/30); %V
 fprintf('estimated DC motor voltage:          %.2f V \n',back_emf)
+
 DC_power = 1000*back_emf^2/(load + terminal_resistance);
 fprintf('estimated DC motor power:            %.2f mW \n',DC_power)
 
