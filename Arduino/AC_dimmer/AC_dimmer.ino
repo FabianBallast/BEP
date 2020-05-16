@@ -84,10 +84,12 @@ void loop() {
   if (USE_SERIAL.available())
   {
     int buf = USE_SERIAL.parseInt();
-    if (buf != 0) outVal = buf;
+    if (buf != 0) {
+      outVal = map(buf, 0, 100, 10, 80);
+    }
     delay(200);
   }
-  dimmer.setPower(outVal); // setPower(0-100%);
+  dimmer.setPower(outVal); // setPower(0-99%);  
 
   if (preVal != outVal)
   {
