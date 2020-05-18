@@ -1,5 +1,6 @@
 """This module will handle all the data and the connection between the Pi and Arduino."""
 from PyQt5 import QtCore
+from ..data.log_handler import LogWriter
 from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator import SerialCommunicator
 from ..backend import loads
@@ -27,6 +28,7 @@ class DataManager():
         self.tank_reader = TankReader()
         self.serial_connection = SerialCommunicator()
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
+        self.file = LogWriter()
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
@@ -120,8 +122,8 @@ class DataManager():
 
         data.append(self.tank_reader.read_tank_level())
         data.append(self.time_running.elapsed() / 1000)
-        #print(data)
         self.send_sensor_readings(data)
+        self.file.add_data_to_write(values, data)
     
 
     def values_for_control(self):

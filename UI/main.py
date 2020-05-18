@@ -127,6 +127,7 @@ class UiMainWindow(object):
         )
 
         if reply == QtWidgets.QMessageBox.Yes:
+            self.data.file.close()
             sys.exit()
     
 
