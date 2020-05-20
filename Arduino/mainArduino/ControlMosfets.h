@@ -1,5 +1,9 @@
 #define voltage_measurer A7
 
+#define ELECTROLYZER_MOSFET_PIN 5
+#define FUEL_CELL_MOSFET_PIN    6
+#define POWER_SUPPLY_MOSFET_PIN 7
+
 byte pwm_value_electrolyzer;
 byte pwm_value_fuel_cell;
 byte pwm_value_power_supply;
@@ -10,6 +14,7 @@ byte Kd = 1;
 
 unsigned long curr_time, prev_time;
 float elapsedTime;
+float curr_volt;
 float curr_volt_error, prev_volt_error;
 float control_value;
 float cum_volt_error, rate_volt_error;
@@ -19,13 +24,17 @@ void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
     pinMode(FUEL_CELL_MOSFET_PIN,    OUTPUT);
     pinMode(POWER_SUPPLY_MOSFET_PIN, OUTPUT);
+
+    analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
+    analogWrite(FUEL_CELL_MOSFET_PIN, 0);
+    analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
 }
 
-void controlGrid(float target_volt){
-    current_voltage = analogRead(voltage_measurer);
-    currentTime = millis();
+float controlGrid(float target_volt){
+    curr_volt = analogRead(voltage_measurer) * 5/1024;
+    curr_time = millis();
     elapsedTime = (float)(curr_time - prev_time);
-    curr_volt_error = target_volt - current_volt;
+    curr_volt_error = target_volt - curr_volt;
     cum_volt_error += curr_volt_error * elapsedTime;
     rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
     
@@ -33,5 +42,5 @@ void controlGrid(float target_volt){
 
     prev_volt_error = curr_volt_error;
     prev_time = curr_time;
-    return control_value
+    return control_value;
 }

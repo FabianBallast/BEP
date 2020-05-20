@@ -24,7 +24,7 @@ class Loads():
     """This class represents the loads."""
     def __init__(self, serial):
         #led strips
-        LED_PWM_PINS = [27, 22]
+        LED_PWM_PINS = [17, 27, 22]
 
         IO.setmode(IO.BCM)
         for pin in LED_PWM_PINS:
@@ -72,7 +72,8 @@ class Loads():
 
 if __name__ == '__main__':
     for p in range(100):
-        load_set(p)
+        inp = input('Load?')
+        load_set(int(inp))
         time.sleep(1)
 
     print('done')
