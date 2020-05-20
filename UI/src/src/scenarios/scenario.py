@@ -12,6 +12,8 @@ class Scenario():
         self.solar = data[1]
         self.wind = data[2]
         self.demand = data[3]
+        self.diff = []
+
     
     def get_name(self):
         """Return the name of this scenario."""
@@ -24,6 +26,12 @@ class Scenario():
         plot_widget.plot(self.time, self.solar, pen=pg.mkPen('w', width=2), name="Zon")
         plot_widget.plot(self.time, self.wind, pen=pg.mkPen('r', width=2), name="Wind")
         plot_widget.plot(self.time, self.demand, pen=pg.mkPen('y', width=2), name="Vraag")
+
+        self.diff = []
+        for i in range(len(self.wind)):
+            self.diff.append(self.solar[i] + self.wind[i] - self.demand[i])
+
+        plot_widget.plot(self.time, self.diff, pen=pg.mkPen('g', width=2), name="Netto")
     
     def get_length(self):
         """Return the length of the arrays of this scenario."""
