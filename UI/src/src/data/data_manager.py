@@ -3,12 +3,12 @@ from PyQt5 import QtCore
 from ..data.log_handler import LogWriter
 from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator import SerialCommunicator
-from ..backend import loads
+from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
 
 class DataManager():
     """This class contains all data."""
-    def __init__(self):
+    def __init__(self, serial):
         self.mode = ''
         self.last_mode = ''
         self.scenario = ''
@@ -24,9 +24,10 @@ class DataManager():
         self.control_values_handlers = []
         self.storage_cal = 0
 
-        self.light = HalogenLight()
+        self.light = HalogenLight(serial)
         self.tank_reader = TankReader()
-        self.serial_connection = SerialCommunicator()
+        self.serial_connection = SerialCommunicator(serial)
+        self.loads = Loads(serial)
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
@@ -104,7 +105,7 @@ class DataManager():
         self.light.set_light(values[0])
         
         self.serial_connection.send_to_arduino(windPower=values[1])
-        loads.load_set(values[2])
+        self.loads.load_set(values[2])
 
         if self.serial_connection.CONNECTION:
             readings = self.serial_connection.read_arduino()
@@ -134,5 +135,4 @@ class DataManager():
         if self.mode == 'scenario':
             return self.scenario.get_values_at(self.time_running.elapsed() / 1000)
         
-        return [0, 0, 0]
-    
+        return [0, 0, 0]    
