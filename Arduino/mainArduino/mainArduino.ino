@@ -1,17 +1,23 @@
 #include "ACdimmer.h" 
-#include "SerialComm.h"
-#include "CurrentSensors.h"
+//#include "CurrentSensors.h"
+#include "CurrentSensorBackup.h"
 #include "ControlMosfets.h"
 #include "FailSafes.h"
+
+//#include "SerialComm.h"
+#include "SerialCommN.h"
 
 
 
 
 void setup() {
-  mosfets_setup();
+  mosfets_setup(); //set to off state for calibrating
   fan_setup();
   serial_setup();
   ammeters_setup();
+
+
+  fan_start();
   pinMode(13, OUTPUT);
   digitalWrite(13, HIGH);
 }
@@ -43,5 +49,5 @@ void loop() {
   data_to_send[11]= 0;
   
   comm_send();
-  delay(200);
+  delay(10);
 }

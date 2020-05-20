@@ -16,12 +16,12 @@ void check_H2_voltages(){
 
     //failsafe Electrolyzer:
     if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
-        set_electrolyzer(0);
+        //set_electrolyzer(0);
         electrolyzer_voltage=2;
     }
 
     if (fuel_cell_voltage<MIN_READING_ELECTROLYZER){
-        set_fuel_cell(0);
+       // set_fuel_cell(0);
         fuel_cell_voltage=2;
     }
     

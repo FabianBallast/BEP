@@ -1,6 +1,5 @@
-const uint8_t filter_numReadings = 63;   //max = 63, see below
-#define corr_factor (5/1024)/filter_numReadings
-
+#define filter_numReadings_calibrate 100   
+#define sampleTime 3
 
 //const int amm_pin_solar_panels = A1;
 //const int amm_pin_wind_turbines  = A2;
@@ -9,44 +8,35 @@ const uint8_t filter_numReadings = 63;   //max = 63, see below
 //const int amm_pin_power_supply = A5;
 //const int amm_pin_fuel_cell = A6;
 
-float sensitivity_1 = 130.0 / 500.0; 
-float sensitivity_2 = 130.0 / 500.0; 
-float sensitivity_3 = 130.0 / 500.0; 
-float sensitivity_4 = 130.0 / 500.0; 
-float sensitivity_5 = 130.0 / 500.0; 
-float sensitivity_6 = 130.0 / 500.0; 
+#define sensitivity_1 17; 
+#define sensitivity_2 17; 
+#define sensitivity_3 17; 
+#define sensitivity_4 17; 
+#define sensitivity_5 17; 
+#define sensitivity_6 17; 
 
-float Vref_1 = 2500; 
-float Vref_2 = 2500; 
-float Vref_3 = 2500; 
-float Vref_4 = 2500; 
-float Vref_5 = 2500; 
-float Vref_6 = 2500; 
+float smooth_alpha = 0.05;
 
-uint8_t filter_readIndex = 0; // the index of the current reading, 8 bits as its not a high number, always positive so u (unsigned)
+float sensor_value_zero_load_1 = 517.81; 
+float sensor_value_zero_load_2 = 517.81; 
+float sensor_value_zero_load_3 = 517.81; 
+float sensor_value_zero_load_4 = 517.81; 
+float sensor_value_zero_load_5 = 517.81; 
+float sensor_value_zero_load_6 = 517.81; 
 
-// the readings from the analog input, 10 bits reading (max=1024) so 16 bits needed instead of 8; always positive so u
-uint16_t raw_readings_1[filter_numReadings];      
-uint16_t raw_readings_2[filter_numReadings];     
-uint16_t raw_readings_3[filter_numReadings];     
-uint16_t raw_readings_4[filter_numReadings];     
-uint16_t raw_readings_5[filter_numReadings];     
-uint16_t raw_readings_6[filter_numReadings];     
+int sensorValue1 = 0;
+int sensorValue2 = 0;
+int sensorValue3 = 0;
+int sensorValue4 = 0;
+int sensorValue5 = 0;
+int sensorValue6 = 0;
 
-uint16_t sensorValue1 = 0;
-uint16_t sensorValue2 = 0;
-uint16_t sensorValue3 = 0;
-uint16_t sensorValue4 = 0;
-uint16_t sensorValue5 = 0;
-uint16_t sensorValue6 = 0;
-
-// the running total. Max value of uint16_t=65535 --> max(numReadings) = 65535/1024 = 63
-uint16_t runningSum1 = 0;
-uint16_t runningSum2 = 0;
-uint16_t runningSum3 = 0;
-uint16_t runningSum4 = 0;
-uint16_t runningSum5 = 0;
-uint16_t runningSum6 = 0;
+float smoothed_value1 = 0;
+float smoothed_value2;
+float smoothed_value3;
+float smoothed_value4 = 0;
+float smoothed_value5 = 0;
+float smoothed_value6 = 0;
 
 
 float    current_solar_panels;
@@ -58,26 +48,51 @@ float    current_fuel_cell;
 
 
 void ammeters_setup(){
+    /////////////////////////////CALIBRATE////////////////
+     ////////discard first values
+   for (int filter_readIndex = 0; filter_readIndex < filter_numReadings_calibrate; filter_readIndex++) {
+        analogRead(A1);
+        analogRead(A2);
+        analogRead(A3);
+        analogRead(A4);
+        analogRead(A5);
+        analogRead(A6);
 
-  calibrate();
-//    sensorValue1 = analogRead(A1);
-//    sensorValue2 = analogRead(A2);
-//    sensorValue3 = analogRead(A3);
-//    sensorValue4 = analogRead(A4);
-//    sensorValue5 = analogRead(A5);
-//    sensorValue6 = analogRead(A6);
-//
-//    for (filter_readIndex = 0; filter_readIndex < filter_numReadings; filter_readIndex++) {
-//        raw_readings_1[filter_readIndex] = sensorValue1;
-//        raw_readings_2[filter_readIndex] = sensorValue2;
-//        raw_readings_3[filter_readIndex] = sensorValue3;
-//        raw_readings_4[filter_readIndex] = sensorValue4;
-//        raw_readings_5[filter_readIndex] = sensorValue5;
-//        raw_readings_6[filter_readIndex] = sensorValue6;
-//    }
-//    runningSum1 = filter_numReadings*sensorValue1;
+        delay(sampleTime);
+    }
+    
+      ///find average zero load value
+    for (int filter_readIndex = 0; filter_readIndex < filter_numReadings_calibrate; filter_readIndex++) {
+        smoothed_value1 += analogRead(A1);
+        smoothed_value2 += analogRead(A2);
+        smoothed_value3 += analogRead(A3);
+        smoothed_value4 += analogRead(A4);
+        smoothed_value5 += analogRead(A5);
+        smoothed_value6 += analogRead(A6);
 
+        delay(sampleTime);
+    }
+    
+    sensor_value_zero_load_1 = smoothed_value1/filter_numReadings_calibrate;
+    sensor_value_zero_load_2 = smoothed_value2/filter_numReadings_calibrate;
+    sensor_value_zero_load_3 = smoothed_value3/filter_numReadings_calibrate;
+    sensor_value_zero_load_4 = smoothed_value4/filter_numReadings_calibrate;
+    sensor_value_zero_load_5 = smoothed_value5/filter_numReadings_calibrate;
+    sensor_value_zero_load_6 = smoothed_value6/filter_numReadings_calibrate;
+
+    smoothed_value1 = sensor_value_zero_load_1;
+    smoothed_value2 = sensor_value_zero_load_2;
+    smoothed_value3 = sensor_value_zero_load_3;
+    smoothed_value4 = sensor_value_zero_load_4;
+    smoothed_value5 = sensor_value_zero_load_5;
+    smoothed_value6 = sensor_value_zero_load_6;
+    
+
+    Serial.print("A1 zero load: ");
+    Serial.print(sensor_value_zero_load_1);
+    Serial.print(", Done calibrating \n");
 }
+
 
 void read_ammeters(){
     sensorValue1 = analogRead(A1);
@@ -86,34 +101,33 @@ void read_ammeters(){
     sensorValue4 = analogRead(A4);
     sensorValue5 = analogRead(A5);
     sensorValue6 = analogRead(A6);
-
-   /////////////////FILTER\\\\\\\\\\\\\\\\\\
-    runningSum1 = runningSum1 - raw_readings_1[filter_readIndex] + sensorValue1;
-    runningSum2 = runningSum2 - raw_readings_2[filter_readIndex] + sensorValue2;
-    runningSum3 = runningSum3 - raw_readings_3[filter_readIndex] + sensorValue3;
-    runningSum4 = runningSum4 - raw_readings_4[filter_readIndex] + sensorValue4;
-    runningSum5 = runningSum5 - raw_readings_5[filter_readIndex] + sensorValue5;
-    runningSum6 = runningSum6 - raw_readings_6[filter_readIndex] + sensorValue6;
-
-    raw_readings_1[filter_readIndex] = sensorValue1;
-    raw_readings_2[filter_readIndex] = sensorValue2;
-    raw_readings_3[filter_readIndex] = sensorValue3;
-    raw_readings_4[filter_readIndex] = sensorValue4;
-    raw_readings_5[filter_readIndex] = sensorValue5;
-    raw_readings_6[filter_readIndex] = sensorValue6;
-
-    // advance to the next position in the array:
-    filter_readIndex = filter_readIndex + 1;
-    if (filter_readIndex >= filter_numReadings) {
-      filter_readIndex = 0;
-    }
+    
+   /////////////////FILTER/////////////////
+    smoothed_value1 = smoothed_value1*(1-smooth_alpha) + sensorValue1*smooth_alpha;
+    smoothed_value2 = smoothed_value2*(1-smooth_alpha) + sensorValue2*smooth_alpha;
+    smoothed_value3 = smoothed_value3*(1-smooth_alpha) + sensorValue3*smooth_alpha;
+    smoothed_value4 = smoothed_value4*(1-smooth_alpha) + sensorValue4*smooth_alpha;
+    smoothed_value5 = smoothed_value5*(1-smooth_alpha) + sensorValue5*smooth_alpha;
+    smoothed_value6 = smoothed_value6*(1-smooth_alpha) + sensorValue6*smooth_alpha;
+    /////////////////////////////
 
 
-    current_solar_panels  = (runningSum1 * corr_factor  - Vref_1)*sensitivity_1;
-    current_wind_turbines = (runningSum2 * corr_factor  - Vref_2)*sensitivity_2;
-    current_ledload       = (runningSum3 * corr_factor  - Vref_3)*sensitivity_3;
-    current_electrolyzer  = (runningSum4 * corr_factor  - Vref_4)*sensitivity_4;
-    current_power_supply  = (runningSum5 * corr_factor  - Vref_5)*sensitivity_5;
-    current_fuel_cell     = (runningSum6 * corr_factor  - Vref_6)*sensitivity_6;
+
+    current_solar_panels  = (smoothed_value1  - sensor_value_zero_load_1)*sensitivity_1;
+    current_wind_turbines = (smoothed_value2  - sensor_value_zero_load_2)*sensitivity_2;
+    current_ledload       = (smoothed_value3  - sensor_value_zero_load_3)*sensitivity_3;
+    current_electrolyzer  = (smoothed_value4  - sensor_value_zero_load_4)*sensitivity_4;
+    current_power_supply  = (smoothed_value5  - sensor_value_zero_load_5)*sensitivity_5;
+    current_fuel_cell     = (smoothed_value6  - sensor_value_zero_load_6)*sensitivity_6;
+
+    Serial.print("A1 zero load: ");
+    Serial.print(sensor_value_zero_load_1);
+    Serial.print(", current smoothed: ");
+    Serial.print(smoothed_value1);
+    Serial.print(", current sensorValue: ");
+    Serial.print(sensorValue1);
+    Serial.print(", current current");
+    Serial.print(current_solar_panels);
+    Serial.print("\n");
     
 }

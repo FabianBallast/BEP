@@ -13,7 +13,12 @@ dimmerLamp FanDimmer(dimmer_outPin);
 
 void fan_setup() {
   FanDimmer.begin(NORMAL_MODE, ON); 
-  FanDimmer.setPower(80);
+  FanDimmer.setState(OFF);
+}
+
+void fan_start() {
+  FanDimmer.begin(NORMAL_MODE, ON); 
+  FanDimmer.setPower(50);
   FanDimmer.setState(ON);
 }
 
