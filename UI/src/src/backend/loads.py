@@ -6,7 +6,6 @@
 import time
 try:
     import board
-    import neopixel
     import RPi.GPIO as IO
 except NotImplementedError:
     from ..dummy import dummy_board as board                   #pylint: disable=relative-beyond-top-level
@@ -15,6 +14,7 @@ except NotImplementedError:
 
 
 #neopixel stick
+#import neopixel
 #NUM_PIXELS = 8
 #LED_PIXELS_PIN = board.D18
 #ORDER = neopixel.GRB
