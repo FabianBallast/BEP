@@ -58,6 +58,8 @@ float    current_fuel_cell;
 
 
 void ammeters_setup(){
+
+  calibrate();
 //    sensorValue1 = analogRead(A1);
 //    sensorValue2 = analogRead(A2);
 //    sensorValue3 = analogRead(A3);

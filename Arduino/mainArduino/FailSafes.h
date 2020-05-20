@@ -25,5 +25,4 @@ void check_H2_voltages(){
         fuel_cell_voltage=2;
     }
     
-
 }

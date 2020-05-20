@@ -1,10 +1,19 @@
-#define ELECTROLYZER_MOSFET_PIN 5
-#define FUEL_CELL_MOSFET_PIN    6
-#define POWER_SUPPLY_MOSFET_PIN 7
+#define voltage_measurer A7
 
 byte pwm_value_electrolyzer;
 byte pwm_value_fuel_cell;
 byte pwm_value_power_supply;
+
+byte Kp = 3;
+byte Ki = 2;
+byte Kd = 1;
+
+unsigned long curr_time, prev_time;
+float elapsedTime;
+float curr_volt_error, prev_volt_error;
+float control_value;
+float cum_volt_error, rate_volt_error;
+
 
 void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
@@ -12,23 +21,17 @@ void mosfets_setup(){
     pinMode(POWER_SUPPLY_MOSFET_PIN, OUTPUT);
 }
 
-void set_electrolyzer(float usage){
-    //insert mapping 
-    pwm_value_electrolyzer = 0;
-    analogWrite(ELECTROLYZER_MOSFET_PIN, pwm_value_electrolyzer);
-}
-
-void set_fuel_cell(float production){
-    //insert mapping 
-
-    pwm_value_fuel_cell = 0;
-    analogWrite(FUEL_CELL_MOSFET_PIN, pwm_value_fuel_cell);
-}
-
-
-void set_power_supply(float current_to_add){
-    //insert mapping
+void controlGrid(float target_volt){
+    current_voltage = analogRead(voltage_measurer);
+    currentTime = millis();
+    elapsedTime = (float)(curr_time - prev_time);
+    curr_volt_error = target_volt - current_volt;
+    cum_volt_error += curr_volt_error * elapsedTime;
+    rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
     
-    pwm_value_power_supply = 0;
-    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+    control_value = Kp*curr_volt_error + Ki*cum_volt_error + Kd*rate_volt_error;
+
+    prev_volt_error = curr_volt_error;
+    prev_time = curr_time;
+    return control_value
 }
