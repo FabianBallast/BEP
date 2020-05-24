@@ -66,7 +66,7 @@ class Loads():
             else: #set rest of pixels fully off
                 self.load_light_set(pixel_index, 0)        
 
-        self.printer.print(f'load: {set_value}')
+        #self.printer.print(f'load: {set_value}')
         
         #pixels.show()
 

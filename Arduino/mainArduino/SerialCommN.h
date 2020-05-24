@@ -12,21 +12,20 @@ void serial_setup(){
 }
 
 void comm_send(){
-  //data_to_send[1] = current_solar_panels;
- // data_to_send[2] = current_wind_turbines;
- // data_to_send[3] = current_ledload;
- // data_to_send[4] = current_electrolyzer;
- // data_to_send[5] = current_power_supply;
- // data_to_send[6] = current_fuel_cell;
- // data_to_send[7] = get_fan_power();
- // data_to_send[8] = electrolyzer_voltage;
-//  data_to_send[9] = fuel_cell_voltage;
-//  data_to_send[10]= control_value;
-    for (int n=0; n<COMM_SIZE_P; n++){
-      Serial.print(data_to_send[n]);
-      Serial.print(", ");
-    }
-    Serial.print("; \n");
+  Serial.print("newdata={");
+  
+  Serial.print("\"solar_current\":");          Serial.print(current_solar_panels);
+  Serial.print(", \"wind_current\":");         Serial.print(current_wind_turbines);
+  Serial.print(", \"load_current\":");         Serial.print(current_ledload);
+  Serial.print(", \"electrolyzer_current\":"); Serial.print(current_electrolyzer);
+  Serial.print(", \"power_supply_current\":"); Serial.print(current_power_supply);
+  Serial.print(", \"fuel_cell_current\":");    Serial.print(current_fuel_cell);          
+  Serial.print(", \"fan_power\":");            Serial.print(get_fan_power());      
+  Serial.print(", \"electrolyzer_voltage\":"); Serial.print(electrolyzer_voltage);        
+  Serial.print(", \"fuel_cell_voltage\":");    Serial.print(fuel_cell_voltage);   
+  Serial.print(", \"control_value\":");        Serial.print(control_value);   
+    
+  Serial.println("}enddata");
 }
 
 int comm_read(){
