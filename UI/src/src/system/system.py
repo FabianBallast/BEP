@@ -2,6 +2,7 @@
 
 from PyQt5 import QtCore, QtWidgets, QtGui
 import pyqtgraph as pg
+from random import randint
 
 class MyArrowItem(pg.ArrowItem):
     def paint(self, p, *args):
