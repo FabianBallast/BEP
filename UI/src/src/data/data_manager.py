@@ -2,9 +2,10 @@
 from PyQt5 import QtCore
 from ..data.log_handler import LogWriter
 from ..backend.read_tank_sensor import TankReader
-from ..backend.serial_communicator import SerialCommunicator
+from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
+from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
@@ -24,10 +25,16 @@ class DataManager():
         self.control_values_handlers = []
         self.storage_cal = 0
 
-        self.light = HalogenLight(serial)
+        if not serial:
+            self.printer = SerialRaw()
+            self.printer.print("No second screen found.")
+        else:
+            self.printer = serial
+
+        self.light = HalogenLight(self.printer)
         self.tank_reader = TankReader()
-        self.serial_connection = SerialCommunicator(serial)
-        self.loads = Loads(serial)
+        self.serial_connection = SerialCommunicator(self.printer)
+        self.loads = Loads(self.printer)
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
@@ -90,16 +97,13 @@ class DataManager():
         for handler in self.sensor_readings_handlers:
             handler(readings)
     
-    def connect_for_control_values(self, handler):
+    def connect_for_all_values(self, handler):
         """Add a function that want to get the control values."""
         self.control_values_handlers.append(handler)
         
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
-        values = self.values_for_control()
-
-        for handler in self.control_values_handlers:
-            handler(values)
+        values = self.values_for_control() 
 
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
@@ -107,25 +111,33 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
 
-        if self.serial_connection.CONNECTION:
+        try:
             readings = self.serial_connection.read_arduino()
-        else:
+        except Exception as error:
+            self.printer.print(error)
             readings = values.copy()
         
-        data = []
-        sensors = ['solar_power', 'wind_power', 'power_demand']
+        if readings:
+            data = []
+            sensors = list(readings.keys())
+            
+            for sensor in sensors:
+                if sensor in readings:
+                    data.append(readings[sensor])
+                    self.printer.print(f"{sensor}: {readings[sensor]}")
+                else:
+                    data.append(values[sensors.index(sensor)])
 
-        for sensor in sensors:
-            if sensor in readings:
-                data.append(readings[sensor])
-            else:
-                data.append(values[sensors.index(sensor)])
+            data.append(self.tank_reader.read_tank_level())
+            data.append(self.time_running.elapsed() / 1000)
 
-        data.append(self.tank_reader.read_tank_level())
-        data.append(self.time_running.elapsed() / 1000)
-        self.send_sensor_readings(data)
-        self.file.add_data_to_write(values, data)
-    
+            for handler in self.control_values_handlers:
+                handler(values, data)
+            
+            self.send_sensor_readings(data)
+
+            self.file.add_data_to_write(values, data)
+        
 
     def values_for_control(self):
         """Retrieve the values from the scenario/manual control."""
