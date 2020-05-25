@@ -91,7 +91,7 @@ void ammeters_setup(){
 
     Serial.print("A1 zero load: ");
     Serial.print(sensor_value_zero_load_1);
-    Serial.print(", Done calibrating \n");
+    Serial.println(", Done calibrating \n");
     runningSum1 = 0;
     runningSum2 = 0;
     runningSum3 = 0;
@@ -131,13 +131,13 @@ void read_ammeters(){
       filter_readIndex = 0;
     }
 
-   // Serial.print("A1 zero load: ");
- //   Serial.print(sensor_value_zero_load_1);
-//    Serial.print(", current sum");
-//    Serial.print(runningSum1);
-//    Serial.print(", current sensorValue");
-//    Serial.print(sensorValue1);
-//    Serial.print("\n");
+    Serial.print("A1 zero load: ");
+    Serial.print(sensor_value_zero_load_1);
+    Serial.print(", current sum");
+    Serial.print(runningSum1);
+    Serial.print(", current sensorValue");
+    Serial.print(sensorValue1);
+    Serial.print("\n");
 
     current_solar_panels  = (runningSum1  - sensor_value_zero_load_1)*sensitivity_1;
     current_wind_turbines = (runningSum2  - sensor_value_zero_load_2)*sensitivity_2;

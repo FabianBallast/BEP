@@ -2,10 +2,16 @@
 
 import time
 import serial
+import re
 
 #import numpy.random as rand
 #import loads
 
+class rawPrinter:
+    def __init__(self):
+        pass
+    def print(stuff):
+        print(stuff)
 
 class SerialCommunicator:
     """This class represent the communication with the Arduino."""
@@ -28,10 +34,13 @@ class SerialCommunicator:
         #comm protocol
         self.send_order = ['windPower', 'stest0', 'stest1']
         self.printer = printer
+        if printer is None:
+                self.printer = rawPrinter
         self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
         self.printer.print("Printing all messages from arduino in log")
         self.ser.flush()
         self.last_data = dict()
+        self.half_received_data = ""
     
     def send_to_arduino(self, **kwargs):
         """Send data to Arduino. Currently only windpower."""
@@ -48,22 +57,35 @@ class SerialCommunicator:
 
     def read_arduino(self):
         """Receive data from the Arduino."""
-        bytes_awaiting = self.ser.in_waiting
-        if bytes_awaiting>0:
-            received_from_arduino = self.ser.read(bytes_awaiting).decode('utf-8').rstrip()
-            self.printer.print(f'Received from Arduino: {received_from_arduino}')
-            try:
-                data_part = received_from_arduino.split("newdata=")[-1].split("}enddata")[0]
-                return eval(data_part)
-            except:
-                self.printer.print("No data found in data received from Arduino")
+        try:
+            bytes_awaiting = self.ser.in_waiting
+            if bytes_awaiting>0:
+                received_from_arduino = self.ser.read(bytes_awaiting).decode('utf-8').rstrip()
+                self.half_received_data = self.half_received_data + received_from_arduino
 
+               # self.printer.print(f'Received from Arduino: {received_from_arduino}')
+                end_splits = self.half_received_data.split('enddata')[:-1]
+                if len(end_splits)>0:
+                    for split in end_splits:
+                        if "newdata=" in split:
+                            start_splits = split.split("newdata=")
+                            if len(start_splits[0])>0:
+                                self.printer.print(f'Received from Arduino {start_splits[0]}')
+                            self.last_data = eval(start_splits[1])
+                        else:
+                            self.printer.print(f'Received from Arduino {split}')
+                    self.half_received_data = ""
+
+        except:
+            self.printer.print("Error reading data from arduino")
+            
         return self.last_data            
 
 
 if __name__ == '__main__':
     comm = SerialCommunicator(None)
-    windPower_desired = int(input('Fan power?'))
+    windPower_desired = 10
+    #windPower_desired = int(input('Fan power?'))
     comm.send_to_arduino(windPower=windPower_desired)
     
     while True:

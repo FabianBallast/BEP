@@ -23,8 +23,7 @@ void comm_send(){
   Serial.print(", \"fan_power\":");            Serial.print(get_fan_power());      
   Serial.print(", \"electrolyzer_voltage\":"); Serial.print(electrolyzer_voltage);        
   Serial.print(", \"fuel_cell_voltage\":");    Serial.print(fuel_cell_voltage);   
-  Serial.print(", \"control_value\":");        Serial.print(control_value);   
-    
+  Serial.print(", \"control_value\":");        Serial.print(control_value);     
   Serial.println("}enddata");
 }
 

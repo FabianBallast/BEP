@@ -88,7 +88,7 @@ void ammeters_setup(){
     smoothed_value6 = sensor_value_zero_load_6;
     
 
-    Serial.print("A1 zero load: ");
+    Serial.print("<A1 zero load: ");
     Serial.print(sensor_value_zero_load_1);
     Serial.print(", Done calibrating \n");
 }
