@@ -14,6 +14,9 @@ from src.src.system.system import System
 from src.src.serial.serial_page import SerialPage, SerialTextBox
 import src.style.style_sheets as sheet
 
+
+
+
 class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
     def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2):
@@ -118,6 +121,7 @@ class UiMainWindow(object):
         self.toolbar_top.figure_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(6))              #pylint: disable=C0301
         if self.serial_box:
             self.toolbar_bottom.serial_button.triggered.connect(lambda: self.stacked_widget_2.setCurrentIndex(3))           #pylint: disable=C0301
+    
     def change_screen(self):
         """Change the page on the second screen."""
         self.stacked_widget_2.setCurrentIndex(self.second_screen.get_selected_item())
