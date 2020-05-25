@@ -7,8 +7,8 @@
 #include "SerialCommN.h"
 
 //USE ONLY ONE OF THE TWO BELOW
-#include "CurrentSensorsEMA.h"
-//#include "CurrentSensorSMA.h"
+//#include "CurrentSensorsEMA.h"
+#include "CurrentSensorSMA.h"
 
 
 #define PRINT_EACH_X_LOOPS 1
@@ -65,5 +65,5 @@ void loop() {
   
     comm_send();
   }
-  delay(100);
+  delay(10);
 }

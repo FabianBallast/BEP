@@ -26,15 +26,15 @@ class DataManager():
         self.storage_cal = 0
 
         if not serial:
-            printer = SerialRaw()
-            printer.print("No second screen found.")
+            self.printer = SerialRaw()
+            self.printer.print("No second screen found.")
         else:
-            printer = serial
+            self.printer = serial
 
-        self.light = HalogenLight(printer)
+        self.light = HalogenLight(self.printer)
         self.tank_reader = TankReader()
-        self.serial_connection = SerialCommunicator(printer)
-        self.loads = Loads(printer)
+        self.serial_connection = SerialCommunicator(self.printer)
+        self.loads = Loads(self.printer)
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
@@ -114,26 +114,30 @@ class DataManager():
         try:
             readings = self.serial_connection.read_arduino()
         except Exception as error:
-            print(error)
+            self.printer.print(error)
             readings = values.copy()
         
-        data = []
-        sensors = ['solar_power', 'wind_power', 'power_demand']
+        if readings:
+            data = []
+            sensors = list(readings.keys())
+            
+            for sensor in sensors:
+                if sensor in readings:
+                    data.append(readings[sensor])
+                    self.printer.print(f"{sensor}: {readings[sensor]}")
+                else:
+                    data.append(values[sensors.index(sensor)])
 
-        for sensor in sensors:
-            if sensor in readings:
-                data.append(readings[sensor])
-            else:
-                data.append(values[sensors.index(sensor)])
+            data.append(self.tank_reader.read_tank_level())
+            data.append(self.time_running.elapsed() / 1000)
 
-        data.append(self.tank_reader.read_tank_level())
-        data.append(self.time_running.elapsed() / 1000)
+            for handler in self.control_values_handlers:
+                handler(values, data)
+            
+            self.send_sensor_readings(data)
 
-        for handler in self.control_values_handlers:
-            handler(values, data)
-
-        self.file.add_data_to_write(values, data)
-    
+            self.file.add_data_to_write(values, data)
+        
 
     def values_for_control(self):
         """Retrieve the values from the scenario/manual control."""
