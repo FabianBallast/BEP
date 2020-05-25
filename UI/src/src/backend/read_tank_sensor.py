@@ -6,7 +6,7 @@ except NotImplementedError:
 
 import busio
 import adafruit_vl6180x
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from ..dummy import dummy_range_sensor as sensor                        #pylint: disable=relative-beyond-top-level

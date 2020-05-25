@@ -3,6 +3,10 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 import pyqtgraph as pg
 
+class MyArrowItem(pg.ArrowItem):
+    def paint(self, p, *args):
+        p.translate(-self.boundingRect().center())
+        pg.ArrowItem.paint(self, p, *args)
 
 class System(QtWidgets.QWidget):
     """This class inherits from a QWidget.
@@ -14,14 +18,37 @@ class System(QtWidgets.QWidget):
         self.create_source_text(parent.width(), parent.height())
         self.create_hydrogen_text(parent.width(), parent.height())
         self.create_load_text(parent.width(), parent.height())
-        self.create_arrows(parent.width(), parent.height())
-        
-    def create_arrows(self,width, height):
-        self.pw2 = pg.PlotWidget(name='arrowplot')
-        self.pw2.setClipToView(True)
-        self.arrow = pg.ArrowItem()
-        self.pw2.addItem(self.arrow)
-        
+        self.create_arrows(parent, parent.width(), parent.height())
+
+    def create_arrow(self,angle,row,col, center=False):
+        vb1 = self.pw2.addViewBox(row=row,col=col, enableMouse=False)
+        vb1.setBackgroundColor(None)
+        vb1.setAutoPan(False,False)
+        if center:
+            arrow_right = MyArrowItem(angle=angle, tipAngle=60, tailLen=40,tailWidth=20, headLen=40, pen=None, brush='b')
+        else:
+            arrow_right = pg.ArrowItem(angle=angle, tipAngle=60, tailLen=40,tailWidth=20, headLen=40, pen=None, brush='b')
+
+
+        vb1.addItem(arrow_right)
+        vb1.setRange(xRange=(-10,10),yRange=(-10,10))
+    
+        return arrow_right
+
+    def create_arrows(self,parent,width, height):
+        self.pw2 = pg.GraphicsLayoutWidget(self)
+        self.pw2.setGeometry(QtCore.QRect(0,int(height*0.1), int(width*0.5), int(height*0.3)))
+        self.pw2.setBackground(None)
+
+        self.arrow1 = self.create_arrow(225,1,0, True)
+        self.arrow1.setPos(7,7)
+        self.arrow2 = self.create_arrow(135,1,2, True)
+        self.arrow2.setPos(-7,7)
+        self.arrow3 = self.create_arrow(180,0,1, center=True)
+
+        self.label1 = self.pw2.addLabel("Energie-opbrengst",row=0,col=0, color='ffffff',size='20pt')
+        self.label2 = self.pw2.addLabel("Waterstofsysteem", row=0,col=2, color='ffffff',size='20pt')
+        self.label3 = self.pw2.addLabel("Energie-verbruik", row=1,col=1, color='ffffff',size='20pt')
     
     def create_fonts(self, height):
         """Create the fonts used for the figures."""
@@ -97,3 +124,9 @@ class System(QtWidgets.QWidget):
         self.hydrogen_figures.setText(f"{((sensor_data[0] + sensor_data[1] - sensor_data[2])/20):.2f}W\n{sensor_data[3]:.2f}%")
         self.load_figures_curr.setText(f"{(sensor_data[2]/20):.2f}W\n0.00W")
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
+        
+        print('eijfiej')
+        self.arrow1.prepareGeometryChange()
+        self.arrow1.setStyle(tailWidth=randint(0, 40))
+        self.arrow2.setStyle(tailWidth=randint(0, 40))
+        self.arrow3.setStyle(tailWidth=randint(0, 40))
