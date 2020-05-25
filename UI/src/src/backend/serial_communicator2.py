@@ -18,7 +18,7 @@ class SerialCommunicator:
     
     def __init__(self, printer):
         try:
-            self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
+            self.ser = serial.Serial('/dev/ttyACM1', 9600, timeout=0)
             #self.ser = serial.Serial('COM5', 9600, timeout=0)
             self.CONNECTION = True
         except serial.serialutil.SerialException:
@@ -45,23 +45,38 @@ class SerialCommunicator:
     
     def send_to_arduino(self, **kwargs):
         """Send data to Arduino. Currently only windpower."""
-        for key, value in kwargs.items():
-            self.send[key] = value
-        #printer.print('Sending', self.send)
-        
-        array_to_send = [int(self.send[key]) for key in self.send_order]
-        bytes_to_send = bytes(array_to_send)
-        
-        #self.printer.print(f'Pi to Arduino: {array_to_send}')
-        self.ser.write(bytes_to_send)
+        if self.CONNECTION:
+            for key, value in kwargs.items():
+                self.send[key] = value
+            #printer.print('Sending', self.send)
+            
+            array_to_send = [int(self.send[key]) for key in self.send_order]
+            bytes_to_send = bytes(array_to_send)
+            
+            #self.printer.print(f'Pi to Arduino: {array_to_send}')
+            self.ser.write(bytes_to_send)
         return self.send
 
     def read_arduino(self):
         """Receive data from the Arduino."""
+        if self.ser.in_waiting ==0:
+                if self.all_received_data == "":
+                    #needs a reset
+                    #self.ser.reset_input_buffer()
+                    #self.ser.reset_output_buffer()
+                    self.printer.print(f'Resetting bytes len: {self.ser.in_waiting}')
+                    self.ser.close()
+                    time.sleep(1)
+                    self.ser.open()
+                    self.CONNECTION = True
+                    
+                self.all_received_data = ""
+                
+        
+        rbytes = self.ser.read(self.ser.in_waiting)
         try:
-            bytes_awaiting = self.ser.in_waiting
-            if bytes_awaiting>0:
-                received_from_arduino = self.ser.read(bytes_awaiting).decode('utf-8').rstrip()
+            if rbytes:
+                received_from_arduino = rbytes.decode('utf-8').rstrip()
                 self.all_received_data = self.all_received_data + received_from_arduino
 
                 #self.printer.print(f'Received from Arduino: {received_from_arduino}')
@@ -80,8 +95,14 @@ class SerialCommunicator:
                                 self.printer.print(f'Received from Arduino: {split}')
                     self.all_received_data = ""
 
-        except:
-            self.printer.print("Error reading data from arduino")
+        except Exception as error:
+            rbytes = str(rbytes)
+            time.sleep(1)
+            self.all_received_data = ""
+            self.printer.print(f"Error reading data from arduino: {error}, bytes: {rbytes}")
+            self.CONNECTION = False
+            #self.ser.reset_input_buffer()
+            #self.ser.reset_output_buffer()
             
         return self.last_data            
 

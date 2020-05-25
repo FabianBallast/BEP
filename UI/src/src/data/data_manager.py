@@ -107,9 +107,10 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
 
-        if self.serial_connection.CONNECTION:
+        try:
             readings = self.serial_connection.read_arduino()
-        else:
+        except Exception as error:
+            print(error)
             readings = values.copy()
         
         data = []
