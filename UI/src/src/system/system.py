@@ -1,6 +1,7 @@
 """This module deals with the figures page of the UI."""
 
 from PyQt5 import QtCore, QtWidgets, QtGui
+import pyqtgraph as pg
 
 
 class System(QtWidgets.QWidget):
@@ -13,6 +14,14 @@ class System(QtWidgets.QWidget):
         self.create_source_text(parent.width(), parent.height())
         self.create_hydrogen_text(parent.width(), parent.height())
         self.create_load_text(parent.width(), parent.height())
+        self.create_arrows(parent.width(), parent.height())
+        
+    def create_arrows(self,width, height):
+        self.pw2 = pg.PlotWidget(name='arrowplot')
+        self.pw2.setClipToView(True)
+        self.arrow = pg.ArrowItem()
+        self.pw2.addItem(self.arrow)
+        
     
     def create_fonts(self, height):
         """Create the fonts used for the figures."""
