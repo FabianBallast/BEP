@@ -2,7 +2,7 @@
 from PyQt5 import QtCore
 from ..data.log_handler import LogWriter
 from ..backend.read_tank_sensor import TankReader
-from ..backend.serial_communicator import SerialCommunicator
+from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
 

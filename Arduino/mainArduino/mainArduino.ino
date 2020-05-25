@@ -1,26 +1,34 @@
 #include "ACdimmer.h" 
-//#include "CurrentSensors.h"
-#include "CurrentSensorBackup.h"
 #include "ControlMosfets.h"
 #include "FailSafes.h"
 
+//USE ONLY ONE OF THE TWO BELOW
 //#include "SerialComm.h"
 #include "SerialCommN.h"
+
+//USE ONLY ONE OF THE TWO BELOW
+#include "CurrentSensorsEMA.h"
+//#include "CurrentSensorSMA.h"
+
 
 #define PRINT_EACH_X_LOOPS 1
 
 
 
 void setup() {
-  mosfets_setup(); //set to off state for calibrating
-  fan_setup();
   serial_setup();
-  ammeters_setup();
+  Serial.print("Setting up \n");
+  mosfets_setup(); //set to off state for calibrating
+  //fan_setup();   ///WORKS ONLY WHEN FAN IS CONNECTED
+
+  ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
 
-  fan_start();
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
+ // fan_start();
+ // pinMode(13, OUTPUT);
+ // digitalWrite(13, HIGH);
+
+  Serial.print("Setup done \n");
 }
 
 int i_send = 0;
@@ -33,7 +41,8 @@ void loop() {
   
   read_ammeters();
 
-  control_value = controlGrid(11.9);
+ // control_value = controlGrid(11.9);
+ // processControlValue(control_value);
   
   check_H2_voltages();
 

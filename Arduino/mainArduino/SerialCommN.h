@@ -2,6 +2,8 @@
 #define COMM_SIZE_P 13
 
 
+extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
+
 uint8_t comm_received[COMM_SIZE_A]; 
 uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
                                     //0   1  2  3  4  5  6  7  8  9  10 11  12

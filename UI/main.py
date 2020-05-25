@@ -18,7 +18,8 @@ class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
     def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2):
 
-        self.serial_box = SerialTextBox()
+        #self.serial_box = SerialTextBox()
+        self.serial_box = None
         self.data = DataManager(self.serial_box)
         self.set_main_windows(geometry_1, geometry_2, main_window_1, main_window_2)
         self.add_toolbars_to_window(geometry_1, main_window_1)
@@ -83,11 +84,13 @@ class UiMainWindow(object):
         self.graphs_2 = GraphLayout(main_window_2, 2, self.stacked_widget_2)
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
         self.figures_2 = Figures(self.stacked_widget_2)
-        self.serial = SerialPage(self.stacked_widget_2, self.serial_box)
+        if self.serial_box:
+            self.serial = SerialPage(self.stacked_widget_2, self.serial_box)
         self.stacked_widget_2.addWidget(self.graphs_2)
         self.stacked_widget_2.addWidget(self.map_2)
         self.stacked_widget_2.addWidget(self.figures_2)
-        self.stacked_widget_2.addWidget(self.serial)
+        if self.serial_box:
+            self.stacked_widget_2.addWidget(self.serial)
         self.stacked_widget_2.setCurrentIndex(3)
     
     def connect_special_actions(self):
@@ -117,7 +120,8 @@ class UiMainWindow(object):
         self.toolbar_top.help_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(4))                #pylint: disable=C0301
         self.toolbar_top.screen_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(5))              #pylint: disable=C0301
         self.toolbar_top.figure_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(6))              #pylint: disable=C0301
-        self.toolbar_bottom.serial_button.triggered.connect(lambda: self.stacked_widget_2.setCurrentIndex(3))           #pylint: disable=C0301
+        if self.serial_box:
+            self.toolbar_bottom.serial_button.triggered.connect(lambda: self.stacked_widget_2.setCurrentIndex(3))           #pylint: disable=C0301
     def change_screen(self):
         """Change the page on the second screen."""
         self.stacked_widget_2.setCurrentIndex(self.second_screen.get_selected_item())
