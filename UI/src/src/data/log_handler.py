@@ -26,17 +26,16 @@ class LogWriter():
     
     def add_data_to_write(self, data_write, sensor_data):
         """Add data to the queue to write when full."""
-        pass
-        """
+        
         self.solar_write.append(data_write[0])
         self.wind_write.append(data_write[1])
         self.demand_write.append(data_write[2])
 
-        self.solar_curr.append(sensor_data[0])
-        self.wind_curr.append(sensor_data[1])
-        self.demand_curr.append(sensor_data[2])
-        self.tank_level.append(sensor_data[3])
-        self.time.append(sensor_data[4])
+        self.solar_curr.append(sensor_data['solar_current'])
+        self.wind_curr.append(sensor_data['wind_current'])
+        self.demand_curr.append(sensor_data['load_current'])
+        self.tank_level.append(sensor_data['tank_level'])
+        self.time.append(sensor_data['time'])
 
         if len(self.solar_write) >= self.max_length:
             self.write()
@@ -53,7 +52,7 @@ class LogWriter():
 
             self.tank_level = []
             self.time = []
-        """
+        
     def write(self):
         """Write data to the file."""
         log_file = open('UI/log.txt', 'a')
