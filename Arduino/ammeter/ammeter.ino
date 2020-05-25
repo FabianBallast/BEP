@@ -15,7 +15,7 @@ byte readIndex = 0;           //uint8_t   // the index of the current reading, 8
 float total = 0;                 //the running total
 
 float sensor_value_zero_load = 517.81; 
-float sensitivity = 17;  //13.42; 
+float sensitivity = 11.5;  //13.42; 
 
 void setup() {
   Serial.begin(9600);
