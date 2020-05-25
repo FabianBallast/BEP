@@ -38,7 +38,7 @@ class System(QtWidgets.QWidget):
 
     def create_arrows(self,parent,width, height):
         self.pw2 = pg.GraphicsLayoutWidget(self)
-        self.pw2.setGeometry(QtCore.QRect(0,int(height*0.1), int(width*0.5), int(height*0.3)))
+        self.pw2.setGeometry(QtCore.QRect(0, 0, width, height))
         self.pw2.setBackground(None)
 
         self.arrow1 = self.create_arrow(225,1,0, True)
@@ -47,9 +47,9 @@ class System(QtWidgets.QWidget):
         self.arrow2.setPos(-7,7)
         self.arrow3 = self.create_arrow(180,0,1, center=True)
 
-        self.label1 = self.pw2.addLabel("Energie-opbrengst",row=0,col=0, color='ffffff',size='20pt')
-        self.label2 = self.pw2.addLabel("Waterstofsysteem", row=0,col=2, color='ffffff',size='20pt')
-        self.label3 = self.pw2.addLabel("Energie-verbruik", row=1,col=1, color='ffffff',size='20pt')
+        self.label1 = self.pw2.addLabel("",row=0,col=0, color='ffffff',size='20pt')
+        self.label2 = self.pw2.addLabel("", row=0,col=2, color='ffffff',size='20pt')
+        self.label3 = self.pw2.addLabel("", row=1,col=1, color='ffffff',size='20pt')
     
     def create_fonts(self, height):
         """Create the fonts used for the figures."""
@@ -107,20 +107,19 @@ class System(QtWidgets.QWidget):
         self.load_figures_curr = QtWidgets.QLabel(self)
         self.load_figures_curr.setFont(self.text_font)
         self.load_figures_curr.setText("0W\n0W")
-        self.load_figures_curr.setGeometry(QtCore.QRect(int(width * 0.75), int(height * 0.10),
+        self.load_figures_curr.setGeometry(QtCore.QRect(int(width * 0.80), int(height * 0.10),
                                                         int(width * 0.08), int(height * 0.15)))
         self.load_figures_curr.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
 
         self.load_figures_per = QtWidgets.QLabel(self)
         self.load_figures_per.setFont(self.text_font)
         self.load_figures_per.setText("0%\n0%")
-        self.load_figures_per.setGeometry(QtCore.QRect(int(width * 0.85), int(height * 0.10),
+        self.load_figures_per.setGeometry(QtCore.QRect(int(width * 0.87), int(height * 0.10),
                                                        int(width * 0.10), int(height * 0.15)))
         self.load_figures_per.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
     
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        print(sensor_data)
         solar = sensor_data.get('solar_current')/20
         wind = sensor_data.get('wind_current')/20
         load = sensor_data.get('load_current')/20
@@ -131,8 +130,7 @@ class System(QtWidgets.QWidget):
         self.hydrogen_figures.setText(f"{elek:.2f}W\n{tank:.2f}%")
         self.load_figures_curr.setText(f"{load:.2f}W\n0.00W")
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
-        
-        print('eijfiej')
+     
         self.arrow1.prepareGeometryChange()
         self.arrow1.setStyle(tailWidth=randint(0, 40))
         self.arrow2.setStyle(tailWidth=randint(0, 40))

@@ -16,8 +16,7 @@ def read(place):
                 power_supply_current = 2,
                 fuel_cell_current = 2,
                 dummy_serial = 2)
-    print("Dummy called")
-    print(isinstance(vals, dict))
+                
     return str(vals)
 
 def reset_input_buffer():

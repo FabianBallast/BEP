@@ -103,12 +103,11 @@ class SerialCommunicator:
         except AttributeError as error:
             rbytes = str(rbytes)
             self.all_received_data = ""
-            self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
+            #self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
             self.CONNECTION = False
             self.ser.reset_input_buffer()
             self.ser.reset_output_buffer()    
         
-        print(isinstance(self.last_data, dict))
         return self.last_data            
 
 
