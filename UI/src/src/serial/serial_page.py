@@ -30,3 +30,11 @@ class SerialTextBox(QtWidgets.QTextBrowser):
         """Print the text to the screen."""
         self.append(text) 
 
+class SerialRaw():
+    """Class for when there is no second screen and still print stuff."""
+    def __init__(self):
+        pass
+    def print(self, *stuff):
+        """Print stuff to the terminal."""
+        print(*stuff)
+

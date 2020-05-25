@@ -5,6 +5,7 @@ try:
 except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
+
 class HalogenLight:
     """This class represents the halogen lamp."""
     def __init__(self, printer, start_value=0):
@@ -12,19 +13,18 @@ class HalogenLight:
         HALOGEN_MOSFET_PIN = 18                             #pylint: disable=invalid-name
         IO.setmode(IO.BCM)
         IO.setup(HALOGEN_MOSFET_PIN, IO.OUT)
-        self.printer = printer
         self.pwm = IO.PWM(HALOGEN_MOSFET_PIN, 100)
         self.pwm.start(start_value)
         self.intermediate_value = start_value
+        self.printer = printer
         self.end_value = start_value
-
     
     def set_light(self, set_value):
         """Input value between 0-100."""
         #self.adjust(set_value)########
         
         self.end_value = set_value
-#       self.printer.print("End goal light: ", set_value,  ' intermediate' , self.intermediate_value)
+        #self.printer.print("End goal light: ", set_value,  ' intermediate' , self.intermediate_value)
         if set_value > self.intermediate_value:
             self.animate_timer = QtCore.QTimer()
             self.animate_timer.timeout.connect(self.animate)

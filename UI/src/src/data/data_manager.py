@@ -5,6 +5,7 @@ from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
+from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
@@ -24,10 +25,16 @@ class DataManager():
         self.control_values_handlers = []
         self.storage_cal = 0
 
-        self.light = HalogenLight(serial)
+        if not serial:
+            printer = SerialRaw()
+            printer.print("No second screen found.")
+        else:
+            printer = serial
+
+        self.light = HalogenLight(printer)
         self.tank_reader = TankReader()
-        self.serial_connection = SerialCommunicator(serial)
-        self.loads = Loads(serial)
+        self.serial_connection = SerialCommunicator(printer)
+        self.loads = Loads(printer)
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
@@ -90,16 +97,13 @@ class DataManager():
         for handler in self.sensor_readings_handlers:
             handler(readings)
     
-    def connect_for_control_values(self, handler):
+    def connect_for_all_values(self, handler):
         """Add a function that want to get the control values."""
         self.control_values_handlers.append(handler)
         
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
-        values = self.values_for_control()
-
-        for handler in self.control_values_handlers:
-            handler(values)
+        values = self.values_for_control() 
 
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
@@ -124,7 +128,10 @@ class DataManager():
 
         data.append(self.tank_reader.read_tank_level())
         data.append(self.time_running.elapsed() / 1000)
-        self.send_sensor_readings(data)
+
+        for handler in self.control_values_handlers:
+            handler(values, data)
+
         self.file.add_data_to_write(values, data)
     
 
