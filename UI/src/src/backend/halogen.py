@@ -10,7 +10,7 @@ class HalogenLight:
     """This class represents the halogen lamp."""
     def __init__(self, printer, start_value=0):
         """Wrapper for dimmable halogenlight with slow start."""
-        HALOGEN_MOSFET_PIN = 18                             #pylint: disable=invalid-name
+        HALOGEN_MOSFET_PIN = 4                             #pylint: disable=invalid-name
         IO.setmode(IO.BCM)
         IO.setup(HALOGEN_MOSFET_PIN, IO.OUT)
         self.pwm = IO.PWM(HALOGEN_MOSFET_PIN, 100)
@@ -58,5 +58,5 @@ class HalogenLight:
             
             
 if __name__ == '__main__':
-    light = HalogenLight(50, None)
+    light = HalogenLight(None, 50)
     light.set_light(30)

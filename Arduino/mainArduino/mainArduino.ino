@@ -41,7 +41,7 @@ void loop() {
   
   read_ammeters();
 
- // control_value = controlGrid(11.9);
+  control_value = controlGrid(11.9);
  // processControlValue(control_value);
   
   check_H2_voltages();
@@ -51,19 +51,8 @@ void loop() {
 
   if (i_send == PRINT_EACH_X_LOOPS){
     i_send = 0;
-    data_to_send[1] = current_solar_panels;
-    data_to_send[2] = current_wind_turbines;
-    data_to_send[3] = current_ledload;
-    data_to_send[4] = current_electrolyzer;
-    data_to_send[5] = current_power_supply;
-    data_to_send[6] = current_fuel_cell;
-    data_to_send[7] = get_fan_power();
-    data_to_send[8] = electrolyzer_voltage;
-    data_to_send[9] = fuel_cell_voltage;
-    data_to_send[10]= control_value;
-    data_to_send[11]= 0;
+
   
     comm_send();
   }
-  delay(10);
 }
