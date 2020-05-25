@@ -10,7 +10,7 @@ from src.src.data.data_manager import DataManager
 from src.src.toolbar.toolbars import ToolBarTop, ToolBarBottom
 from src.src.help.help_layout import HelpLayout
 from src.src.second_screen.second_screen_controller import SecondScreenController
-from src.src.figures.figures import Figures
+from src.src.system.system import System
 from src.src.serial.serial_page import SerialPage, SerialTextBox
 import src.style.style_sheets as sheet
 
@@ -70,7 +70,7 @@ class UiMainWindow(object):
         self.manual_control = ManualLayout(self.data, main_window_1, self.stacked_widget_1)
         self.help_page = HelpLayout(self.data, self.stacked_widget_1)
         self.second_screen = SecondScreenController(self.stacked_widget_1)
-        self.figures_1 = Figures(self.stacked_widget_1)
+        self.system_1 = System(self.stacked_widget_1)
 
         self.stacked_widget_1.addWidget(self.graphs_1)
         self.stacked_widget_1.addWidget(self.map_1)
@@ -78,17 +78,17 @@ class UiMainWindow(object):
         self.stacked_widget_1.addWidget(self.manual_control)
         self.stacked_widget_1.addWidget(self.help_page)
         self.stacked_widget_1.addWidget(self.second_screen)
-        self.stacked_widget_1.addWidget(self.figures_1)
+        self.stacked_widget_1.addWidget(self.system_1)
         self.stacked_widget_1.setCurrentIndex(4)
 
         self.graphs_2 = GraphLayout(main_window_2, 2, self.stacked_widget_2)
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
-        self.figures_2 = Figures(self.stacked_widget_2)
+        self.system_2 = System(self.stacked_widget_2)
         if self.serial_box:
             self.serial = SerialPage(self.stacked_widget_2, self.serial_box)
         self.stacked_widget_2.addWidget(self.graphs_2)
         self.stacked_widget_2.addWidget(self.map_2)
-        self.stacked_widget_2.addWidget(self.figures_2)
+        self.stacked_widget_2.addWidget(self.system_2)
         if self.serial_box:
             self.stacked_widget_2.addWidget(self.serial)
         self.stacked_widget_2.setCurrentIndex(3)
@@ -103,14 +103,10 @@ class UiMainWindow(object):
         self.data.connect_for_sensor_readings(self.map_2.get_current_values)
         self.data.connect_for_sensor_readings(self.graphs_1.update_graph)
         self.data.connect_for_sensor_readings(self.graphs_2.update_graph)
-        self.data.connect_for_control_values(self.figures_1.update_input)
-        self.data.connect_for_sensor_readings(self.figures_1.update_system)
-        self.data.connect_for_control_values(self.figures_2.update_input)
-        self.data.connect_for_sensor_readings(self.figures_2.update_system)
+        self.data.connect_for_all_values(self.system_1.update_text)
+        self.data.connect_for_all_values(self.system_2.update_text)
         self.graphs_1.reset_button.clicked.connect(self.data.time_running.restart)
-
-
-
+        
     def connect_pages_to_buttons(self):   
         """Connect the buttons from the toolbar to change page."""
         self.toolbar_top.graphs_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(0))              #pylint: disable=C0301

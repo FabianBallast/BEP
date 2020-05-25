@@ -7,12 +7,6 @@ import re
 #import numpy.random as rand
 #import loads
 
-class rawPrinter:
-    def __init__(self):
-        pass
-    def print(self,*stuff):
-        print(*stuff)
-
 class SerialCommunicator:
     """This class represent the communication with the Arduino."""
     
@@ -34,9 +28,6 @@ class SerialCommunicator:
         #comm protocol
         self.send_order = ['windPower', 'stest0', 'stest1']
         self.printer = printer
-        if not printer:
-                print("Gebruikt terminal log" )
-                self.printer = rawPrinter()
         self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
         self.printer.print("Printing all messages from arduino in log")
         self.ser.flush()

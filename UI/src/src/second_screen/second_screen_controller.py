@@ -4,7 +4,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 
 from ..graphs.graph_layout import GraphLayout
 from ..map.map_layout import MapLayout
-from ..figures.figures import Figures
+from ..system.system import System
 
 class SecondScreenController(QtWidgets.QWidget):
     """This class inherits from a QWidget.
@@ -74,7 +74,7 @@ class SecondScreenController(QtWidgets.QWidget):
         self.figure_widget.setStyleSheet("background: rgba(0, 0, 0, 0)")
         self.figure_widget.setGeometry(QtCore.QRect(int(width * 0.50), int(height * 0.55), 
                                                     int(width * 0.20), int(height * 0.25)))
-        Figures(self.figure_widget)
+        System(self.figure_widget)
         #self.figure_widget.raise_()
 
 
