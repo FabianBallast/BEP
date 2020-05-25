@@ -26,6 +26,8 @@ class LogWriter():
     
     def add_data_to_write(self, data_write, sensor_data):
         """Add data to the queue to write when full."""
+        pass
+        """
         self.solar_write.append(data_write[0])
         self.wind_write.append(data_write[1])
         self.demand_write.append(data_write[2])
@@ -51,7 +53,7 @@ class LogWriter():
 
             self.tank_level = []
             self.time = []
-    
+        """
     def write(self):
         """Write data to the file."""
         log_file = open('UI/log.txt', 'a')

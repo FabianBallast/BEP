@@ -110,33 +110,28 @@ class DataManager():
         
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
-
-        try:
-            readings = self.serial_connection.read_arduino()
-        except Exception as error:
-            self.printer.print(error)
-            readings = values.copy()
+        readings = self.serial_connection.read_arduino()
         
-        if readings:
-            data = []
-            sensors = list(readings.keys())
+        if 'dummy_serial' in readings:
+            sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 
+                       'power_supply_current', 'fuel_cell_current']
             
             for sensor in sensors:
-                if sensor in readings:
-                    data.append(readings[sensor])
-                    self.printer.print(f"{sensor}: {readings[sensor]}")
-                else:
-                    data.append(values[sensors.index(sensor)])
-
-            data.append(self.tank_reader.read_tank_level())
-            data.append(self.time_running.elapsed() / 1000)
-
-            for handler in self.control_values_handlers:
-                handler(values, data)
+                try:
+                    readings[sensor] = values[sensors.index(sensor)]
+                except IndexError:
+                    readings[sensor] = 0
             
-            self.send_sensor_readings(data)
 
-            self.file.add_data_to_write(values, data)
+        readings['tank_level'] = self.tank_reader.read_tank_level()
+        readings['time'] = self.time_running.elapsed() / 1000
+
+        for handler in self.control_values_handlers:
+            handler(values, readings)
+        
+        self.send_sensor_readings(readings)
+
+        self.file.add_data_to_write(values, readings)
         
 
     def values_for_control(self):

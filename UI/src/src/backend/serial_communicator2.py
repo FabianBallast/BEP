@@ -40,7 +40,13 @@ class SerialCommunicator:
         self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
         self.printer.print("Printing all messages from arduino in log")
         self.ser.flush()
-        self.last_data = dict()
+        self.last_data = dict(solar_current = 2, 
+                wind_current = 2, 
+                load_current = 2,
+                elektrolyzer_current = 2,
+                power_supply_current = 2,
+                fuel_cell_current = 2,
+                dummy_serial = 2)
         self.all_received_data = ""
     
     def send_to_arduino(self, **kwargs):
@@ -80,13 +86,13 @@ class SerialCommunicator:
 
                 #self.printer.print(f'Received from Arduino: {received_from_arduino}')
                 
-                if "newdata=" in self.all_received_data.rsplit('enddata',1)[0]:   #check if newdata occurs before enddata
+                if "newdata=" in self.all_received_data.rsplit('enddata', 1)[0]:   #check if newdata occurs before enddata
                     end_splits = self.all_received_data.split('enddata')[:-1]
-                    if len(end_splits)>0:
+                    if len(end_splits) > 0:
                         for split in end_splits:
                             if "newdata=" in split:
                                 start_splits = split.split("newdata=")
-                                if len(start_splits[0])>0:
+                                if len(start_splits[0]) > 0:
                                     self.printer.print(f'Received from Arduino {start_splits[0]}')
                                 self.last_data = eval(start_splits[1])
                                 #self.printer.print('Data updated from Arduino')
@@ -94,14 +100,15 @@ class SerialCommunicator:
                                 self.printer.print(f'Received from Arduino: {split}')
                     self.all_received_data = ""
 
-        except Exception as error:
+        except AttributeError as error:
             rbytes = str(rbytes)
             self.all_received_data = ""
-            self.printer.print(f"Error reading data from arduino: {error}, bytes: {rbytes}")
+            self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
             self.CONNECTION = False
             self.ser.reset_input_buffer()
-            self.ser.reset_output_buffer()
-            
+            self.ser.reset_output_buffer()    
+        
+        print(isinstance(self.last_data, dict))
         return self.last_data            
 
 

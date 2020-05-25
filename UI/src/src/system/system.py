@@ -83,8 +83,14 @@ class System(QtWidgets.QWidget):
     
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        self.source_figures_curr.setText(f"{(sensor_data[0]/20):.2f}W\n{(sensor_data[1]/20):.2f}W")
+        print(sensor_data)
+        solar = sensor_data.get('solar_current')/20
+        wind = sensor_data.get('wind_current')/20
+        load = sensor_data.get('load_current')/20
+        elek = solar + wind - load
+        tank = sensor_data.get('tank_level')
+        self.source_figures_curr.setText(f"{solar:.2f}W\n{wind:.2f}W")
         self.source_figures_per.setText(f"{input_data[0]:.1f}%\n{input_data[1]:.1f}%")
-        self.hydrogen_figures.setText(f"{((sensor_data[0] + sensor_data[1] - sensor_data[2])/20):.2f}W\n{sensor_data[3]:.2f}%")
-        self.load_figures_curr.setText(f"{(sensor_data[2]/20):.2f}W\n0.00W")
+        self.hydrogen_figures.setText(f"{elek:.2f}W\n{tank:.2f}%")
+        self.load_figures_curr.setText(f"{load:.2f}W\n0.00W")
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
