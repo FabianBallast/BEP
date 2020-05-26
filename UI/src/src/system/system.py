@@ -2,7 +2,7 @@
 
 from PyQt5 import QtCore, QtWidgets, QtGui
 import pyqtgraph as pg
-from numpy import linspace, cos, sin, radians
+import numpy as np
 from random import randint
 from time import time
 
@@ -19,11 +19,6 @@ class System(QtWidgets.QWidget):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self.create_fonts(parent.height())   
-        self.create_source_text(parent.width(), parent.height())
-        self.create_hydrogen_text(parent.width(), parent.height())
-        self.create_load_text(parent.width(), parent.height())
-        self.create_arrows(parent, parent.width(), parent.height())
 
         self.lastTimeE = millis()
         self.lastTimeL = millis()
@@ -32,6 +27,18 @@ class System(QtWidgets.QWidget):
         self.animTimeE = 0
         self.animTimeL = 0
         self.animTimeF = 0
+        self.curves = []
+        self.animations = []
+        self.viewBoxes = []
+        self.arrows = []
+
+        self.create_fonts(parent.height())   
+        self.create_source_text(parent.width(), parent.height())
+        self.create_hydrogen_text(parent.width(), parent.height())
+        self.create_load_text(parent.width(), parent.height())
+        self.create_arrows(parent, parent.width(), parent.height())
+
+
 
     def create_arrow(self,angle,row,col, center=False):
         vb1 = self.pw2.addViewBox(row=row,col=col, enableMouse=False)
@@ -55,78 +62,62 @@ class System(QtWidgets.QWidget):
 
         return arrow_right
     
-    def create_anim_arrow1(self):
-        self.vb1 = self.pw2.addViewBox(row=0,col=1, enableMouse=False)
-        self.vb1.setBackgroundColor(None)
-        self.vb1.setAutoPan(False,False)
+    def create_anim_arrow1(self):       #ledloads
+        direction = np.array([[1],[0]])
+        zero      = np.array([[0],[7]])
+        t         = np.array([[-4,4]])
+        curv = zero + direction.dot(t)
+        return self.create_arrow(curv, 0, 1)
 
-        x = [-7, 12]
-        y = [5, 5]
-        self.curve1 = pg.PlotCurveItem(x=x, y=y)
-        
-        self.arrow_ledloads = pg.CurveArrow(self.curve1)
-        self.arrow_ledloads.setStyle(tipAngle=60, tailLen=80,tailWidth=40, headLen=80, pen=None, brush='fc0303')
-        self.vb1.addItem(self.arrow_ledloads)
-        self.anim_ledloads = self.arrow_ledloads.makeAnimation(loop=-1)
-        self.anim_ledloads.start()
-        self.vb1.setRange(xRange=(-10,10),yRange=(-10,10))
-        return self.arrow_ledloads
-
-    def create_anim_arrow2(self):
-        self.vb2 = self.pw2.addViewBox(row=1,col=2, enableMouse=False)
-        self.vb2.setBackgroundColor(None)
-        self.vb2.setAutoPan(False,False)
-        
-        x = [-17, -3]
-        y = [1, 13]
-        self.curve2 = pg.PlotCurveItem(x=x, y=y)
-        
-        self.arrow_fuelcell = pg.CurveArrow(self.curve2)
-        self.arrow_fuelcell.setStyle(tipAngle=60, tailLen=80,tailWidth=40, headLen=80, pen=None, brush='fc0303')
-        self.vb2.addItem(self.arrow_fuelcell)
-        self.anim_fuelcell = self.arrow_fuelcell.makeAnimation(loop=-1)
-        self.anim_fuelcell.start()
-        self.vb2.setRange(xRange=(-10,10),yRange=(-10,10))
-        return self.arrow_fuelcell
+    def create_anim_arrow2(self):   #fuel cell
+        direction = np.array([[1],[2]])
+        zero      = np.array([[4],[-4]])
+        t         = np.array([[-1,4.6]])
+        curv = zero + direction.dot(t)
+        return self.create_arrow(curv, 1, 2)
     
-    def create_anim_arrow3(self):
-        self.vb3 = self.pw2.addViewBox(row=1,col=0, enableMouse=False)
-        self.vb3.setBackgroundColor(None)
-        self.vb3.setAutoPan(False,False)
+    def create_anim_arrow3(self):  #electrolyzer
+        direction = np.array([[1], [-2]])
+        zero      = np.array([[-3], [-3]])
+        t         = np.array([[-4, 1.5]])
+        curv = zero + direction.dot(t)
+        return self.create_arrow(curv, 1, 0)
+
+    def create_arrow(self, curv, row, col):
+
+        self.curves.append(pg.PlotCurveItem(x=curv[0], y=curv[1]))
+        self.arrows.append(pg.CurveArrow(self.curves[-1]))
+        self.arrows[-1].setStyle(tipAngle=60, tailLen=20,tailWidth=10, headLen=20, pen=None, brush='fc0303')
         
-        x = [1, 13]
-        y = [10, -4]
-        self.curve3 = pg.PlotCurveItem(x=x, y=y)
-
-        self.arrow_electrolyzer = pg.CurveArrow(self.curve3)
-        self.arrow_electrolyzer.setStyle(tipAngle=60, tailLen=80,tailWidth=40, headLen=80, pen=None, brush='fc0303')
-        self.vb3.addItem(self.arrow_electrolyzer)
-        self.anim_electrolyzer = self.arrow_electrolyzer.makeAnimation(loop=-1)
-        self.anim_electrolyzer.setDuration(1000)
-        self.anim_electrolyzer.start()
+        self.vb.addItem(self.arrows[-1])
+        self.animations.append(self.arrows[-1].makeAnimation(loop=-1))
+        self.animations[-1].setDuration(1000)
+        self.animations[-1].start()
+       
+        
+        return len(self.arrows)-1
 
 
 
-        self.vb3.setRange(xRange=(-10,10),yRange=(-10,10))
-        return self.arrow_electrolyzer
 
     def create_arrows(self,parent,width, height):
         self.pw2 = pg.GraphicsLayoutWidget(self)
         self.pw2.setGeometry(QtCore.QRect(0, 0, width, height))
         self.pw2.setBackground(None)
 
-        # self.arrow_ledloads = self.create_arrow(225,1,0, True)
-        # self.arrow_ledloads.setPos(7,7)
-        # self.arrow_fuelcell = self.create_arrow(135,1,2, True)
-        # self.arrow_fuelcell.setPos(-7,7)
-        #self.arrow_electrolyzer = self.create_arrow(180,0,1, center=True)
+        self.vb = self.pw2.addViewBox(enableMouse=False)
+        self.vb.setBackgroundColor(None)
+        self.vb.setAutoPan(False,False)
+        
+        self.vb.setRange(xRange=(-10,10),yRange=(-10,10))
+
         self.arrow_ledloads =    self.create_anim_arrow1()
         self.arrow_fuelcell = self.create_anim_arrow2()
         self.arrow_electrolyzer        = self.create_anim_arrow3()
 
-        self.label1 = self.pw2.addLabel("",row=0,col=0, color='ffffff',size='20pt')
-        self.label2 = self.pw2.addLabel("", row=0,col=2, color='ffffff',size='20pt')
-        self.label3 = self.pw2.addLabel("", row=1,col=1, color='ffffff',size='20pt')
+        #self.label1 = self.pw2.addLabel("",row=0,col=0, color='ffffff',size='20pt')
+        #self.label2 = self.pw2.addLabel("", row=0,col=2, color='ffffff',size='20pt')
+        #self.label3 = self.pw2.addLabel("", row=1,col=1, color='ffffff',size='20pt')
     
 
     def create_fonts(self, height):
@@ -196,6 +187,9 @@ class System(QtWidgets.QWidget):
                                                        int(width * 0.10), int(height * 0.15)))
         self.load_figures_per.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
     
+    def setArrow(self, arrowIndex, val):
+        self.arrows[arrowIndex].setStyle(tipAngle=60, tailLen=20*val,tailWidth=10*val, headLen=20*val, pen=None, brush='fc0303')
+
     def update_text(self, input_data, sensor_data):
         """Update the text."""
         solar = sensor_data.get('solar_current')/20
@@ -209,7 +203,24 @@ class System(QtWidgets.QWidget):
         self.load_figures_curr.setText(f"{load:.2f}W\n0.00W")
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
         
-        currTime = millis()
+        self.arrows[self.arrow_electrolyzer].setStyle()
+        if elek>0:
+            self.arrows[self.arrow_fuelcell].hide()
+            self.arrows[self.arrow_electrolyzer].show()
+
+            self.setArrow(self.arrow_electrolyzer, abs(elek))
+            self.setArrow(self.arrow_ledloads, abs(load))
+
+        elif elek<0:
+            self.arrows[self.arrow_electrolyzer].hide()
+            self.arrows[self.arrow_fuelcell].show()
+
+            self.setArrow(self.arrow_fuelcell, abs(elek))
+            self.setArrow(self.arrow_ledloads, abs(solar+wind))
+        
+        
+        
+        # currTime = millis()
         # if currTime - self.lastTimeE > 1000:
         #     self.lastTimeE = currTime
         #     if elek>0:
@@ -226,32 +237,32 @@ class System(QtWidgets.QWidget):
         
         
         
-        if elek>0:
-            self.arrow_fuelcell.hide()
-            self.arrow_electrolyzer.show()
-            if currTime - self.lastTimeE >= self.animTimeE:
-                self.animTimeE = 4000/abs(elek)
-                self.anim_electrolyzer.setDuration(self.animTimeE)
-                self.lastTimeE = millis()
-            if currTime - self.lastTimeL >= self.animTimeL:
-                if load>0:
-                    self.animTimeL = 4000/abs(load)
-                    self.anim_ledloads.setDuration(self.animTimeL)
-                    self.lastTimeL = millis()
+        # if elek>0:
+        #     self.arrow_fuelcell.hide()
+        #     self.arrow_electrolyzer.show()
+        #     if currTime - self.lastTimeE >= self.animTimeE:
+        #         self.animTimeE = 4000/abs(elek)
+        #         self.anim_electrolyzer.setDuration(self.animTimeE)
+        #         self.lastTimeE = millis()
+        #     if currTime - self.lastTimeL >= self.animTimeL:
+        #         if load>0:
+        #             self.animTimeL = 4000/abs(load)
+        #             self.anim_ledloads.setDuration(self.animTimeL)
+        #             self.lastTimeL = millis()
 
-        elif elek<0:
-            self.arrow_electrolyzer.hide()
-            self.arrow_fuelcell.show()
+        # elif elek<0:
+        #     self.arrow_electrolyzer.hide()
+        #     self.arrow_fuelcell.show()
             
-            if currTime - self.lastTimeF >= self.animTimeF:
-                self.animTimeF = 4000/abs(elek)
-                self.anim_fuelcell.setDuration(self.animTimeF)
-                self.lastTimeF = millis()
-            if currTime - self.lastTimeL >= self.animTimeL:
-                self.animTimeL = 4000/abs(solar+wind)
-                self.anim_ledloads.setDuration(self.animTimeL)
-                self.lastTimeL = millis()    
+        #     if currTime - self.lastTimeF >= self.animTimeF:
+        #         self.animTimeF = 4000/abs(elek)
+        #         self.anim_fuelcell.setDuration(self.animTimeF)
+        #         self.lastTimeF = millis()
+        #     if currTime - self.lastTimeL >= self.animTimeL:
+        #         self.animTimeL = 4000/abs(solar+wind)
+        #         self.anim_ledloads.setDuration(self.animTimeL)
+        #         self.lastTimeL = millis()    
 
-        if self.animTimeF > 2000:   self.animTimeF = 2000
-        if self.animTimeL > 2000:   self.animTimeL = 2000
-        if self.animTimeE > 2000:   self.animTimeE = 2000
+        # if self.animTimeF > 2000:   self.animTimeF = 2000
+        # if self.animTimeL > 2000:   self.animTimeL = 2000
+        # if self.animTimeE > 2000:   self.animTimeE = 2000
