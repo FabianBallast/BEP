@@ -1,6 +1,6 @@
 """This module is the main part of the UI.
    It handles all windows and pages."""
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets, QtGui
 
 from src.src.map.map_layout import MapLayout
 from src.src.graphs.graph_layout import GraphLayout
@@ -13,6 +13,9 @@ from src.src.second_screen.second_screen_controller import SecondScreenControlle
 from src.src.system.system import System
 from src.src.serial.serial_page import SerialPage, SerialTextBox
 import src.style.style_sheets as sheet
+
+
+
 
 class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
@@ -118,6 +121,7 @@ class UiMainWindow(object):
         self.toolbar_top.figure_button.triggered.connect(lambda: self.stacked_widget_1.setCurrentIndex(6))              #pylint: disable=C0301
         if self.serial_box:
             self.toolbar_bottom.serial_button.triggered.connect(lambda: self.stacked_widget_2.setCurrentIndex(3))           #pylint: disable=C0301
+    
     def change_screen(self):
         """Change the page on the second screen."""
         self.stacked_widget_2.setCurrentIndex(self.second_screen.get_selected_item())
@@ -139,7 +143,10 @@ class UiMainWindow(object):
 
 if __name__ == "__main__":
     import sys
+    
+#    font = QtGui.QFont("Helvetica")
     app = QtWidgets.QApplication(sys.argv)
+#    app.setFont(font)
 
     desktop = app.desktop()
     screen = desktop.screenCount()

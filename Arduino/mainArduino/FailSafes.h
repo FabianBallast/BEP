@@ -8,12 +8,13 @@
 
 uint16_t electrolyzer_voltage; 
 uint16_t fuel_cell_voltage; 
+float grid_voltage; 
 
 void check_H2_voltages(){
 
     electrolyzer_voltage = analogRead(A7); //na step down, direct naar electrolyzer
     fuel_cell_voltage    = analogRead(A8); //na step down, direct naar fuel cell
-    grid_voltage         = analogRead(A9); ///12 V die gecorrigeerd wordt naar /3 --> 4V
+    grid_voltage         = analogRead(A9)*3 * 5/2014; ///12 V die gecorrigeerd wordt naar /3 --> 4V
 
     //failsafe Electrolyzer:
     if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
