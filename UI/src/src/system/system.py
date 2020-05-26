@@ -59,10 +59,9 @@ class System(QtWidgets.QWidget):
         self.vb1 = self.pw2.addViewBox(row=0,col=1, enableMouse=False)
         self.vb1.setBackgroundColor(None)
         self.vb1.setAutoPan(False,False)
-        
-        angle = 0
-        x = linspace(-7, 7, 2)*cos(radians(angle)) + 5
-        y = linspace(-7, 7, 2)*sin(radians(angle)) + 5
+
+        x = [-7, 12]
+        y = [5, 5]
         self.curve1 = pg.PlotCurveItem(x=x, y=y)
         
         self.arrow_ledloads = pg.CurveArrow(self.curve1)
@@ -78,9 +77,8 @@ class System(QtWidgets.QWidget):
         self.vb2.setBackgroundColor(None)
         self.vb2.setAutoPan(False,False)
         
-        angle = 45
-        x = linspace(-7, 7, 2)*cos(radians(angle)) - 10
-        y = linspace(-7, 7, 2)*sin(radians(angle)) + 6
+        x = [-17, -3]
+        y = [1, 13]
         self.curve2 = pg.PlotCurveItem(x=x, y=y)
         
         self.arrow_fuelcell = pg.CurveArrow(self.curve2)
@@ -96,9 +94,8 @@ class System(QtWidgets.QWidget):
         self.vb3.setBackgroundColor(None)
         self.vb3.setAutoPan(False,False)
         
-        angle = -45
-        x = linspace(-7, 7, 2)*cos(radians(angle)) + 6
-        y = linspace(-7, 7, 2)*sin(radians(angle)) + 6
+        x = [1, 13]
+        y = [10, -4]
         self.curve3 = pg.PlotCurveItem(x=x, y=y)
 
         self.arrow_electrolyzer = pg.CurveArrow(self.curve3)
@@ -107,6 +104,9 @@ class System(QtWidgets.QWidget):
         self.anim_electrolyzer = self.arrow_electrolyzer.makeAnimation(loop=-1)
         self.anim_electrolyzer.setDuration(1000)
         self.anim_electrolyzer.start()
+
+
+
         self.vb3.setRange(xRange=(-10,10),yRange=(-10,10))
         return self.arrow_electrolyzer
 
@@ -210,45 +210,48 @@ class System(QtWidgets.QWidget):
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
         
         currTime = millis()
-        if currTime - self.lastTimeE > 1000:
-            self.lastTimeE = currTime
-            if elek>0:
-                self.arrow_fuelcell.hide()
-                self.arrow_electrolyzer.show()
-                self.anim_electrolyzer.setDuration(4000/abs(elek))
-                if load>0:
-                    self.anim_ledloads.setDuration(4000/abs(load))
-            elif elek<0:
-                self.arrow_electrolyzer.hide()
-                self.arrow_fuelcell.show()
-                self.anim_fuelcell.setDuration(4000/abs(elek))
-                self.anim_ledloads.setDuration(4000/abs(solar+wind))
-        
-        
-        # 
-        # if elek>0:
-        #     self.arrow_fuelcell.hide()
-        #     self.arrow_electrolyzer.show()
-        #     if currTime - self.lastTimeE >= self.animTimeE:
-        #         self.animTimeE = 4000/abs(elek)
-        #         self.anim_electrolyzer.setDuration(self.animTimeE)
-        #         self.lastTimeE = millis()
-        #     if currTime - self.lastTimeL >= self.animTimeL:
+        # if currTime - self.lastTimeE > 1000:
+        #     self.lastTimeE = currTime
+        #     if elek>0:
+        #         self.arrow_fuelcell.hide()
+        #         self.arrow_electrolyzer.show()
+        #         self.anim_electrolyzer.setDuration(4000/abs(elek))
         #         if load>0:
-        #             self.animTimeL = 4000/abs(load)
-        #             self.anim_ledloads.setDuration(self.animTimeL)
-        #             self.lastTimeL = millis()
+        #             self.anim_ledloads.setDuration(4000/abs(load))
+        #     elif elek<0:
+        #         self.arrow_electrolyzer.hide()
+        #         self.arrow_fuelcell.show()
+        #         self.anim_fuelcell.setDuration(4000/abs(elek))
+        #         self.anim_ledloads.setDuration(4000/abs(solar+wind))
+        
+        
+        
+        if elek>0:
+            self.arrow_fuelcell.hide()
+            self.arrow_electrolyzer.show()
+            if currTime - self.lastTimeE >= self.animTimeE:
+                self.animTimeE = 4000/abs(elek)
+                self.anim_electrolyzer.setDuration(self.animTimeE)
+                self.lastTimeE = millis()
+            if currTime - self.lastTimeL >= self.animTimeL:
+                if load>0:
+                    self.animTimeL = 4000/abs(load)
+                    self.anim_ledloads.setDuration(self.animTimeL)
+                    self.lastTimeL = millis()
 
-        # elif elek<0:
-        #     self.arrow_electrolyzer.hide()
-        #     self.arrow_fuelcell.show()
+        elif elek<0:
+            self.arrow_electrolyzer.hide()
+            self.arrow_fuelcell.show()
             
-        #     if currTime - self.lastTimeF >= self.animTimeF:
-        #         self.animTimeF = 4000/abs(elek)
-        #         self.anim_fuelcell.setDuration(self.animTimeF)
-        #         self.lastTimeF = millis()
-        #     if currTime - self.lastTimeL >= self.animTimeL:
-        #         self.animTimeL = 4000/abs(solar+wind)
-        #         self.anim_ledloads.setDuration(self.animTimeL)
-        #         self.lastTimeL = millis()    
+            if currTime - self.lastTimeF >= self.animTimeF:
+                self.animTimeF = 4000/abs(elek)
+                self.anim_fuelcell.setDuration(self.animTimeF)
+                self.lastTimeF = millis()
+            if currTime - self.lastTimeL >= self.animTimeL:
+                self.animTimeL = 4000/abs(solar+wind)
+                self.anim_ledloads.setDuration(self.animTimeL)
+                self.lastTimeL = millis()    
 
+        if self.animTimeF > 2000:   self.animTimeF = 2000
+        if self.animTimeL > 2000:   self.animTimeL = 2000
+        if self.animTimeE > 2000:   self.animTimeE = 2000
