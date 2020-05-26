@@ -66,6 +66,7 @@ class ManualLayout(QtWidgets.QWidget):
             exec(f"self.{mode}_power_slider.setGeometry({x_pos[i]}, {y_pos[1]}," 
                                                       f"{wid[0]}, {hei[1]})")
             exec(f"self.{mode}_power_slider.valueChanged.connect(self.{mode}_power_value.display)")
+            exec(f"self.{mode}_power_slider.sliderReleased.connect(self.update_data_manager)")
 
 
             font.setPixelSize(int(height * 0.07))
@@ -84,7 +85,7 @@ class ManualLayout(QtWidgets.QWidget):
         font.setBold(True)
         font.setWeight(75)
 
-        buttons = ['start', 'stop']                         #pylint: disable=C0103 
+        buttons = ['stop']                         #pylint: disable=C0103 
         y_pos = [int(0.50 * height), int(0.61 * height)]
 
         for button in buttons:
@@ -105,7 +106,7 @@ class ManualLayout(QtWidgets.QWidget):
     def update_data_manager(self):
         """Updates the data manager. 
            Is called when a Start/Stop button is pressed."""
-        if self.main_window.sender().text() == 'Start':
+        if self.main_window.sender() != self.stop_button:
             self.data_manager.set_mode('manual', 
                 	                   [self.solar_power_slider.value(), 
                                         self.wind_power_slider.value(), 

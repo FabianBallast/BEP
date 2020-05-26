@@ -1,13 +1,15 @@
 """This module will handle all the data and the connection between the Pi and Arduino."""
 from PyQt5 import QtCore
+from ..data.log_handler import LogWriter
 from ..backend.read_tank_sensor import TankReader
-from ..backend.serial_communicator import SerialCommunicator
-from ..backend import loads
+from ..backend.serial_communicator2 import SerialCommunicator
+from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
+from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
-    def __init__(self):
+    def __init__(self, serial):
         self.mode = ''
         self.last_mode = ''
         self.scenario = ''
@@ -23,10 +25,18 @@ class DataManager():
         self.control_values_handlers = []
         self.storage_cal = 0
 
-        self.light = HalogenLight()
+        if not serial:
+            self.printer = SerialRaw()
+            self.printer.print("No second screen found.")
+        else:
+            self.printer = serial
+
+        self.light = HalogenLight(self.printer)
         self.tank_reader = TankReader()
-        self.serial_connection = SerialCommunicator()
+        self.serial_connection = SerialCommunicator(self.printer)
+        self.loads = Loads(self.printer)
         self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
+        self.file = LogWriter()
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
@@ -87,42 +97,42 @@ class DataManager():
         for handler in self.sensor_readings_handlers:
             handler(readings)
     
-    def connect_for_control_values(self, handler):
+    def connect_for_all_values(self, handler):
         """Add a function that want to get the control values."""
         self.control_values_handlers.append(handler)
         
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
-        values = self.values_for_control()
-
-        for handler in self.control_values_handlers:
-            handler(values)
+        values = self.values_for_control() 
 
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
         self.serial_connection.send_to_arduino(windPower=values[1])
-        loads.load_set(values[2])
-
-        if self.serial_connection.CONNECTION:
-            readings = self.serial_connection.read_arduino()
-        else:
-            readings = values.copy()
+        self.loads.load_set(values[2])
+        readings = self.serial_connection.read_arduino()
         
-        data = []
-        sensors = ['solar_power', 'wind_power', 'power_demand']
+        if 'dummy_serial' in readings:
+            sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 
+                       'power_supply_current', 'fuel_cell_current']
+            
+            for sensor in sensors:
+                try:
+                    readings[sensor] = values[sensors.index(sensor)]
+                except IndexError:
+                    readings[sensor] = 0
+            
 
-        for sensor in sensors:
-            if sensor in readings:
-                data.append(readings[sensor])
-            else:
-                data.append(values[sensors.index(sensor)])
+        readings['tank_level'] = self.tank_reader.read_tank_level()
+        readings['time'] = self.time_running.elapsed() / 1000
 
-        data.append(self.tank_reader.read_tank_level())
-        data.append(self.time_running.elapsed() / 1000)
-        #print(data)
-        self.send_sensor_readings(data)
-    
+        for handler in self.control_values_handlers:
+            handler(values, readings)
+        
+        self.send_sensor_readings(readings)
+
+        self.file.add_data_to_write(values, readings)
+        
 
     def values_for_control(self):
         """Retrieve the values from the scenario/manual control."""
@@ -132,5 +142,4 @@ class DataManager():
         if self.mode == 'scenario':
             return self.scenario.get_values_at(self.time_running.elapsed() / 1000)
         
-        return [0, 0, 0]
-    
+        return [0, 0, 0]    

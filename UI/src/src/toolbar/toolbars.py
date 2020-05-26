@@ -96,7 +96,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
         
         self.create_font(height)
         self.create_labels(width)
-        self.create_exit_button()
+        self.create_buttons(width)
 
     def create_font(self, height):
         """Create a font to use for the text."""
@@ -127,7 +127,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
         else:
             text = 'Nee'
         self.connection_label = QtWidgets.QLabel(self)
-        self.connection_label.setFixedWidth(int(width * 0.30))
+        self.connection_label.setFixedWidth(int(width * 0.25))
         self.connection_label.setFixedHeight(self.height())
         self.connection_label.setText(f"PI verbonden: {text}")
         self.connection_label.setFont(self.toolbar_font)
@@ -147,8 +147,14 @@ class ToolBarBottom(QtWidgets.QToolBar):
         else:
             self.mode_label.setText("Onbekend")
     
-    def create_exit_button(self):
+    def create_buttons(self, width):
         """Creates the button to go exit the application."""
+        
+        self.serial_button = QtWidgets.QAction('Serial')
+        self.serial_button.setFont(self.toolbar_font)
+        self.addAction(self.serial_button)
+
         self.exit_button = QtWidgets.QAction('Exit')
         self.exit_button.setFont(self.toolbar_font)
         self.addAction(self.exit_button)
+
