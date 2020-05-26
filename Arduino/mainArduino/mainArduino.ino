@@ -13,7 +13,10 @@
 
 #define PRINT_EACH_X_LOOPS 1
 
+unsigned long curr_time, prev_time;
+float elapsedTime;
 
+float opt_wind_current = 10;
 
 void setup() {
   serial_setup();
@@ -36,12 +39,20 @@ int i_send = 0;
 void loop() {
   if (comm_read()){ // data received, handle accordingly
     set_fan_power(comm_received[0]);
+    opt_wind_current = comm_received[1]; ///add scaling;
+    
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
   
   read_ammeters();
 
-  control_value = controlGrid(11.9);
+  curr_time = millis();
+  elapsedTime = (float)(curr_time - prev_time);
+  
+  grid_control_value = controlGrid(11.9);
+  controlWind(opt_wind_current);
+  
+  prev_time = curr_time;
  // processControlValue(control_value);
   
   check_H2_voltages();
@@ -51,8 +62,6 @@ void loop() {
 
   if (i_send == PRINT_EACH_X_LOOPS){
     i_send = 0;
-
-  
     comm_send();
   }
 }

@@ -70,12 +70,12 @@ void ammeters_setup(){
         //Serial.println(analogRead(A1));
         delay(sampleTime);
 
-        raw_readings_1[filter_readIndex]=0;      
-        raw_readings_2[filter_readIndex]=0;     
-        raw_readings_3[filter_readIndex]=0;     
-        raw_readings_4[filter_readIndex]=0;     
-        raw_readings_5[filter_readIndex]=0;     
-        raw_readings_6[filter_readIndex]=0;   
+//        raw_readings_1[filter_readIndex]=0;      
+//        raw_readings_2[filter_readIndex]=0;     
+//        raw_readings_3[filter_readIndex]=0;     
+//        raw_readings_4[filter_readIndex]=0;     
+//        raw_readings_5[filter_readIndex]=0;     
+//        raw_readings_6[filter_readIndex]=0;   
     }
     Serial.print("Starting calibration... \n, sum =");
     Serial.print(runningSum1);
@@ -95,6 +95,13 @@ void ammeters_setup(){
         runningSum5 += sensorValue5;
         runningSum6 += sensorValue6;
 
+        raw_readings_1[filter_readIndex] = sensorValue1;
+        raw_readings_2[filter_readIndex] = sensorValue2;
+        raw_readings_3[filter_readIndex] = sensorValue3;
+        raw_readings_4[filter_readIndex] = sensorValue4;
+        raw_readings_5[filter_readIndex] = sensorValue5;
+        raw_readings_6[filter_readIndex] = sensorValue6;
+
         delay(sampleTime);
     }
     
@@ -108,20 +115,20 @@ void ammeters_setup(){
     Serial.print("A1 zero load: ");
     Serial.print(sensor_value_zero_load_1);
     Serial.print(", Done calibrating \n");
-    runningSum1 = 0;
-    runningSum2 = 0;
-    runningSum3 = 0;
-    runningSum4 = 0;
-    runningSum5 = 0;
-    runningSum6 = 0;
+//    runningSum1 = 0;
+//    runningSum2 = 0;
+//    runningSum3 = 0;
+//    runningSum4 = 0;
+//    runningSum5 = 0;
+//    runningSum6 = 0;
 
 
-    raw_readings_1[0]=0;      
-    raw_readings_2[0]=0;     
-    raw_readings_3[0]=0;     
-    raw_readings_4[0]=0;     
-    raw_readings_5[0]=0;     
-    raw_readings_6[0]=0;   
+//    raw_readings_1[0]=runningSum1;      
+//    raw_readings_2[0]=runningSum2;     
+//    raw_readings_3[0]=runningSum3;     
+//    raw_readings_4[0]=runningSum4;     
+//    raw_readings_5[0]=runningSum5;     
+//    raw_readings_6[0]=runningSum6;   
 
     filter_readIndex = 0;
 }
