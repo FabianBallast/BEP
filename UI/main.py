@@ -1,6 +1,6 @@
 """This module is the main part of the UI.
    It handles all windows and pages."""
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets, QtGui
 
 from src.src.map.map_layout import MapLayout
 from src.src.graphs.graph_layout import GraphLayout
@@ -143,7 +143,10 @@ class UiMainWindow(object):
 
 if __name__ == "__main__":
     import sys
+    
+#    font = QtGui.QFont("Helvetica")
     app = QtWidgets.QApplication(sys.argv)
+#    app.setFont(font)
 
     desktop = app.desktop()
     screen = desktop.screenCount()
