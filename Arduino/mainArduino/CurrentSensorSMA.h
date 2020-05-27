@@ -16,12 +16,12 @@
 #define sensitivity_5 11.5   / filter_numReadings; 
 #define sensitivity_6 11.5   / filter_numReadings; 
 
-float sensor_value_zero_load_1 = 517.81*filter_numReadings; 
-float sensor_value_zero_load_2 = 517.81*filter_numReadings; 
-float sensor_value_zero_load_3 = 517.81*filter_numReadings; 
-float sensor_value_zero_load_4 = 517.81*filter_numReadings; 
-float sensor_value_zero_load_5 = 517.81*filter_numReadings; 
-float sensor_value_zero_load_6 = 517.81*filter_numReadings; 
+float sensor_value_zero_load_1 = 51397.5; 
+float sensor_value_zero_load_2 = 51397.5; 
+float sensor_value_zero_load_3 = 51397.5;  
+float sensor_value_zero_load_4 = 51397.5; 
+float sensor_value_zero_load_5 = 51397.5; 
+float sensor_value_zero_load_6 = 51397.5; 
 
 int filter_readIndex = 0; // the index of the current reading, 8 bits as its not a high number, always positive so u (unsigned)
 
@@ -104,17 +104,34 @@ void ammeters_setup(){
 
         delay(sampleTime);
     }
-    
-    sensor_value_zero_load_1 = runningSum1;
-    sensor_value_zero_load_2 = runningSum2;
-    sensor_value_zero_load_3 = runningSum3;
-    sensor_value_zero_load_4 = runningSum4;
-    sensor_value_zero_load_5 = runningSum5;
-    sensor_value_zero_load_6 = runningSum6;
 
-    Serial.print("A1 zero load: ");
+    if((runningSum1>51100)&(runningSum1<51600)) // reality check
+      sensor_value_zero_load_1 = runningSum1;
+    if((runningSum2>51100)&(runningSum2<51600)) // reality check
+      sensor_value_zero_load_2 = runningSum2;
+    if((runningSum3>51100)&(runningSum3<51600)) // reality check
+      sensor_value_zero_load_3 = runningSum3;
+    if((runningSum4>51100)&(runningSum4<51600)) // reality check
+      sensor_value_zero_load_4 = runningSum4;
+    if((runningSum5>51100)&(runningSum5<51600)) // reality check
+      sensor_value_zero_load_5 = runningSum5;
+    if((runningSum6>51100)&(runningSum6<51600)) // reality check
+      sensor_value_zero_load_6 = runningSum6;
+
+    Serial.print("Done calibrating \n");
+    Serial.print("zero loads: ");
     Serial.print(sensor_value_zero_load_1);
-    Serial.print(", Done calibrating \n");
+    Serial.print(", ");
+    Serial.print(sensor_value_zero_load_2);
+    Serial.print(", ");
+    Serial.print(sensor_value_zero_load_3);
+    Serial.print(", ");
+    Serial.print(sensor_value_zero_load_4);
+    Serial.print(", ");
+    Serial.print(sensor_value_zero_load_5);
+    Serial.print(", ");
+    Serial.print(sensor_value_zero_load_6);
+    Serial.print(", ");
 //    runningSum1 = 0;
 //    runningSum2 = 0;
 //    runningSum3 = 0;
