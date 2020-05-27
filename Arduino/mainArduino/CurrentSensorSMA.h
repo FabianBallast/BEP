@@ -105,6 +105,7 @@ void ammeters_setup(){
         delay(sampleTime);
     }
 
+    //make sure the system calibrates on the right values (off state)
     if((runningSum1>51100)&(runningSum1<51600)) // reality check
       sensor_value_zero_load_1 = runningSum1;
     if((runningSum2>51100)&(runningSum2<51600)) // reality check

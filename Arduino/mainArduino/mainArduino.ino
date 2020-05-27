@@ -13,6 +13,10 @@
 
 #define PRINT_EACH_X_LOOPS 1
 
+#define MULTIPLIER_SOLAR     3
+#define MULTIPLIER_WIND      3
+#define MULTIPLIER_FUEL_CELL 1
+
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
@@ -46,11 +50,13 @@ void loop() {
   
   read_ammeters();
 
+
   curr_time = millis();
   elapsedTime = (float)(curr_time - prev_time);
   
   grid_control_value = controlGrid(11.9);
   controlWind(opt_wind_current);
+  controlPowerSupply(current_to_add());
   
   prev_time = curr_time;
  // processControlValue(control_value);
@@ -64,4 +70,9 @@ void loop() {
     i_send = 0;
     comm_send();
   }
+}
+
+
+float current_to_add(){
+    return current_solar_panels * (MULTIPLIER_SOLAR - 1) + current_wind_turbines * (MULTIPLIER_WIND - 1) + current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1);
 }

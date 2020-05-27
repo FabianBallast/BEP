@@ -7,32 +7,47 @@
 
 #define VALVE_PIN 8
 
-byte electrolyzer_pwm;
-byte fuel_cell_pwm;
-byte pwm_value_power_supply;
-byte turbine_pwm;
 
+
+
+
+
+
+
+
+extern float elapsedTime;
+
+//GRID PID
 byte Kp_grid = 3;
 byte Ki_grid = 2;
 byte Kd_grid = 1;
-
-byte Kp_wind = 3;
-byte Ki_wind = 2;
-byte Kd_wind = 1;
-
-extern float elapsedTime;
 
 extern float grid_voltage; 
 float curr_volt_error, prev_volt_error;
 float grid_control_value;
 float cum_volt_error, rate_volt_error;
+byte fuel_cell_pwm;
+byte electrolyzer_pwm;
 
+//TURBINE PID
+byte Kp_wind = 3;
+byte Ki_wind = 2;
+byte Kd_wind = 1;
 extern float current_wind_turbines;
-
 float curr_wind_error, prev_wind_error;
 float wind_control_value;
 float cum_wind_error, rate_wind_error;
+byte turbine_pwm;
 
+//POWER SUPPLY PID
+byte Kp_ps = 3;
+byte Ki_ps = 2;
+byte Kd_ps = 1;
+extern float current_power_supply;
+float curr_ps_error, prev_ps_error;
+float ps_control_value;
+float cum_ps_error, rate_ps_error;
+byte pwm_value_power_supply;
 
 void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
@@ -47,7 +62,6 @@ void mosfets_setup(){
 }
 
 float controlGrid(float target_volt){
-  
     curr_volt_error = target_volt - grid_voltage;
     cum_volt_error += curr_volt_error * elapsedTime;
     rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
@@ -55,30 +69,43 @@ float controlGrid(float target_volt){
     grid_control_value = Kp_grid*curr_volt_error + Ki_grid*cum_volt_error + Kd_grid*rate_volt_error;
 
     prev_volt_error = curr_volt_error;
-
     return grid_control_value;
 }
 
 float controlWind(float target_current){
-    //curr_volt = analogRead(voltage_measurer) * 5/1024;
-    
     curr_wind_error = target_current - current_wind_turbines;
     cum_wind_error += curr_wind_error * elapsedTime;
     rate_wind_error = (curr_wind_error - prev_wind_error)/elapsedTime;
     
     wind_control_value = Kp_wind*curr_wind_error + Ki_wind*cum_wind_error + Kd_wind*rate_wind_error;
     turbine_pwm = map(wind_control_value, -100, 100, 0, 255);
-    if (turbine_pwm<=0){
+    if (turbine_pwm<=0)
        turbine_pwm = 0;
-    }
-    if (turbine_pwm>=255){
+    if (turbine_pwm>=255)
        turbine_pwm = 255;
-    }
 
     prev_wind_error = curr_wind_error;
 
     analogWrite(TURIBNE_MOSFET_PIN, turbine_pwm);
     return wind_control_value, turbine_pwm;
+}
+
+float controlPowerSupply(float target_current_ps){
+    curr_ps_error = target_current_ps - current_power_supply;
+    cum_ps_error += curr_ps_error * elapsedTime;
+    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+    
+    ps_control_value = Kp_ps*curr_ps_error + Ki_ps*cum_ps_error + Kd_wind*rate_ps_error;
+    pwm_value_power_supply = map(ps_control_value, -100, 100, 0, 255);
+    if (pwm_value_power_supply<=0)
+       pwm_value_power_supply = 0;
+    if (pwm_value_power_supply>=255)
+       pwm_value_power_supply = 255;
+
+    prev_ps_error = curr_ps_error;
+
+    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+    return ps_control_value, pwm_value_power_supply;
 }
 
 void openValve(byte valve_open_time){
