@@ -17,17 +17,22 @@
 
 extern float elapsedTime;
 
-//GRID PID
+//GRID PID VOLTage
 byte Kp_grid = 3;
 byte Ki_grid = 2;
 byte Kd_grid = 1;
-
 extern float grid_voltage; 
 float curr_volt_error, prev_volt_error;
 float grid_control_value;
 float cum_volt_error, rate_volt_error;
 byte fuel_cell_pwm;
 byte electrolyzer_pwm;
+
+//GRID PID CURRENT
+byte Kp_ps_h2 = 3;
+byte Ki_ps_h2 = 2;
+byte kd_ps_h2 = 1;
+
 
 //TURBINE PID
 byte Kp_wind = 3;
@@ -61,7 +66,7 @@ void mosfets_setup(){
     digitalWrite(VALVE_PIN, LOW);
 }
 
-float controlGrid(float target_volt){
+float controlGridVoltage(float target_volt){
     curr_volt_error = target_volt - grid_voltage;
     cum_volt_error += curr_volt_error * elapsedTime;
     rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
@@ -69,6 +74,17 @@ float controlGrid(float target_volt){
     grid_control_value = Kp_grid*curr_volt_error + Ki_grid*cum_volt_error + Kd_grid*rate_volt_error;
 
     prev_volt_error = curr_volt_error;
+    return grid_control_value;
+}
+
+float controlGridCurrent(float target_current_ps){
+    curr_ps_error = target_current_ps - current_power_supply;
+    cum_ps_error += curr_ps_error * elapsedTime;
+    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+    
+    grid_control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
+    
+    prev_ps_error = curr_ps_error;
     return grid_control_value;
 }
 
@@ -95,7 +111,7 @@ float controlPowerSupply(float target_current_ps){
     cum_ps_error += curr_ps_error * elapsedTime;
     rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
     
-    ps_control_value = Kp_ps*curr_ps_error + Ki_ps*cum_ps_error + Kd_wind*rate_ps_error;
+    ps_control_value = Kp_ps*curr_ps_error + Ki_ps*cum_ps_error + Kd_ps*rate_ps_error;
     pwm_value_power_supply = map(ps_control_value, -100, 100, 0, 255);
     if (pwm_value_power_supply<=0)
        pwm_value_power_supply = 0;

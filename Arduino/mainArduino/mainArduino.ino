@@ -50,17 +50,24 @@ void loop() {
   
   read_ammeters();
 
-
+  /////////////////CONTROL SYSTEM WITH PID'S
   curr_time = millis();
   elapsedTime = (float)(curr_time - prev_time);
+
+  //METHOD 1: CONTROL VOLTAGE
+  //grid_control_value = controlGrid(11.9);
+  //controlPowerSupply(current_to_add());
   
-  grid_control_value = controlGrid(11.9);
+  //METHOD 2: CONTROL CURRENT
+  grid_control_value = controlGridCurrent(current_total);
+  
   controlWind(opt_wind_current);
-  controlPowerSupply(current_to_add());
+
   
   prev_time = curr_time;
  // processControlValue(control_value);
-  
+ 
+  //////////////////////////////////
   check_H2_voltages();
 
   //collect all data to send
@@ -72,7 +79,9 @@ void loop() {
   }
 }
 
-
+float current_total(){
+    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;
+}
 float current_to_add(){
     return current_solar_panels * (MULTIPLIER_SOLAR - 1) + current_wind_turbines * (MULTIPLIER_WIND - 1) + current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1);
 }
