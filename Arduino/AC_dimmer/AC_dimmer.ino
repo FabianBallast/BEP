@@ -58,6 +58,8 @@
 #define USE_SERIAL  Serial
 #define outputPin  11
 #define zerocross  2 // for boards with CHANGEBLE input pins
+#define TURIBNE_MOSFET_PIN      10
+
 
 //dimmerLamp dimmer(outputPin, zerocross); //initialase port for dimmer for ESP8266, ESP32, Arduino due boards
 dimmerLamp dimmer(outputPin); //initialase port for dimmer for MEGA, Leonardo, UNO, Arduino M0, Arduino Zero
@@ -66,10 +68,14 @@ int outVal = 0;
 
 void setup() {
   USE_SERIAL.begin(9600); 
-  dimmer.begin(TOGGLE_MODE, ON); //dimmer initialisation: name.begin(MODE, STATE) 
+  dimmer.begin(NORMAL_MODE, ON); //dimmer initialisation: name.begin(MODE, STATE) 
   USE_SERIAL.println("Dimmer Program is starting...");
   USE_SERIAL.println("Set value");
  // dimmer.setState(OFF); for turning of
+
+  pinMode(TURIBNE_MOSFET_PIN,      OUTPUT);
+ 
+  analogWrite(TURIBNE_MOSFET_PIN, 255);
 }
 
 void printSpace(int val)
@@ -85,11 +91,12 @@ void loop() {
   {
     int buf = USE_SERIAL.parseInt();
     if (buf != 0) {
-      outVal = map(buf, 0, 100, 10, 80);
+      outVal = buf; // map(buf, 0, 100, 10, 80);
     }
     delay(200);
+    dimmer.setPower(outVal); // setPower(0-99%);  
+
   }
-  dimmer.setPower(outVal); // setPower(0-99%);  
 
   if (preVal != outVal)
   {

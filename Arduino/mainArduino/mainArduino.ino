@@ -59,9 +59,9 @@ void loop() {
   //controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
-  grid_control_value = controlGridCurrent(current_total);
+  //grid_control_value = controlGridCurrent(current_total());
   
-  controlWind(opt_wind_current);
+  //controlWind(opt_wind_current);
 
   
   prev_time = curr_time;

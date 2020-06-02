@@ -4,7 +4,6 @@
 #define FUEL_CELL_MOSFET_PIN    6
 #define POWER_SUPPLY_MOSFET_PIN 7
 #define TURIBNE_MOSFET_PIN      10
-
 #define VALVE_PIN 8
 
 
@@ -31,7 +30,7 @@ byte electrolyzer_pwm;
 //GRID PID CURRENT
 byte Kp_ps_h2 = 3;
 byte Ki_ps_h2 = 2;
-byte kd_ps_h2 = 1;
+byte Kd_ps_h2 = 1;
 
 
 //TURBINE PID
@@ -58,11 +57,13 @@ void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
     pinMode(FUEL_CELL_MOSFET_PIN,    OUTPUT);
     pinMode(POWER_SUPPLY_MOSFET_PIN, OUTPUT);
+    pinMode(TURIBNE_MOSFET_PIN,      OUTPUT);
  
 
     analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
     analogWrite(FUEL_CELL_MOSFET_PIN, 0);
     analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
+    analogWrite(TURIBNE_MOSFET_PIN, 0);
     digitalWrite(VALVE_PIN, LOW);
 }
 
