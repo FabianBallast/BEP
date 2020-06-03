@@ -47,7 +47,7 @@ int i_send = 0;
 
 void loop() {
   if (comm_read()){ // data received, handle accordingly
-  //  set_fan_power(comm_received[0]);
+    set_fan_power(comm_received[0]);
     opt_wind_current = comm_received[1]; ///add scaling;
     
     /// TODO add turn off possiblity for fuel cell + electrolyzer
@@ -60,13 +60,13 @@ void loop() {
   elapsedTime = (float)(curr_time - prev_time);
 
   //METHOD 1: CONTROL VOLTAGE
-  //grid_control_value = controlGrid(11.9);
-  //controlPowerSupply(current_to_add());
+//  grid_control_value = controlGrid(11.9);
+  controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
   //grid_control_value = controlGridCurrent(current_total());
   
-  //controlWind(opt_wind_current);
+  controlWind(opt_wind_current);
 
   
   prev_time = curr_time;
