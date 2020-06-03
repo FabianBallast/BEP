@@ -32,15 +32,15 @@ class DataManager():
             self.printer = serial
 
         self.light = HalogenLight(self.printer)
-        self.tank_reader = TankReader()
+        self.tank_reader = TankReader(self)
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
-        self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
+        self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
-        self.update_timer.start(100)
+        self.update_timer.start(200)
 
         self.time_running = QtCore.QTime()
         self.time_running.start()

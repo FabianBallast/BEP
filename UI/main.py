@@ -43,7 +43,7 @@ class UiMainWindow(object):
 
     def add_toolbars_to_window(self, geometry, main_window):
         """Add the toolbars to the main window."""
-        self.toolbar_top = ToolBarTop(geometry[1])
+        self.toolbar_top = ToolBarTop(geometry[0], geometry[1])
         main_window.addToolBar(self.toolbar_top)
         self.toolbar_bottom = ToolBarBottom(geometry[0], geometry[1], self.data)
         main_window.addToolBar(QtCore.Qt.BottomToolBarArea, self.toolbar_bottom)
@@ -130,7 +130,7 @@ class UiMainWindow(object):
         """Close app when button is pressed."""
         reply = QtWidgets.QMessageBox.warning(
             self.stacked_widget_1, 
-            "Exit Application", 
+            "Afsluiten", 
             "Wil je afsluiten?", 
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No, 
             QtWidgets.QMessageBox.No

@@ -20,13 +20,7 @@ class System(QtWidgets.QWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.lastTimeE = millis()
-        self.lastTimeL = millis()
-        self.lastTimeF = millis()
-
-        self.animTimeE = 0
-        self.animTimeL = 0
-        self.animTimeF = 0
+        self.update_i  = 0
         self.curves = []
         self.animations = []
         self.viewBoxes = []
@@ -51,35 +45,26 @@ class System(QtWidgets.QWidget):
         vb1.addItem(arrow_right)
         vb1.setRange(xRange=(-10,10),yRange=(-10,10))
 
-        # animation = QtCore.QPropertyAnimation(self.button, "geometry")
-        # animation.setDuration(10000)
-        # animation.setStartValue(QtCore.QRect(0,0,0,0))
-        # animation.setEndValue(QtCore.QRect(0,0,200,200))
-        # animation.start()
-
-        # self.animation = animation
-
-
         return arrow_right
     
     def create_anim_arrow1(self):       #ledloads
         direction = np.array([[1],[0]])
         zero      = np.array([[0],[7]])
-        t         = np.array([[-4,4]])
+        t         = np.array([[-2.5,4]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 0, 1)
 
     def create_anim_arrow2(self):   #fuel cell
         direction = np.array([[1],[2]])
         zero      = np.array([[4],[-4]])
-        t         = np.array([[-1,4.6]])
+        t         = np.array([[-0.1,4.6]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 1, 2)
     
     def create_anim_arrow3(self):  #electrolyzer
         direction = np.array([[1], [-2]])
         zero      = np.array([[-3], [-3]])
-        t         = np.array([[-4, 1.5]])
+        t         = np.array([[-2.7, 1.5]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 1, 0)
 
@@ -94,7 +79,6 @@ class System(QtWidgets.QWidget):
         self.animations[-1].setDuration(1000)
         self.animations[-1].start()
        
-        
         return len(self.arrows)-1
 
 
@@ -203,6 +187,9 @@ class System(QtWidgets.QWidget):
         self.load_figures_curr.setText(f"{load:.2f}W\n0.00W")
         self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
         
+        # self.update_i+=1
+        # if self.update_i > 10:
+        #     self.update_i = 0
         self.arrows[self.arrow_electrolyzer].setStyle()
         if elek>0:
             self.arrows[self.arrow_fuelcell].hide()

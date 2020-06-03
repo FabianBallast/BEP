@@ -14,11 +14,12 @@ class SerialCommunicator:
         try:
             #self.ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
             self.ser = serial.Serial('COM5', 9600, timeout=0)
-            self.CONNECTION = True
+            self.NO_CONNECTION = ""
+            printer.print("Arduino verbonden")
         except serial.serialutil.SerialException:
             from ..dummy import dummy_serial
             self.ser = dummy_serial
-            self.CONNECTION = False
+            self.NO_CONNECTION = "Arduino niet verbonden"
         #self.ser = serial.Serial('COM4', 9600, timeout=0
 
         #initial parameters
@@ -41,15 +42,16 @@ class SerialCommunicator:
     
     def send_to_arduino(self, **kwargs):
         """Send data to Arduino. Currently only windpower."""
-        for key, value in kwargs.items():
-            self.send[key] = value
-        #printer.print('Sending', self.send)
-        
-        array_to_send = [int(self.send[key]) for key in self.send_order]
-        bytes_to_send = bytes(array_to_send)
-        
-        #printer.print('We sent', array_to_send)
-        self.ser.write(bytes_to_send)
+        if not self.NO_CONNECTION == "Arduino niet verbonden":
+            for key, value in kwargs.items():
+                self.send[key] = value
+            #printer.print('Sending', self.send)
+            
+            array_to_send = [int(self.send[key]) for key in self.send_order]
+            bytes_to_send = bytes(array_to_send)
+            
+            #printer.print('We sent', array_to_send)
+            self.ser.write(bytes_to_send)
         return self.send
 
     def read_arduino(self):
