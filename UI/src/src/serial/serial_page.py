@@ -15,17 +15,17 @@ class SerialPage(QtWidgets.QWidget):
         self.text_browser.setParent(self)
         
         self.last_data_box = last_data_box
-        #self.last_data_box.setFont(self.text_font)
-        #self.last_data_box.setText("Last data: ")
         self.last_data_box.setGeometry(QtCore.QRect(int(parent.width() * 0.65), int(parent.height() * 0.05),
                                                    int(parent.width() * 0.90), int(parent.height() * 0.90)))
-        self.last_data_box.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
         self.last_data_box.setParent(self)
+        self.last_data_box.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
+        
 
         font = QtGui.QFont()
         font.setPixelSize(int(parent.height() * 0.04))
         self.text_browser.setFont(font)
-       
+        self.last_data_box.setFont(font)
+        self.last_data_box.setText("Last data: ")
         
 
     #def print(self, text):

@@ -30,6 +30,7 @@ class DataManager():
             self.printer.print("No second screen found.")
         else:
             self.printer = serial
+        self.last_data_box = last_data_box
 
         self.light = HalogenLight(self.printer)
         self.tank_reader = TankReader(self)
@@ -111,6 +112,7 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
         readings = self.serial_connection.read_arduino()
+        self.last_data_box.update(readings)
         
         if 'dummy_serial' in readings:
             sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 
