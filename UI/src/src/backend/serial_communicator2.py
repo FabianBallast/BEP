@@ -101,7 +101,7 @@ class SerialCommunicator:
                                 self.printer.print(f'Received from Arduino: {split}')
                     self.all_received_data = ""
 
-        except AttributeError as error:
+        except:
             rbytes = str(rbytes)
             self.all_received_data = ""
             #self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
