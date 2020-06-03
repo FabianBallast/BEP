@@ -35,7 +35,7 @@ void setup() {
   Serial.print("Setting up \n");
   mosfets_setup(); //set to off state for calibrating
   
-//  ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
+  ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
 
   fan_start();
