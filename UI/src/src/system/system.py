@@ -17,7 +17,7 @@ class System(QtWidgets.QWidget):
     """This class inherits from a QWidget.
        It contains all components on the 'figures' page."""
 
-    def __init__(self, parent):
+    def __init__(self, parent, preview_version=False):
         super().__init__(parent)
 
         self.update_i  = 0
@@ -25,6 +25,7 @@ class System(QtWidgets.QWidget):
         self.animations = []
         self.viewBoxes = []
         self.arrows = []
+        self.preview = preview_version
 
         self.create_fonts(parent.height())   
         self.create_source_text(parent.width(), parent.height())
@@ -34,10 +35,11 @@ class System(QtWidgets.QWidget):
 
 
 
-    def create_arrow(self,angle,row,col, center=False):
-        vb1 = self.pw2.addViewBox(row=row,col=col, enableMouse=False)
+    def create_arrow(self, angle, row, col, center=False):
+        """"Create arrow."""
+        vb1 = self.pw2.addViewBox(row=row, col=col, enableMouse=False)
         vb1.setBackgroundColor(None)
-        vb1.setAutoPan(False,False)
+        vb1.setAutoPan(False, False)
         if center:
             arrow_right = MyArrowItem(angle=angle, tipAngle=60, tailLen=80,tailWidth=40, headLen=80, pen=None, brush='fc0303')
         else:
@@ -48,6 +50,7 @@ class System(QtWidgets.QWidget):
         return arrow_right
     
     def create_anim_arrow1(self):       #ledloads
+        """Create moving arrow 1."""
         direction = np.array([[1],[0]])
         zero      = np.array([[0],[7]])
         t         = np.array([[-2.5,4]])
@@ -55,6 +58,7 @@ class System(QtWidgets.QWidget):
         return self.create_arrow(curv, 0, 1)
 
     def create_anim_arrow2(self):   #fuel cell
+        """Create moving arrow 2."""
         direction = np.array([[1],[2]])
         zero      = np.array([[4],[-4]])
         t         = np.array([[-0.1,4.6]])
@@ -62,6 +66,7 @@ class System(QtWidgets.QWidget):
         return self.create_arrow(curv, 1, 2)
     
     def create_anim_arrow3(self):  #electrolyzer
+        """Create moving arrow 3."""
         direction = np.array([[1], [-2]])
         zero      = np.array([[-3], [-3]])
         t         = np.array([[-2.7, 1.5]])
@@ -69,7 +74,7 @@ class System(QtWidgets.QWidget):
         return self.create_arrow(curv, 1, 0)
 
     def create_arrow(self, curv, row, col):
-
+        """"Create all the arrows."""
         self.curves.append(pg.PlotCurveItem(x=curv[0], y=curv[1]))
         self.arrows.append(pg.CurveArrow(self.curves[-1]))
         self.arrows[-1].setStyle(tipAngle=60, tailLen=20,tailWidth=10, headLen=20, pen=None, brush='fc0303')
@@ -77,14 +82,13 @@ class System(QtWidgets.QWidget):
         self.vb.addItem(self.arrows[-1])
         self.animations.append(self.arrows[-1].makeAnimation(loop=-1))
         self.animations[-1].setDuration(1000)
-        self.animations[-1].start()
+        if not self.preview:
+            self.animations[-1].start()
        
         return len(self.arrows)-1
 
-
-
-
     def create_arrows(self,parent,width, height):
+        """Create the arrows."""
         self.pw2 = pg.GraphicsLayoutWidget(self)
         self.pw2.setGeometry(QtCore.QRect(0, 0, width, height))
         self.pw2.setBackground(None)
@@ -95,9 +99,9 @@ class System(QtWidgets.QWidget):
         
         self.vb.setRange(xRange=(-10,10),yRange=(-10,10))
 
-        self.arrow_ledloads =    self.create_anim_arrow1()
+        self.arrow_ledloads = self.create_anim_arrow1()
         self.arrow_fuelcell = self.create_anim_arrow2()
-        self.arrow_electrolyzer        = self.create_anim_arrow3()
+        self.arrow_electrolyzer = self.create_anim_arrow3()
 
         #self.label1 = self.pw2.addLabel("",row=0,col=0, color='ffffff',size='20pt')
         #self.label2 = self.pw2.addLabel("", row=0,col=2, color='ffffff',size='20pt')
