@@ -1,4 +1,5 @@
 #include "ACdimmer.h" 
+
 #include "ControlMosfets.h"
 #include "FailSafes.h"
 
@@ -10,6 +11,11 @@
 //#include "CurrentSensorsEMA.h"
 #include "CurrentSensorSMA.h"
 
+//########################
+//#include <RBDdimmer.h>
+//#define dimmer_outPin  8 // D8 / D9 voor 2e output    
+//#define zerocross  2 // (NOT CHANGABLE)   
+//dimmerLamp FanDimmer(dimmer_outPin); 
 
 #define PRINT_EACH_X_LOOPS 1
 
@@ -24,16 +30,15 @@ float opt_wind_current = 10;
 
 void setup() {
   serial_setup();
+  fan_setup();   //MOET ALS EERSTE; KAN NIET EERST NOG IETS GEPRINT WORDEN OVER SERIAL
+
   Serial.print("Setting up \n");
   mosfets_setup(); //set to off state for calibrating
-  //fan_setup();   ///WORKS ONLY WHEN FAN IS CONNECTED
+  
+//  ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
-  ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
-
- // fan_start();
- // pinMode(13, OUTPUT);
- // digitalWrite(13, HIGH);
+  fan_start();
 
   Serial.print("Setup done \n");
 }
@@ -42,7 +47,7 @@ int i_send = 0;
 
 void loop() {
   if (comm_read()){ // data received, handle accordingly
-    set_fan_power(comm_received[0]);
+  //  set_fan_power(comm_received[0]);
     opt_wind_current = comm_received[1]; ///add scaling;
     
     /// TODO add turn off possiblity for fuel cell + electrolyzer

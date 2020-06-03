@@ -24,7 +24,7 @@ void comm_send(){
   Serial.print(", \"electrolyzer_current\":"); Serial.print(current_electrolyzer);
   Serial.print(", \"power_supply_current\":"); Serial.print(current_power_supply);
   Serial.print(", \"fuel_cell_current\":");    Serial.print(current_fuel_cell);          
-  Serial.print(", \"fan_power\":");            Serial.print(get_fan_power());      
+//  Serial.print(", \"fan_power\":");            Serial.print(get_fan_power());      
   Serial.print(", \"electrolyzer_voltage\":"); Serial.print(electrolyzer_voltage);        
   Serial.print(", \"fuel_cell_voltage\":");    Serial.print(fuel_cell_voltage);   
   Serial.print(", \"grid_voltage\":");         Serial.print(grid_voltage);   

@@ -4,8 +4,8 @@
 #define FUEL_CELL_MOSFET_PIN    6
 #define POWER_SUPPLY_MOSFET_PIN 7
 #define TURIBNE_MOSFET_PIN      10
-#define VALVE_PIN 8
-
+#define VALVE_PIN               12
+#define TURBINE_START_PIN       11
 
 
 
@@ -52,6 +52,7 @@ float curr_ps_error, prev_ps_error;
 float ps_control_value;
 float cum_ps_error, rate_ps_error;
 byte pwm_value_power_supply;
+
 
 void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
@@ -103,6 +104,11 @@ float controlWind(float target_current){
 
     prev_wind_error = curr_wind_error;
 
+    if (get_fan_power() < 10)
+      analogWrite(TURBINE_START_PIN, 0);
+    else
+      analogWrite(TURBINE_START_PIN, 255);
+
     analogWrite(TURIBNE_MOSFET_PIN, turbine_pwm);
     return wind_control_value, turbine_pwm;
 }
@@ -120,6 +126,8 @@ float controlPowerSupply(float target_current_ps){
        pwm_value_power_supply = 255;
 
     prev_ps_error = curr_ps_error;
+
+    pwm_value_power_supply = 255;
 
     analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
     return ps_control_value, pwm_value_power_supply;
