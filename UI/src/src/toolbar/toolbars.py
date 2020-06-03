@@ -76,7 +76,7 @@ class ToolBarTop(QtWidgets.QToolBar):
 
     def add_fixed_spacer(self, width):
         spacer = QtWidgets.QWidget(self)
-        spacer.setFixedWidth(int(width* 0.10))
+        spacer.setFixedWidth(int(width* 0.02))
         spacer.setStyleSheet("background-color: rgba(0,0,0,0)")
         self.addWidget(spacer)
     
@@ -119,7 +119,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
 
     def add_fixed_spacer(self, width):
         spacer = QtWidgets.QWidget(self, autoFillBackground=False)
-        spacer.setFixedWidth(int(width* 0.10))
+        spacer.setFixedWidth(int(width* 0.02))
         spacer.setStyleSheet("background-color: rgba(0,0,0,0)")
         self.addWidget(spacer)
 
@@ -188,7 +188,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
 
         self.addSpacer()
 
-        self.exit_button = QtWidgets.QAction('⎘')
+        self.exit_button = QtWidgets.QAction('➥')
         self.exit_button.setFont(self.toolbar_font)
         self.addAction(self.exit_button)
 

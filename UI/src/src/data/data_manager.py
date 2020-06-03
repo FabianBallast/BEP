@@ -9,7 +9,7 @@ from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
-    def __init__(self, serial):
+    def __init__(self, serial, last_data_box):
         self.mode = ''
         self.last_mode = ''
         self.scenario = ''

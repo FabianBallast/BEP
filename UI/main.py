@@ -11,7 +11,7 @@ from src.src.toolbar.toolbars import ToolBarTop, ToolBarBottom
 from src.src.help.help_layout import HelpLayout
 from src.src.second_screen.second_screen_controller import SecondScreenController
 from src.src.system.system import System
-from src.src.serial.serial_page import SerialPage, SerialTextBox
+from src.src.serial.serial_page import SerialPage, SerialTextBox, LastDataBox
 import src.style.style_sheets as sheet
 
 
@@ -21,9 +21,10 @@ class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
     def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2):
 
-        #self.serial_box = SerialTextBox()
-        self.serial_box = None
-        self.data = DataManager(self.serial_box)
+        self.serial_box = SerialTextBox()
+        self.last_data_box = LastDataBox()
+        #self.serial_box = None
+        self.data = DataManager(self.serial_box, self.last_data_box)
         self.set_main_windows(geometry_1, geometry_2, main_window_1, main_window_2)
         self.add_toolbars_to_window(geometry_1, main_window_1)
         self.create_central_stacked_widgets(geometry_1, geometry_2, main_window_1, main_window_2)
@@ -88,7 +89,7 @@ class UiMainWindow(object):
         self.map_2 = MapLayout(main_window_2, self.stacked_widget_2)
         self.system_2 = System(self.stacked_widget_2)
         if self.serial_box:
-            self.serial = SerialPage(self.stacked_widget_2, self.serial_box)
+            self.serial = SerialPage(self.stacked_widget_2, self.serial_box, self.last_data_box)
         self.stacked_widget_2.addWidget(self.graphs_2)
         self.stacked_widget_2.addWidget(self.map_2)
         self.stacked_widget_2.addWidget(self.system_2)
