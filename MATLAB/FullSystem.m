@@ -53,7 +53,6 @@ for row = 1 : rows
    end
 end
 
-
 step_size = T_sim/n;%s
 
 r_WT.time = [];
