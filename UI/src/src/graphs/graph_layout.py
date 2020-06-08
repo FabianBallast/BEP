@@ -112,11 +112,12 @@ class GraphLayout(QtWidgets.QWidget):
         
         if len(self.x_curr) > 0 and self.x_curr[-1] > readings['time']:
             self.reset_graph()
+            
         
         self.x_curr.append(readings['time'])
-        self.solar.append(readings['solar_current'])
-        self.wind.append(readings['wind_current'])
-        self.demand.append(readings['load_current'])
+        self.solar.append(readings['zonI'])
+        self.wind.append(readings['windI'])
+        self.demand.append(readings['loadI'])
         self.storage.append(readings['tank_level'])
 
         self.solar_graph.setData(self.x_curr, self.solar)
