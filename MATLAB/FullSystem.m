@@ -28,8 +28,6 @@ ex1 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet1');
 ex2 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet2');
 ex3 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet3');
 
-
-
 % Places the Excel file values into variables
 n = ex1(1, :)';
 t =  ex1(2, :)';
