@@ -25,7 +25,7 @@ solar_x_raw = A * cos(omega * t) + A;
 solar_x = solar_x_raw .* (t >= T_dag / 4 & t <= T_dag * 3 / 4);
 solar.time = [];
 solar.signals.values = [solar_x];
-solar.signals.dimensions =1;
+solar.signals.dimensions = 1;
 
 % Trying an advanced input signal for wind
 t = linspace(0, T_sim, T_sim / t_step + 1)';
