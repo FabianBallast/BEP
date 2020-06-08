@@ -29,7 +29,8 @@ float opt_wind_current = 10;
 void setup() {
   serial_setup();
   fan_setup();   //MOET ALS EERSTE; KAN NIET EERST NOG IETS GEPRINT WORDEN OVER SERIAL
-
+  setup_voltage_sensors();
+  
   Serial.print("Setting up \n");
   mosfets_setup(); //set to off state for calibrating
   
@@ -51,9 +52,7 @@ void loop() {
   }
   
   read_ammeters();
-  read_ammeters();
-  read_ammeters();
-
+  
   /////////////////CONTROL SYSTEM WITH PID'S
   curr_time = millis();
   elapsedTime = (float)(curr_time - prev_time);
@@ -65,15 +64,18 @@ void loop() {
   //METHOD 2: CONTROL CURRENT
   
   grid_control_value = controlGridCurrent(current_total());
+  read_ammeters();
   processControlValue(grid_control_value);
+  read_ammeters();
   controlWind(opt_wind_current);
-
+  read_ammeters();
   
   prev_time = curr_time;
  // processControlValue(control_value);
  
   //////////////////////////////////
   check_H2_voltages();
+  read_ammeters();
 
   //collect all data to send
   comm_send();

@@ -113,7 +113,7 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
         readings = self.serial_connection.read_arduino()
-        self.last_data_box.update(readings)
+        
         
         if 'dummy_serial' in readings:
             sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 
@@ -128,7 +128,9 @@ class DataManager():
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
-
+        self.last_data_box.update(readings)
+        
+        '
         for handler in self.control_values_handlers:
             handler(values, readings)
         
