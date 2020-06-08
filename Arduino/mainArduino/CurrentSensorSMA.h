@@ -1,4 +1,4 @@
-#define filter_numReadings 100   //max = 63, see below
+#define filter_numReadings 30   //max = 63, see below
 #define corr_factor (5/1024)/filter_numReadings
 #define sampleTime 3
 
@@ -9,6 +9,10 @@
 //const int amm_pin_power_supply = A5;
 //const int amm_pin_fuel_cell = A6;
 
+#define zero_load_min 511*filter_numReadings
+#define zero_load_max 516*filter_numReadings
+
+
 #define sensitivity_1 11.5   / filter_numReadings; 
 #define sensitivity_2 11.5   / filter_numReadings; 
 #define sensitivity_3 11.5   / filter_numReadings; 
@@ -16,12 +20,12 @@
 #define sensitivity_5 11.5   / filter_numReadings; 
 #define sensitivity_6 11.5   / filter_numReadings; 
 
-float sensor_value_zero_load_1 = 51397.5; 
-float sensor_value_zero_load_2 = 51397.5; 
-float sensor_value_zero_load_3 = 51397.5;  
-float sensor_value_zero_load_4 = 51397.5; 
-float sensor_value_zero_load_5 = 51397.5; 
-float sensor_value_zero_load_6 = 51397.5; 
+float sensor_value_zero_load_1 = 513.975*filter_numReadings; 
+float sensor_value_zero_load_2 = 513.975*filter_numReadings; 
+float sensor_value_zero_load_3 = 513.975*filter_numReadings;  
+float sensor_value_zero_load_4 = 513.975*filter_numReadings; 
+float sensor_value_zero_load_5 = 513.975*filter_numReadings; 
+float sensor_value_zero_load_6 = 513.975*filter_numReadings; 
 
 int filter_readIndex = 0; // the index of the current reading, 8 bits as its not a high number, always positive so u (unsigned)
 
@@ -106,17 +110,20 @@ void ammeters_setup(){
     }
 
     //make sure the system calibrates on the right values (off state)
-    if((runningSum1>51100)&(runningSum1<51600)) // reality check
+
+    Serial.print("Running1   ");
+    Serial.print(runningSum1);
+    if((runningSum1>zero_load_min)&(runningSum1<zero_load_max)) // reality check
       sensor_value_zero_load_1 = runningSum1;
-    if((runningSum2>51100)&(runningSum2<51600)) // reality check
+    if((runningSum2>zero_load_min)&(runningSum2<zero_load_max)) // reality check
       sensor_value_zero_load_2 = runningSum2;
-    if((runningSum3>51100)&(runningSum3<51600)) // reality check
+    if((runningSum3>zero_load_min)&(runningSum3<zero_load_max)) // reality check
       sensor_value_zero_load_3 = runningSum3;
-    if((runningSum4>51100)&(runningSum4<51600)) // reality check
+    if((runningSum4>zero_load_min)&(runningSum4<zero_load_max)) // reality check
       sensor_value_zero_load_4 = runningSum4;
-    if((runningSum5>51100)&(runningSum5<51600)) // reality check
+    if((runningSum5>zero_load_min)&(runningSum5<zero_load_max)) // reality check
       sensor_value_zero_load_5 = runningSum5;
-    if((runningSum6>51100)&(runningSum6<51600)) // reality check
+    if((runningSum6>zero_load_min)&(runningSum6<zero_load_max)) // reality check
       sensor_value_zero_load_6 = runningSum6;
 
     Serial.print("Done calibrating \n");

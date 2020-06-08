@@ -6,13 +6,11 @@
 #define TURIBNE_MOSFET_PIN      10
 #define VALVE_PIN               12
 #define TURBINE_START_PIN       11
+#define valveOpenTime           50
 
-
-
-
-
-
-
+bool valveOpen = false;
+unsigned long lastValveSwitch;
+int valveMillOpenFreq = 100;
 
 extern float elapsedTime;
 
@@ -54,6 +52,8 @@ float cum_ps_error, rate_ps_error;
 byte pwm_value_power_supply;
 
 
+
+
 void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
     pinMode(FUEL_CELL_MOSFET_PIN,    OUTPUT);
@@ -66,18 +66,20 @@ void mosfets_setup(){
     analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
     analogWrite(TURIBNE_MOSFET_PIN, 0);
     digitalWrite(VALVE_PIN, LOW);
+
+    lastValveSwitch = millis();
 }
 
-float controlGridVoltage(float target_volt){
-    curr_volt_error = target_volt - grid_voltage;
-    cum_volt_error += curr_volt_error * elapsedTime;
-    rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
-    
-    grid_control_value = Kp_grid*curr_volt_error + Ki_grid*cum_volt_error + Kd_grid*rate_volt_error;
-
-    prev_volt_error = curr_volt_error;
-    return grid_control_value;
-}
+//float controlGridVoltage(float target_volt){
+//    curr_volt_error = target_volt - grid_voltage;
+//    cum_volt_error += curr_volt_error * elapsedTime;
+//    rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
+//    
+//    grid_control_value = Kp_grid*curr_volt_error + Ki_grid*cum_volt_error + Kd_grid*rate_volt_error;
+//
+//    prev_volt_error = curr_volt_error;
+//    return grid_control_value;
+//}
 
 float controlGridCurrent(float target_current_ps){
     curr_ps_error = target_current_ps - current_power_supply;
@@ -113,31 +115,26 @@ float controlWind(float target_current){
     return wind_control_value, turbine_pwm;
 }
 
-float controlPowerSupply(float target_current_ps){
-    curr_ps_error = target_current_ps - current_power_supply;
-    cum_ps_error += curr_ps_error * elapsedTime;
-    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
-    
-    ps_control_value = Kp_ps*curr_ps_error + Ki_ps*cum_ps_error + Kd_ps*rate_ps_error;
-    pwm_value_power_supply = map(ps_control_value, -100, 100, 0, 255);
-    if (pwm_value_power_supply<=0)
-       pwm_value_power_supply = 0;
-    if (pwm_value_power_supply>=255)
-       pwm_value_power_supply = 255;
+//float controlPowerSupply(float target_current_ps){
+//    curr_ps_error = target_current_ps - current_power_supply;
+//    cum_ps_error += curr_ps_error * elapsedTime;
+//    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+//    
+//    ps_control_value = Kp_ps*curr_ps_error + Ki_ps*cum_ps_error + Kd_ps*rate_ps_error;
+//    pwm_value_power_supply = map(ps_control_value, -100, 100, 0, 255);
+//    if (pwm_value_power_supply<=0)
+//       pwm_value_power_supply = 0;
+//    if (pwm_value_power_supply>=255)
+//       pwm_value_power_supply = 255;
+//
+//    prev_ps_error = curr_ps_error;
+//
+//    pwm_value_power_supply = 255;
+//
+//    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+//    return ps_control_value, pwm_value_power_supply;
+//}
 
-    prev_ps_error = curr_ps_error;
-
-    pwm_value_power_supply = 255;
-
-    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
-    return ps_control_value, pwm_value_power_supply;
-}
-
-void openValve(byte valve_open_time){
-    digitalWrite(VALVE_PIN, HIGH);
-    delay(valve_open_time);
-    digitalWrite(VALVE_PIN, LOW);
-}
 
 void processControlValue(float control_value){
     if (control_value>0){
@@ -147,9 +144,18 @@ void processControlValue(float control_value){
       analogWrite(FUEL_CELL_MOSFET_PIN, fuel_cell_pwm);
       analogWrite(ELECTROLYZER_MOSFET_PIN,0);
 
-      //valve_open_time = map(fuel_cell_pwm,...,...,...);
-      float valve_open_time = elapsedTime*0.015;
-      openValve(valve_open_time);
+      valveMillOpenFreq = map(fuel_cell_pwm,0,255,100, 0);
+      
+      if (!valveOpen && (lastValveSwitch - millis() > valveMillOpenFreq)){
+          valveOpen = true;
+          lastValveSwitch = millis();
+          digitalWrite(VALVE_PIN, HIGH);
+      }
+      else if (valveOpen && (lastValveSwitch - millis() > valveOpenTime)){
+          valveOpen = false;
+          lastValveSwitch = millis();
+          digitalWrite(VALVE_PIN, LOW);
+      }
       
     }
     else if (control_value<0){

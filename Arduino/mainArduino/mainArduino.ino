@@ -17,8 +17,6 @@
 //#define zerocross  2 // (NOT CHANGABLE)   
 //dimmerLamp FanDimmer(dimmer_outPin); 
 
-#define PRINT_EACH_X_LOOPS 1
-
 #define MULTIPLIER_SOLAR     3
 #define MULTIPLIER_WIND      3
 #define MULTIPLIER_FUEL_CELL 1
@@ -43,7 +41,6 @@ void setup() {
   Serial.print("Setup done \n");
 }
 
-int i_send = 0;
 
 void loop() {
   if (comm_read()){ // data received, handle accordingly
@@ -54,6 +51,8 @@ void loop() {
   }
   
   read_ammeters();
+  read_ammeters();
+  read_ammeters();
 
   /////////////////CONTROL SYSTEM WITH PID'S
   curr_time = millis();
@@ -61,11 +60,12 @@ void loop() {
 
   //METHOD 1: CONTROL VOLTAGE
 //  grid_control_value = controlGrid(11.9);
-  controlPowerSupply(current_to_add());
+ /// controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
-  //grid_control_value = controlGridCurrent(current_total());
   
+  grid_control_value = controlGridCurrent(current_total());
+  processControlValue(grid_control_value);
   controlWind(opt_wind_current);
 
   
@@ -76,12 +76,8 @@ void loop() {
   check_H2_voltages();
 
   //collect all data to send
-  i_send++;
-
-  if (i_send == PRINT_EACH_X_LOOPS){
-    i_send = 0;
-    comm_send();
-  }
+  comm_send();
+  
 }
 
 float current_total(){
