@@ -1,8 +1,10 @@
 """This module handler the halogen lamp."""
+import time
 from PyQt5 import QtCore
 try:
     import RPi.GPIO as IO
 except ModuleNotFoundError:
+    print("using dummy gpio")
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
@@ -44,13 +46,13 @@ class HalogenLight:
             set_value = 0
         self.pwm.ChangeDutyCycle(set_value)
         self.intermediate_value = set_value
-        # self.printer.print(f'light: {set_value}')
+        self.printer.print(f'light: {set_value}')
 
     def animate(self, step_size=2):
         """Slow start the lamp."""
         new_value = self.intermediate_value+step_size
         self.adjust(new_value)
-        self.printer.print(f'Animate light:  {new_value}')
+        
         if new_value >= self.end_value:
             self.animate_timer.stop()
             #self.adjust(intermediate_value)
@@ -59,5 +61,13 @@ class HalogenLight:
             
             
 if __name__ == '__main__':
-    light = HalogenLight(None, 50)
+    class SerialRaw():
+        """Class for when there is no second screen and still print stuff."""
+        def __init__(self):
+            pass
+        def print(self, *stuff):
+            """Print stuff to the terminal."""
+            print(*stuff)
+    light = HalogenLight(SerialRaw(), 50)
     light.set_light(30)
+    time.sleep(2)

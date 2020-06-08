@@ -1,2 +1,2 @@
-cd /home/pi/BEP/UI
-sudo python3 main.py
+cd /home/pi/BEP
+sudo python3 UI/main.py

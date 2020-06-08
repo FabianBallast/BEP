@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=User interface
-Comment=controlling of setup
-Icon=/home/pi/BEP/UI/src/img/logo2.png
-Exec=/home/pi/BEP/UI/UI.sh
-Type=Application
-Encoding=UTF-8
-Terminal=true
-Categories=None

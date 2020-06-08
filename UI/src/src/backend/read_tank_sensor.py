@@ -6,24 +6,25 @@ except NotImplementedError:
 
 import busio
 import adafruit_vl6180x
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from ..dummy import dummy_range_sensor as sensor                        #pylint: disable=relative-beyond-top-level
 
 class TankReader:
     """This class represents the sensor."""
-    def __init__(self, NO_CONNECTION, N_FILTER=30):
+    def __init__(self, serial_connection, N_FILTER=30):
 
         try:
+            raise ValueError()
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
         except ValueError:
             self.sensor = sensor
-            NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
         except ModuleNotFoundError:
             self.sensor = sensor  
-            NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=invalid-name
