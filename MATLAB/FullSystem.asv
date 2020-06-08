@@ -9,15 +9,13 @@ rho_air = 1.225; %kg/m^3
 % Turbine parameters %
 k_m_t = 23.8e-3; 
 R_turbine = 0.15; %m
-J_wind = 5.245e-6 * 1000; %kgm^2
+J_wind = 5.245e-6; %kgm^2
 omega_0 = 100; %rpm
 lambda_opt = 2.1; %lambda = R*omega/V_w
 P_max_WT = 0.2; %W
 a_friction = 0;
 b_friction = 1.19; %mNm
-K_v = 0.023 / pi * 30; %V/rpm
-K_t = 0.023; %Nm/A
-R_motor = 22.222; %Ohm
+K_v = 0.023; %V/rad/s
 
 % Hydrogen parameters %
 max_tank_capacity = 80e-9; %m^3
@@ -53,7 +51,7 @@ for row = 1 : rows
    end
 end
 
-n_temp = 5000;
+n_temp = 500;
 step_size = T_sim/n_temp;%s
 
 r_WT.time = [];
