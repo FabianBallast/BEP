@@ -6,7 +6,7 @@ extern float    current_solar_panels,  current_wind_turbines,  current_ledload, 
 extern float elapsedTime;
 extern byte turbine_pwm;
 
-int i_send = 0;
+int i_send = -1;
 
 uint8_t comm_received[COMM_SIZE_A]; 
 uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
@@ -32,7 +32,7 @@ void comm_send(){
       Serial.print(", \"load_current\":");         Serial.print(current_ledload);
       break;
     case 4:
-      Serial.print(", \"load_current\":");         Serial.print(current_ledload);
+      Serial.print(", \"opt_wind_current\":");     Serial.print(opt_wind_current);
       break;
     case 5:
       Serial.print(", \"electrolyzer_current\":"); Serial.print(current_electrolyzer);
@@ -69,7 +69,7 @@ void comm_send(){
       break;
     case 16:
       Serial.println("}enddata");
-      i_send = 0;
+      i_send = -1;
       break;
   }  
   i_send++;
