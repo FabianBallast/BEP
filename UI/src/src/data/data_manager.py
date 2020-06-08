@@ -130,7 +130,7 @@ class DataManager():
         readings['time'] = self.time_running.elapsed() / 1000
         self.last_data_box.update(readings)
         
-        '
+        
         for handler in self.control_values_handlers:
             handler(values, readings)
         
