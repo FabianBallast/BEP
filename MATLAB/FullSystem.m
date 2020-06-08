@@ -1,5 +1,5 @@
 %% General model parameters %%
-T_sim = 2; %s
+T_sim = 10; %s
 R_load = 1e3; %Ohm
 R_LED_max = 75/4; %Ohm
 P_max_SP = 0.5; %W
@@ -7,17 +7,18 @@ P_max_LED = 12*0.16*4; %W
 rho_air = 1.225; %kg/m^3
 pwm_timer = 1/50;
 t_sample = pwm_timer/10;
+n = 1000;
 
 % Turbine parameters %
 k_m_t = 23.8e-3; 
-R_turbine = 0.15; %m
-J_wind = 5.245e-6 * 1000; %kgm^2
-omega_0 = 100; %rpm
-lambda_opt = 2.1; %lambda = R*omega/V_w
+d_turbine = 0.15; %m
+J_wind = 5.245e-7 * 1000; %kgm^2
+omega_0 = 1000; %rpm
+lambda_opt = 2.8; %lambda = R*omega/V_w
 P_max_WT = 0.2; %W
 a_friction = 0;
 b_friction = 1.19; %mNm
-K_v = 0.023 / pi * 30; %V/rpm
+K_v = 0.023 * pi / 30; %V/rpm
 K_t = 0.023; %Nm/A
 R_motor = 22.222; %Ohm
 
@@ -33,7 +34,6 @@ ex2 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet2');
 ex3 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet3');
 
 % Places the Excel file values into variables
-n = 50;
 t =  ex1(2, :)';
 r_WT_x = ex1(3, :)';
 r_SP_x = ex1(4, :)';
