@@ -4,7 +4,10 @@ class LogWriter():
     """This class writes data to the log-file."""
 
     def __init__(self):
-        log_file = open('UI/log.txt', 'w')
+        try:
+            log_file = open('UI/log.txt', 'w')
+        except FileNotFoundError:
+            log_file = open('log.txt', 'w')
         log_file.write('Log file')
         log_file.close()
 

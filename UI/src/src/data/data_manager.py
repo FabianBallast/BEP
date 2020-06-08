@@ -9,7 +9,7 @@ from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
-    def __init__(self, serial):
+    def __init__(self, serial, last_data_box):
         self.mode = ''
         self.last_mode = ''
         self.scenario = ''
@@ -30,17 +30,18 @@ class DataManager():
             self.printer.print("No second screen found.")
         else:
             self.printer = serial
+        self.last_data_box = last_data_box
 
         self.light = HalogenLight(self.printer)
-        self.tank_reader = TankReader()
+        self.tank_reader = TankReader(self)
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
-        self.CONNECTED = self.serial_connection.CONNECTION              #pylint: disable=invalid-name
+        self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.file = LogWriter()
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)
-        self.update_timer.start(100)
+        self.update_timer.start(200)
 
         self.time_running = QtCore.QTime()
         self.time_running.start()
@@ -111,6 +112,7 @@ class DataManager():
         self.serial_connection.send_to_arduino(windPower=values[1])
         self.loads.load_set(values[2])
         readings = self.serial_connection.read_arduino()
+        self.last_data_box.update(readings)
         
         if 'dummy_serial' in readings:
             sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 

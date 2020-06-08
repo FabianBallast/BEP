@@ -13,11 +13,12 @@ from ..dummy import dummy_range_sensor as sensor                        #pylint:
 
 class TankReader:
     """This class represents the sensor."""
-    def __init__(self, N_FILTER=30):
+    def __init__(self, data, N_FILTER=30):
 
         try:
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
+            data.NO_CONNECTION += "Tank sensor niet verbonden"
         except ValueError:
             self.sensor = sensor
         except ModuleNotFoundError:

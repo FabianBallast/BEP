@@ -74,7 +74,7 @@ class SecondScreenController(QtWidgets.QWidget):
         self.figure_widget.setStyleSheet("background: rgba(0, 0, 0, 0)")
         self.figure_widget.setGeometry(QtCore.QRect(int(width * 0.50), int(height * 0.55), 
                                                     int(width * 0.20), int(height * 0.25)))
-        System(self.figure_widget)
+        System(self.figure_widget, preview_version=True)
         #self.figure_widget.raise_()
 
 

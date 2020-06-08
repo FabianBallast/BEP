@@ -31,7 +31,11 @@ class ScenarioCreator():
     
     def create_scenarios(self):
         """Read from file and create scenarios accordingly."""
-        workbook = xlrd.open_workbook(self.scenario_file) 
+        try:
+            workbook = xlrd.open_workbook(self.scenario_file) 
+        except FileNotFoundError:
+            workbook = xlrd.open_workbook(self.scenario_file.replace("UI/",'')) 
+            
         sheet = workbook.sheet_by_index(0)
 
         curr_row = 0

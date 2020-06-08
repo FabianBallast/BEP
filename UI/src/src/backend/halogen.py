@@ -25,6 +25,7 @@ class HalogenLight:
         
         self.end_value = set_value
         #self.printer.print("End goal light: ", set_value,  ' intermediate' , self.intermediate_value)
+        # self.adjust(set_value)
         if set_value > self.intermediate_value:
             self.animate_timer = QtCore.QTimer()
             self.animate_timer.timeout.connect(self.animate)
@@ -32,8 +33,8 @@ class HalogenLight:
         elif set_value < self.intermediate_value:
             self.adjust(set_value)
             
-        if 0 < set_value < 20:
-            self.printer.print("Warning, halogen light lifetime may be decreasing fast")
+        # if 0 < set_value < 20:
+        #     self.printer.print("Warning, halogen light lifetime may be decreasing fast")
 
     def adjust(self, set_value):
         """Adjust value of lamp on a range from 0 to 100."""
@@ -43,7 +44,7 @@ class HalogenLight:
             set_value = 0
         self.pwm.ChangeDutyCycle(set_value)
         self.intermediate_value = set_value
-        self.printer.print(f'light: {set_value}')
+        # self.printer.print(f'light: {set_value}')
 
     def animate(self, step_size=2):
         """Slow start the lamp."""
