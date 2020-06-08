@@ -1,5 +1,5 @@
 %% General model parameters %%
-T_sim = 1; %s
+T_sim = 2; %s
 R_load = 1e3; %Ohm
 R_LED_max = 75/4; %Ohm
 P_max_SP = 0.5; %W
@@ -55,7 +55,6 @@ for row = 1 : rows
    end
 end
 
-
 step_size = T_sim/n;%s
 
 r_WT.time = [];
@@ -94,5 +93,3 @@ I_SP_data.signals.dimensions = 1;
 r_PS.time = [];
 r_PS.signals.values = [r_PS_x];
 r_PS.signals.dimensions = 1;
-
-%%

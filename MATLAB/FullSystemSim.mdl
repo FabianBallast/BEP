@@ -36,7 +36,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.30"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -52,511 +52,511 @@ Model {
     NumExternalFileReferences 87
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/ "
+      Path		      "FullSystemSim/Electrical Plant/ "
       SID		      "1060"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Capacitor"
-      Path		      "FullSystemSim/Subsystem/2200uF1"
+      Path		      "FullSystemSim/Electrical Plant/2200uF1"
       SID		      "576"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Converters/Boost Converter"
-      Path		      "FullSystemSim/Subsystem/Boost Converter5"
+      Path		      "FullSystemSim/Electrical Plant/Boost Converter5"
       SID		      "577"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Converters/Boost Converter"
-      Path		      "FullSystemSim/Subsystem/Boost Converter6"
+      Path		      "FullSystemSim/Electrical Plant/Boost Converter6"
       SID		      "578"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Converters/Boost Converter"
-      Path		      "FullSystemSim/Subsystem/Boost Converter7"
+      Path		      "FullSystemSim/Electrical Plant/Boost Converter7"
       SID		      "579"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Converters/Boost Converter"
-      Path		      "FullSystemSim/Subsystem/Boost Converter8"
+      Path		      "FullSystemSim/Electrical Plant/Boost Converter8"
       SID		      "580"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Capacitor"
-      Path		      "FullSystemSim/Subsystem/Capacitor2"
+      Path		      "FullSystemSim/Electrical Plant/Capacitor2"
       SID		      "581"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Capacitor"
-      Path		      "FullSystemSim/Subsystem/Capacitor5"
+      Path		      "FullSystemSim/Electrical Plant/Capacitor5"
       SID		      "582"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Capacitor"
-      Path		      "FullSystemSim/Subsystem/Capacitor6"
+      Path		      "FullSystemSim/Electrical Plant/Capacitor6"
       SID		      "583"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Capacitor"
-      Path		      "FullSystemSim/Subsystem/Capacitor7"
+      Path		      "FullSystemSim/Electrical Plant/Capacitor7"
       SID		      "584"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Current\nSource"
-      Path		      "FullSystemSim/Subsystem/Controlled Current Source"
+      Path		      "FullSystemSim/Electrical Plant/Controlled Current Source"
       SID		      "1014"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
-      Path		      "FullSystemSim/Subsystem/Controlled Voltage Source"
+      Path		      "FullSystemSim/Electrical Plant/Controlled Voltage Source"
       SID		      "1110"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
-      Path		      "FullSystemSim/Subsystem/Controlled Voltage Source1"
+      Path		      "FullSystemSim/Electrical Plant/Controlled Voltage Source1"
       SID		      "1004"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
-      Path		      "FullSystemSim/Subsystem/Controlled Voltage Source2"
+      Path		      "FullSystemSim/Electrical Plant/Controlled Voltage Source2"
       SID		      "1008"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Current Limiter"
-      Path		      "FullSystemSim/Subsystem/Current Limiter"
+      Path		      "FullSystemSim/Electrical Plant/Current Limiter"
       SID		      "993"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Current Sensor"
-      Path		      "FullSystemSim/Subsystem/Current Sensor5"
+      Path		      "FullSystemSim/Electrical Plant/Current Sensor5"
       SID		      "588"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Current Sensor"
-      Path		      "FullSystemSim/Subsystem/Current Sensor6"
+      Path		      "FullSystemSim/Electrical Plant/Current Sensor6"
       SID		      "589"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Current Sensor"
-      Path		      "FullSystemSim/Subsystem/Current Sensor7"
+      Path		      "FullSystemSim/Electrical Plant/Current Sensor7"
       SID		      "590"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Current Sensor"
-      Path		      "FullSystemSim/Subsystem/Current Sensor8"
+      Path		      "FullSystemSim/Electrical Plant/Current Sensor8"
       SID		      "591"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Current Sensor"
-      Path		      "FullSystemSim/Subsystem/Current Sensor9"
+      Path		      "FullSystemSim/Electrical Plant/Current Sensor9"
       SID		      "592"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
-      Path		      "FullSystemSim/Subsystem/Diode5"
+      Path		      "FullSystemSim/Electrical Plant/Diode5"
       SID		      "596"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
-      Path		      "FullSystemSim/Subsystem/Diode6"
+      Path		      "FullSystemSim/Electrical Plant/Diode6"
       SID		      "597"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
-      Path		      "FullSystemSim/Subsystem/Diode8"
+      Path		      "FullSystemSim/Electrical Plant/Diode8"
       SID		      "599"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
-      Path		      "FullSystemSim/Subsystem/Diode9"
+      Path		      "FullSystemSim/Electrical Plant/Diode9"
       SID		      "600"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Electrical Reference"
-      Path		      "FullSystemSim/Subsystem/Electrical Reference1"
+      Path		      "FullSystemSim/Electrical Plant/Electrical Reference1"
       SID		      "601"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Electrolyzer1"
+      Path		      "FullSystemSim/Electrical Plant/Electrolyzer1"
       SID		      "602"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Switches & Breakers/Fuse"
-      Path		      "FullSystemSim/Subsystem/Fuse1"
+      Path		      "FullSystemSim/Electrical Plant/Fuse1"
       SID		      "610"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET2"
+      Path		      "FullSystemSim/Electrical Plant/IRLZ-34N MOSFET2"
       SID		      "1112"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET3"
+      Path		      "FullSystemSim/Electrical Plant/IRLZ-34N MOSFET3"
       SID		      "1113"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET4"
+      Path		      "FullSystemSim/Electrical Plant/IRLZ-34N MOSFET4"
       SID		      "1114"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET5"
+      Path		      "FullSystemSim/Electrical Plant/IRLZ-34N MOSFET5"
       SID		      "1115"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter10"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter10"
       SID		      "615"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter11"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter11"
       SID		      "616"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter12"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter12"
       SID		      "617"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter13"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter13"
       SID		      "618"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter14"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter14"
       SID		      "619"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter15"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter15"
       SID		      "620"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter16"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter16"
       SID		      "621"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter17"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter17"
       SID		      "622"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter18"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter18"
       SID		      "623"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/PS-Simulink Converter19"
+      Path		      "FullSystemSim/Electrical Plant/PS-Simulink Converter19"
       SID		      "624"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor1"
+      Path		      "FullSystemSim/Electrical Plant/Resistor1"
       SID		      "1111"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor10"
+      Path		      "FullSystemSim/Electrical Plant/Resistor10"
       SID		      "633"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor11"
+      Path		      "FullSystemSim/Electrical Plant/Resistor11"
       SID		      "634"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor13"
+      Path		      "FullSystemSim/Electrical Plant/Resistor13"
       SID		      "636"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor14"
+      Path		      "FullSystemSim/Electrical Plant/Resistor14"
       SID		      "637"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor15"
+      Path		      "FullSystemSim/Electrical Plant/Resistor15"
       SID		      "638"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
-      Path		      "FullSystemSim/Subsystem/Resistor5"
+      Path		      "FullSystemSim/Electrical Plant/Resistor5"
       SID		      "631"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter"
       SID		      "1006"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter1"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter1"
       SID		      "1009"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter2"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter2"
       SID		      "1017"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter3"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter3"
       SID		      "639"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter4"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter4"
       SID		      "640"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter5"
+      Path		      "FullSystemSim/Electrical Plant/Simulink-PS Converter5"
       SID		      "641"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Solver\nConfiguration"
-      Path		      "FullSystemSim/Subsystem/Solver Configuration1"
+      Path		      "FullSystemSim/Electrical Plant/Solver Configuration1"
       SID		      "643"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Integrated Circuits/Controlled PWM\nVoltage"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/Controlled PWM Voltage1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/Controlled PWM Voltage1"
       SID		      "646"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Electrical Reference"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/Electrical Reference2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/Electrical Reference2"
       SID		      "647"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/PS-Simulink Converter4"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/PS-Simulink Converter4"
       SID		      "648"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "eePwmGenerator/PWM Generator"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/PWM Generator1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/PWM Generator1"
       SID		      "649"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/Simulink-PS Converter2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/Simulink-PS Converter2"
       SID		      "651"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Subsystem4/Voltage Sensor2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem4/Voltage Sensor2"
       SID		      "652"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Integrated Circuits/Controlled PWM\nVoltage"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/Controlled PWM Voltage1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/Controlled PWM Voltage1"
       SID		      "656"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Electrical Reference"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/Electrical Reference2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/Electrical Reference2"
       SID		      "657"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/PS-Simulink Converter4"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/PS-Simulink Converter4"
       SID		      "658"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "eePwmGenerator/PWM Generator"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/PWM Generator1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/PWM Generator1"
       SID		      "659"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/Simulink-PS Converter2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/Simulink-PS Converter2"
       SID		      "661"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Subsystem5/Voltage Sensor2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem5/Voltage Sensor2"
       SID		      "662"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Integrated Circuits/Controlled PWM\nVoltage"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/Controlled PWM Voltage1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/Controlled PWM Voltage1"
       SID		      "666"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Electrical Reference"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/Electrical Reference2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/Electrical Reference2"
       SID		      "667"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/PS-Simulink Converter4"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/PS-Simulink Converter4"
       SID		      "668"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "eePwmGenerator/PWM Generator"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/PWM Generator1"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/PWM Generator1"
       SID		      "669"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/Simulink-PS Converter2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/Simulink-PS Converter2"
       SID		      "671"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Subsystem6/Voltage Sensor2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem6/Voltage Sensor2"
       SID		      "672"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Integrated Circuits/Controlled PWM\nVoltage"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/Controlled PWM Voltage2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/Controlled PWM Voltage2"
       SID		      "676"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Electrical Reference"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/Electrical Reference3"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/Electrical Reference3"
       SID		      "677"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/PS-Simulink Converter6"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/PS-Simulink Converter6"
       SID		      "678"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "eePwmGenerator/PWM Generator"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/PWM Generator2"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/PWM Generator2"
       SID		      "679"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/Simulink-PS Converter3"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/Simulink-PS Converter3"
       SID		      "681"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Subsystem7/Voltage Sensor4"
+      Path		      "FullSystemSim/Electrical Plant/Subsystem7/Voltage Sensor4"
       SID		      "682"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Variable Resistor"
-      Path		      "FullSystemSim/Subsystem/Variable Resistor1"
+      Path		      "FullSystemSim/Electrical Plant/Variable Resistor1"
       SID		      "684"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Voltage Sensor5"
+      Path		      "FullSystemSim/Electrical Plant/Voltage Sensor5"
       SID		      "685"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Voltage Sensor6"
+      Path		      "FullSystemSim/Electrical Plant/Voltage Sensor6"
       SID		      "686"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Voltage Sensor7"
+      Path		      "FullSystemSim/Electrical Plant/Voltage Sensor7"
       SID		      "687"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Voltage Sensor8"
+      Path		      "FullSystemSim/Electrical Plant/Voltage Sensor8"
       SID		      "688"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sensors/Voltage Sensor"
-      Path		      "FullSystemSim/Subsystem/Voltage Sensor9"
+      Path		      "FullSystemSim/Electrical Plant/Voltage Sensor9"
       SID		      "689"
       Type		      "LIBRARY_BLOCK"
     }
@@ -647,7 +647,7 @@ Model {
 	Object {
 	  $ObjectID		  7
 	  IsActive		  [0]
-	  IsTabbed		  [1]
+	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "81"
 	  Extents		  [1852.0, 814.0]
@@ -658,7 +658,7 @@ Model {
 	Object {
 	  $ObjectID		  8
 	  IsActive		  [0]
-	  IsTabbed		  [1]
+	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "59"
 	  Extents		  [1852.0, 814.0]
@@ -790,7 +790,7 @@ Model {
   }
   HideAutomaticNames	  on
   PhysicalModelingChecksum "1721661032"
-  PhysicalModelingParameterChecksum "3014539640"
+  PhysicalModelingParameterChecksum "1557195585"
   PhysicalModelingProducts "Power_System_Blocks|Simscape"
   Created		  "Tue Jun 02 14:26:46 2020"
   Creator		  "thequ"
@@ -798,9 +798,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thequ"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jun 08 15:43:25 2020"
-  RTWModifiedTimeStamp	  513531798
-  ModelVersionFormat	  "1.%<AutoIncrement:30>"
+  LastModifiedDate	  "Mon Jun 08 16:10:09 2020"
+  RTWModifiedTimeStamp	  513533287
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -863,7 +863,7 @@ Model {
     $ObjectID		    18
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "FullSystemSim"
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
@@ -2006,8 +2006,16 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "149"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1115"
+    SIDHighWatermark	    "1121"
     SimulinkSubDomain	    "Simulink"
+    Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      SID		      "1121"
+      Position		      [820, 610, 850, 640]
+      ZOrder		      5265
+      Value		      "0.85"
+    }
     Block {
       BlockType		      Constant
       Name		      "Constant6"
@@ -2030,713 +2038,7 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Hydrogen Controller"
-      SID		      "1081"
-      Ports		      [3, 2]
-      Position		      [490, 281, 680, 399]
-      ZOrder		      5254
-      BackgroundColor	      "magenta"
-      RequestExecContextInheritance off
-      ContentPreviewEnabled   on
-      System {
-	Name			"Hydrogen Controller"
-	Location		[-8, -8, 1928, 1048]
-	Open			off
-	PortBlocksUseCompactNotation off
-	SetExecutionDomain	off
-	ExecutionDomainType	"Deduce"
-	ModelBrowserVisibility	on
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"175"
-	SimulinkSubDomain	"Simulink"
-	Block {
-	  BlockType		  Inport
-	  Name			  "r_WT"
-	  SID			  "1082"
-	  Position		  [40, 53, 70, 67]
-	  ZOrder		  5248
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "r_SP"
-	  SID			  "1083"
-	  Position		  [20, 143, 50, 157]
-	  ZOrder		  5249
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "r_LED"
-	  SID			  "1084"
-	  Position		  [45, 228, 75, 242]
-	  ZOrder		  5250
-	  Port			  "3"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant1"
-	  SID			  "972"
-	  Position		  [105, 65, 165, 85]
-	  ZOrder		  5225
-	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
-	  Value			  "P_max_WT"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant2"
-	  SID			  "973"
-	  Position		  [100, 160, 155, 180]
-	  ZOrder		  5226
-	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
-	  Value			  "P_max_SP"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant3"
-	  SID			  "974"
-	  Position		  [95, 247, 160, 263]
-	  ZOrder		  5227
-	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
-	  Value			  "P_max_LED"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant4"
-	  SID			  "984"
-	  Position		  [435, 150, 510, 170]
-	  ZOrder		  5231
-	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
-	  Value			  "P_max_FC"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant5"
-	  SID			  "985"
-	  Position		  [435, 120, 510, 140]
-	  ZOrder		  5232
-	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
-	  Value			  "P_max_EL"
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Divide"
-	  SID			  "986"
-	  Ports			  [2, 1]
-	  Position		  [560, 112, 590, 143]
-	  ZOrder		  5233
-	  Inputs		  "*/"
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Divide1"
-	  SID			  "987"
-	  Ports			  [2, 1]
-	  Position		  [560, 147, 590, 178]
-	  ZOrder		  5234
-	  NamePlacement		  "alternate"
-	  Inputs		  "/*"
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  If
-	  Name			  "If"
-	  SID			  "975"
-	  Ports			  [1, 2]
-	  Position		  [300, 133, 385, 182]
-	  ZOrder		  5228
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "If Action\nSubsystem"
-	  SID			  "976"
-	  Ports			  [1, 1, 0, 0, 0, 0, 0, 1]
-	  Position		  [375, 227, 445, 263]
-	  ZOrder		  5229
-	  TreatAsAtomicUnit	  on
-	  RequestExecContextInheritance	off
-	  ContentPreviewEnabled	  on
-	  System {
-	    Name		    "If Action\nSubsystem"
-	    Location		    [-8, -8, 1928, 1048]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetExecutionDomain	    off
-	    ExecutionDomainType	    "Deduce"
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "300"
-	    SimulinkSubDomain	    "Simulink"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "977"
-	      Position		      [75, 78, 105, 92]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      ActionPort
-	      Name		      "Action Port"
-	      SID		      "978"
-	      Position		      [170, 15, 229, 43]
-	      ZOrder		      -2
-	      ActionPortLabel	      "else"
-	    }
-	    Block {
-	      BlockType		      Abs
-	      Name		      "Abs"
-	      SID		      "1052"
-	      Position		      [185, 70, 215, 100]
-	      ZOrder		      5252
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "979"
-	      Position		      [325, 78, 355, 92]
-	      ZOrder		      -3
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "Abs"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "Abs"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "If Action\nSubsystem1"
-	  SID			  "980"
-	  Ports			  [1, 1, 0, 0, 0, 0, 0, 1]
-	  Position		  [375, 52, 445, 88]
-	  ZOrder		  5230
-	  NamePlacement		  "alternate"
-	  TreatAsAtomicUnit	  on
-	  RequestExecContextInheritance	off
-	  ContentPreviewEnabled	  on
-	  System {
-	    Name		    "If Action\nSubsystem1"
-	    Location		    [342, 471, 840, 771]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetExecutionDomain	    off
-	    ExecutionDomainType	    "Deduce"
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SimulinkSubDomain	    "Simulink"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "In1"
-	      SID		      "981"
-	      Position		      [75, 78, 105, 92]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      ActionPort
-	      Name		      "Action Port"
-	      SID		      "982"
-	      Position		      [170, 15, 229, 43]
-	      ZOrder		      -2
-	      ActionPortLabel	      "if(u1 > 0)"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Out1"
-	      SID		      "983"
-	      Position		      [325, 78, 355, 92]
-	      ZOrder		      -3
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "In1"
-	      SrcPort		      1
-	      DstBlock		      "Out1"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Product"
-	  SID			  "843"
-	  Ports			  [2, 1]
-	  Position		  [180, 52, 210, 83]
-	  ZOrder		  5218
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Product1"
-	  SID			  "966"
-	  Ports			  [2, 1]
-	  Position		  [180, 227, 210, 263]
-	  ZOrder		  5219
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Product
-	  Name			  "Product2"
-	  SID			  "968"
-	  Ports			  [2, 1]
-	  Position		  [170, 139, 200, 181]
-	  ZOrder		  5221
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope1"
-	  SID			  "1099"
-	  Ports			  [1]
-	  Position		  [300, 24, 330, 56]
-	  ZOrder		  5265
-	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
-	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
-	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData10'),extmgr.Configuration('Visuals','Time Domain',true,'"
-	  "SerializedDisplays',{struct('MinYLimReal','-1.00000','MaxYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000'"
-	  ",'MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0]"
-	  ",'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074"
-	  "5098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509"
-	  "8039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Ti"
-	  "tle','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product"
-	  "'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.00000','MaxYLimReal','1.0"
-	  "0000','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',t"
-	  "rue,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922"
-	  "],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;"
-	  "0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1"
-	  ";1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuratio"
-	  "n('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
-	  NumInputPorts		  "1"
-	  Floating		  off
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope2"
-	  SID			  "1100"
-	  Ports			  [1]
-	  Position		  [310, 84, 340, 116]
-	  ZOrder		  5266
-	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
-	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
-	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData11'),extmgr.Configuration('Visuals','Time Domain',true,'"
-	  "SerializedDisplays',{struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabelReal','','MinYLimMag','0.325','MaxYL"
-	  "imMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTic"
-	  "kColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803921"
-	  "5686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921568"
-	  "6;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<S"
-	  "ignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product2'}},'Sho"
-	  "wContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabel"
-	  "Real','','MinYLimMag','0.325','MaxYLimMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase"
-	  "',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0"
-	  ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529"
-	  " 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.074509803921"
-	  "5686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measur"
-	  "ements',true,'Version','2019b')),'Version','2019b','Position',[680 330 1090 420])"
-	  NumInputPorts		  "1"
-	  Floating		  off
-	}
-	Block {
-	  BlockType		  Scope
-	  Name			  "Scope5"
-	  SID			  "1098"
-	  Ports			  [1]
-	  Position		  [315, 199, 345, 231]
-	  ZOrder		  5264
-	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
-	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
-	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData9'),extmgr.Configuration('Visuals','Time Domain',true,'S"
-	  "erializedDisplays',{struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLabelReal','','MinYLimMag','0.00000','Ma"
-	  "xYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'Axes"
-	  "TickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803"
-	  "9215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921"
-	  "5686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','"
-	  "%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'P_diff'}},'Sh"
-	  "owContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLa"
-	  "belReal','','MinYLimMag','0.00000','MaxYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMag"
-	  "Phase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrde"
-	  "r',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.7176470588"
-	  "23529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098"
-	  "039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','M"
-	  "easurements',true,'Version','2019b')),'Version','2019b')"
-	  NumInputPorts		  "1"
-	  Floating		  off
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum"
-	  SID			  "967"
-	  Ports			  [3, 1]
-	  Position		  [230, 150, 250, 170]
-	  ZOrder		  5220
-	  ShowName		  off
-	  IconShape		  "round"
-	  Inputs		  "++-"
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	  Port {
-	    PortNumber		    1
-	    Name		    "P_diff"
-	  }
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "EL_PWM"
-	  SID			  "1085"
-	  Position		  [685, 123, 715, 137]
-	  ZOrder		  5251
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "FC_PWM"
-	  SID			  "1086"
-	  Position		  [685, 158, 715, 172]
-	  ZOrder		  5252
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  ZOrder		  400
-	  SrcBlock		  "Divide1"
-	  SrcPort		  1
-	  DstBlock		  "FC_PWM"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  401
-	  SrcBlock		  "Divide"
-	  SrcPort		  1
-	  DstBlock		  "EL_PWM"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  538
-	  SrcBlock		  "r_WT"
-	  SrcPort		  1
-	  DstBlock		  "Product"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  398
-	  SrcBlock		  "If Action\nSubsystem"
-	  SrcPort		  1
-	  Points		  [71, 0; 0, -75]
-	  DstBlock		  "Divide1"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  395
-	  SrcBlock		  "Constant5"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 5]
-	  DstBlock		  "Divide"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  391
-	  SrcBlock		  "If"
-	  SrcPort		  2
-	  Points		  [20, 0]
-	  DstBlock		  "If Action\nSubsystem"
-	  DstPort		  ifaction
-	}
-	Line {
-	  ZOrder		  379
-	  SrcBlock		  "Product1"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "P_diff"
-	  ZOrder		  389
-	  SrcBlock		  "Sum"
-	  SrcPort		  1
-	  Points		  [9, 0]
-	  Branch {
-	    ZOrder		    558
-	    Points		    [0, 55]
-	    DstBlock		    "Scope5"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    557
-	    Labels		    [1, 1]
-	    Points		    [21, 0]
-	    Branch {
-	      ZOrder		      505
-	      Points		      [0, -90]
-	      DstBlock		      "If Action\nSubsystem1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      ZOrder		      394
-	      Points		      [0, 85]
-	      DstBlock		      "If Action\nSubsystem"
-	      DstPort		      1
-	    }
-	    Branch {
-	      ZOrder		      392
-	      DstBlock		      "If"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  ZOrder		  385
-	  SrcBlock		  "Constant1"
-	  SrcPort		  1
-	  DstBlock		  "Product"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  397
-	  SrcBlock		  "Constant4"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, -5]
-	  DstBlock		  "Divide1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  390
-	  SrcBlock		  "If"
-	  SrcPort		  1
-	  Points		  [20, 0]
-	  DstBlock		  "If Action\nSubsystem1"
-	  DstPort		  ifaction
-	}
-	Line {
-	  ZOrder		  396
-	  SrcBlock		  "If Action\nSubsystem1"
-	  SrcPort		  1
-	  Points		  [79, 0; 0, 50]
-	  DstBlock		  "Divide"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  387
-	  SrcBlock		  "Constant3"
-	  SrcPort		  1
-	  DstBlock		  "Product1"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  383
-	  SrcBlock		  "Constant2"
-	  SrcPort		  1
-	  DstBlock		  "Product2"
-	  DstPort		  2
-	}
-	Line {
-	  ZOrder		  540
-	  SrcBlock		  "r_LED"
-	  SrcPort		  1
-	  DstBlock		  "Product1"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  539
-	  SrcBlock		  "r_SP"
-	  SrcPort		  1
-	  DstBlock		  "Product2"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  380
-	  SrcBlock		  "Product"
-	  SrcPort		  1
-	  Points		  [24, 0]
-	  Branch {
-	    ZOrder		    561
-	    Points		    [0, -30]
-	    DstBlock		    "Scope1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    560
-	    Points		    [1, 0]
-	    DstBlock		    "Sum"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  ZOrder		  381
-	  SrcBlock		  "Product2"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  Branch {
-	    ZOrder		    564
-	    Points		    [0, -60]
-	    DstBlock		    "Scope2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    563
-	    DstBlock		    "Sum"
-	    DstPort		    2
-	  }
-	}
-      }
-    }
-    Block {
-      BlockType		      FromWorkspace
-      Name		      "Power Supply"
-      SID		      "1065"
-      Position		      [245, 223, 310, 247]
-      ZOrder		      5252
-      BackgroundColor	      "[0.074510, 0.623529, 1.000000]"
-      VariableName	      "r_PS"
-      SampleTime	      "step_size"
-      Interpolate	      off
-      ZeroCross		      on
-      OutputAfterFinalValue   "Holding final value"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      "1043"
-      Ports		      [1]
-      Position		      [965, 619, 995, 651]
-      ZOrder		      5242
-      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
-      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData13'),extmgr.Configuration('Visuals','Time Domai"
-      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.75','MaxYLimReal','0.95','YLabelReal','','MinYLimMag','0.7"
-      "5','MaxYLimMag','0.95','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
-      "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;"
-      "0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 "
-      "0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392"
-      "156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNam"
-      "es',{{'Solar'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.75','MaxYLi"
-      "mReal','0.95','YLabelReal','','MinYLimMag','0.75','MaxYLimMag','0.95','LegendVisibility','off','XGrid',true,'YGr"
-      "id',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.6862745"
-      "09803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.066666"
-      "6666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.058823"
-      "5294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),ex"
-      "tmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[48 341 1192 409"
-      "])"
-      NumInputPorts	      "1"
-      Floating		      off
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope2"
-      SID		      "1044"
-      Ports		      [1]
-      Position		      [804, 665, 836, 695]
-      ZOrder		      5243
-      BlockRotation	      270
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
-      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData14'),extmgr.Configuration('Visuals','Time Domai"
-      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.9','MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9',"
-      "'MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'"
-      "AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.07"
-      "45098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.07"
-      "45098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921568"
-      "63],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',"
-      "{{'Wind Controller/2'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.9',"
-      "'MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9','MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,"
-      "'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686"
-      "274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06"
-      "66666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05"
-      "88235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true"
-      "),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 9"
-      "63])"
-      NumInputPorts	      "1"
-      Floating		      off
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope5"
-      SID		      "1097"
-      Ports		      [1]
-      Position		      [760, 384, 790, 416]
-      ZOrder		      5264
-      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
-      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData8'),extmgr.Configuration('Visuals','Time Domain"
-      "',true),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),"
-      "'Version','2019b')"
-      NumInputPorts	      "1"
-      Floating		      off
-    }
-    Block {
-      BlockType		      FromWorkspace
-      Name		      "Solar"
-      SID		      "971"
-      Position		      [245, 353, 310, 377]
-      ZOrder		      5224
-      BackgroundColor	      "[0.074510, 0.623529, 1.000000]"
-      VariableName	      "r_SP"
-      SampleTime	      "step_size"
-      Interpolate	      off
-      ZeroCross		      on
-      OutputAfterFinalValue   "Holding final value"
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "Subsystem"
+      Name		      "Electrical Plant"
       SID		      "825"
       Ports		      [8, 5]
       Position		      [955, 276, 1410, 569]
@@ -2745,7 +2047,7 @@ Model {
       RequestExecContextInheritance off
       ContentPreviewEnabled   on
       System {
-	Name			"Subsystem"
+	Name			"Electrical Plant"
 	Location		[-8, -8, 1928, 1048]
 	Open			on
 	PortBlocksUseCompactNotation off
@@ -7286,7 +6588,7 @@ Model {
 	  Name			  "Simulink-PS\nConverter"
 	  SID			  "1006"
 	  Ports			  [1, 0, 0, 0, 0, 0, 1]
-	  Position		  [245, 442, 260, 458]
+	  Position		  [420, 442, 435, 458]
 	  ZOrder		  5236
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/Simulink-PS\nConverter"
@@ -7314,7 +6616,7 @@ Model {
 	  Name			  "Simulink-PS\nConverter1"
 	  SID			  "1009"
 	  Ports			  [1, 0, 0, 0, 0, 0, 1]
-	  Position		  [245, 802, 260, 818]
+	  Position		  [420, 802, 435, 818]
 	  ZOrder		  5239
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/Simulink-PS\nConverter"
@@ -7342,7 +6644,7 @@ Model {
 	  Name			  "Simulink-PS\nConverter2"
 	  SID			  "1017"
 	  Ports			  [1, 0, 0, 0, 0, 0, 1]
-	  Position		  [245, 667, 260, 683]
+	  Position		  [405, 655, 430, 695]
 	  ZOrder		  5244
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/Simulink-PS\nConverter"
@@ -7358,8 +6660,8 @@ Model {
 	  Frequencies		  "[]"
 	  NoiseDistribution	  "none"
 	  NoiseParameters	  "[]"
-	  Unit			  "1"
-	  AffineConversion	  off
+	  Unit			  "A"
+	  AffineConversion	  on
 	  FilteringAndDerivatives "provide"
 	  SimscapeFilterOrder	  "1"
 	  InputFilterTimeConstant "0.001"
@@ -10125,7 +9427,7 @@ Model {
 	  ZOrder		  1846
 	  SrcBlock		  "Simulink-PS\nConverter"
 	  SrcPort		  RConn1
-	  Points		  [405, 0]
+	  Points		  [230, 0]
 	  DstBlock		  "Controlled Voltage\nSource1"
 	  DstPort		  RConn1
 	}
@@ -10134,7 +9436,7 @@ Model {
 	  ZOrder		  1847
 	  SrcBlock		  "Simulink-PS\nConverter1"
 	  SrcPort		  RConn1
-	  Points		  [395, 0]
+	  Points		  [220, 0]
 	  DstBlock		  "Controlled Voltage\nSource2"
 	  DstPort		  RConn1
 	}
@@ -10155,7 +9457,7 @@ Model {
 	  DstPort		  RConn1
 	}
 	Line {
-	  ZOrder		  1857
+	  ZOrder		  2334
 	  SrcBlock		  "I_SP"
 	  SrcPort		  1
 	  DstBlock		  "Simulink-PS\nConverter2"
@@ -10487,6 +9789,713 @@ Model {
       }
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "Hydrogen Controller"
+      SID		      "1081"
+      Ports		      [3, 2]
+      Position		      [490, 281, 680, 399]
+      ZOrder		      5254
+      BackgroundColor	      "magenta"
+      RequestExecContextInheritance off
+      ContentPreviewEnabled   on
+      System {
+	Name			"Hydrogen Controller"
+	Location		[-8, -8, 1928, 1048]
+	Open			off
+	PortBlocksUseCompactNotation off
+	SetExecutionDomain	off
+	ExecutionDomainType	"Deduce"
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"175"
+	SimulinkSubDomain	"Simulink"
+	Block {
+	  BlockType		  Inport
+	  Name			  "r_WT"
+	  SID			  "1082"
+	  Position		  [40, 53, 70, 67]
+	  ZOrder		  5248
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "r_SP"
+	  SID			  "1083"
+	  Position		  [20, 143, 50, 157]
+	  ZOrder		  5249
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "r_LED"
+	  SID			  "1084"
+	  Position		  [45, 228, 75, 242]
+	  ZOrder		  5250
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "972"
+	  Position		  [105, 65, 165, 85]
+	  ZOrder		  5225
+	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
+	  Value			  "P_max_WT"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "973"
+	  Position		  [100, 160, 155, 180]
+	  ZOrder		  5226
+	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
+	  Value			  "P_max_SP"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "974"
+	  Position		  [95, 247, 160, 263]
+	  ZOrder		  5227
+	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
+	  Value			  "P_max_LED"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  "984"
+	  Position		  [435, 150, 510, 170]
+	  ZOrder		  5231
+	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
+	  Value			  "P_max_FC"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant5"
+	  SID			  "985"
+	  Position		  [435, 120, 510, 140]
+	  ZOrder		  5232
+	  BackgroundColor	  "[1.000000, 0.411765, 0.160784]"
+	  Value			  "P_max_EL"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide"
+	  SID			  "986"
+	  Ports			  [2, 1]
+	  Position		  [560, 112, 590, 143]
+	  ZOrder		  5233
+	  Inputs		  "*/"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide1"
+	  SID			  "987"
+	  Ports			  [2, 1]
+	  Position		  [560, 147, 590, 178]
+	  ZOrder		  5234
+	  NamePlacement		  "alternate"
+	  Inputs		  "/*"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  If
+	  Name			  "If"
+	  SID			  "975"
+	  Ports			  [1, 2]
+	  Position		  [300, 133, 385, 182]
+	  ZOrder		  5228
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "If Action\nSubsystem"
+	  SID			  "976"
+	  Ports			  [1, 1, 0, 0, 0, 0, 0, 1]
+	  Position		  [375, 227, 445, 263]
+	  ZOrder		  5229
+	  TreatAsAtomicUnit	  on
+	  RequestExecContextInheritance	off
+	  ContentPreviewEnabled	  on
+	  System {
+	    Name		    "If Action\nSubsystem"
+	    Location		    [-8, -8, 1928, 1048]
+	    Open		    off
+	    PortBlocksUseCompactNotation off
+	    SetExecutionDomain	    off
+	    ExecutionDomainType	    "Deduce"
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "300"
+	    SimulinkSubDomain	    "Simulink"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      "977"
+	      Position		      [75, 78, 105, 92]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      ActionPort
+	      Name		      "Action Port"
+	      SID		      "978"
+	      Position		      [170, 15, 229, 43]
+	      ZOrder		      -2
+	      ActionPortLabel	      "else"
+	    }
+	    Block {
+	      BlockType		      Abs
+	      Name		      "Abs"
+	      SID		      "1052"
+	      Position		      [185, 70, 215, 100]
+	      ZOrder		      5252
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "979"
+	      Position		      [325, 78, 355, 92]
+	      ZOrder		      -3
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      ZOrder		      2
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "Abs"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      3
+	      SrcBlock		      "Abs"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "If Action\nSubsystem1"
+	  SID			  "980"
+	  Ports			  [1, 1, 0, 0, 0, 0, 0, 1]
+	  Position		  [375, 52, 445, 88]
+	  ZOrder		  5230
+	  NamePlacement		  "alternate"
+	  TreatAsAtomicUnit	  on
+	  RequestExecContextInheritance	off
+	  ContentPreviewEnabled	  on
+	  System {
+	    Name		    "If Action\nSubsystem1"
+	    Location		    [342, 471, 840, 771]
+	    Open		    off
+	    PortBlocksUseCompactNotation off
+	    SetExecutionDomain	    off
+	    ExecutionDomainType	    "Deduce"
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SimulinkSubDomain	    "Simulink"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      "981"
+	      Position		      [75, 78, 105, 92]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      ActionPort
+	      Name		      "Action Port"
+	      SID		      "982"
+	      Position		      [170, 15, 229, 43]
+	      ZOrder		      -2
+	      ActionPortLabel	      "if(u1 > 0)"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "983"
+	      Position		      [325, 78, 355, 92]
+	      ZOrder		      -3
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      ZOrder		      1
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "843"
+	  Ports			  [2, 1]
+	  Position		  [180, 52, 210, 83]
+	  ZOrder		  5218
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product1"
+	  SID			  "966"
+	  Ports			  [2, 1]
+	  Position		  [180, 227, 210, 263]
+	  ZOrder		  5219
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product2"
+	  SID			  "968"
+	  Ports			  [2, 1]
+	  Position		  [170, 139, 200, 181]
+	  ZOrder		  5221
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope1"
+	  SID			  "1099"
+	  Ports			  [1]
+	  Position		  [300, 24, 330, 56]
+	  ZOrder		  5265
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData10'),extmgr.Configuration('Visuals','Time Domain',true,'"
+	  "SerializedDisplays',{struct('MinYLimReal','-1.00000','MaxYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000'"
+	  ",'MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0]"
+	  ",'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074"
+	  "5098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509"
+	  "8039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Ti"
+	  "tle','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product"
+	  "'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.00000','MaxYLimReal','1.0"
+	  "0000','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',t"
+	  "rue,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922"
+	  "],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;"
+	  "0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1"
+	  ";1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuratio"
+	  "n('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope2"
+	  SID			  "1100"
+	  Ports			  [1]
+	  Position		  [310, 84, 340, 116]
+	  ZOrder		  5266
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData11'),extmgr.Configuration('Visuals','Time Domain',true,'"
+	  "SerializedDisplays',{struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabelReal','','MinYLimMag','0.325','MaxYL"
+	  "imMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTic"
+	  "kColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803921"
+	  "5686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921568"
+	  "6;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<S"
+	  "ignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product2'}},'Sho"
+	  "wContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabel"
+	  "Real','','MinYLimMag','0.325','MaxYLimMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase"
+	  "',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0"
+	  ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529"
+	  " 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.074509803921"
+	  "5686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measur"
+	  "ements',true,'Version','2019b')),'Version','2019b','Position',[680 330 1090 420])"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope5"
+	  SID			  "1098"
+	  Ports			  [1]
+	  Position		  [315, 199, 345, 231]
+	  ZOrder		  5264
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData9'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLabelReal','','MinYLimMag','0.00000','Ma"
+	  "xYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'Axes"
+	  "TickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803"
+	  "9215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921"
+	  "5686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','"
+	  "%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'P_diff'}},'Sh"
+	  "owContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLa"
+	  "belReal','','MinYLimMag','0.00000','MaxYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMag"
+	  "Phase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrde"
+	  "r',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.7176470588"
+	  "23529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098"
+	  "039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','M"
+	  "easurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "967"
+	  Ports			  [3, 1]
+	  Position		  [230, 150, 250, 170]
+	  ZOrder		  5220
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "++-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "P_diff"
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "EL_PWM"
+	  SID			  "1085"
+	  Position		  [685, 123, 715, 137]
+	  ZOrder		  5251
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "FC_PWM"
+	  SID			  "1086"
+	  Position		  [685, 158, 715, 172]
+	  ZOrder		  5252
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  400
+	  SrcBlock		  "Divide1"
+	  SrcPort		  1
+	  DstBlock		  "FC_PWM"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  401
+	  SrcBlock		  "Divide"
+	  SrcPort		  1
+	  DstBlock		  "EL_PWM"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  538
+	  SrcBlock		  "r_WT"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  398
+	  SrcBlock		  "If Action\nSubsystem"
+	  SrcPort		  1
+	  Points		  [71, 0; 0, -75]
+	  DstBlock		  "Divide1"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  395
+	  SrcBlock		  "Constant5"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, 5]
+	  DstBlock		  "Divide"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  391
+	  SrcBlock		  "If"
+	  SrcPort		  2
+	  Points		  [20, 0]
+	  DstBlock		  "If Action\nSubsystem"
+	  DstPort		  ifaction
+	}
+	Line {
+	  ZOrder		  379
+	  SrcBlock		  "Product1"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "P_diff"
+	  ZOrder		  389
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  Points		  [9, 0]
+	  Branch {
+	    ZOrder		    558
+	    Points		    [0, 55]
+	    DstBlock		    "Scope5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    557
+	    Labels		    [1, 1]
+	    Points		    [21, 0]
+	    Branch {
+	      ZOrder		      505
+	      Points		      [0, -90]
+	      DstBlock		      "If Action\nSubsystem1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      394
+	      Points		      [0, 85]
+	      DstBlock		      "If Action\nSubsystem"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      392
+	      DstBlock		      "If"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  ZOrder		  385
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  397
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -5]
+	  DstBlock		  "Divide1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  390
+	  SrcBlock		  "If"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  DstBlock		  "If Action\nSubsystem1"
+	  DstPort		  ifaction
+	}
+	Line {
+	  ZOrder		  396
+	  SrcBlock		  "If Action\nSubsystem1"
+	  SrcPort		  1
+	  Points		  [79, 0; 0, 50]
+	  DstBlock		  "Divide"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  387
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "Product1"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  383
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Product2"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  540
+	  SrcBlock		  "r_LED"
+	  SrcPort		  1
+	  DstBlock		  "Product1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  539
+	  SrcBlock		  "r_SP"
+	  SrcPort		  1
+	  DstBlock		  "Product2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  380
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  Points		  [24, 0]
+	  Branch {
+	    ZOrder		    561
+	    Points		    [0, -30]
+	    DstBlock		    "Scope1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    560
+	    Points		    [1, 0]
+	    DstBlock		    "Sum"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  381
+	  SrcBlock		  "Product2"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    ZOrder		    564
+	    Points		    [0, -60]
+	    DstBlock		    "Scope2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    563
+	    DstBlock		    "Sum"
+	    DstPort		    2
+	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "Power Supply"
+      SID		      "1065"
+      Position		      [245, 223, 310, 247]
+      ZOrder		      5252
+      BackgroundColor	      "[0.074510, 0.623529, 1.000000]"
+      VariableName	      "r_PS"
+      SampleTime	      "step_size"
+      Interpolate	      off
+      ZeroCross		      on
+      OutputAfterFinalValue   "Holding final value"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope1"
+      SID		      "1043"
+      Ports		      [1]
+      Position		      [874, 550, 906, 580]
+      ZOrder		      5242
+      BlockRotation	      270
+      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
+      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
+      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData13'),extmgr.Configuration('Visuals','Time Domai"
+      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.75','MaxYLimReal','0.95','YLabelReal','','MinYLimMag','0.7"
+      "5','MaxYLimMag','0.95','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
+      "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;"
+      "0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 "
+      "0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392"
+      "156863],'Title','%<SignalLabel>','LinePropertiesCache',{{struct('Marker','o','MarkerSize',8)}},'UserDefinedChann"
+      "elNames',{{}},'NumLines',1,'LineNames',{{'Constant'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefault"
+      "s',struct('MinYLimReal','0.75','MaxYLimReal','0.95','YLabelReal','','MinYLimMag','0.75','MaxYLimMag','0.95','Leg"
+      "endVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.68627"
+      "4509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.4117647"
+      "05882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.83137"
+      "2549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configurat"
+      "ion('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Versio"
+      "n','2019b','Position',[48 341 1192 409])"
+      NumInputPorts	      "1"
+      Floating		      off
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      SID		      "1044"
+      Ports		      [1]
+      Position		      [799, 540, 831, 570]
+      ZOrder		      5243
+      BlockRotation	      270
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
+      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
+      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData14'),extmgr.Configuration('Visuals','Time Domai"
+      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.9','MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9',"
+      "'MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'"
+      "AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.07"
+      "45098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.07"
+      "45098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921568"
+      "63],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',"
+      "{{'Wind Controller/2'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.9',"
+      "'MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9','MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,"
+      "'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686"
+      "274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06"
+      "66666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05"
+      "88235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true"
+      "),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 9"
+      "63])"
+      NumInputPorts	      "1"
+      Floating		      off
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope5"
+      SID		      "1097"
+      Ports		      [1]
+      Position		      [760, 384, 790, 416]
+      ZOrder		      5264
+      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
+      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
+      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData8'),extmgr.Configuration('Visuals','Time Domain"
+      "',true),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),"
+      "'Version','2019b')"
+      NumInputPorts	      "1"
+      Floating		      off
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "Solar"
+      SID		      "971"
+      Position		      [245, 353, 310, 377]
+      ZOrder		      5224
+      BackgroundColor	      "[0.074510, 0.623529, 1.000000]"
+      VariableName	      "r_SP"
+      SampleTime	      "step_size"
+      Interpolate	      off
+      ZeroCross		      on
+      OutputAfterFinalValue   "Holding final value"
+    }
+    Block {
       BlockType		      FromWorkspace
       Name		      "Wind"
       SID		      "969"
@@ -10512,7 +10521,7 @@ Model {
       System {
 	Name			"Wind Controller"
 	Location		[-8, -8, 1928, 1048]
-	Open			on
+	Open			off
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
 	ExecutionDomainType	"Deduce"
@@ -10576,7 +10585,7 @@ Model {
 	  System {
 	    Name		    "Lambda calculation"
 	    Location		    [-8, -8, 1928, 1048]
-	    Open		    on
+	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
 	    ExecutionDomainType	    "Deduce"
@@ -12586,40 +12595,40 @@ Model {
       SrcBlock		      "Power Supply"
       SrcPort		      1
       Points		      [623, 0; 0, 65]
-      DstBlock		      "Subsystem"
+      DstBlock		      "Electrical Plant"
       DstPort		      1
     }
     Line {
       ZOrder		      357
-      SrcBlock		      "Subsystem"
+      SrcBlock		      "Electrical Plant"
       SrcPort		      1
       DstBlock		      "P_PS1"
       DstPort		      1
     }
     Line {
       ZOrder		      359
-      SrcBlock		      "Subsystem"
+      SrcBlock		      "Electrical Plant"
       SrcPort		      2
       DstBlock		      "P_WT1"
       DstPort		      1
     }
     Line {
       ZOrder		      360
-      SrcBlock		      "Subsystem"
+      SrcBlock		      "Electrical Plant"
       SrcPort		      3
       DstBlock		      "P_SP1"
       DstPort		      1
     }
     Line {
       ZOrder		      362
-      SrcBlock		      "Subsystem"
+      SrcBlock		      "Electrical Plant"
       SrcPort		      4
       DstBlock		      "P_FC1"
       DstPort		      1
     }
     Line {
       ZOrder		      363
-      SrcBlock		      "Subsystem"
+      SrcBlock		      "Electrical Plant"
       SrcPort		      5
       DstBlock		      "P_EL1"
       DstPort		      1
@@ -12647,14 +12656,14 @@ Model {
       SrcBlock		      "Wind Controller"
       SrcPort		      3
       Points		      [90, 0; 0, -55]
-      DstBlock		      "Subsystem"
+      DstBlock		      "Electrical Plant"
       DstPort		      6
     }
     Line {
       ZOrder		      445
       SrcBlock		      "Constant6"
       SrcPort		      1
-      DstBlock		      "Subsystem"
+      DstBlock		      "Electrical Plant"
       DstPort		      7
     }
     Line {
@@ -12678,38 +12687,19 @@ Model {
       ZOrder		      382
       SrcBlock		      "Solar"
       SrcPort		      1
-      Points		      [25, 0]
-      Branch {
-	ZOrder			607
-	Points			[0, -25]
-	DstBlock		"Hydrogen Controller"
-	DstPort			2
-      }
-      Branch {
-	ZOrder			594
-	Points			[0, 270; 576, 0]
-	Branch {
-	  ZOrder		  539
-	  Points		  [0, -90]
-	  DstBlock		  "Subsystem"
-	  DstPort		  8
-	}
-	Branch {
-	  ZOrder		  488
-	  DstBlock		  "Scope1"
-	  DstPort		  1
-	}
-      }
+      Points		      [25, 0; 0, -25]
+      DstBlock		      "Hydrogen Controller"
+      DstPort		      2
     }
     Line {
       ZOrder		      365
       SrcBlock		      "Wind Controller"
       SrcPort		      2
-      Points		      [70, 0]
+      Points		      [65, 0]
       Branch {
-	ZOrder			612
-	Points			[1, 0; 0, -50]
-	DstBlock		"Subsystem"
+	ZOrder			626
+	Points			[6, 0; 0, -50]
+	DstBlock		"Electrical Plant"
 	DstPort			5
       }
       Branch {
@@ -12723,7 +12713,7 @@ Model {
       SrcBlock		      "Wind Controller"
       SrcPort		      1
       Points		      [45, 0; 0, -45]
-      DstBlock		      "Subsystem"
+      DstBlock		      "Electrical Plant"
       DstPort		      4
     }
     Line {
@@ -12731,7 +12721,7 @@ Model {
       SrcBlock		      "Hydrogen Controller"
       SrcPort		      1
       Points		      [169, 0; 0, 25]
-      DstBlock		      "Subsystem"
+      DstBlock		      "Electrical Plant"
       DstPort		      2
     }
     Line {
@@ -12741,7 +12731,7 @@ Model {
       Points		      [46, 0]
       Branch {
 	ZOrder			620
-	DstBlock		"Subsystem"
+	DstBlock		"Electrical Plant"
 	DstPort			3
       }
       Branch {
@@ -12749,6 +12739,24 @@ Model {
 	Points			[0, 30]
 	DstBlock		"Scope5"
 	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      628
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      Points		      [63, 0; 0, -26]
+      Branch {
+	ZOrder			630
+	Points			[-28, 0]
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			629
+	Points			[0, -54]
+	DstBlock		"Electrical Plant"
+	DstPort			8
       }
     }
     Annotation {
