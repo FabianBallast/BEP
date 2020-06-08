@@ -5,6 +5,8 @@
 extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
 extern byte turbine_pwm;
+extern byte electrolyzer_pwm;
+extern byte fuel_cell_pwm;
 
 int i_send = -1;
 
@@ -68,6 +70,12 @@ void comm_send(){
       Serial.print(", \"wind_control_pwm\":");     Serial.print(turbine_pwm);
       break;
     case 16:
+      Serial.print(", \"fuel_cell_pwm\":");        Serial.print(fuel_cell_pwm);
+      break;
+    case 17:
+      Serial.print(", \"electrolyzer_pwm\":");        Serial.print(electrolyzer_pwm);
+      break;      
+    case 18:
       Serial.println("}enddata");
       i_send = -1;
       break;
