@@ -180,9 +180,9 @@ class System(QtWidgets.QWidget):
 
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        solar = sensor_data.get('solar_current')/20
-        wind = sensor_data.get('wind_current')/20
-        load = sensor_data.get('load_current')/20
+        solar = sensor_data.get('zonI')/20
+        wind = sensor_data.get('windI')/20
+        load = sensor_data.get('loadI')/20
         elek = solar + wind - load
         tank = sensor_data.get('tank_level')
         self.source_figures_curr.setText(f"{solar:.2f}W\n{wind:.2f}W")

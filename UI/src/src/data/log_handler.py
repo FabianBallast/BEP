@@ -39,9 +39,9 @@ class LogWriter():
         self.wind_write.append(data_write[1])
         self.demand_write.append(data_write[2])
 
-        self.solar_curr.append(sensor_data['solar_current'])
-        self.wind_curr.append(sensor_data['wind_current'])
-        self.demand_curr.append(sensor_data['load_current'])
+        self.solar_curr.append(sensor_data['zonI'])
+        self.wind_curr.append(sensor_data['windI'])
+        self.demand_curr.append(sensor_data['loadI'])
         self.tank_level.append(sensor_data['tank_level'])
         self.time.append(sensor_data['time'])
 
