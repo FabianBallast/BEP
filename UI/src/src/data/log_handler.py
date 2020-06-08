@@ -1,18 +1,23 @@
 """This module takes care of writing data to the log-file."""
 
+import csv
+
 class LogWriter():
     """This class writes data to the log-file."""
 
     def __init__(self):
         try:
-            log_file = open('UI/log.txt', 'w')
+            with open('UI/log.csv', 'w', newline='') as file:
+                log_file = csv.writer(file)
+                log_file.writerow([0, 'Log file'])
+            #log_file = open('UI/log.txt', 'w')
         except FileNotFoundError:
-            log_file = open('log.txt', 'w')
-        log_file.write('Log file')
-        log_file.close()
+            with open('log.csv', 'w', newline='') as file:
+                log_file = csv.writer(file)
+                log_file.writerow([0, 'Log file'])
 
         self.max_length = 1000
-
+        self.n = 1
         self.solar_write = []
         self.wind_write = []
         self.demand_write = []
@@ -58,20 +63,25 @@ class LogWriter():
         
     def write(self):
         """Write data to the file."""
-        log_file = open('UI/log.txt', 'a')
 
-        for i in range(len(self.solar_write)):
-            log_file.write(f"\nOutput: S:{self.solar_write[i]:5.1f}%, "
-                                     f"W:{self.wind_write[i]:5.1f}%, "
-                                     f"D:{self.demand_write[i]:5.1f}%. "
-                           f"   Input: S:{self.solar_curr[i]:5.1f}mA, "
-                                     f"W:{self.wind_curr[i]:5.1f}mA, "
-                                     f"D:{self.demand_curr[i]:5.1f}mA, "
-                                    # f"E:{self.elec_curr[i]}mA, "
-                                    # f"F:{self.fuel_curr[i]}mA, "
-                                     f"T:{self.tank_level[i]:5.1f}mL at {self.time[i]:4.1f}s")
+        try: 
+            with open('UI/log.csv', 'a', newline='') as file:
+                log_file = csv.writer(file)
+                for i in range(len(self.solar_write)):
+                    log_file.writerow([self.n, f"S:{self.solar_write[i]:5.1f}%", f"W:{self.wind_write[i]:5.1f}%", f"D:{self.demand_write[i]:5.1f}%",
+                                               f"S:{self.solar_curr[i]:5.1f}mA", f"W:{self.wind_curr[i]:5.1f}mA", f"D:{self.demand_curr[i]:5.1f}mA",
+                                               f"T:{self.tank_level[i]:5.1f}mL", f"t:{self.time[i]:4.1f}s"])
+                    self.n += 1
         
-        log_file.close()
+        except FileNotFoundError:
+            with open('log.csv', 'a', newline='') as file:
+                log_file = csv.writer(file)
+                for i in range(len(self.solar_write)):
+                    log_file.writerow([self.n, f"S:{self.solar_write[i]:5.1f}%", f"W:{self.wind_write[i]:5.1f}%", f"D:{self.demand_write[i]:5.1f}%",
+                                               f"S:{self.solar_curr[i]:5.1f}mA", f"W:{self.wind_curr[i]:5.1f}mA", f"D:{self.demand_curr[i]:5.1f}mA",
+                                               f"T:{self.tank_level[i]:5.1f}mL", f"t:{self.time[i]:4.1f}s"])
+                    self.n += 1
+          
     
     def close(self):
         """When closed, the last data should still be written to the file."""

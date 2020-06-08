@@ -17,13 +17,12 @@ from src.src.serial.serial_page import SerialPage, SerialTextBox, LastDataBox
 import src.style.style_sheets as sheet
 class UiMainWindow(object):
     """Class for both screens (if there are two screens connected)."""
-    def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2, print_statements):
+    def __init__(self, geometry_1, geometry_2, main_window_1, main_window_2):
 
         self.serial_box = SerialTextBox()
         self.last_data_box = LastDataBox()
-        self.print_values = print_statements
         #self.serial_box = None
-        self.data = DataManager(self.serial_box, self.last_data_box, self.print_values)
+        self.data = DataManager(self.serial_box, self.last_data_box)
         self.set_main_windows(geometry_1, geometry_2, main_window_1, main_window_2)
         self.add_toolbars_to_window(geometry_1, main_window_1)
         self.create_central_stacked_widgets(geometry_1, geometry_2, main_window_1, main_window_2)
@@ -143,28 +142,28 @@ class UiMainWindow(object):
 
 if __name__ == "__main__":
     import sys
-    print_statements = io.StringIO()
-    with redirect_stdout(print_statements):
+    #print_statements = io.StringIO()
+    #with redirect_stdout(print_statements):
 #    font = QtGui.QFont("Helvetica")
-        app = QtWidgets.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
 #    app.setFont(font)
 
-        desktop = app.desktop()
-        screen = desktop.screenCount()
+    desktop = app.desktop()
+    screen = desktop.screenCount()
 
-        monitor_1 = QtWidgets.QDesktopWidget().screenGeometry(0)
-        monitor_2 = QtWidgets.QDesktopWidget().screenGeometry(1)
-        MainWindow_1 = QtWidgets.QMainWindow()
-        MainWindow_2 = QtWidgets.QMainWindow()
-        
-        ui = UiMainWindow([monitor_1.width(), monitor_1.height()], 
-                        [monitor_2.width(), monitor_2.height()],
-                        MainWindow_1, MainWindow_2, print_statements)
+    monitor_1 = QtWidgets.QDesktopWidget().screenGeometry(0)
+    monitor_2 = QtWidgets.QDesktopWidget().screenGeometry(1)
+    MainWindow_1 = QtWidgets.QMainWindow()
+    MainWindow_2 = QtWidgets.QMainWindow()
     
-        MainWindow_1.showFullScreen()
-        
-        if screen == 2:
-            MainWindow_2.move(monitor_2.left(), monitor_2.top())
-            MainWindow_2.showFullScreen()
+    ui = UiMainWindow([monitor_1.width(), monitor_1.height()], 
+                    [monitor_2.width(), monitor_2.height()],
+                    MainWindow_1, MainWindow_2)#, print_statements)
+
+    MainWindow_1.showFullScreen()
+    
+    if screen == 2:
+        MainWindow_2.move(monitor_2.left(), monitor_2.top())
+        MainWindow_2.showFullScreen()
     
     sys.exit(app.exec_())
