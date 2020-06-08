@@ -87,12 +87,12 @@ class SerialCommunicator:
 
                 #self.printer.print(f'Received from Arduino: {received_from_arduino}')
                 
-                if "newdata=" in self.all_received_data.rsplit('enddata', 1)[0]:   #check if newdata occurs before enddata
-                    end_splits = self.all_received_data.split('enddata')[:-1]
+                if "nd=" in self.all_received_data.rsplit('ed', 1)[0]:   #check if newdata occurs before enddata
+                    end_splits = self.all_received_data.split('ed')[:-1]
                     if len(end_splits) > 0:
                         for split in end_splits:
-                            if "newdata=" in split:
-                                start_splits = split.split("newdata=")
+                            if "nd=" in split:
+                                start_splits = split.split("nd=")
                                 if len(start_splits[0]) > 0:
                                     self.printer.print(f'Received from Arduino {start_splits[0]}')
                                 self.last_data = eval(start_splits[1])

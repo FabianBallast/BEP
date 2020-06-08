@@ -24,61 +24,61 @@ void serial_setup(){
 void comm_send(){
   switch (i_send){
     case 0:
-      Serial.print("newdata={");
+      Serial.print("nd={");
       break;
     case 1:
-      Serial.print("\"solar_current\":");          Serial.print(current_solar_panels);
+      Serial.print("\"zonI\":");          Serial.print(current_solar_panels);
       break;
     case 2:
-      Serial.print(", \"wind_current\":");         Serial.print(current_wind_turbines);
+      Serial.print(", \"windI\":");         Serial.print(current_wind_turbines);
       break;
     case 3:
-      Serial.print(", \"load_current\":");         Serial.print(current_ledload);
+      Serial.print(", \"loadI\":");         Serial.print(current_ledload);
       break;
     case 4:
-      Serial.print(", \"opt_wind_current\":");     Serial.print(opt_wind_current);
+      Serial.print(", \"OptWindI\":");     Serial.print(opt_wind_current);
       break;
     case 5:
-      Serial.print(", \"electrolyzer_current\":"); Serial.print(current_electrolyzer);
+      Serial.print(", \"EL_I\":"); Serial.print(current_electrolyzer);
       break;
     case 6:
-      Serial.print(", \"power_supply_current\":"); Serial.print(current_power_supply);
+      Serial.print(", \"PS_I\":"); Serial.print(current_power_supply);
       break;
     case 7:
-      Serial.print(", \"fuel_cell_current\":");    Serial.print(current_fuel_cell);          
+      Serial.print(", \"FC_C\":");    Serial.print(current_fuel_cell);          
       break;
     case 8:
-      Serial.print(", \"fan_power\":");            Serial.print(get_fan_power());      
+      Serial.print(", \"fan\":");            Serial.print(get_fan_power());      
       break;
     case 9:
-      Serial.print(", \"electrolyzer_voltage\":"); Serial.print(electrolyzer_voltage);        
+      Serial.print(", \"EL_U\":"); Serial.print(electrolyzer_voltage);        
       break;
     case 10:
-      Serial.print(", \"fuel_cell_voltage\":");    Serial.print(fuel_cell_voltage);   
+      Serial.print(", \"FC_U\":");    Serial.print(fuel_cell_voltage);   
       break;
     case 11:
-      Serial.print(", \"grid_voltage\":");         Serial.print(grid_voltage);   
+      Serial.print(", \"gridU\":");         Serial.print(grid_voltage);   
       break;
     case 12:
-      Serial.print(", \"loop_time\":");            Serial.print(elapsedTime);
+      Serial.print(", \"loopT\":");            Serial.print(elapsedTime);
       break;
     case 13:
-      Serial.print(", \"grid_control_value\":");   Serial.print(grid_control_value);
+      Serial.print(", \"gridX\":");   Serial.print(grid_control_value);
       break;
     case 14:
-      Serial.print(", \"wind_control_value\":");   Serial.print(wind_control_value);   
+      Serial.print(", \"windX\":");   Serial.print(wind_control_value);   
       break;
     case 15:
-      Serial.print(", \"wind_control_pwm\":");     Serial.print(turbine_pwm);
+      Serial.print(", \"windY\":");     Serial.print(turbine_pwm);
       break;
     case 16:
-      Serial.print(", \"fuel_cell_pwm\":");        Serial.print(fuel_cell_pwm);
+      Serial.print(", \"FC_Y\":");        Serial.print(fuel_cell_pwm);
       break;
     case 17:
-      Serial.print(", \"electrolyzer_pwm\":");        Serial.print(electrolyzer_pwm);
+      Serial.print(", \"EL_Y\":");        Serial.print(electrolyzer_pwm);
       break;      
     case 18:
-      Serial.println("}enddata");
+      Serial.println("}ed");
       i_send = -1;
       break;
   }  

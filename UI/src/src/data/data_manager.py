@@ -34,10 +34,12 @@ class DataManager():
         self.last_data_box = last_data_box
 
         self.light = HalogenLight(self.printer)
-        self.tank_reader = TankReader(self)
+        
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
+        self.tank_reader = TankReader(self, self.serial_connection)
+
         self.file = LogWriter()
 
         self.update_timer = QtCore.QTimer()
@@ -114,10 +116,11 @@ class DataManager():
         self.loads.load_set(values[2])
         readings = self.serial_connection.read_arduino()
         
+
         
         if 'dummy_serial' in readings:
-            sensors = ['solar_current', 'wind_current', 'load_current', 'electrolyzer_current', 
-                       'power_supply_current', 'fuel_cell_current']
+            sensors = ['zonI', 'windI', 'loadI', 'EL_I', 
+                       'PS_I', 'FC_I', 'OptWindI', 'EV_U', 'FC_U','gridU', 'loopT']
             
             for sensor in sensors:
                 try:
