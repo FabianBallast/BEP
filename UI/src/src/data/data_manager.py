@@ -38,7 +38,7 @@ class DataManager():
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
-        self.tank_reader = TankReader(self, self.serial_connection)
+        self.tank_reader = TankReader(self, self.NOT_CONNECTED)
 
         self.file = LogWriter()
 
