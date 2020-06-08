@@ -7,7 +7,7 @@ extern float elapsedTime;
 extern byte turbine_pwm;
 extern byte electrolyzer_pwm;
 extern byte fuel_cell_pwm;
-
+extern float opt_wind_current;
 extern float grid_voltage;
 
 int i_send = -1;

@@ -101,10 +101,10 @@ class SerialCommunicator:
                                 self.printer.print(f'Received from Arduino: {split}')
                     self.all_received_data = ""
 
-        except:
+        except Exception as error:
             rbytes = str(rbytes)
             self.all_received_data = ""
-            #self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
+            self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
             self.CONNECTION = "Arduino niet verbonden"
             self.ser.reset_input_buffer()
             self.ser.reset_output_buffer()    
