@@ -36,7 +36,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.28"
+    ComputedModelVersion    "1.30"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -49,7 +49,7 @@ Model {
     IsArchitectureModel	    0
     IsAUTOSARArchitectureModel 0
     NumParameterArguments   0
-    NumExternalFileReferences 88
+    NumExternalFileReferences 87
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
       Path		      "FullSystemSim/Subsystem/ "
@@ -118,6 +118,12 @@ Model {
     }
     ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
+      Path		      "FullSystemSim/Subsystem/Controlled Voltage Source"
+      SID		      "1110"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
       Path		      "FullSystemSim/Subsystem/Controlled Voltage Source1"
       SID		      "1004"
       Type		      "LIBRARY_BLOCK"
@@ -178,12 +184,6 @@ Model {
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
-      Path		      "FullSystemSim/Subsystem/Diode7"
-      SID		      "598"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "ee_lib/Semiconductors &\nConverters/Diode"
       Path		      "FullSystemSim/Subsystem/Diode8"
       SID		      "599"
       Type		      "LIBRARY_BLOCK"
@@ -214,26 +214,26 @@ Model {
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
+      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET2"
+      SID		      "1112"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
+      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET3"
+      SID		      "1113"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
       Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET4"
-      SID		      "611"
+      SID		      "1114"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
       Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
       Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET5"
-      SID		      "612"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET6"
-      SID		      "613"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-      Path		      "FullSystemSim/Subsystem/IRLZ-34N MOSFET7"
-      SID		      "614"
+      SID		      "1115"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -294,6 +294,12 @@ Model {
       Reference		      "nesl_utility/PS-Simulink\nConverter"
       Path		      "FullSystemSim/Subsystem/PS-Simulink Converter19"
       SID		      "624"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "fl_lib/Electrical/Electrical Elements/Resistor"
+      Path		      "FullSystemSim/Subsystem/Resistor1"
+      SID		      "1111"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -366,12 +372,6 @@ Model {
       Reference		      "nesl_utility/Simulink-PS\nConverter"
       Path		      "FullSystemSim/Subsystem/Simulink-PS Converter5"
       SID		      "641"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "nesl_utility/Simulink-PS\nConverter"
-      Path		      "FullSystemSim/Subsystem/Simulink-PS Converter6"
-      SID		      "1071"
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
@@ -525,12 +525,6 @@ Model {
       Type		      "LIBRARY_BLOCK"
     }
     ExternalFileReference {
-      Reference		      "fl_lib/Electrical/Electrical Elements/Switch"
-      Path		      "FullSystemSim/Subsystem/Switch"
-      SID		      "1069"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
       Reference		      "fl_lib/Electrical/Electrical Elements/Variable Resistor"
       Path		      "FullSystemSim/Subsystem/Variable Resistor1"
       SID		      "684"
@@ -627,55 +621,11 @@ Model {
       }
       Array {
 	Type			"Simulink.EditorInfo"
-	Dimension		11
+	Dimension		12
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [0]
 	  IsTabbed		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "81"
-	  Extents		  [1852.0, 814.0]
-	  ZoomFactor		  [1.25]
-	  Offset		  [-240.26125702439685, -101.56469369631765]
-	  SceneRectInView	  [-240.26125702439685, -101.56469369631765, 1481.6, 651.2]
-	}
-	Object {
-	  $ObjectID		  6
-	  IsActive		  [0]
-	  IsTabbed		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "825"
-	  Extents		  [1852.0, 814.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-20.02734375, 74.375]
-	  SceneRectInView	  [-20.02734375, 74.375, 1852.0, 814.0]
-	}
-	Object {
-	  $ObjectID		  7
-	  IsActive		  [1]
-	  IsTabbed		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1"
-	  Extents		  [1852.0, 814.0]
-	  ZoomFactor		  [1.0882658359293873]
-	  Offset		  [-634.31204675572565, -57.4114503816794]
-	  SceneRectInView	  [-634.31204675572565, -57.4114503816794, 1701.790076335878, 747.9790076335878]
-	}
-	Object {
-	  $ObjectID		  8
-	  IsActive		  [0]
-	  IsTabbed		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1081"
-	  Extents		  [1852.0, 814.0]
-	  ZoomFactor		  [1.75]
-	  Offset		  [-44.54943421378966, -13.063008432539686]
-	  SceneRectInView	  [-44.54943421378966, -13.063008432539686, 1058.2857142857142, 465.14285714285717]
-	}
-	Object {
-	  $ObjectID		  9
-	  IsActive		  [0]
-	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1852.0, 814.0]
@@ -684,29 +634,40 @@ Model {
 	  SceneRectInView	  [235.57731976425441, 184.19422457510967, 1246.4859854714912, 547.86155084978066]
 	}
 	Object {
-	  $ObjectID		  10
-	  IsActive		  [0]
-	  IsTabbed		  [0]
+	  $ObjectID		  6
+	  IsActive		  [1]
+	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "976"
-	  Extents		  [1820.0, 814.0]
-	  ZoomFactor		  [3.0]
-	  Offset		  [-96.400000000000148, -60.833333333333343]
-	  SceneRectInView	  [-96.400000000000148, -60.833333333333343, 606.66666666666663, 271.33333333333331]
-	}
-	Object {
-	  $ObjectID		  11
-	  IsActive		  [0]
-	  IsTabbed		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "644"
+	  LoadSaveID		  "825"
 	  Extents		  [1852.0, 814.0]
-	  ZoomFactor		  [1.5]
-	  Offset		  [-241.98177083333337, -174.00006666666664]
-	  SceneRectInView	  [-241.98177083333337, -174.00006666666664, 1234.6666666666667, 542.66666666666663]
+	  ZoomFactor		  [0.85737660212707933]
+	  Offset		  [-224.62083532124689, 6.6711195928753]
+	  SceneRectInView	  [-224.62083532124689, 6.6711195928753, 2160.0776081424938, 949.4077608142494]
 	}
 	Object {
-	  $ObjectID		  12
+	  $ObjectID		  7
+	  IsActive		  [0]
+	  IsTabbed		  [1]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "81"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [1.25]
+	  Offset		  [-240.26125702439697, -101.5646936963177]
+	  SceneRectInView	  [-240.26125702439697, -101.5646936963177, 1481.6, 651.2]
+	}
+	Object {
+	  $ObjectID		  8
+	  IsActive		  [0]
+	  IsTabbed		  [1]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "59"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [1.6182217343578487]
+	  Offset		  [-60.057418324345349, -170.17467100800431]
+	  SceneRectInView	  [-60.057418324345349, -170.17467100800431, 1144.4661511328177, 503.02129968796629]
+	}
+	Object {
+	  $ObjectID		  9
 	  IsActive		  [0]
 	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
@@ -717,7 +678,7 @@ Model {
 	  SceneRectInView	  [-72.1484375, -109.16673333333333, 926.0, 407.0]
 	}
 	Object {
-	  $ObjectID		  13
+	  $ObjectID		  10
 	  IsActive		  [0]
 	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
@@ -728,7 +689,62 @@ Model {
 	  SceneRectInView	  [-355.44843749999995, -230.80008, 1481.6, 651.2]
 	}
 	Object {
+	  $ObjectID		  11
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "644"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [2.0]
+	  Offset		  [-36.291294642857, -100.50006666666667]
+	  SceneRectInView	  [-36.291294642857, -100.50006666666667, 926.0, 407.0]
+	}
+	Object {
+	  $ObjectID		  12
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "654"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [1.5]
+	  Offset		  [-241.98177083333337, -174.00006666666664]
+	  SceneRectInView	  [-241.98177083333337, -174.00006666666664, 1234.6666666666667, 542.66666666666663]
+	}
+	Object {
+	  $ObjectID		  13
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "1"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [1.0886426592797784]
+	  Offset		  [-587.16293734096666, -111.94860050890588]
+	  SceneRectInView	  [-587.16293734096666, -111.94860050890588, 1701.2010178117048, 747.72010178117046]
+	}
+	Object {
 	  $ObjectID		  14
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "1081"
+	  Extents		  [1852.0, 814.0]
+	  ZoomFactor		  [1.75]
+	  Offset		  [-44.549434213789652, -13.063008432539675]
+	  SceneRectInView	  [-44.549434213789652, -13.063008432539675, 1058.2857142857142, 465.14285714285717]
+	}
+	Object {
+	  $ObjectID		  15
+	  IsActive		  [0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "976"
+	  Extents		  [1820.0, 814.0]
+	  ZoomFactor		  [3.0]
+	  Offset		  [-96.400000000000148, -60.833333333333343]
+	  SceneRectInView	  [-96.400000000000148, -60.833333333333343, 606.66666666666663, 271.33333333333331]
+	}
+	Object {
+	  $ObjectID		  16
 	  IsActive		  [0]
 	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
@@ -738,22 +754,11 @@ Model {
 	  Offset		  [-520.0, -140.5]
 	  SceneRectInView	  [-520.0, -140.5, 1820.0, 814.0]
 	}
-	Object {
-	  $ObjectID		  15
-	  IsActive		  [0]
-	  IsTabbed		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "59"
-	  Extents		  [1820.0, 814.0]
-	  ZoomFactor		  [1.6182217343578487]
-	  Offset		  [-50.170021770282119, -170.17467100800431]
-	  SceneRectInView	  [-50.170021770282119, -170.17467100800431, 1124.6913580246912, 503.02129968796629]
-	}
 	PropName		"EditorsInfo"
       }
       Object {
 	$PropName		"DockComponentsInfo"
-	$ObjectID		16
+	$ObjectID		17
 	$ClassName		"Simulink.DockComponentInfo"
 	Type			"GLUE2:PropertyInspector"
 	ID			"Property Inspector"
@@ -784,8 +789,8 @@ Model {
     BDUuid		    "aa242852-a4a9-4877-8a12-77432ca5370f"
   }
   HideAutomaticNames	  on
-  PhysicalModelingChecksum "3228711929"
-  PhysicalModelingParameterChecksum "2059201393"
+  PhysicalModelingChecksum "1721661032"
+  PhysicalModelingParameterChecksum "3014539640"
   PhysicalModelingProducts "Power_System_Blocks|Simscape"
   Created		  "Tue Jun 02 14:26:46 2020"
   Creator		  "thequ"
@@ -793,9 +798,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thequ"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jun 08 12:33:11 2020"
-  RTWModifiedTimeStamp	  513520335
-  ModelVersionFormat	  "1.%<AutoIncrement:28>"
+  LastModifiedDate	  "Mon Jun 08 15:43:25 2020"
+  RTWModifiedTimeStamp	  513531798
+  ModelVersionFormat	  "1.%<AutoIncrement:30>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -855,7 +860,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    17
+    $ObjectID		    18
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "FullSystemSim"
     overrideMode_	    [0U]
@@ -900,7 +905,7 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      18
+      $ObjectID		      19
       Version		      "19.1.1"
       DisabledProps	      []
       Description	      ""
@@ -908,7 +913,7 @@ Model {
 	Type			"Handle"
 	Dimension		10
 	Simulink.SolverCC {
-	  $ObjectID		  19
+	  $ObjectID		  20
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -951,7 +956,7 @@ Model {
 	  SolverOrder		  3
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  20
+	  $ObjectID		  21
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -993,7 +998,7 @@ Model {
 	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  21
+	  $ObjectID		  22
 	  Version		  "19.1.1"
 	  Array {
 	    Type		    "Cell"
@@ -1066,7 +1071,7 @@ Model {
 	  EfficientTunableParamExpr off
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  22
+	  $ObjectID		  23
 	  Version		  "19.1.1"
 	  Array {
 	    Type		    "Cell"
@@ -1188,7 +1193,7 @@ Model {
 	  ArithmeticOperatorsInVariantConditions "error"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  23
+	  $ObjectID		  24
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1238,7 +1243,7 @@ Model {
 	  HardwareBoardFeatureSet "EmbeddedCoderHSP"
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  24
+	  $ObjectID		  25
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1258,7 +1263,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  25
+	  $ObjectID		  26
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1293,7 +1298,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  26
+	  $ObjectID		  27
 	  Version		  "19.1.1"
 	  Array {
 	    Type		    "Cell"
@@ -1382,7 +1387,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      27
+	      $ObjectID		      28
 	      Version		      "19.1.1"
 	      Array {
 		Type			"Cell"
@@ -1472,7 +1477,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      28
+	      $ObjectID		      29
 	      Version		      "19.1.1"
 	      Array {
 		Type			"Cell"
@@ -1579,7 +1584,7 @@ Model {
 	  }
 	}
 	SlCovCC.ConfigComp {
-	  $ObjectID		  29
+	  $ObjectID		  30
 	  Version		  "19.1.1"
 	  DisabledProps		  []
 	  Description		  "Simulink Coverage Configuration Component"
@@ -1620,7 +1625,7 @@ Model {
 	  CovMcdcMode		  "Masking"
 	}
 	SSC.SimscapeCC {
-	  $ObjectID		  30
+	  $ObjectID		  31
 	  Version		  "1.0"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1649,19 +1654,19 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    [ 145, 177, 1135, 847 ]
+      CurrentDlgPage	      "Diagnostics"
+      ConfigPrmDlgPosition    [ 149, 153, 1139, 823 ]
       ExtraOptions	      ""
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    18
+    $ObjectID		    19
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    31
+    $ObjectID		    32
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1764,6 +1769,30 @@ Model {
       BusSelectionMode	      off
     }
     Block {
+      BlockType		      DiscreteIntegrator
+      IntegratorMethod	      "Integration: Forward Euler"
+      gainval		      "1.0"
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      InitialConditionSetting "Output"
+      SampleTime	      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      IgnoreLimit	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
       BlockType		      FromWorkspace
       VariableName	      "simulink_input"
       OutDataTypeStr	      "Inherit: auto"
@@ -1813,24 +1842,6 @@ Model {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
-    }
-    Block {
-      BlockType		      Integrator
-      ExternalReset	      "none"
-      InitialConditionSource  "internal"
-      InitialCondition	      "0"
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      WrapState		      off
-      WrappedStateUpperValue  "pi"
-      WrappedStateLowerValue  "-pi"
-      ShowSaturationPort      off
-      ShowStatePort	      off
-      AbsoluteTolerance	      "auto"
-      IgnoreLimit	      off
-      ZeroCross		      on
-      ContinuousStateAttributes	"''"
     }
     Block {
       BlockType		      Math
@@ -1896,6 +1907,21 @@ Model {
       SFunctionModules	      "''"
       PortCounts	      "[]"
       MultiThreadCoSim	      "auto"
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimitSource	      "Dialog"
+      UpperLimit	      "0.5"
+      LowerLimitSource	      "Dialog"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
     }
     Block {
       BlockType		      Scope
@@ -1964,7 +1990,7 @@ Model {
   System {
     Name		    "FullSystemSim"
     Location		    [-8, -8, 1928, 1048]
-    Open		    off
+    Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
     ExecutionDomainType	    "Deduce"
@@ -1980,13 +2006,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "149"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1086"
+    SIDHighWatermark	    "1115"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Constant
       Name		      "Constant6"
       SID		      "1022"
-      Position		      [910, 495, 940, 525]
+      Position		      [885, 495, 915, 525]
       ZOrder		      5239
     }
     Block {
@@ -2314,6 +2340,84 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Scope
+	  Name			  "Scope1"
+	  SID			  "1099"
+	  Ports			  [1]
+	  Position		  [300, 24, 330, 56]
+	  ZOrder		  5265
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData10'),extmgr.Configuration('Visuals','Time Domain',true,'"
+	  "SerializedDisplays',{struct('MinYLimReal','-1.00000','MaxYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000'"
+	  ",'MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0]"
+	  ",'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074"
+	  "5098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509"
+	  "8039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Ti"
+	  "tle','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product"
+	  "'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.00000','MaxYLimReal','1.0"
+	  "0000','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',t"
+	  "rue,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922"
+	  "],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;"
+	  "0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1"
+	  ";1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuratio"
+	  "n('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope2"
+	  SID			  "1100"
+	  Ports			  [1]
+	  Position		  [310, 84, 340, 116]
+	  ZOrder		  5266
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData11'),extmgr.Configuration('Visuals','Time Domain',true,'"
+	  "SerializedDisplays',{struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabelReal','','MinYLimMag','0.325','MaxYL"
+	  "imMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTic"
+	  "kColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803921"
+	  "5686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921568"
+	  "6;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<S"
+	  "ignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Product2'}},'Sho"
+	  "wContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.325','MaxYLimReal','0.525','YLabel"
+	  "Real','','MinYLimMag','0.325','MaxYLimMag','0.525','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase"
+	  "',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0"
+	  ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529"
+	  " 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.074509803921"
+	  "5686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measur"
+	  "ements',true,'Version','2019b')),'Version','2019b','Position',[680 330 1090 420])"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope5"
+	  SID			  "1098"
+	  Ports			  [1]
+	  Position		  [315, 199, 345, 231]
+	  ZOrder		  5264
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData9'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLabelReal','','MinYLimMag','0.00000','Ma"
+	  "xYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'Axes"
+	  "TickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.074509803"
+	  "9215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.074509803921"
+	  "5686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','"
+	  "%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'P_diff'}},'Sh"
+	  "owContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-8.255','MaxYLimReal','-6.255','YLa"
+	  "belReal','','MinYLimMag','0.00000','MaxYLimMag','8.255','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMag"
+	  "Phase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrde"
+	  "r',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.7176470588"
+	  "23529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098"
+	  "039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','M"
+	  "easurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
 	  SID			  "967"
@@ -2353,14 +2457,6 @@ Model {
 	  SrcBlock		  "Divide1"
 	  SrcPort		  1
 	  DstBlock		  "FC_PWM"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  380
-	  SrcBlock		  "Product"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Sum"
 	  DstPort		  1
 	}
 	Line {
@@ -2412,26 +2508,36 @@ Model {
 	Line {
 	  Name			  "P_diff"
 	  ZOrder		  389
-	  Labels		  [1, 1]
 	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  Points		  [30, 0]
+	  Points		  [9, 0]
 	  Branch {
-	    ZOrder		    505
-	    Points		    [0, -90]
-	    DstBlock		    "If Action\nSubsystem1"
+	    ZOrder		    558
+	    Points		    [0, 55]
+	    DstBlock		    "Scope5"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    394
-	    Points		    [0, 85]
-	    DstBlock		    "If Action\nSubsystem"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    392
-	    DstBlock		    "If"
-	    DstPort		    1
+	    ZOrder		    557
+	    Labels		    [1, 1]
+	    Points		    [21, 0]
+	    Branch {
+	      ZOrder		      505
+	      Points		      [0, -90]
+	      DstBlock		      "If Action\nSubsystem1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      394
+	      Points		      [0, 85]
+	      DstBlock		      "If Action\nSubsystem"
+	      DstPort		      1
+	    }
+	    Branch {
+	      ZOrder		      392
+	      DstBlock		      "If"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Line {
@@ -2480,13 +2586,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  381
-	  SrcBlock		  "Product2"
-	  SrcPort		  1
-	  DstBlock		  "Sum"
-	  DstPort		  2
-	}
-	Line {
 	  ZOrder		  540
 	  SrcBlock		  "r_LED"
 	  SrcPort		  1
@@ -2499,6 +2598,41 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Product2"
 	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  380
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  Points		  [24, 0]
+	  Branch {
+	    ZOrder		    561
+	    Points		    [0, -30]
+	    DstBlock		    "Scope1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    560
+	    Points		    [1, 0]
+	    DstBlock		    "Sum"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  381
+	  SrcBlock		  "Product2"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    ZOrder		    564
+	    Points		    [0, -60]
+	    DstBlock		    "Scope2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    563
+	    DstBlock		    "Sum"
+	    DstPort		    2
+	  }
 	}
       }
     }
@@ -2525,8 +2659,20 @@ Model {
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData13'),extmgr.Configuration('Visuals','Time Domai"
-      "n',true),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true))"
-      ",'Version','2019b')"
+      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.75','MaxYLimReal','0.95','YLabelReal','','MinYLimMag','0.7"
+      "5','MaxYLimMag','0.95','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
+      "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;"
+      "0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 "
+      "0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392"
+      "156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNam"
+      "es',{{'Solar'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.75','MaxYLi"
+      "mReal','0.95','YLabelReal','','MinYLimMag','0.75','MaxYLimMag','0.95','LegendVisibility','off','XGrid',true,'YGr"
+      "id',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.6862745"
+      "09803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.066666"
+      "6666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.058823"
+      "5294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),ex"
+      "tmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[48 341 1192 409"
+      "])"
       NumInputPorts	      "1"
       Floating		      off
     }
@@ -2543,20 +2689,35 @@ Model {
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData14'),extmgr.Configuration('Visuals','Time Domai"
-      "n',true,'SerializedDisplays',{struct('MinYLimReal','-1.10014','MaxYLimReal','8.90126','YLabelReal','','MinYLimMa"
-      "g','0.00000','MaxYLimMag','8.90126','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'Axe"
-      "sColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666"
-      "666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831"
-      "372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.074509803921568"
-      "6 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLine"
-      "s',1,'LineNames',{{'Wind Controller/2'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('Mi"
-      "nYLimReal','-1.10014','MaxYLimReal','8.90126','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','8.90126','Leg"
-      "endVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.68627"
-      "4509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.4117647"
-      "05882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.83137"
-      "2549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configurat"
-      "ion('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Versio"
-      "n','2019b','Position',[190 266 1490 420])"
+      "n',true,'SerializedDisplays',{struct('MinYLimReal','0.9','MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9',"
+      "'MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'"
+      "AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.07"
+      "45098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.07"
+      "45098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921568"
+      "63],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',"
+      "{{'Wind Controller/2'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','0.9',"
+      "'MaxYLimReal','1.1','YLabelReal','','MinYLimMag','0.9','MaxYLimMag','1.1','LegendVisibility','off','XGrid',true,"
+      "'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686"
+      "274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06"
+      "66666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05"
+      "88235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true"
+      "),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 9"
+      "63])"
+      NumInputPorts	      "1"
+      Floating		      off
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope5"
+      SID		      "1097"
+      Ports		      [1]
+      Position		      [760, 384, 790, 416]
+      ZOrder		      5264
+      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
+      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
+      "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData8'),extmgr.Configuration('Visuals','Time Domain"
+      "',true),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),"
+      "'Version','2019b')"
       NumInputPorts	      "1"
       Floating		      off
     }
@@ -2600,7 +2761,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"86"
 	SimulinkSubDomain	"Simulink"
 	Block {
 	  BlockType		  Inport
@@ -2641,7 +2802,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "WT_PWM"
 	  SID			  "830"
-	  Position		  [25, 508, 55, 522]
+	  Position		  [25, 498, 55, 512]
 	  ZOrder		  5214
 	  Port			  "5"
 	  IconDisplay		  "Port number"
@@ -2732,7 +2893,7 @@ Model {
 	  Name			  "2200uF1"
 	  SID			  "576"
 	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [1178, 832, 1278, 917]
+	  Position		  [1103, 277, 1203, 362]
 	  ZOrder		  5056
 	  BlockRotation		  90
 	  NamePlacement		  "alternate"
@@ -2785,13 +2946,13 @@ Model {
 	    PortType		    2
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [1230, 828]
+	    Position		    [1155, 273]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [1230, 921]
+	    Position		    [1155, 366]
 	  }
 	}
 	Block {
@@ -3323,7 +3484,7 @@ Model {
 	  Name			  "Capacitor2"
 	  SID			  "581"
 	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [905, 125, 945, 160]
+	  Position		  [935, 125, 975, 160]
 	  ZOrder		  5042
 	  BlockRotation		  90
 	  NamePlacement		  "alternate"
@@ -3376,13 +3537,13 @@ Model {
 	    PortType		    2
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [925, 121]
+	    Position		    [955, 121]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [925, 164]
+	    Position		    [955, 164]
 	  }
 	}
 	Block {
@@ -3588,14 +3749,6 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "Constant"
-	  SID			  "1070"
-	  Position		  [390, 245, 420, 275]
-	  ZOrder		  5261
-	  Value			  "0"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "Constant3"
 	  SID			  "585"
 	  Position		  [455, 605, 485, 635]
@@ -3659,6 +3812,49 @@ Model {
 	    PortNumber		    2
 	    Rotation		    -1.5707963267948966
 	    Position		    [670, 634]
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Controlled Voltage\nSource"
+	  SID			  "1110"
+	  Ports			  [0, 0, 0, 0, 0, 1, 2]
+	  Position		  [575, 150, 615, 190]
+	  ZOrder		  5276
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  LibraryVersion	  "10000000.1"
+	  SourceBlock		  "fl_lib/Electrical/Electrical Sources/Controlled Voltage\nSource"
+	  SourceType		  "Controlled Voltage\nSource"
+	  SourceProductName	  "Simscape"
+	  SourceProductBaseCode	  "SS"
+	  LogSimulationData	  off
+	  SourceFile		  "foundation.electrical.sources.controlled_voltage"
+	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"p\",\"label\":\"\",\"type\":\"foundation.elec"
+	  "trical.electrical\"}],\"Right\":[{\"id\":\"vT\",\"label\":\"\",\"type\":\"input\"},{\"id\":\"n\",\"label\":\"\",\"t"
+	  "ype\":\"foundation.electrical.electrical\"}],\"Top\":[]}"
+	  ComponentPath		  "foundation.electrical.sources.controlled_voltage"
+	  ComponentVariants	  "foundation.electrical.sources.controlled_voltage"
+	  ComponentVariantNames	  "controlled_voltage"
+	  ClassName		  "controlled_voltage"
+	  SchemaVersion		  "1"
+	  Port {
+	    PortType		    2
+	    PortNumber		    1
+	    Rotation		    -1.5707963267948966
+	    Position		    [595, 146]
+	  }
+	  Port {
+	    PortType		    3
+	    PortNumber		    1
+	    Rotation		    -1.5707963267948966
+	    Position		    [585, 194]
+	  }
+	  Port {
+	    PortType		    3
+	    PortNumber		    2
+	    Rotation		    -1.5707963267948966
+	    Position		    [605, 194]
 	  }
 	}
 	Block {
@@ -3800,7 +3996,7 @@ Model {
 	  Name			  "Current Sensor5"
 	  SID			  "588"
 	  Ports			  [0, 0, 0, 0, 0, 1, 2]
-	  Position		  [670, 85, 710, 125]
+	  Position		  [705, 85, 745, 125]
 	  ZOrder		  5045
 	  LibraryVersion	  "10000000.1"
 	  SourceBlock		  "fl_lib/Electrical/Electrical Sensors/Current Sensor"
@@ -3820,17 +4016,17 @@ Model {
 	  Port {
 	    PortType		    2
 	    PortNumber		    1
-	    Position		    [666, 105]
+	    Position		    [701, 105]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    1
-	    Position		    [714, 95]
+	    Position		    [749, 95]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    2
-	    Position		    [714, 115]
+	    Position		    [749, 115]
 	  }
 	}
 	Block {
@@ -3876,7 +4072,7 @@ Model {
 	  Name			  "Current Sensor7"
 	  SID			  "590"
 	  Ports			  [0, 0, 0, 0, 0, 1, 2]
-	  Position		  [1065, 615, 1105, 655]
+	  Position		  [1045, 615, 1085, 655]
 	  ZOrder		  5107
 	  LibraryVersion	  "10000000.1"
 	  SourceBlock		  "fl_lib/Electrical/Electrical Sensors/Current Sensor"
@@ -3896,17 +4092,17 @@ Model {
 	  Port {
 	    PortType		    2
 	    PortNumber		    1
-	    Position		    [1061, 635]
+	    Position		    [1041, 635]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    1
-	    Position		    [1109, 625]
+	    Position		    [1089, 625]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    2
-	    Position		    [1109, 645]
+	    Position		    [1089, 645]
 	  }
 	}
 	Block {
@@ -4453,239 +4649,6 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "Diode7"
-	  SID			  "598"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [761, 600, 789, 640]
-	  ZOrder		  5062
-	  BlockRotation		  270
-	  LibraryVersion	  "10000000.2"
-	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/Diode"
-	  SourceType		  "Diode"
-	  SourceProductName	  "Simscape Electrical"
-	  SourceProductBaseCode	  "PS"
-	  LogSimulationData	  off
-	  SourceFile		  "ee.semiconductors.diode"
-	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"p\",\"label\":\"\",\"type\":\"foundation.elec"
-	  "trical.electrical\"}],\"Right\":[{\"id\":\"n\",\"label\":\"\",\"type\":\"foundation.electrical.electrical\"}],\"Top"
-	  "\":[]}"
-	  ComponentPath		  "ee.semiconductors.diode"
-	  ComponentVariants	  "ee.semiconductors.diode, ee.semiconductors.diode_thermal"
-	  ComponentVariantNames	  "No thermal port, Show thermal port"
-	  ClassName		  "Simscape variant"
-	  SchemaVersion		  "1"
-	  ModelType		  "ee.enum.diode.modelType.pwl"
-	  ModelType_unit	  "1"
-	  ModelType_conf	  "compiletime"
-	  Vf			  "0.85"
-	  Vf_unit		  "V"
-	  Vf_conf		  "compiletime"
-	  Ron			  "0.05"
-	  Ron_unit		  "Ohm"
-	  Ron_conf		  "compiletime"
-	  Goff			  "1e-8"
-	  Goff_unit		  "S"
-	  Goff_conf		  "compiletime"
-	  prmExp		  "ee.enum.diode.expParam.useTwo"
-	  prmExp_unit		  "1"
-	  prmExp_conf		  "compiletime"
-	  I12			  "[.0137, .545]"
-	  I12_unit		  "A"
-	  I12_conf		  "compiletime"
-	  V12			  "[.6, .7]"
-	  V12_unit		  "V"
-	  V12_conf		  "compiletime"
-	  IS			  "1e-12"
-	  IS_unit		  "A"
-	  IS_conf		  "compiletime"
-	  ec			  "1"
-	  ec_unit		  "1"
-	  ec_conf		  "compiletime"
-	  I1			  "0.0137"
-	  I1_unit		  "A"
-	  I1_conf		  "compiletime"
-	  V1			  "0.6"
-	  V1_unit		  "V"
-	  V1_conf		  "compiletime"
-	  RS			  "0"
-	  RS_unit		  "Ohm"
-	  RS_conf		  "compiletime"
-	  Tmeas			  "25"
-	  Tmeas_unit		  "degC"
-	  Tmeas_conf		  "compiletime"
-	  N_series		  "1"
-	  N_series_unit		  "1"
-	  N_series_conf		  "compiletime"
-	  N_parallel		  "1"
-	  N_parallel_unit	  "1"
-	  N_parallel_conf	  "compiletime"
-	  Rz			  "0.3"
-	  Rz_unit		  "Ohm"
-	  Rz_conf		  "compiletime"
-	  BV			  "inf"
-	  BV_unit		  "V"
-	  BV_conf		  "compiletime"
-	  C_param		  "ee.enum.diode.capParam.fixed"
-	  C_param_unit		  "1"
-	  C_param_conf		  "compiletime"
-	  CJ			  "5"
-	  CJ_unit		  "pF"
-	  CJ_conf		  "compiletime"
-	  CJ0			  "5"
-	  CJ0_unit		  "pF"
-	  CJ0_conf		  "compiletime"
-	  VJ			  "1"
-	  VJ_unit		  "V"
-	  VJ_conf		  "compiletime"
-	  Mgrad			  "0.5"
-	  Mgrad_unit		  "1"
-	  Mgrad_conf		  "compiletime"
-	  Vvec			  "[.1, 10, 100]"
-	  Vvec_unit		  "V"
-	  Vvec_conf		  "compiletime"
-	  Cvec			  "[3.5, 1, .4]"
-	  Cvec_unit		  "pF"
-	  Cvec_conf		  "compiletime"
-	  FC			  "0.5"
-	  FC_unit		  "1"
-	  FC_conf		  "compiletime"
-	  Q_param		  "ee.enum.diode.recoveryParam.off"
-	  Q_param_unit		  "1"
-	  Q_param_conf		  "compiletime"
-	  iRM			  "-7.15"
-	  iRM_unit		  "A"
-	  iRM_conf		  "compiletime"
-	  iF			  "4"
-	  iF_unit		  "A"
-	  iF_conf		  "compiletime"
-	  didt			  "-750"
-	  didt_unit		  "A/us"
-	  didt_conf		  "compiletime"
-	  trr_factor		  "3"
-	  trr_factor_unit	  "1"
-	  trr_factor_conf	  "compiletime"
-	  trr			  "115"
-	  trr_unit		  "ns"
-	  trr_conf		  "compiletime"
-	  Qrr			  "1500"
-	  Qrr_unit		  "s*uA"
-	  Qrr_conf		  "compiletime"
-	  TT			  "50"
-	  TT_unit		  "ns"
-	  TT_conf		  "compiletime"
-	  tau			  "100"
-	  tau_unit		  "ns"
-	  tau_conf		  "compiletime"
-	  T_param		  "ee.enum.diode.temperatureParam.off"
-	  T_param_unit		  "1"
-	  T_param_conf		  "compiletime"
-	  IS_T2			  "1.25e-7"
-	  IS_T2_unit		  "A"
-	  IS_T2_conf		  "compiletime"
-	  I1_T2			  "0.245"
-	  I1_T2_unit		  "A"
-	  I1_T2_conf		  "compiletime"
-	  V1_T2			  "0.5"
-	  V1_T2_unit		  "V"
-	  V1_T2_conf		  "compiletime"
-	  Tmeas2		  "125"
-	  Tmeas2_unit		  "degC"
-	  Tmeas2_conf		  "compiletime"
-	  EG_param		  "ee.enum.diode.egapParam.material_si"
-	  EG_param_unit		  "1"
-	  EG_param_conf		  "compiletime"
-	  EG			  "1.11"
-	  EG_unit		  "eV"
-	  EG_conf		  "compiletime"
-	  XTI_param		  "ee.enum.diode.xtiParam.pn"
-	  XTI_param_unit	  "1"
-	  XTI_param_conf	  "compiletime"
-	  XTI			  "3"
-	  XTI_unit		  "1"
-	  XTI_conf		  "compiletime"
-	  dBVdT			  "0"
-	  dBVdT_unit		  "V/K"
-	  dBVdT_conf		  "compiletime"
-	  Tdevice		  "25"
-	  Tdevice_unit		  "degC"
-	  Tdevice_conf		  "compiletime"
-	  i_specify		  off
-	  i_priority		  "None"
-	  i			  "0"
-	  i_unit		  "A"
-	  i_nominal_specify	  off
-	  i_nominal_unit	  "A"
-	  i_nominal_value	  "1"
-	  v_specify		  off
-	  v_priority		  "None"
-	  v			  "0"
-	  v_unit		  "V"
-	  v_nominal_specify	  off
-	  v_nominal_unit	  "V"
-	  v_nominal_value	  "1"
-	  i_capacitor_specify	  off
-	  i_capacitor_priority	  "None"
-	  i_capacitor		  "0"
-	  i_capacitor_unit	  "A"
-	  i_capacitor_nominal_specify off
-	  i_capacitor_nominal_unit "A"
-	  i_capacitor_nominal_value "1"
-	  v_capacitor_specify	  off
-	  v_capacitor_priority	  "None"
-	  v_capacitor		  "0"
-	  v_capacitor_unit	  "V"
-	  v_capacitor_nominal_specify off
-	  v_capacitor_nominal_unit "V"
-	  v_capacitor_nominal_value "1"
-	  power_dissipated_specify off
-	  power_dissipated_priority "None"
-	  power_dissipated	  "0"
-	  power_dissipated_unit	  "W"
-	  power_dissipated_nominal_specify off
-	  power_dissipated_nominal_unit	"W"
-	  power_dissipated_nominal_value "1"
-	  thermal_network_parameterization "ee.enum.thermalNetworkTopology.cauer"
-	  thermal_network_parameterization_unit	"1"
-	  thermal_network_parameterization_conf	"compiletime"
-	  Rth			  "[0, 10]"
-	  Rth_unit		  "K/W"
-	  Rth_conf		  "compiletime"
-	  Rth_Foster		  "[4, 6]"
-	  Rth_Foster_unit	  "K/W"
-	  Rth_Foster_conf	  "compiletime"
-	  thermal_mass_parameterization	"ee.enum.thermalNetwork.timeconstant"
-	  thermal_mass_parameterization_unit "1"
-	  thermal_mass_parameterization_conf "compiletime"
-	  thermal_mass		  "[0, 1]"
-	  thermal_mass_unit	  "J/K"
-	  thermal_mass_conf	  "compiletime"
-	  thermal_mass_Foster	  "[1.5, 3]"
-	  thermal_mass_Foster_unit "J/K"
-	  thermal_mass_Foster_conf "compiletime"
-	  thermal_time_constant	  "[0, 10]"
-	  thermal_time_constant_unit "s"
-	  thermal_time_constant_conf "compiletime"
-	  thermal_time_constant_Foster "[6, 18]"
-	  thermal_time_constant_Foster_unit "s"
-	  thermal_time_constant_Foster_conf "compiletime"
-	  thermal_mass_initial_temperatures "[25, 25]"
-	  thermal_mass_initial_temperatures_unit "degC"
-	  thermal_mass_initial_temperatures_conf "compiletime"
-	  Port {
-	    PortType		    2
-	    PortNumber		    1
-	    Rotation		    1.5707963267948966
-	    Position		    [775, 644]
-	  }
-	  Port {
-	    PortType		    3
-	    PortNumber		    1
-	    Rotation		    1.5707963267948966
-	    Position		    [775, 596]
-	  }
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "Diode8"
 	  SID			  "599"
 	  Ports			  [0, 0, 0, 0, 0, 1, 1]
@@ -5155,7 +5118,7 @@ Model {
 	  Name			  "Electrical Reference1"
 	  SID			  "601"
 	  Ports			  [0, 0, 0, 0, 0, 1]
-	  Position		  [457, 536, 482, 566]
+	  Position		  [562, 526, 587, 556]
 	  ZOrder		  5044
 	  BlockMirror		  on
 	  HideAutomaticName	  off
@@ -5177,7 +5140,7 @@ Model {
 	    PortType		    2
 	    PortNumber		    1
 	    Rotation		    3.1415926535897931
-	    Position		    [486, 550]
+	    Position		    [591, 540]
 	  }
 	}
 	Block {
@@ -5299,11 +5262,11 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "IRLZ-34N MOSFET4"
-	  SID			  "611"
+	  Name			  "IRLZ-34N MOSFET2"
+	  SID			  "1112"
 	  Ports			  [0, 0, 0, 0, 0, 1, 2]
 	  Position		  [910, 180, 940, 240]
-	  ZOrder		  5038
+	  ZOrder		  5278
 	  LibraryVersion	  "10000000.2"
 	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
 	  SourceType		  "N-Channel MOSFET"
@@ -5582,11 +5545,11 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "IRLZ-34N MOSFET5"
-	  SID			  "612"
+	  Name			  "IRLZ-34N MOSFET3"
+	  SID			  "1113"
 	  Ports			  [0, 0, 0, 0, 0, 1, 2]
 	  Position		  [925, 455, 955, 515]
-	  ZOrder		  5057
+	  ZOrder		  5279
 	  LibraryVersion	  "10000000.2"
 	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
 	  SourceType		  "N-Channel MOSFET"
@@ -5865,294 +5828,11 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "IRLZ-34N MOSFET6"
-	  SID			  "613"
-	  Ports			  [0, 0, 0, 0, 0, 1, 2]
-	  Position		  [1320, 235, 1350, 295]
-	  ZOrder		  5088
-	  LibraryVersion	  "10000000.2"
-	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
-	  SourceType		  "N-Channel MOSFET"
-	  SourceProductName	  "Simscape Electrical"
-	  SourceProductBaseCode	  "PS"
-	  LogSimulationData	  off
-	  SourceFile		  "ee.semiconductors.n_mosfet"
-	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"G\",\"label\":\"\",\"type\":\"foundation.elec"
-	  "trical.electrical\"}],\"Right\":[{\"id\":\"D\",\"label\":\"d\",\"type\":\"foundation.electrical.electrical\"},{\"id"
-	  "\":\"S\",\"label\":\"s\",\"type\":\"foundation.electrical.electrical\"}],\"Top\":[]}"
-	  ComponentPath		  "ee.semiconductors.n_mosfet"
-	  ComponentVariants	  "ee.semiconductors.n_mosfet, ee.semiconductors.n_mosfet_thermal, ee.semiconductors.sp_nmos, ee."
-	  "semiconductors.sp_nmos_thermal"
-	  ComponentVariantNames	  "Threshold-based, Threshold-based with thermal, Surface-potential-based, Surface-potential-"
-	  "based with thermal"
-	  ClassName		  "Simscape variant"
-	  SchemaVersion		  "1"
-	  parameterization	  "1"
-	  parameterization_unit	  "1"
-	  parameterization_conf	  "compiletime"
-	  prmDatasheet		  "1"
-	  prmDatasheet_unit	  "1"
-	  prmDatasheet_conf	  "compiletime"
-	  prmEquCoeff		  "1"
-	  prmEquCoeff_unit	  "1"
-	  prmEquCoeff_conf	  "compiletime"
-	  Beta			  "5.0"
-	  Beta_unit		  "A/V^2"
-	  Beta_conf		  "compiletime"
-	  Rds			  "0.046"
-	  Rds_unit		  "Ohm"
-	  Rds_conf		  "compiletime"
-	  Id			  "30"
-	  Id_unit		  "A"
-	  Id_conf		  "compiletime"
-	  Vgs			  "5"
-	  Vgs_unit		  "V"
-	  Vgs_conf		  "compiletime"
-	  Vth			  "1.5"
-	  Vth_unit		  "V"
-	  Vth_conf		  "compiletime"
-	  lam			  "0"
-	  lam_unit		  "1/V"
-	  lam_conf		  "compiletime"
-	  Tmeas			  "25"
-	  Tmeas_unit		  "degC"
-	  Tmeas_conf		  "compiletime"
-	  RS			  "0.0001"
-	  RS_unit		  "Ohm"
-	  RS_conf		  "compiletime"
-	  RD			  "0.01"
-	  RD_unit		  "Ohm"
-	  RD_conf		  "compiletime"
-	  C_param		  "1"
-	  C_param_unit		  "1"
-	  C_param_conf		  "compiletime"
-	  C_GS			  "270"
-	  C_GS_unit		  "pF"
-	  C_GS_conf		  "compiletime"
-	  C_GD			  "80"
-	  C_GD_unit		  "pF"
-	  C_GD_conf		  "compiletime"
-	  C_DS			  "0"
-	  C_DS_unit		  "pF"
-	  C_DS_conf		  "compiletime"
-	  C_iss			  "350"
-	  C_iss_unit		  "pF"
-	  C_iss_conf		  "compiletime"
-	  C_rss			  "80"
-	  C_rss_unit		  "pF"
-	  C_rss_conf		  "compiletime"
-	  C_oss			  "0"
-	  C_oss_unit		  "pF"
-	  C_oss_conf		  "compiletime"
-	  C_GS_vec		  "[270, 300, 290, 280, 295, 255]"
-	  C_GS_vec_unit		  "pF"
-	  C_GS_vec_conf		  "compiletime"
-	  C_GD_vec		  "[450, 400, 300, 190, 95, 55]"
-	  C_GD_vec_unit		  "pF"
-	  C_GD_vec_conf		  "compiletime"
-	  C_DS_vec		  "[450, 410, 390, 230, 175, 115]"
-	  C_DS_vec_unit		  "pF"
-	  C_DS_vec_conf		  "compiletime"
-	  C_iss_vec		  "[720, 700, 590, 470, 390, 310]"
-	  C_iss_vec_unit	  "pF"
-	  C_iss_vec_conf	  "compiletime"
-	  C_rss_vec		  "[450, 400, 300, 190, 95, 55]"
-	  C_rss_vec_unit	  "pF"
-	  C_rss_vec_conf	  "compiletime"
-	  C_oss_vec		  "[900, 810, 690, 420, 270, 170]"
-	  C_oss_vec_unit	  "pF"
-	  C_oss_vec_conf	  "compiletime"
-	  C_Vds_vec		  "[.1, .3, 1, 3, 10, 30]"
-	  C_Vds_vec_unit	  "V"
-	  C_Vds_vec_conf	  "compiletime"
-	  V_GS_for_cap_data	  "0"
-	  V_GS_for_cap_data_unit  "V"
-	  V_GS_for_cap_data_conf  "compiletime"
-	  charge_linearity_param  "1"
-	  charge_linearity_param_unit "1"
-	  charge_linearity_param_conf "compiletime"
-	  C_OX			  "200"
-	  C_OX_unit		  "pF"
-	  C_OX_conf		  "compiletime"
-	  V_C_OX		  "-0.5"
-	  V_C_OX_unit		  "V"
-	  V_C_OX_conf		  "compiletime"
-	  IsDiode		  "0"
-	  IsDiode_unit		  "A"
-	  IsDiode_conf		  "compiletime"
-	  Vbi			  "0.6"
-	  Vbi_unit		  "V"
-	  Vbi_conf		  "compiletime"
-	  n			  "1"
-	  n_unit		  "1"
-	  n_conf		  "compiletime"
-	  Cj0Diode		  "0"
-	  Cj0Diode_unit		  "pF"
-	  Cj0Diode_conf		  "compiletime"
-	  TT			  "50e-9"
-	  TT_unit		  "s"
-	  TT_conf		  "compiletime"
-	  dVth_dT		  "-6"
-	  dVth_dT_unit		  "mV/K"
-	  dVth_dT_conf		  "compiletime"
-	  Rds_T2		  "0.037"
-	  Rds_T2_unit		  "Ohm"
-	  Rds_T2_conf		  "compiletime"
-	  Tmeas2		  "125"
-	  Tmeas2_unit		  "degC"
-	  Tmeas2_conf		  "compiletime"
-	  BEXDatasheet		  "-1.5"
-	  BEXDatasheet_unit	  "1"
-	  BEXDatasheet_conf	  "compiletime"
-	  BEXEquCoeff		  "-1.5"
-	  BEXEquCoeff_unit	  "1"
-	  BEXEquCoeff_conf	  "compiletime"
-	  etaisDatasheet	  "3"
-	  etaisDatasheet_unit	  "1"
-	  etaisDatasheet_conf	  "compiletime"
-	  etaisEquCoeff		  "3"
-	  etaisEquCoeff_unit	  "1"
-	  etaisEquCoeff_conf	  "compiletime"
-	  TdeviceDatasheet	  "25"
-	  TdeviceDatasheet_unit	  "degC"
-	  TdeviceDatasheet_conf	  "compiletime"
-	  TdeviceEquCoeff	  "25"
-	  TdeviceEquCoeff_unit	  "degC"
-	  TdeviceEquCoeff_conf	  "compiletime"
-	  thermal_network_parameterization "ee.enum.thermalNetworkTopology.cauer"
-	  thermal_network_parameterization_unit	"1"
-	  thermal_network_parameterization_conf	"compiletime"
-	  Rth			  "[0, 10]"
-	  Rth_unit		  "K/W"
-	  Rth_conf		  "compiletime"
-	  Rth_Foster		  "[4, 6]"
-	  Rth_Foster_unit	  "K/W"
-	  Rth_Foster_conf	  "compiletime"
-	  thermal_mass_parameterization	"ee.enum.thermalNetwork.timeconstant"
-	  thermal_mass_parameterization_unit "1"
-	  thermal_mass_parameterization_conf "compiletime"
-	  thermal_mass		  "[0, 1]"
-	  thermal_mass_unit	  "J/K"
-	  thermal_mass_conf	  "compiletime"
-	  thermal_mass_Foster	  "[1.5, 3]"
-	  thermal_mass_Foster_unit "J/K"
-	  thermal_mass_Foster_conf "compiletime"
-	  thermal_time_constant	  "[0, 10]"
-	  thermal_time_constant_unit "s"
-	  thermal_time_constant_conf "compiletime"
-	  thermal_time_constant_Foster "[6, 18]"
-	  thermal_time_constant_Foster_unit "s"
-	  thermal_time_constant_Foster_conf "compiletime"
-	  thermal_mass_initial_temperatures "[25, 25]"
-	  thermal_mass_initial_temperatures_unit "degC"
-	  thermal_mass_initial_temperatures_conf "compiletime"
-	  betaref		  "18"
-	  betaref_unit		  "A/V^2"
-	  betaref_conf		  "compiletime"
-	  Vfbref		  "-1.1"
-	  Vfbref_unit		  "V"
-	  Vfbref_conf		  "compiletime"
-	  gamma			  "3.5"
-	  gamma_unit		  "V^0.50000"
-	  gamma_conf		  "compiletime"
-	  phib2ref		  "1"
-	  phib2ref_unit		  "V"
-	  phib2ref_conf		  "compiletime"
-	  thesatref		  "0.4"
-	  thesatref_unit	  "1/V"
-	  thesatref_conf	  "compiletime"
-	  alpha			  "0"
-	  alpha_unit		  "1"
-	  alpha_conf		  "compiletime"
-	  Vp			  "5e-2"
-	  Vp_unit		  "V"
-	  Vp_conf		  "compiletime"
-	  thesrref		  "0"
-	  thesrref_unit		  "1/V"
-	  thesrref_conf		  "compiletime"
-	  m			  "8"
-	  m_unit		  "1"
-	  m_conf		  "compiletime"
-	  Tref			  "25"
-	  Tref_unit		  "degC"
-	  Tref_conf		  "compiletime"
-	  Cox			  "1500"
-	  Cox_unit		  "pF"
-	  Cox_conf		  "compiletime"
-	  Cgso			  "100"
-	  Cgso_unit		  "pF"
-	  Cgso_conf		  "compiletime"
-	  Cgdo			  "14"
-	  Cgdo_unit		  "pF"
-	  Cgdo_conf		  "compiletime"
-	  Rsref			  "2e-3"
-	  Rsref_unit		  "Ohm"
-	  Rsref_conf		  "compiletime"
-	  Rdref			  "0.17"
-	  Rdref_unit		  "Ohm"
-	  Rdref_conf		  "compiletime"
-	  Rgref			  "8.4"
-	  Rgref_unit		  "Ohm"
-	  Rgref_conf		  "compiletime"
-	  Isref			  "5.2e-13"
-	  Isref_unit		  "A"
-	  Isref_conf		  "compiletime"
-	  Cj0			  "480"
-	  Cj0_unit		  "pF"
-	  Cj0_conf		  "compiletime"
-	  Tprm			  "1"
-	  Tprm_unit		  "1"
-	  Tprm_conf		  "compiletime"
-	  etabet		  "1.3"
-	  etabet_unit		  "1"
-	  etabet_conf		  "compiletime"
-	  Stvfb			  "5e-4"
-	  Stvfb_unit		  "V/K"
-	  Stvfb_conf		  "compiletime"
-	  Stphib		  "-8.5e-4"
-	  Stphib_unit		  "V/K"
-	  Stphib_conf		  "compiletime"
-	  etasat		  "1.04"
-	  etasat_unit		  "1"
-	  etasat_conf		  "compiletime"
-	  etasr			  "0.65"
-	  etasr_unit		  "1"
-	  etasr_conf		  "compiletime"
-	  etar			  "0.95"
-	  etar_unit		  "1"
-	  etar_conf		  "compiletime"
-	  etais			  "3"
-	  etais_unit		  "1"
-	  etais_conf		  "compiletime"
-	  Tsim			  "25"
-	  Tsim_unit		  "degC"
-	  Tsim_conf		  "compiletime"
-	  T0			  "[25, 25]"
-	  T0_unit		  "degC"
-	  T0_conf		  "compiletime"
-	  Port {
-	    PortType		    2
-	    PortNumber		    1
-	    Position		    [1316, 265]
-	  }
-	  Port {
-	    PortType		    3
-	    PortNumber		    1
-	    Position		    [1354, 250]
-	  }
-	  Port {
-	    PortType		    3
-	    PortNumber		    2
-	    Position		    [1354, 280]
-	  }
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "IRLZ-34N MOSFET7"
-	  SID			  "614"
+	  Name			  "IRLZ-34N MOSFET4"
+	  SID			  "1114"
 	  Ports			  [0, 0, 0, 0, 0, 1, 2]
 	  Position		  [925, 815, 955, 875]
-	  ZOrder		  5072
+	  ZOrder		  5280
 	  LibraryVersion	  "10000000.2"
 	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
 	  SourceType		  "N-Channel MOSFET"
@@ -6431,10 +6111,293 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "IRLZ-34N MOSFET5"
+	  SID			  "1115"
+	  Ports			  [0, 0, 0, 0, 0, 1, 2]
+	  Position		  [1320, 235, 1350, 295]
+	  ZOrder		  5281
+	  LibraryVersion	  "10000000.2"
+	  SourceBlock		  "ee_lib/Semiconductors &\nConverters/N-Channel MOSFET"
+	  SourceType		  "N-Channel MOSFET"
+	  SourceProductName	  "Simscape Electrical"
+	  SourceProductBaseCode	  "PS"
+	  LogSimulationData	  off
+	  SourceFile		  "ee.semiconductors.n_mosfet"
+	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"G\",\"label\":\"\",\"type\":\"foundation.elec"
+	  "trical.electrical\"}],\"Right\":[{\"id\":\"D\",\"label\":\"d\",\"type\":\"foundation.electrical.electrical\"},{\"id"
+	  "\":\"S\",\"label\":\"s\",\"type\":\"foundation.electrical.electrical\"}],\"Top\":[]}"
+	  ComponentPath		  "ee.semiconductors.n_mosfet"
+	  ComponentVariants	  "ee.semiconductors.n_mosfet, ee.semiconductors.n_mosfet_thermal, ee.semiconductors.sp_nmos, ee."
+	  "semiconductors.sp_nmos_thermal"
+	  ComponentVariantNames	  "Threshold-based, Threshold-based with thermal, Surface-potential-based, Surface-potential-"
+	  "based with thermal"
+	  ClassName		  "Simscape variant"
+	  SchemaVersion		  "1"
+	  parameterization	  "1"
+	  parameterization_unit	  "1"
+	  parameterization_conf	  "compiletime"
+	  prmDatasheet		  "1"
+	  prmDatasheet_unit	  "1"
+	  prmDatasheet_conf	  "compiletime"
+	  prmEquCoeff		  "1"
+	  prmEquCoeff_unit	  "1"
+	  prmEquCoeff_conf	  "compiletime"
+	  Beta			  "5.0"
+	  Beta_unit		  "A/V^2"
+	  Beta_conf		  "compiletime"
+	  Rds			  "0.046"
+	  Rds_unit		  "Ohm"
+	  Rds_conf		  "compiletime"
+	  Id			  "30"
+	  Id_unit		  "A"
+	  Id_conf		  "compiletime"
+	  Vgs			  "5"
+	  Vgs_unit		  "V"
+	  Vgs_conf		  "compiletime"
+	  Vth			  "1.5"
+	  Vth_unit		  "V"
+	  Vth_conf		  "compiletime"
+	  lam			  "0"
+	  lam_unit		  "1/V"
+	  lam_conf		  "compiletime"
+	  Tmeas			  "25"
+	  Tmeas_unit		  "degC"
+	  Tmeas_conf		  "compiletime"
+	  RS			  "0.0001"
+	  RS_unit		  "Ohm"
+	  RS_conf		  "compiletime"
+	  RD			  "0.01"
+	  RD_unit		  "Ohm"
+	  RD_conf		  "compiletime"
+	  C_param		  "1"
+	  C_param_unit		  "1"
+	  C_param_conf		  "compiletime"
+	  C_GS			  "270"
+	  C_GS_unit		  "pF"
+	  C_GS_conf		  "compiletime"
+	  C_GD			  "80"
+	  C_GD_unit		  "pF"
+	  C_GD_conf		  "compiletime"
+	  C_DS			  "0"
+	  C_DS_unit		  "pF"
+	  C_DS_conf		  "compiletime"
+	  C_iss			  "350"
+	  C_iss_unit		  "pF"
+	  C_iss_conf		  "compiletime"
+	  C_rss			  "80"
+	  C_rss_unit		  "pF"
+	  C_rss_conf		  "compiletime"
+	  C_oss			  "0"
+	  C_oss_unit		  "pF"
+	  C_oss_conf		  "compiletime"
+	  C_GS_vec		  "[270, 300, 290, 280, 295, 255]"
+	  C_GS_vec_unit		  "pF"
+	  C_GS_vec_conf		  "compiletime"
+	  C_GD_vec		  "[450, 400, 300, 190, 95, 55]"
+	  C_GD_vec_unit		  "pF"
+	  C_GD_vec_conf		  "compiletime"
+	  C_DS_vec		  "[450, 410, 390, 230, 175, 115]"
+	  C_DS_vec_unit		  "pF"
+	  C_DS_vec_conf		  "compiletime"
+	  C_iss_vec		  "[720, 700, 590, 470, 390, 310]"
+	  C_iss_vec_unit	  "pF"
+	  C_iss_vec_conf	  "compiletime"
+	  C_rss_vec		  "[450, 400, 300, 190, 95, 55]"
+	  C_rss_vec_unit	  "pF"
+	  C_rss_vec_conf	  "compiletime"
+	  C_oss_vec		  "[900, 810, 690, 420, 270, 170]"
+	  C_oss_vec_unit	  "pF"
+	  C_oss_vec_conf	  "compiletime"
+	  C_Vds_vec		  "[.1, .3, 1, 3, 10, 30]"
+	  C_Vds_vec_unit	  "V"
+	  C_Vds_vec_conf	  "compiletime"
+	  V_GS_for_cap_data	  "0"
+	  V_GS_for_cap_data_unit  "V"
+	  V_GS_for_cap_data_conf  "compiletime"
+	  charge_linearity_param  "1"
+	  charge_linearity_param_unit "1"
+	  charge_linearity_param_conf "compiletime"
+	  C_OX			  "200"
+	  C_OX_unit		  "pF"
+	  C_OX_conf		  "compiletime"
+	  V_C_OX		  "-0.5"
+	  V_C_OX_unit		  "V"
+	  V_C_OX_conf		  "compiletime"
+	  IsDiode		  "0"
+	  IsDiode_unit		  "A"
+	  IsDiode_conf		  "compiletime"
+	  Vbi			  "0.6"
+	  Vbi_unit		  "V"
+	  Vbi_conf		  "compiletime"
+	  n			  "1"
+	  n_unit		  "1"
+	  n_conf		  "compiletime"
+	  Cj0Diode		  "0"
+	  Cj0Diode_unit		  "pF"
+	  Cj0Diode_conf		  "compiletime"
+	  TT			  "50e-9"
+	  TT_unit		  "s"
+	  TT_conf		  "compiletime"
+	  dVth_dT		  "-6"
+	  dVth_dT_unit		  "mV/K"
+	  dVth_dT_conf		  "compiletime"
+	  Rds_T2		  "0.037"
+	  Rds_T2_unit		  "Ohm"
+	  Rds_T2_conf		  "compiletime"
+	  Tmeas2		  "125"
+	  Tmeas2_unit		  "degC"
+	  Tmeas2_conf		  "compiletime"
+	  BEXDatasheet		  "-1.5"
+	  BEXDatasheet_unit	  "1"
+	  BEXDatasheet_conf	  "compiletime"
+	  BEXEquCoeff		  "-1.5"
+	  BEXEquCoeff_unit	  "1"
+	  BEXEquCoeff_conf	  "compiletime"
+	  etaisDatasheet	  "3"
+	  etaisDatasheet_unit	  "1"
+	  etaisDatasheet_conf	  "compiletime"
+	  etaisEquCoeff		  "3"
+	  etaisEquCoeff_unit	  "1"
+	  etaisEquCoeff_conf	  "compiletime"
+	  TdeviceDatasheet	  "25"
+	  TdeviceDatasheet_unit	  "degC"
+	  TdeviceDatasheet_conf	  "compiletime"
+	  TdeviceEquCoeff	  "25"
+	  TdeviceEquCoeff_unit	  "degC"
+	  TdeviceEquCoeff_conf	  "compiletime"
+	  thermal_network_parameterization "ee.enum.thermalNetworkTopology.cauer"
+	  thermal_network_parameterization_unit	"1"
+	  thermal_network_parameterization_conf	"compiletime"
+	  Rth			  "[0, 10]"
+	  Rth_unit		  "K/W"
+	  Rth_conf		  "compiletime"
+	  Rth_Foster		  "[4, 6]"
+	  Rth_Foster_unit	  "K/W"
+	  Rth_Foster_conf	  "compiletime"
+	  thermal_mass_parameterization	"ee.enum.thermalNetwork.timeconstant"
+	  thermal_mass_parameterization_unit "1"
+	  thermal_mass_parameterization_conf "compiletime"
+	  thermal_mass		  "[0, 1]"
+	  thermal_mass_unit	  "J/K"
+	  thermal_mass_conf	  "compiletime"
+	  thermal_mass_Foster	  "[1.5, 3]"
+	  thermal_mass_Foster_unit "J/K"
+	  thermal_mass_Foster_conf "compiletime"
+	  thermal_time_constant	  "[0, 10]"
+	  thermal_time_constant_unit "s"
+	  thermal_time_constant_conf "compiletime"
+	  thermal_time_constant_Foster "[6, 18]"
+	  thermal_time_constant_Foster_unit "s"
+	  thermal_time_constant_Foster_conf "compiletime"
+	  thermal_mass_initial_temperatures "[25, 25]"
+	  thermal_mass_initial_temperatures_unit "degC"
+	  thermal_mass_initial_temperatures_conf "compiletime"
+	  betaref		  "18"
+	  betaref_unit		  "A/V^2"
+	  betaref_conf		  "compiletime"
+	  Vfbref		  "-1.1"
+	  Vfbref_unit		  "V"
+	  Vfbref_conf		  "compiletime"
+	  gamma			  "3.5"
+	  gamma_unit		  "V^0.50000"
+	  gamma_conf		  "compiletime"
+	  phib2ref		  "1"
+	  phib2ref_unit		  "V"
+	  phib2ref_conf		  "compiletime"
+	  thesatref		  "0.4"
+	  thesatref_unit	  "1/V"
+	  thesatref_conf	  "compiletime"
+	  alpha			  "0"
+	  alpha_unit		  "1"
+	  alpha_conf		  "compiletime"
+	  Vp			  "5e-2"
+	  Vp_unit		  "V"
+	  Vp_conf		  "compiletime"
+	  thesrref		  "0"
+	  thesrref_unit		  "1/V"
+	  thesrref_conf		  "compiletime"
+	  m			  "8"
+	  m_unit		  "1"
+	  m_conf		  "compiletime"
+	  Tref			  "25"
+	  Tref_unit		  "degC"
+	  Tref_conf		  "compiletime"
+	  Cox			  "1500"
+	  Cox_unit		  "pF"
+	  Cox_conf		  "compiletime"
+	  Cgso			  "100"
+	  Cgso_unit		  "pF"
+	  Cgso_conf		  "compiletime"
+	  Cgdo			  "14"
+	  Cgdo_unit		  "pF"
+	  Cgdo_conf		  "compiletime"
+	  Rsref			  "2e-3"
+	  Rsref_unit		  "Ohm"
+	  Rsref_conf		  "compiletime"
+	  Rdref			  "0.17"
+	  Rdref_unit		  "Ohm"
+	  Rdref_conf		  "compiletime"
+	  Rgref			  "8.4"
+	  Rgref_unit		  "Ohm"
+	  Rgref_conf		  "compiletime"
+	  Isref			  "5.2e-13"
+	  Isref_unit		  "A"
+	  Isref_conf		  "compiletime"
+	  Cj0			  "480"
+	  Cj0_unit		  "pF"
+	  Cj0_conf		  "compiletime"
+	  Tprm			  "1"
+	  Tprm_unit		  "1"
+	  Tprm_conf		  "compiletime"
+	  etabet		  "1.3"
+	  etabet_unit		  "1"
+	  etabet_conf		  "compiletime"
+	  Stvfb			  "5e-4"
+	  Stvfb_unit		  "V/K"
+	  Stvfb_conf		  "compiletime"
+	  Stphib		  "-8.5e-4"
+	  Stphib_unit		  "V/K"
+	  Stphib_conf		  "compiletime"
+	  etasat		  "1.04"
+	  etasat_unit		  "1"
+	  etasat_conf		  "compiletime"
+	  etasr			  "0.65"
+	  etasr_unit		  "1"
+	  etasr_conf		  "compiletime"
+	  etar			  "0.95"
+	  etar_unit		  "1"
+	  etar_conf		  "compiletime"
+	  etais			  "3"
+	  etais_unit		  "1"
+	  etais_conf		  "compiletime"
+	  Tsim			  "25"
+	  Tsim_unit		  "degC"
+	  Tsim_conf		  "compiletime"
+	  T0			  "[25, 25]"
+	  T0_unit		  "degC"
+	  T0_conf		  "compiletime"
+	  Port {
+	    PortType		    2
+	    PortNumber		    1
+	    Position		    [1316, 265]
+	  }
+	  Port {
+	    PortType		    3
+	    PortNumber		    1
+	    Position		    [1354, 250]
+	  }
+	  Port {
+	    PortType		    3
+	    PortNumber		    2
+	    Position		    [1354, 280]
+	  }
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "PS-Simulink\nConverter10"
 	  SID			  "615"
 	  Ports			  [0, 1, 0, 0, 0, 1]
-	  Position		  [1530, 172, 1545, 188]
+	  Position		  [1480, 177, 1495, 193]
 	  ZOrder		  5121
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/PS-Simulink\nConverter"
@@ -6456,7 +6419,7 @@ Model {
 	  Name			  "PS-Simulink\nConverter11"
 	  SID			  "616"
 	  Ports			  [0, 1, 0, 0, 0, 1]
-	  Position		  [755, 49, 770, 71]
+	  Position		  [795, 84, 810, 106]
 	  ZOrder		  5046
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/PS-Simulink\nConverter"
@@ -6478,7 +6441,7 @@ Model {
 	  Name			  "PS-Simulink\nConverter12"
 	  SID			  "617"
 	  Ports			  [0, 1, 0, 0, 0, 1]
-	  Position		  [1535, 197, 1550, 213]
+	  Position		  [1480, 202, 1495, 218]
 	  ZOrder		  5122
 	  LibraryVersion	  "5.0"
 	  SourceBlock		  "nesl_utility/PS-Simulink\nConverter"
@@ -6667,7 +6630,7 @@ Model {
 	  Name			  "Product11"
 	  SID			  "630"
 	  Ports			  [2, 1]
-	  Position		  [1640, 177, 1670, 208]
+	  Position		  [1545, 182, 1575, 213]
 	  ZOrder		  5119
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -6721,6 +6684,56 @@ Model {
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Resistor1"
+	  SID			  "1111"
+	  Ports			  [0, 0, 0, 0, 0, 1, 1]
+	  Position		  [890, 101, 930, 129]
+	  ZOrder		  5277
+	  LibraryVersion	  "10000000.1"
+	  SourceBlock		  "fl_lib/Electrical/Electrical Elements/Resistor"
+	  SourceType		  "Resistor"
+	  SourceProductName	  "Simscape"
+	  SourceProductBaseCode	  "SS"
+	  LogSimulationData	  off
+	  SourceFile		  "foundation.electrical.elements.resistor"
+	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"p\",\"label\":\"+\",\"type\":\"foundation.ele"
+	  "ctrical.electrical\"}],\"Right\":[{\"id\":\"n\",\"label\":\"-\",\"type\":\"foundation.electrical.electrical\"}],\"T"
+	  "op\":[]}"
+	  ComponentPath		  "foundation.electrical.elements.resistor"
+	  ComponentVariants	  "foundation.electrical.elements.resistor"
+	  ComponentVariantNames	  "resistor"
+	  ClassName		  "resistor"
+	  SchemaVersion		  "1"
+	  R			  "16"
+	  R_unit		  "Ohm"
+	  R_conf		  "compiletime"
+	  i_specify		  off
+	  i_priority		  "None"
+	  i			  "0"
+	  i_unit		  "A"
+	  i_nominal_specify	  off
+	  i_nominal_unit	  "A"
+	  i_nominal_value	  "1"
+	  v_specify		  off
+	  v_priority		  "None"
+	  v			  "0"
+	  v_unit		  "V"
+	  v_nominal_specify	  off
+	  v_nominal_unit	  "V"
+	  v_nominal_value	  "1"
+	  Port {
+	    PortType		    2
+	    PortNumber		    1
+	    Position		    [886, 115]
+	  }
+	  Port {
+	    PortType		    3
+	    PortNumber		    1
+	    Position		    [934, 115]
+	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -6939,7 +6952,7 @@ Model {
 	  Name			  "Resistor15"
 	  SID			  "638"
 	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [1276, 300, 1304, 340]
+	  Position		  [1281, 290, 1309, 330]
 	  ZOrder		  5089
 	  BlockRotation		  90
 	  NamePlacement		  "alternate"
@@ -6979,13 +6992,13 @@ Model {
 	    PortType		    2
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [1290, 296]
+	    Position		    [1295, 286]
 	  }
 	  Port {
 	    PortType		    3
 	    PortNumber		    1
 	    Rotation		    -1.5707963267948966
-	    Position		    [1290, 344]
+	    Position		    [1295, 334]
 	  }
 	}
 	Block {
@@ -7043,7 +7056,7 @@ Model {
 	  Name			  "Scope"
 	  SID			  "1038"
 	  Ports			  [1]
-	  Position		  [1714, 225, 1746, 255]
+	  Position		  [1599, 235, 1631, 265]
 	  ZOrder		  5247
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -7072,7 +7085,7 @@ Model {
 	  Name			  "Scope1"
 	  SID			  "1039"
 	  Ports			  [1]
-	  Position		  [1689, 320, 1721, 350]
+	  Position		  [1599, 320, 1631, 350]
 	  ZOrder		  5248
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -7101,7 +7114,7 @@ Model {
 	  Name			  "Scope2"
 	  SID			  "1040"
 	  Ports			  [1]
-	  Position		  [1664, 465, 1696, 495]
+	  Position		  [1599, 455, 1631, 485]
 	  ZOrder		  5249
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -7130,26 +7143,27 @@ Model {
 	  Name			  "Scope3"
 	  SID			  "1041"
 	  Ports			  [1]
-	  Position		  [1699, 640, 1731, 670]
+	  Position		  [1599, 635, 1631, 665]
 	  ZOrder		  5250
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
 	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
 	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData11'),extmgr.Configuration('Visuals','Time Domain',true,'"
-	  "SerializedDisplays',{struct('MinYLimReal','-32.19426','MaxYLimReal','3.57714','YLabelReal','','MinYLimMag','0.00000"
-	  "','MaxYLimMag','32.19426','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
-	  "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0"
-	  "745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745"
-	  "098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'"
-	  "Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Produ"
-	  "ct9'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-32.19426','MaxYLimReal',"
-	  "'3.57714','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','32.19426','LegendVisibility','off','XGrid',true,'YGr"
-	  "id',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.6862745098"
-	  "03922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.066666666666"
-	  "6667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.058823529411764"
-	  "7 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configu"
-	  "ration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 963])"
+	  "SerializedDisplays',{struct('MinYLimReal','-0.000012','MaxYLimReal','0.000000','YLabelReal','','MinYLimMag','0.0000"
+	  "00','MaxYLimMag','0.000012','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 "
+	  "0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0"
+	  ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.07"
+	  "45098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863]"
+	  ",'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Pro"
+	  "duct9'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-0.000012','MaxYLimReal"
+	  "','0.000000','YLabelReal','','MinYLimMag','0.000000','MaxYLimMag','0.000012','LegendVisibility','off','XGrid',true,"
+	  "'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274"
+	  "509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06666666"
+	  "66666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05882352941"
+	  "17647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true,'OnceAtStop"
+	  "',false),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 19"
+	  "20 963])"
 	  NumInputPorts		  "1"
 	  Floating		  off
 	}
@@ -7158,7 +7172,7 @@ Model {
 	  Name			  "Scope4"
 	  SID			  "1042"
 	  Ports			  [1]
-	  Position		  [1679, 825, 1711, 855]
+	  Position		  [1599, 825, 1631, 855]
 	  ZOrder		  5251
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -7166,19 +7180,104 @@ Model {
 	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
 	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
 	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData12'),extmgr.Configuration('Visuals','Time Domain',true,'"
-	  "SerializedDisplays',{struct('MinYLimReal','-5.02369','MaxYLimReal','45.21323','YLabelReal','','MinYLimMag','0.00000"
-	  "','MaxYLimMag','45.21323','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
+	  "SerializedDisplays',{struct('MinYLimReal','-5.15297','MaxYLimReal','46.37671','YLabelReal','','MinYLimMag','0.00000"
+	  "','MaxYLimMag','46.37671','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
 	  "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0"
 	  "745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745"
 	  "098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'"
 	  "Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Produ"
-	  "ct10'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-5.02369','MaxYLimReal',"
-	  "'45.21323','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','45.21323','LegendVisibility','off','XGrid',true,'YG"
+	  "ct10'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-5.15297','MaxYLimReal',"
+	  "'46.37671','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','46.37671','LegendVisibility','off','XGrid',true,'YG"
 	  "rid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509"
 	  "803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06666666666"
 	  "66667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05882352941176"
 	  "47 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Config"
 	  "uration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 963])"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope5"
+	  SID			  "1091"
+	  Ports			  [1]
+	  Position		  [1545, 524, 1575, 556]
+	  ZOrder		  5263
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData2'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-48.49428','MaxYLimReal','427.52361','YLabelReal','','MinYLimMag','0.0000"
+	  "0','MaxYLimMag','427.52361','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 "
+	  "0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0"
+	  ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.07"
+	  "45098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863]"
+	  ",'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'PS-"
+	  "Simulink Converter17'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-48.4942"
+	  "8','MaxYLimReal','427.52361','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','427.52361','LegendVisibility','of"
+	  "f','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.68627450"
+	  "9803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.1607843137254"
+	  "9;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.07450980392156"
+	  "86;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',"
+	  "true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope6"
+	  SID			  "1092"
+	  Ports			  [1]
+	  Position		  [1495, 809, 1525, 841]
+	  ZOrder		  5264
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData3'),extmgr.Configuration('Visuals','Time Domain',true),e"
+	  "xtmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),'Version','2"
+	  "019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope7"
+	  SID			  "1093"
+	  Ports			  [1]
+	  Position		  [1545, 469, 1575, 501]
+	  ZOrder		  5265
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData4'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-1.00000','MaxYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000',"
+	  "'MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],"
+	  "'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745"
+	  "098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098"
+	  "039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Tit"
+	  "le','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'PS-Simul"
+	  "ink Converter15'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.00000','Ma"
+	  "xYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','1.00000','LegendVisibility','off','XGrid'"
+	  ",true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0."
+	  "686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06"
+	  "66666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05882"
+	  "35294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extm"
+	  "gr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope8"
+	  SID			  "1096"
+	  Ports			  [1]
+	  Position		  [484, 325, 516, 355]
+	  ZOrder		  5266
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData7'),extmgr.Configuration('Visuals','Time Domain',true),e"
+	  "xtmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),'Version','2"
+	  "019b')"
 	  NumInputPorts		  "1"
 	  Floating		  off
 	}
@@ -7352,34 +7451,6 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "Simulink-PS\nConverter6"
-	  SID			  "1071"
-	  Ports			  [1, 0, 0, 0, 0, 0, 1]
-	  Position		  [445, 252, 460, 268]
-	  ZOrder		  5262
-	  LibraryVersion	  "5.0"
-	  SourceBlock		  "nesl_utility/Simulink-PS\nConverter"
-	  SourceType		  "Simulink-PS\nConverter"
-	  SourceProductName	  "Simscape"
-	  SourceProductBaseCode	  "SS"
-	  ContentPreviewEnabled	  on
-	  PhysicalDomain	  "network_engine_domain"
-	  SubClassName		  "ps_input"
-	  LeftPortType		  "input"
-	  RightPortType		  "output"
-	  PseudoPeriodic	  off
-	  Frequencies		  "[]"
-	  NoiseDistribution	  "none"
-	  NoiseParameters	  "[]"
-	  Unit			  "1"
-	  AffineConversion	  off
-	  FilteringAndDerivatives "provide"
-	  SimscapeFilterOrder	  "1"
-	  InputFilterTimeConstant "0.001"
-	  UdotUserProvided	  "0"
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "Solver\nConfiguration1"
 	  SID			  "643"
 	  Ports			  [0, 0, 0, 0, 0, 0, 1]
@@ -7457,7 +7528,7 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "150"
+	    ZoomFactor		    "200"
 	    SimulinkSubDomain	    "Simulink"
 	    Block {
 	      BlockType		      Inport
@@ -7611,8 +7682,8 @@ Model {
 	      SourceProductBaseCode   "PS"
 	      ContentPreviewEnabled   on
 	      CarrCount		      "Up"
-	      Tper		      "0.001"
-	      Ts		      "5e-5"
+	      Tper		      "pwm_timer"
+	      Ts		      "t_sample"
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -7812,7 +7883,7 @@ Model {
 	  ContentPreviewEnabled	  on
 	  System {
 	    Name		    "Subsystem5"
-	    Location		    [30, 30, 1010, 750]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -7833,7 +7904,7 @@ Model {
 	      BlockType		      Inport
 	      Name		      "In1"
 	      SID		      "655"
-	      Position		      [20, 103, 50, 117]
+	      Position		      [380, 78, 410, 92]
 	      ZOrder		      4589
 	      IconDisplay	      "Port number"
 	    }
@@ -7981,8 +8052,8 @@ Model {
 	      SourceProductBaseCode   "PS"
 	      ContentPreviewEnabled   on
 	      CarrCount		      "Up"
-	      Tper		      "0.001"
-	      Ts		      "5e-5"
+	      Tper		      "pwm_timer"
+	      Ts		      "t_sample"
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -8096,7 +8167,6 @@ Model {
 	      ZOrder		      1
 	      SrcBlock		      "In1"
 	      SrcPort		      1
-	      Points		      [187, 0; 0, -25]
 	      DstBlock		      "PWM Generator1"
 	      DstPort		      1
 	    }
@@ -8352,8 +8422,8 @@ Model {
 	      SourceProductBaseCode   "PS"
 	      ContentPreviewEnabled   on
 	      CarrCount		      "Up"
-	      Tper		      "0.001"
-	      Ts		      "5e-5"
+	      Tper		      "pwm_timer"
+	      Ts		      "t_sample"
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -8722,8 +8792,8 @@ Model {
 	      SourceProductBaseCode   "PS"
 	      ContentPreviewEnabled   on
 	      CarrCount		      "Up"
-	      Tper		      "0.001"
-	      Ts		      "5e-5"
+	      Tper		      "pwm_timer"
+	      Ts		      "t_sample"
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -8910,72 +8980,6 @@ Model {
 	      DstBlock		      "Controlled PWM\nVoltage2"
 	      DstPort		      LConn1
 	    }
-	  }
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Switch"
-	  SID			  "1069"
-	  Ports			  [0, 0, 0, 0, 0, 1, 2]
-	  Position		  [575, 140, 615, 180]
-	  ZOrder		  5260
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  LibraryVersion	  "10000000.1"
-	  SourceBlock		  "fl_lib/Electrical/Electrical Elements/Switch"
-	  SourceType		  "Switch"
-	  SourceProductName	  "Simscape"
-	  SourceProductBaseCode	  "SS"
-	  LogSimulationData	  off
-	  SourceFile		  "foundation.electrical.elements.controlled_switch"
-	  InternalSimscapePortConfiguration "{\"Bottom\":[],\"Left\":[{\"id\":\"p\",\"label\":\"\",\"type\":\"foundation.elec"
-	  "trical.electrical\"}],\"Right\":[{\"id\":\"vT\",\"label\":\"PS\",\"type\":\"input\"},{\"id\":\"n\",\"label\":\"\",\""
-	  "type\":\"foundation.electrical.electrical\"}],\"Top\":[]}"
-	  ComponentPath		  "foundation.electrical.elements.controlled_switch"
-	  ComponentVariants	  "foundation.electrical.elements.controlled_switch"
-	  ComponentVariantNames	  "controlled_switch"
-	  ClassName		  "controlled_switch"
-	  SchemaVersion		  "1"
-	  R_closed		  "0.01"
-	  R_closed_unit		  "Ohm"
-	  R_closed_conf		  "compiletime"
-	  G_open		  "1e-8"
-	  G_open_unit		  "1/Ohm"
-	  G_open_conf		  "compiletime"
-	  Threshold		  "0.5"
-	  Threshold_unit	  "1"
-	  Threshold_conf	  "compiletime"
-	  i_specify		  off
-	  i_priority		  "None"
-	  i			  "0"
-	  i_unit		  "A"
-	  i_nominal_specify	  off
-	  i_nominal_unit	  "A"
-	  i_nominal_value	  "1"
-	  v_specify		  off
-	  v_priority		  "None"
-	  v			  "0"
-	  v_unit		  "V"
-	  v_nominal_specify	  off
-	  v_nominal_unit	  "V"
-	  v_nominal_value	  "1"
-	  Port {
-	    PortType		    2
-	    PortNumber		    1
-	    Rotation		    -1.5707963267948966
-	    Position		    [595, 136]
-	  }
-	  Port {
-	    PortType		    3
-	    PortNumber		    1
-	    Rotation		    -1.5707963267948966
-	    Position		    [585, 184]
-	  }
-	  Port {
-	    PortType		    3
-	    PortNumber		    2
-	    Rotation		    -1.5707963267948966
-	    Position		    [605, 184]
 	  }
 	}
 	Block {
@@ -9257,7 +9261,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "P_PS1"
 	  SID			  "832"
-	  Position		  [1765, 283, 1795, 297]
+	  Position		  [1660, 283, 1690, 297]
 	  ZOrder		  5216
 	  IconDisplay		  "Port number"
 	}
@@ -9265,7 +9269,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "P_WT1"
 	  SID			  "834"
-	  Position		  [1765, 418, 1795, 432]
+	  Position		  [1660, 418, 1690, 432]
 	  ZOrder		  5218
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -9274,7 +9278,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "P_SP1"
 	  SID			  "835"
-	  Position		  [1765, 588, 1795, 602]
+	  Position		  [1665, 588, 1695, 602]
 	  ZOrder		  5219
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -9283,7 +9287,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "P_FC1"
 	  SID			  "837"
-	  Position		  [1765, 768, 1795, 782]
+	  Position		  [1665, 768, 1695, 782]
 	  ZOrder		  5221
 	  Port			  "4"
 	  IconDisplay		  "Port number"
@@ -9292,7 +9296,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "P_EL1"
 	  SID			  "838"
-	  Position		  [1765, 188, 1795, 202]
+	  Position		  [1660, 193, 1690, 207]
 	  ZOrder		  5222
 	  Port			  "5"
 	  IconDisplay		  "Port number"
@@ -9324,18 +9328,18 @@ Model {
 	      Points		      [885, 813; -55, 0]
 	      Branch {
 		ConnectType		"SRC_DEST"
-		Points			[910, 813; -25, 0]
+		Points			[910, 804; 0, 9; -25, 0]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "IRLZ-34N MOSFET4"
+		  SrcPort		  RConn1
+		  Points		  [9, 0; 0, -26; -69, 0]
+		}
 		Branch {
 		  ConnectType		  "SRC_DEST"
 		  SrcBlock		  "Boost Converter7"
 		  SrcPort		  LConn3
-		  Points		  [0, 33]
-		}
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  SrcBlock		  "IRLZ-34N MOSFET7"
-		  SrcPort		  RConn1
-		  Points		  [9, 0; 0, -17; -69, 0]
+		  Points		  [0, 24]
 		}
 	      }
 	      Branch {
@@ -9377,99 +9381,40 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  ZOrder		  1448
-	  SrcBlock		  "Current Sensor7"
-	  SrcPort		  RConn2
-	  Points		  [44, 0]
+	  ZOrder		  1561
+	  SrcBlock		  "Solver\nConfiguration1"
+	  SrcPort		  RConn1
+	  Points		  [0, 6; -109, 0]
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [0, -235]
+	    ConnectType		    "DEST_DEST"
+	    Points		    [955, 176; 21, 0]
 	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      Points		      [0, -234; -79, 0]
-	      Branch {
-		ConnectType		"DEST_DEST"
-		SrcBlock		"Solver\nConfiguration1"
-		SrcPort			RConn1
-		Points			[0, 6]
-	      }
-	      Branch {
-		ConnectType		"DEST_SRC"
-		Points			[-109, 0]
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  Points		  [925, 176; 51, 0]
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Capacitor2"
-		    SrcPort		    RConn1
-		    Points		    [0, 1]
-		  }
-		  Branch {
-		    ConnectType		    "SRC_SRC"
-		    Points		    [-80, 0]
-		    DstBlock		    "Diode5"
-		    DstPort		    LConn1
-		  }
-		}
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  Points		  [976, 195; 0, -19]
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "IRLZ-34N MOSFET4"
-		    SrcPort		    RConn1
-		    Points		    [21, 0]
-		  }
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Voltage Sensor6"
-		    SrcPort		    LConn1
-		    Points		    [0, 5; -134, 0]
-		  }
-		}
-	      }
+	      ConnectType	      "SRC_SRC"
+	      Points		      [-110, 0]
+	      DstBlock		      "Diode5"
+	      DstPort		      LConn1
 	    }
 	    Branch {
-	      ConnectType	      "DEST_DEST"
-	      SrcBlock		      "Current Sensor6"
-	      SrcPort		      RConn2
-	      Points		      [54, 0]
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Capacitor2"
+	      SrcPort		      RConn1
+	      Points		      [0, 1]
 	    }
 	  }
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    Points		    [1176, 755; 0, -110; -12, 0]
+	    Points		    [976, 195; 0, -19]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Current Sensor8"
-	      SrcPort		      RConn2
-	      Points		      [-4, 0; 0, -10]
+	      SrcBlock		      "IRLZ-34N MOSFET2"
+	      SrcPort		      RConn1
+	      Points		      [21, 0]
 	    }
 	    Branch {
 	      ConnectType	      "SRC_DEST"
-	      Points		      [1205, 755; -29, 0]
-	      Branch {
-		ConnectType		"SRC_DEST"
-		Points			[1230, 755; -25, 0]
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  SrcBlock		  "IRLZ-34N MOSFET6"
-		  SrcPort		  RConn2
-		  Points		  [2, 0; 0, 475; -137, 0]
-		}
-		Branch {
-		  ConnectType		  "SRC_SRC"
-		  DstBlock		  "2200uF1"
-		  DstPort		  LConn1
-		}
-	      }
-	      Branch {
-		ConnectType		"SRC_DEST"
-		SrcBlock		"Variable Resistor1"
-		SrcPort			RConn1
-		Points			[0, 130]
-	      }
+	      SrcBlock		      "Voltage Sensor6"
+	      SrcPort		      LConn1
+	      Points		      [0, 5; -134, 0]
 	    }
 	  }
 	}
@@ -9513,16 +9458,19 @@ Model {
 	  ZOrder		  272
 	  SrcBlock		  "PS-Simulink\nConverter17"
 	  SrcPort		  1
-	  Points		  [113, 0; 0, 25]
-	  DstBlock		  "Product9"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  287
-	  SrcBlock		  "Product6"
-	  SrcPort		  1
-	  DstBlock		  "Simulink-PS\nConverter3"
-	  DstPort		  1
+	  Points		  [113, 0]
+	  Branch {
+	    ZOrder		    2164
+	    Points		    [0, 25]
+	    DstBlock		    "Product9"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    2088
+	    Points		    [0, -20]
+	    DstBlock		    "Scope5"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
@@ -9587,7 +9535,7 @@ Model {
 	  DstPort		  RConn1
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "IRLZ-34N MOSFET6"
+	    SrcBlock		    "IRLZ-34N MOSFET5"
 	    SrcPort		    LConn1
 	    Points		    [-10, 0]
 	  }
@@ -9595,7 +9543,7 @@ Model {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "Resistor15"
 	    SrcPort		    LConn1
-	    Points		    [0, -20; 5, 0]
+	    Points		    [0, -10]
 	  }
 	}
 	Line {
@@ -9610,9 +9558,7 @@ Model {
 	Line {
 	  LineType		  "Connection"
 	  ZOrder		  1443
-	  Points		  [541, 570; 0, -250; 367, 0; 0, 35; 2, 0]
-	  DstBlock		  "Boost Converter5"
-	  DstPort		  LConn1
+	  Points		  [541, 570; 0, -250; 44, 0]
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    Points		    [541, 620; 0, -50]
@@ -9635,6 +9581,18 @@ Model {
 	    SrcPort		    LConn1
 	    Points		    [-11, 0; 0, -20; -358, 0]
 	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Controlled Voltage\nSource"
+	    SrcPort		    RConn1
+	    Points		    [0, 115]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [323, 0; 0, 35]
+	    DstBlock		    "Boost Converter5"
+	    DstPort		    LConn1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
@@ -9653,6 +9611,12 @@ Model {
 	  Points		  [15, 0]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "IRLZ-34N MOSFET5"
+	    SrcPort		    RConn1
+	    Points		    [0, -50]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
 	    Points		    [1380, 190; -15, 0; 0, 10]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
@@ -9667,11 +9631,6 @@ Model {
 	      Points		      [-60, 0]
 	    }
 	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "IRLZ-34N MOSFET6"
-	    DstPort		    RConn1
-	  }
 	}
 	Line {
 	  LineType		  "Connection"
@@ -9683,126 +9642,61 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  ZOrder		  1559
-	  Points		  [1205, 115; -15, 0]
+	  ZOrder		  1913
+	  Points		  [840, 930; 0, 7]
 	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    Points		    [35, 0]
-	    Branch {
-	      ConnectType	      "DEST_DEST"
-	      SrcBlock		      "\n"
-	      SrcPort		      LConn1
-	      Points		      [0, -5]
-	    }
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      Points		      [35, 0]
-	      Branch {
-		ConnectType		"DEST_DEST"
-		SrcBlock		"Capacitor6"
-		SrcPort			LConn1
-		Points			[0, -5]
-	      }
-	      Branch {
-		ConnectType		"DEST_DEST"
-		SrcBlock		"Fuse1"
-		SrcPort			LConn1
-		Points			[-20, 0]
-	      }
-	    }
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "IRLZ-34N MOSFET4"
+	    SrcPort		    RConn2
+	    Points		    [30, 0; 0, 70; -160, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Diode9"
+	    SrcBlock		    "Resistor14"
 	    SrcPort		    RConn1
-	    Points		    [0, -5]
+	    Points		    [0, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-177, 0]
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Resistor15"
+	    SrcPort		    RConn1
+	    Points		    [0, 592; -455, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [605, 550; 0, 387; 235, 0]
 	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      Points		      [-88, 0]
-	      Branch {
-		ConnectType		"DEST_SRC"
-		Points			[-80, 0]
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  SrcBlock		  "Current Sensor5"
-		  SrcPort		  RConn2
-		  Points		  [120, 0]
-		}
-		Branch {
-		  ConnectType		  "DEST_SRC"
-		  DstBlock		  "Diode5"
-		  DstPort		  RConn1
-		}
-	      }
-	      Branch {
-		ConnectType		"DEST_SRC"
-		DstBlock		"Capacitor2"
-		DstPort			LConn1
-	      }
-	    }
-	    Branch {
-	      ConnectType	      "DEST_DEST"
-	      Points		      [1013, 360; 0, -245]
+	      ConnectType	      "SRC_DEST"
+	      Points		      [605, 540; 0, 10]
 	      Branch {
 		ConnectType		"SRC_DEST"
-		Points			[1013, 595; 0, -235]
+		Points			[605, 434; 0, 106]
 		Branch {
 		  ConnectType		  "SRC_DEST"
-		  Points		  [1013, 672; 0, -77]
+		  Points		  [700, 434; -95, 0]
 		  Branch {
-		    ConnectType		    "SRC_SRC"
-		    Points		    [0, 265]
-		    Branch {
-		    ConnectType		    "DEST_SRC"
-		    Points		    [217, 0]
-		    DstBlock		    "2200uF1"
-		    DstPort		    RConn1
-		    }
-		    Branch {
-		    ConnectType		    "DEST_SRC"
-		    Points		    [-173, 0]
-		    Branch {
-		    ConnectType		    "DEST_DEST"
-		    Points		    [840, 930; 0, 7]
-		    Branch {
 		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "IRLZ-34N MOSFET7"
+		    SrcBlock		    "Voltage Sensor8"
 		    SrcPort		    RConn2
-		    Points		    [30, 0; 0, 70; -160, 0]
-		    }
-		    Branch {
+		    Points		    [0, 4; -85, 0]
+		  }
+		  Branch {
 		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Resistor14"
-		    SrcPort		    RConn1
-		    Points		    [0, 0]
-		    }
-		    }
-		    Branch {
-		    ConnectType		    "DEST_SRC"
-		    Points		    [-235, 0; 0, -277]
-		    Branch {
-		    ConnectType		    "DEST_DEST"
-		    Points		    [605, 550; 0, 110]
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Electrical Reference1"
-		    SrcPort		    LConn1
-		    Points		    [108, 0]
-		    }
-		    Branch {
-		    ConnectType		    "SRC_SRC"
-		    Points		    [0, -276]
-		    Branch {
-		    ConnectType		    "DEST_DEST"
-		    SrcBlock		    "Switch"
+		    SrcBlock		    "Controlled Voltage\nSource1"
 		    SrcPort		    RConn2
-		    Points		    [0, 79]
-		    }
-		    Branch {
+		    Points		    [0, 4]
+		  }
+		}
+		Branch {
+		  ConnectType		  "SRC_SRC"
+		  Points		  [0, -160]
+		  Branch {
+		    ConnectType		    "DEST_DEST"
+		    SrcBlock		    "Controlled Voltage\nSource"
+		    SrcPort		    RConn2
+		    Points		    [0, 69]
+		  }
+		  Branch {
 		    ConnectType		    "DEST_SRC"
 		    Points		    [240, 0]
 		    Branch {
@@ -9815,110 +9709,43 @@ Model {
 		    Points		    [977, 274; -132, 0]
 		    Branch {
 		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "IRLZ-34N MOSFET2"
+		    SrcPort		    RConn2
+		    Points		    [22, 0; 0, 49]
+		    }
+		    Branch {
+		    ConnectType		    "SRC_DEST"
 		    SrcBlock		    "Voltage Sensor6"
 		    SrcPort		    RConn2
 		    Points		    [0, 14; -143, 0]
 		    }
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "IRLZ-34N MOSFET4"
-		    SrcPort		    RConn2
-		    Points		    [22, 0; 0, 49]
-		    }
-		    }
-		    }
-		    }
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    Points		    [880, 550; -275, 0]
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "IRLZ-34N MOSFET5"
-		    SrcPort		    RConn2
-		    Points		    [28, 0; 0, 50; -118, 0]
-		    }
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Resistor11"
-		    SrcPort		    RConn1
-		    Points		    [0, -5]
-		    }
-		    }
-		    }
-		    Branch {
-		    ConnectType		    "DEST_SRC"
-		    Points		    [65, 0]
-		    Branch {
-		    ConnectType		    "DEST_DEST"
-		    Points		    [775, 660; -105, 0]
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    Points		    [855, 660; -80, 0]
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Voltage Sensor5"
-		    SrcPort		    RConn2
-		    Points		    [0, 0]
-		    }
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    Points		    [907, 660; -52, 0]
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Resistor15"
-		    SrcPort		    RConn1
-		    Points		    [0, 305; -383, 0]
-		    }
-		    Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Boost Converter6"
-		    SrcPort		    LConn3
-		    Points		    [-3, 0; 0, 20]
-		    }
-		    }
-		    }
-		    Branch {
-		    ConnectType		    "SRC_SRC"
-		    DstBlock		    "Diode7"
-		    DstPort		    LConn1
-		    }
-		    }
-		    Branch {
-		    ConnectType		    "DEST_SRC"
-		    DstBlock		    "Controlled Current\nSource"
-		    DstPort		    RConn2
-		    }
-		    }
-		    }
 		    }
 		  }
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Boost Converter8"
-		    SrcPort		    RConn1
-		    Points		    [9, 0; 0, -43; -116, 0]
-		  }
-		}
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  SrcBlock		  "Boost Converter6"
-		  SrcPort		  RConn1
-		  Points		  [-7, 0]
 		}
 	      }
 	      Branch {
 		ConnectType		"SRC_DEST"
-		SrcBlock		"Boost Converter5"
-		SrcPort			RConn1
-		Points			[-7, 0]
+		SrcBlock		"Electrical Reference1"
+		SrcPort			LConn1
+		Points			[3, 0]
 	      }
 	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "Variable Resistor1"
-	    SrcPort		    LConn2
-	    Points		    [0, -335]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      Points		      [880, 550; -275, 0]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"IRLZ-34N MOSFET3"
+		SrcPort			RConn2
+		Points			[28, 0; 0, 50; -118, 0]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"Resistor11"
+		SrcPort			RConn1
+		Points			[0, -5]
+	      }
+	    }
 	  }
 	}
 	Line {
@@ -9937,7 +9764,7 @@ Model {
 	  DstPort		  LConn1
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "IRLZ-34N MOSFET4"
+	    SrcBlock		    "IRLZ-34N MOSFET2"
 	    SrcPort		    LConn1
 	    Points		    [-50, 0]
 	  }
@@ -9949,14 +9776,6 @@ Model {
 	  }
 	}
 	Line {
-	  ZOrder		  292
-	  SrcBlock		  "PS-Simulink\nConverter15"
-	  SrcPort		  1
-	  Points		  [372, 0; 0, -20]
-	  DstBlock		  "Product8"
-	  DstPort		  2
-	}
-	Line {
 	  LineType		  "Connection"
 	  ZOrder		  1516
 	  Points		  [880, 485; 0, 0]
@@ -9964,7 +9783,7 @@ Model {
 	  DstPort		  LConn1
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "IRLZ-34N MOSFET5"
+	    SrcBlock		    "IRLZ-34N MOSFET3"
 	    SrcPort		    LConn1
 	    Points		    [-30, 0]
 	  }
@@ -9979,7 +9798,6 @@ Model {
 	  ZOrder		  1555
 	  SrcBlock		  "WT_PWM"
 	  SrcPort		  1
-	  Points		  [238, 0; 0, -10]
 	  DstBlock		  "Subsystem4"
 	  DstPort		  1
 	}
@@ -10027,15 +9845,15 @@ Model {
 	  SrcPort		  RConn1
 	  Points		  [0, -35; 20, 0]
 	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "IRLZ-34N MOSFET4"
+	    SrcPort		    LConn1
+	    Points		    [-70, 0]
+	  }
+	  Branch {
 	    ConnectType		    "DEST_SRC"
 	    DstBlock		    "Resistor14"
 	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "IRLZ-34N MOSFET7"
-	    SrcPort		    LConn1
-	    Points		    [-70, 0]
 	  }
 	}
 	Line {
@@ -10049,29 +9867,9 @@ Model {
 	    Points		    [835, 430; 60, 0]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
-	      Points		      [834, 430; 1, 0]
-	      Branch {
-		ConnectType		"SRC_DEST"
-		SrcBlock		"IRLZ-34N MOSFET5"
-		SrcPort			RConn1
-		Points			[5, 0; 0, -27; -141, 0; 0, -13]
-	      }
-	      Branch {
-		ConnectType		"SRC_SRC"
-		Points			[-49, 0]
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  SrcBlock		  "Controlled Voltage\nSource1"
-		  SrcPort		  RConn2
-		  Points		  [85, 0]
-		}
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  SrcBlock		  "Voltage Sensor8"
-		  SrcPort		  RConn2
-		  Points		  [0, 0]
-		}
-	      }
+	      SrcBlock		      "IRLZ-34N MOSFET3"
+	      SrcPort		      RConn1
+	      Points		      [5, 0; 0, -27; -141, 0; 0, -13; 1, 0]
 	    }
 	    Branch {
 	      ConnectType	      "SRC_SRC"
@@ -10090,7 +9888,7 @@ Model {
 	  ZOrder		  270
 	  SrcBlock		  "PS-Simulink\nConverter12"
 	  SrcPort		  1
-	  Points		  [40, 0; 0, -5]
+	  Points		  [15, 0; 0, -5]
 	  DstBlock		  "Product11"
 	  DstPort		  2
 	}
@@ -10121,18 +9919,9 @@ Model {
 	  Points		  [-23, 0; 0, -31; -42, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [-70, 0]
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      Points		      [-115, 0]
-	      DstBlock		      "Controlled Current\nSource"
-	      DstPort		      LConn1
-	    }
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      DstBlock		      "Diode7"
-	      DstPort		      RConn1
-	    }
+	    Points		    [-185, 0]
+	    DstBlock		    "Controlled Current\nSource"
+	    DstPort		    LConn1
 	  }
 	  Branch {
 	    ConnectType		    "DEST_DEST"
@@ -10143,11 +9932,11 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  ZOrder		  2037
-	  SrcBlock		  "Current Sensor5"
+	  ZOrder		  2145
+	  SrcBlock		  "Controlled Voltage\nSource"
 	  SrcPort		  LConn1
-	  Points		  [-60, 0]
-	  DstBlock		  "Switch"
+	  Points		  [0, -30]
+	  DstBlock		  "Current Sensor5"
 	  DstPort		  LConn1
 	}
 	Line {
@@ -10163,7 +9952,7 @@ Model {
 	  ZOrder		  262
 	  SrcBlock		  "PS-Simulink\nConverter12"
 	  SrcPort		  LConn1
-	  Points		  [-100, 0]
+	  Points		  [-45, 0]
 	  DstBlock		  "Voltage Sensor7"
 	  DstPort		  RConn1
 	}
@@ -10181,6 +9970,7 @@ Model {
 	  ZOrder		  246
 	  SrcBlock		  "PS-Simulink\nConverter10"
 	  SrcPort		  LConn1
+	  Points		  [-65, 0; 0, -5]
 	  DstBlock		  "Current Sensor9"
 	  DstPort		  RConn1
 	}
@@ -10206,7 +9996,6 @@ Model {
 	  ZOrder		  255
 	  SrcBlock		  "PS-Simulink\nConverter11"
 	  SrcPort		  LConn1
-	  Points		  [-15, 0]
 	  DstBlock		  "Current Sensor5"
 	  DstPort		  RConn1
 	}
@@ -10244,18 +10033,10 @@ Model {
 	  DstPort		  RConn1
 	}
 	Line {
-	  LineType		  "Connection"
-	  ZOrder		  264
-	  SrcBlock		  "Current Sensor7"
-	  SrcPort		  LConn1
-	  DstBlock		  "Boost Converter6"
-	  DstPort		  RConn2
-	}
-	Line {
 	  ZOrder		  268
 	  SrcBlock		  "PS-Simulink\nConverter11"
 	  SrcPort		  1
-	  Points		  [687, 0; 0, 220]
+	  Points		  [329, 0; 0, 131; 316, 0; 0, 54]
 	  DstBlock		  "Product7"
 	  DstPort		  1
 	}
@@ -10265,14 +10046,6 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Simulink-PS\nConverter5"
 	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  269
-	  SrcBlock		  "PS-Simulink\nConverter18"
-	  SrcPort		  1
-	  Points		  [87, 0; 0, -45]
-	  DstBlock		  "Product10"
-	  DstPort		  2
 	}
 	Line {
 	  ZOrder		  278
@@ -10286,7 +10059,7 @@ Model {
 	  ZOrder		  273
 	  SrcBlock		  "PS-Simulink\nConverter10"
 	  SrcPort		  1
-	  Points		  [50, 0; 0, 5]
+	  Points		  [15, 0; 0, 5]
 	  DstBlock		  "Product11"
 	  DstPort		  1
 	}
@@ -10392,15 +10165,15 @@ Model {
 	  ZOrder		  1563
 	  SrcBlock		  "Product11"
 	  SrcPort		  1
-	  Points		  [55, 0]
+	  Points		  [35, 0]
 	  Branch {
-	    ZOrder		    1975
-	    DstBlock		    "Scope"
+	    ZOrder		    2168
+	    DstBlock		    "P_EL1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    1974
-	    DstBlock		    "P_EL1"
+	    ZOrder		    1975
+	    DstBlock		    "Scope"
 	    DstPort		    1
 	  }
 	}
@@ -10408,15 +10181,15 @@ Model {
 	  ZOrder		  1557
 	  SrcBlock		  "Product7"
 	  SrcPort		  1
-	  Points		  [125, 0]
+	  Points		  [35, 0]
 	  Branch {
-	    ZOrder		    1981
-	    DstBlock		    "Scope1"
+	    ZOrder		    2169
+	    DstBlock		    "P_PS1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    1980
-	    DstBlock		    "P_PS1"
+	    ZOrder		    1981
+	    DstBlock		    "Scope1"
 	    DstPort		    1
 	  }
 	}
@@ -10424,15 +10197,15 @@ Model {
 	  ZOrder		  1559
 	  SrcBlock		  "Product8"
 	  SrcPort		  1
-	  Points		  [100, 0]
+	  Points		  [35, 0]
 	  Branch {
-	    ZOrder		    1979
-	    DstBlock		    "Scope2"
+	    ZOrder		    2170
+	    DstBlock		    "P_WT1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    ZOrder		    1978
-	    DstBlock		    "P_WT1"
+	    ZOrder		    1979
+	    DstBlock		    "Scope2"
 	    DstPort		    1
 	  }
 	}
@@ -10440,9 +10213,9 @@ Model {
 	  ZOrder		  1560
 	  SrcBlock		  "Product9"
 	  SrcPort		  1
-	  Points		  [135, 0]
+	  Points		  [35, 0]
 	  Branch {
-	    ZOrder		    1998
+	    ZOrder		    2086
 	    DstBlock		    "P_SP1"
 	    DstPort		    1
 	  }
@@ -10456,7 +10229,7 @@ Model {
 	  ZOrder		  1562
 	  SrcBlock		  "Product10"
 	  SrcPort		  1
-	  Points		  [110, 0]
+	  Points		  [30, 0]
 	  Branch {
 	    ZOrder		    1987
 	    DstBlock		    "Scope4"
@@ -10469,20 +10242,247 @@ Model {
 	  }
 	}
 	Line {
-	  ZOrder		  2038
-	  SrcBlock		  "Constant"
+	  ZOrder		  269
+	  SrcBlock		  "PS-Simulink\nConverter18"
 	  SrcPort		  1
-	  DstBlock		  "Simulink-PS\nConverter6"
-	  DstPort		  1
+	  Points		  [87, 0]
+	  Branch {
+	    ZOrder		    2174
+	    Points		    [0, -45]
+	    DstBlock		    "Product10"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    2091
+	    DstBlock		    "Scope6"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  292
+	  SrcBlock		  "PS-Simulink\nConverter15"
+	  SrcPort		  1
+	  Points		  [372, 0]
+	  Branch {
+	    ZOrder		    2094
+	    Points		    [0, 35]
+	    DstBlock		    "Scope7"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    2093
+	    Points		    [0, -20]
+	    DstBlock		    "Product8"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  287
+	  SrcBlock		  "Product6"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  Branch {
+	    ZOrder		    2175
+	    DstBlock		    "Simulink-PS\nConverter3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    2097
+	    DstBlock		    "Scope8"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  ZOrder		  2040
-	  SrcBlock		  "Simulink-PS\nConverter6"
+	  ZOrder		  1932
+	  SrcBlock		  "Voltage Sensor5"
+	  SrcPort		  RConn2
+	  Points		  [0, 0]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Boost Converter6"
+	    SrcPort		    LConn3
+	    Points		    [-3, 0; 0, 20; -52, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-185, 0]
+	    DstBlock		    "Controlled Current\nSource"
+	    DstPort		    RConn2
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  ZOrder		  1904
+	  SrcBlock		  "Current Sensor5"
+	  SrcPort		  RConn2
+	  Points		  [85, 0]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Resistor1"
+	    SrcPort		    LConn1
+	    Points		    [-30, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Diode5"
+	    DstPort		    RConn1
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  ZOrder		  2129
+	  SrcBlock		  "Boost Converter6"
+	  SrcPort		  RConn2
+	  DstBlock		  "Current Sensor7"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  ZOrder		  2130
+	  SrcBlock		  "Current Sensor8"
+	  SrcPort		  RConn2
+	  Points		  [0, -119]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [1205, 646; -25, 0]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "IRLZ-34N MOSFET5"
+	      SrcPort		      RConn2
+	      Points		      [38, 0; 0, 366; -198, 0]
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Variable Resistor1"
+	      SrcPort		      RConn1
+	      Points		      [0, 21]
+	    }
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -1; -62, 0]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      Points		      [1118, 410; 0, 235]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"Current Sensor6"
+		SrcPort			RConn2
+		Points			[8, 0]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"2200uF1"
+		SrcPort			RConn1
+		Points			[0, 33; -37, 0]
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "Current Sensor7"
+	      DstPort		      RConn2
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  ZOrder		  1938
+	  SrcBlock		  "Boost Converter8"
 	  SrcPort		  RConn1
-	  Points		  [110, 0]
-	  DstBlock		  "Switch"
-	  DstPort		  RConn1
+	  Points		  [9, 0; 0, -43; -116, 0; 0, -77]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -235]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [0, -245]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		Points			[955, 115; 58, 0]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Resistor1"
+		  SrcPort		  RConn1
+		  Points		  [10, 0]
+		}
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Capacitor2"
+		  SrcPort		  LConn1
+		  Points		  [0, 5]
+		}
+	      }
+	      Branch {
+		ConnectType		"DEST_SRC"
+		Points			[142, 0]
+		Branch {
+		  ConnectType		  "DEST_DEST"
+		  SrcBlock		  "2200uF1"
+		  SrcPort		  LConn1
+		  Points		  [0, -147]
+		}
+		Branch {
+		  ConnectType		  "DEST_DEST"
+		  Points		  [1190, 115; -35, 0]
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    Points		    [1205, 115; -15, 0]
+		    Branch {
+		    ConnectType		    "SRC_SRC"
+		    Points		    [35, 0]
+		    Branch {
+		    ConnectType		    "DEST_DEST"
+		    SrcBlock		    "\n"
+		    SrcPort		    LConn1
+		    Points		    [0, -5]
+		    }
+		    Branch {
+		    ConnectType		    "DEST_SRC"
+		    Points		    [35, 0]
+		    Branch {
+		    ConnectType		    "DEST_DEST"
+		    SrcBlock		    "Capacitor6"
+		    SrcPort		    LConn1
+		    Points		    [0, -5]
+		    }
+		    Branch {
+		    ConnectType		    "DEST_DEST"
+		    SrcBlock		    "Fuse1"
+		    SrcPort		    LConn1
+		    Points		    [-20, 0]
+		    }
+		    }
+		    }
+		    Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "Diode9"
+		    SrcPort		    RConn1
+		    Points		    [0, -5]
+		    }
+		  }
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "Variable Resistor1"
+		    SrcPort		    LConn2
+		    Points		    [0, -335]
+		  }
+		}
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "Boost Converter5"
+	      SrcPort		      RConn1
+	      Points		      [-7, 0]
+	    }
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Boost Converter6"
+	    SrcPort		    RConn1
+	    Points		    [-7, 0]
+	  }
 	}
       }
     }
@@ -10576,7 +10576,7 @@ Model {
 	  System {
 	    Name		    "Lambda calculation"
 	    Location		    [-8, -8, 1928, 1048]
-	    Open		    off
+	    Open		    on
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
 	    ExecutionDomainType	    "Deduce"
@@ -10930,6 +10930,85 @@ Model {
 	  InitialConditionSetting "Auto"
 	}
 	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  SID			  "1090"
+	  Ports			  [1, 1]
+	  Position		  [950, 90, 980, 120]
+	  ZOrder		  322
+	  InputPortMap		  "u0"
+	  UpperLimit		  "1"
+	  LowerLimit		  "0"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope"
+	  SID			  "1089"
+	  Ports			  [1]
+	  Position		  [785, 164, 815, 196]
+	  ZOrder		  321
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','5000.00000','MaxYLimReal','25000.00000','YLabelReal','','MinYLimMag','500"
+	  "0.00000','MaxYLimMag','25000.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesCo"
+	  "lor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666"
+	  "666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019"
+	  "608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.65098039"
+	  "2156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames"
+	  "',{{'Lambda calculation'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','5000."
+	  "00000','MaxYLimReal','25000.00000','YLabelReal','','MinYLimMag','5000.00000','MaxYLimMag','25000.00000','LegendVisi"
+	  "bility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922"
+	  " 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16"
+	  "078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.074"
+	  "5098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot N"
+	  "avigation',true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',"
+	  "[1 41 1920 963])"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope1"
+	  SID			  "1095"
+	  Ports			  [1]
+	  Position		  [815, 249, 845, 281]
+	  ZOrder		  5265
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData6'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-1.00000','MaxYLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000',"
+	  "'MaxYLimMag','1.00000','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],"
+	  "'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745"
+	  "098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098"
+	  "039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Tit"
+	  "le','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Tip-Spee"
+	  "d Ratio MPPT/5'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-1.00000','Max"
+	  "YLimReal','1.00000','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','1.00000','LegendVisibility','off','XGrid',"
+	  "true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.6"
+	  "86274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.066"
+	  "6666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.058823"
+	  "5294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmg"
+	  "r.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[1 41 1920 963])"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope5"
+	  SID			  "1094"
+	  Ports			  [1]
+	  Position		  [870, 9, 900, 41]
+	  ZOrder		  5264
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData5'),extmgr.Configuration('Visuals','Time Domain',true),e"
+	  "xtmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true)),'Version','2"
+	  "019b')"
+	  NumInputPorts		  "1"
+	  Floating		  off
+	}
+	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
 	  SID			  "67"
@@ -10959,7 +11038,7 @@ Model {
 	  System {
 	    Name		    "Tip-Speed Ratio MPPT"
 	    Location		    [-8, -8, 1928, 1048]
-	    Open		    on
+	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
 	    ExecutionDomainType	    "Deduce"
@@ -11100,11 +11179,26 @@ Model {
 	      Value		      "V_w_data_x"
 	    }
 	    Block {
+	      BlockType		      DiscreteIntegrator
+	      Name		      "Discrete-Time\nIntegrator"
+	      SID		      "1088"
+	      Ports		      [1, 1]
+	      Position		      [200, 517, 235, 553]
+	      ZOrder		      5260
+	      BlockMirror	      on
+	      gainval		      "1"
+	      InitialCondition	      "omega_0"
+	      InitialConditionSetting "Auto"
+	      SampleTime	      "step_size"
+	      ICPrevOutput	      "DiscIntNeverNeededParam"
+	      ICPrevScaledInput	      "DiscIntNeverNeededParam"
+	    }
+	    Block {
 	      BlockType		      Product
 	      Name		      "Divide"
 	      SID		      "46"
 	      Ports		      [2, 1]
-	      Position		      [500, 562, 530, 593]
+	      Position		      [505, 562, 535, 593]
 	      ZOrder		      286
 	      BlockMirror	      on
 	      Inputs		      "*/"
@@ -11112,17 +11206,6 @@ Model {
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      RndMeth		      "Floor"
 	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Integrator
-	      Name		      "Integrator"
-	      SID		      "30"
-	      Ports		      [1, 1]
-	      Position		      [215, 520, 245, 550]
-	      ZOrder		      272
-	      BlockMirror	      on
-	      InitialCondition	      "omega_0"
-	      ContinuousStateAttributes	"'rotationalspeed'"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -11531,7 +11614,7 @@ Model {
 	      Name		      "Product3"
 	      SID		      "33"
 	      Ports		      [2, 1]
-	      Position		      [315, 517, 345, 548]
+	      Position		      [315, 502, 345, 533]
 	      ZOrder		      275
 	      BlockMirror	      on
 	      InputSameDT	      off
@@ -11577,7 +11660,7 @@ Model {
 	      Name		      "Product6"
 	      SID		      "1011"
 	      Ports		      [2, 1]
-	      Position		      [95, 557, 125, 588]
+	      Position		      [95, 567, 125, 598]
 	      ZOrder		      292
 	      BlockMirror	      on
 	      InputSameDT	      off
@@ -11681,8 +11764,9 @@ Model {
 	      Name		      "Scope3"
 	      SID		      "1057"
 	      Ports		      [1]
-	      Position		      [315, 564, 345, 596]
+	      Position		      [384, 580, 416, 610]
 	      ZOrder		      5256
+	      BlockRotation	      270
 	      BlockMirror	      on
 	      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(ext"
 	      "mgr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration("
@@ -11755,7 +11839,8 @@ Model {
 	      "274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.1607"
 	      "8431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0"
 	      "745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','"
-	      "Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b')"
+	      "Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','"
+	      "Position',[680 237 347 513])"
 	      NumInputPorts	      "1"
 	      Floating		      off
 	    }
@@ -11774,7 +11859,7 @@ Model {
 	      Name		      "Sum"
 	      SID		      "36"
 	      Ports		      [3, 1]
-	      Position		      [440, 530, 460, 550]
+	      Position		      [440, 515, 460, 535]
 	      ZOrder		      276
 	      BlockMirror	      on
 	      ShowName		      off
@@ -11844,7 +11929,7 @@ Model {
 	      BlockType		      Outport
 	      Name		      "V_WT"
 	      SID		      "1010"
-	      Position		      [-360, 568, -330, 582]
+	      Position		      [-360, 578, -330, 592]
 	      ZOrder		      291
 	      BlockMirror	      on
 	      Port		      "5"
@@ -11956,40 +12041,40 @@ Model {
 	      DstPort		      1
 	    }
 	    Line {
-	      ZOrder		      61
-	      SrcBlock		      "Integrator"
+	      ZOrder		      385
+	      SrcBlock		      "Discrete-Time\nIntegrator"
 	      SrcPort		      1
-	      Points		      [-23, 0]
+	      Points		      [-26, 0]
 	      Branch {
-		ZOrder			210
-		Points			[0, 30]
-		DstBlock		"Product6"
-		DstPort			1
-	      }
-	      Branch {
-		ZOrder			87
+		ZOrder			383
 		Points			[0, -74]
+		Branch {
+		  ZOrder		  379
+		  Points		  [605, 0; 0, 99]
+		  DstBlock		  "Product4"
+		  DstPort		  1
+		}
 		Branch {
 		  ZOrder		  94
 		  Points		  [0, -16]
 		  Branch {
-		    ZOrder		    76
-		    Points		    [0, -31; 136, 0; 0, -269]
-		    DstBlock		    "Product"
-		    DstPort		    3
-		  }
-		  Branch {
-		    ZOrder		    83
+		    ZOrder		    378
 		    DstBlock		    "Product5"
 		    DstPort		    2
 		  }
+		  Branch {
+		    ZOrder		    76
+		    Points		    [0, -31; 154, 0; 0, -269]
+		    DstBlock		    "Product"
+		    DstPort		    3
+		  }
 		}
-		Branch {
-		  ZOrder		  75
-		  Points		  [587, 0; 0, 99]
-		  DstBlock		  "Product4"
-		  DstPort		  1
-		}
+	      }
+	      Branch {
+		ZOrder			371
+		Points			[0, 40]
+		DstBlock		"Product6"
+		DstPort			1
 	      }
 	      Branch {
 		ZOrder			67
@@ -12075,13 +12160,13 @@ Model {
 	    Line {
 	      Name		      "Torque"
 	      ZOrder		      70
+	      Labels		      [3, 0]
 	      SrcBlock		      "Product1"
 	      SrcPort		      1
-	      Points		      [19, 0; 0, 115]
+	      Points		      [19, 0; 0, 115; -11, 0]
 	      Branch {
 		ZOrder			291
-		Labels			[1, 0]
-		Points			[0, 117; -359, 0]
+		Points			[0, 132; -348, 0]
 		DstBlock		"Sum"
 		DstPort			1
 	      }
@@ -12100,18 +12185,19 @@ Model {
 	    }
 	    Line {
 	      Name		      "alpha"
-	      ZOrder		      57
+	      ZOrder		      384
 	      Labels		      [1, 1]
 	      SrcBlock		      "Product3"
 	      SrcPort		      1
-	      DstBlock		      "Integrator"
+	      Points		      [-35, 0; 0, 15]
+	      DstBlock		      "Discrete-Time\nIntegrator"
 	      DstPort		      1
 	    }
 	    Line {
 	      ZOrder		      58
 	      SrcBlock		      "Math\nFunction1"
 	      SrcPort		      1
-	      Points		      [122, 0; 0, 135]
+	      Points		      [119, 0; 0, 120]
 	      DstBlock		      "Product3"
 	      DstPort		      1
 	    }
@@ -12119,17 +12205,17 @@ Model {
 	      ZOrder		      72
 	      SrcBlock		      "Constant5"
 	      SrcPort		      1
-	      Points		      [240, 0]
+	      Points		      [223, 0]
 	      Branch {
-		ZOrder			209
-		Points			[0, -80]
-		DstBlock		"Product6"
+		ZOrder			382
+		Points			[606, 0; 0, -85]
+		DstBlock		"Product4"
 		DstPort			2
 	      }
 	      Branch {
-		ZOrder			208
-		Points			[589, 0; 0, -85]
-		DstBlock		"Product4"
+		ZOrder			209
+		Points			[0, -70]
+		DstBlock		"Product6"
 		DstPort			2
 	      }
 	    }
@@ -12148,7 +12234,7 @@ Model {
 	      Labels		      [2, 1]
 	      SrcBlock		      "Sum1"
 	      SrcPort		      1
-	      Points		      [0, 20]
+	      Points		      [0, 5]
 	      DstBlock		      "Sum"
 	      DstPort		      2
 	    }
@@ -12179,7 +12265,7 @@ Model {
 	      ZOrder		      92
 	      SrcBlock		      "r_LED"
 	      SrcPort		      1
-	      Points		      [965, 0]
+	      Points		      [970, 0]
 	      DstBlock		      "Divide"
 	      DstPort		      2
 	    }
@@ -12187,7 +12273,7 @@ Model {
 	      ZOrder		      93
 	      SrcBlock		      "Divide"
 	      SrcPort		      1
-	      Points		      [-45, 0]
+	      Points		      [-50, 0]
 	      DstBlock		      "Sum"
 	      DstPort		      3
 	    }
@@ -12231,8 +12317,7 @@ Model {
 	      SrcPort		      1
 	      Points		      [-35, 0]
 	      Branch {
-		ZOrder			295
-		Points			[0, 40]
+		ZOrder			372
 		DstBlock		"Scope3"
 		DstPort			1
 	      }
@@ -12288,7 +12373,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "WT_PWM"
 	  SID			  "84"
-	  Position		  [940, 98, 970, 112]
+	  Position		  [1045, 98, 1075, 112]
 	  ZOrder		  317
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -12352,14 +12437,6 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  23
-	  SrcBlock		  "Tip-Speed Ratio MPPT"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, 5]
-	  DstBlock		  "Lambda calculation"
-	  DstPort		  2
-	}
-	Line {
 	  ZOrder		  45
 	  SrcBlock		  "r_WT"
 	  SrcPort		  1
@@ -12385,13 +12462,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  47
-	  SrcBlock		  "PID Controller"
-	  SrcPort		  1
-	  DstBlock		  "WT_PWM"
-	  DstPort		  1
-	}
-	Line {
 	  ZOrder		  48
 	  SrcBlock		  "Gain"
 	  SrcPort		  1
@@ -12399,19 +12469,71 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  62
-	  SrcBlock		  "Tip-Speed Ratio MPPT"
-	  SrcPort		  5
-	  DstBlock		  "V_WT"
-	  DstPort		  1
-	}
-	Line {
 	  ZOrder		  29
 	  SrcBlock		  "Lambda calculation"
 	  SrcPort		  1
-	  Points		  [20, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  2
+	  Points		  [18, 0]
+	  Branch {
+	    ZOrder		    72
+	    Points		    [0, 10]
+	    DstBlock		    "Scope"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    71
+	    Points		    [2, 0]
+	    DstBlock		    "Sum"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  73
+	  SrcBlock		  "PID Controller"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  74
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "WT_PWM"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  23
+	  SrcBlock		  "Tip-Speed Ratio MPPT"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    ZOrder		    79
+	    Points		    [0, 5]
+	    DstBlock		    "Lambda calculation"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    78
+	    Points		    [0, -95]
+	    DstBlock		    "Scope5"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  62
+	  SrcBlock		  "Tip-Speed Ratio MPPT"
+	  SrcPort		  5
+	  Points		  [150, 0]
+	  Branch {
+	    ZOrder		    82
+	    Points		    [0, -55]
+	    DstBlock		    "Scope1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    81
+	    DstBlock		    "V_WT"
+	    DstPort		    1
+	  }
 	}
       }
     }
@@ -12616,8 +12738,18 @@ Model {
       ZOrder		      587
       SrcBlock		      "Hydrogen Controller"
       SrcPort		      2
-      DstBlock		      "Subsystem"
-      DstPort		      3
+      Points		      [46, 0]
+      Branch {
+	ZOrder			620
+	DstBlock		"Subsystem"
+	DstPort			3
+      }
+      Branch {
+	ZOrder			619
+	Points			[0, 30]
+	DstBlock		"Scope5"
+	DstPort			1
+      }
     }
     Annotation {
       SID		      "988"

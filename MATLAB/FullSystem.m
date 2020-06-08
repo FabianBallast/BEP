@@ -1,10 +1,12 @@
 %% General model parameters %%
-T_sim = 5; %s
+T_sim = 1; %s
 R_load = 1e3; %Ohm
 R_LED_max = 75/4; %Ohm
 P_max_SP = 0.5; %W
 P_max_LED = 12*0.16*4; %W
 rho_air = 1.225; %kg/m^3
+pwm_timer = 1/50;
+t_sample = pwm_timer/10;
 
 % Turbine parameters %
 k_m_t = 23.8e-3; 
@@ -29,7 +31,7 @@ ex2 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet2');
 ex3 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet3');
 
 % Places the Excel file values into variables
-n = ex1(1, :)';
+n = 50;
 t =  ex1(2, :)';
 r_WT_x = ex1(3, :)';
 r_SP_x = ex1(4, :)';
@@ -52,7 +54,7 @@ for row = 1 : rows
 end
 
 
-step_size = T_sim/(length(n));%s
+step_size = T_sim/n;%s
 
 r_WT.time = [];
 r_WT.signals.values = [r_WT_x];
