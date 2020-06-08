@@ -13,12 +13,12 @@
 #define zero_load_max 516*filter_numReadings
 
 
-#define sensitivity_1 11.5   / filter_numReadings; 
-#define sensitivity_2 11.5   / filter_numReadings; 
-#define sensitivity_3 11.5   / filter_numReadings; 
-#define sensitivity_4 11.5   / filter_numReadings; 
-#define sensitivity_5 11.5   / filter_numReadings; 
-#define sensitivity_6 11.5   / filter_numReadings; 
+#define sensitivity_1 -11.5   / filter_numReadings; 
+#define sensitivity_2 -11.5   / filter_numReadings; 
+#define sensitivity_3 -11.5   / filter_numReadings; 
+#define sensitivity_4 -11.5   / filter_numReadings; 
+#define sensitivity_5 -11.5   / filter_numReadings; 
+#define sensitivity_6 -11.5   / filter_numReadings; 
 
 float sensor_value_zero_load_1 = 513.975*filter_numReadings; 
 float sensor_value_zero_load_2 = 513.975*filter_numReadings; 

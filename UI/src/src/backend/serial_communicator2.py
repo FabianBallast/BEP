@@ -77,7 +77,7 @@ class SerialCommunicator:
                     #self.ser.open() 
                 self.all_received_data = ""
                 
-        self.printer.print(f'reading?...')
+#        self.printer.print(f'reading?...')
         rbytes = self.ser.read(self.ser.in_waiting)
         try:
             if rbytes:

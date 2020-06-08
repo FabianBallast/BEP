@@ -17,9 +17,9 @@
 //#define zerocross  2 // (NOT CHANGABLE)   
 //dimmerLamp FanDimmer(dimmer_outPin); 
 
-#define MULTIPLIER_SOLAR     3
-#define MULTIPLIER_WIND      3
-#define MULTIPLIER_FUEL_CELL 1
+#define MULTIPLIER_SOLAR     6
+#define MULTIPLIER_WIND      8
+#define MULTIPLIER_FUEL_CELL 14
 
 unsigned long curr_time, prev_time;
 float elapsedTime;
@@ -59,7 +59,7 @@ void loop() {
 
   //METHOD 1: CONTROL VOLTAGE
 //  grid_control_value = controlGrid(11.9);
- /// controlPowerSupply(current_to_add());
+ // controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
   
