@@ -63,7 +63,7 @@ void mosfets_setup(){
 
     analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
     analogWrite(FUEL_CELL_MOSFET_PIN, 0);
-    analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
+    analogWrite(POWER_SUPPLY_MOSFET_PIN, 255);
     analogWrite(TURIBNE_MOSFET_PIN, 0);
     digitalWrite(VALVE_PIN, LOW);
 
@@ -81,16 +81,16 @@ void mosfets_setup(){
 //    return grid_control_value;
 //}
 //
-//float controlGridCurrent(float target_current_ps){
-//    curr_ps_error = target_current_ps - current_power_supply;
-//    cum_ps_error += curr_ps_error * elapsedTime;
-//    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
-//    
-//    grid_control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
-//    
-//    prev_ps_error = curr_ps_error;
-//    return grid_control_value;
-//}
+float controlGridCurrent(float target_current_ps){
+    curr_ps_error = target_current_ps - current_power_supply;
+    cum_ps_error += curr_ps_error * elapsedTime;
+    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+    
+    grid_control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
+    
+    prev_ps_error = curr_ps_error;
+    return grid_control_value;
+}
 
 float controlWind(float target_current){
     curr_wind_error = target_current - current_wind_turbines;

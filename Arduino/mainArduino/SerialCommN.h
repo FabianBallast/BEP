@@ -1,7 +1,7 @@
 #define COMM_SIZE_A 3
 #define COMM_SIZE_P 13
 
-
+extern  float opt_wind_current;
 extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
 extern byte turbine_pwm;
