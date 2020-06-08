@@ -76,6 +76,7 @@ class SecondScreenController(QtWidgets.QWidget):
                                                     int(width * 0.20), int(height * 0.25)))
         System(self.figure_widget, preview_version=True)
         #self.figure_widget.raise_()
+        
 
 
     def get_selected_item(self):
