@@ -9,7 +9,7 @@ from ..serial.serial_page import SerialRaw
 
 class DataManager():
     """This class contains all data."""
-    def __init__(self, serial, last_data_box):
+    def __init__(self, serial, last_data_box, printer):
         self.mode = ''
         self.last_mode = ''
         self.scenario = ''
@@ -24,12 +24,13 @@ class DataManager():
         self.sensor_readings_handlers = []
         self.control_values_handlers = []
         self.storage_cal = 0
-
+        """
         if not serial:
             self.printer = SerialRaw()
             self.printer.print("No second screen found.")
         else:
             self.printer = serial
+        """
         self.last_data_box = last_data_box
 
         self.light = HalogenLight(self.printer)

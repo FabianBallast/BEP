@@ -25,7 +25,7 @@ mm_H2  = 2.016    *1e-3;%kg /mol
 mm_O2  = 32.0     *1e-3;%kg /mol
 
 rho_H2O = 998; %kg/m3 --> 0.998 g/cm3 == g/mL
-
+  
 n_H2 = p*v_H2/(R*T);  %mol H2 produces per min
 
 
@@ -35,11 +35,11 @@ n_H2O = n_H2;
 
 
 m_H2O = n_H2O*mm_H2O;       %kg / min H2O used
-v_H2O = m_H2O/rho_H2O;  %m3/min H2O used
+v_H2O = m_H2O/rho_H2O;      %m3/min H2O used
 
 fprintf('H2O usage electrolyzer @(%.0f mL/min H2 production):   %.2f mL/h \n',v_H2*1e6, v_H2O*1e6*60)
 
-%%%%%%energy characteristics
+%%%%%% energy characteristics
 P_in = voltage*current;
 m_H2 = n_H2*mm_H2;  %kg /min
 
@@ -50,7 +50,7 @@ power_H2_production = energy_H2_production/60;  %W
 efficiency = power_H2_production/ (P_in);
 
 
-%%%%%%%%%%%%%%%%%%tank parameters
+%%%%%%%%%%%%%%%%%% tank parameters
 
 D_tank = 0.0335; %m;   confirmed with geodriehoek + terugrekenen vanaf volumaire streepjes
 h0 = 0.125; %m;      reading van proximity sensor bij 0 gas in de tank
@@ -61,7 +61,7 @@ v_H2_in_tank = (h0-reading)*(pi*(D_tank/2)^2);
 v_O2_in_tank = v_H2_in_tank/2;
 
 
-%%%interesting
+%%% interesting
 v_H2O_per_v_H2 = v_H2O/v_H2;
 H2_in_tank = 80*1e-6; %m3
 
