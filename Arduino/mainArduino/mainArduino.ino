@@ -57,7 +57,7 @@ void loop() {
     
     fanRef = comm_received[0];
     H2Ref = comm_received[1];
-    set_fan_power(comm_received[0]);
+    set_fan_power(fanRef);
     wind_mosfet = comm_received[2];
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer

@@ -106,14 +106,14 @@ class ManualLayout(QtWidgets.QWidget):
     def update_data_manager(self):
         """Updates the data manager. 
            Is called when a Start/Stop button is pressed."""
-        if self.main_window.sender() != self.stop_button:
+        if self.main_window.sender() == self.stop_button:
             self.data_manager.set_mode('stop', None)
 
-        if self.main_window.sender() == self.purge_button:    
+        elif self.main_window.sender() == self.purge_button:    
             self.data_manager.purge_valve_manual()
-        elif:
+        else:
             self.data_manager.set_mode('manual', 
-                	                   [self.solar_power_slider.value(), 
+                                       [self.solar_power_slider.value(), 
                                         self.wind_power_slider.value(), 
                                         self.demand_power_slider.value(), self.h2_power_slider.value()])
 

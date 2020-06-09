@@ -14,7 +14,7 @@ except ModuleNotFoundError:
 
 
 Kp_wind = 12
-Ki_wind = 0
+Ki_wind = 1
 Kd_wind = 0
 
 WIND_MOSFET_PIN = 24
@@ -52,7 +52,7 @@ class WindMPPT:
     
     def windPID(self, target_voltage, current_voltage):
         newTime = time.time()
-        elapsedTime = self.prev_time - newTime
+        elapsedTime = newTime - self.prev_time
         
         self.current_error = current_voltage - target_voltage
         self.cum_error += self.current_error*elapsedTime
@@ -60,7 +60,7 @@ class WindMPPT:
         
         self.prev_time = newTime
 
-        wind_control_value = 50 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
+        wind_control_value = 128 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
         
         
         if wind_control_value > 100:

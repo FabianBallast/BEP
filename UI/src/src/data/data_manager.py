@@ -111,7 +111,7 @@ class DataManager():
         self.control_values_handlers.append(handler)
 
     def purge_valve_manual(self):
-        self.valve.timeValve(1000, 100)
+        self.valve.timeValve(1000, 1000)
 
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
@@ -126,8 +126,12 @@ class DataManager():
         readings = self.serial_connection.read_arduino()
         
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
+        if len(values)>3:
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3])
+        else:
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = 0)
+                
 
-        self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3])
         self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:
