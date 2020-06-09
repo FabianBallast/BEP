@@ -3,7 +3,7 @@
 #define ELECTROLYZER_MOSFET_PIN 5
 #define FUEL_CELL_MOSFET_PIN    6
 #define POWER_SUPPLY_MOSFET_PIN 7
-
+#define TURIBNE_MOSFET_PIN      10
 #define VALVE_PIN               12
 
 #define valveOpenTime           50
@@ -179,7 +179,7 @@ void processControlValue(float control_value){
       //fuel_cell_pwm = map(control_value,..., ...., ...,...);
       fuel_cell_pwm = 255;
 
-     valveMillOpenFreq = map(fuel_cell_pwm,0,255,100, 0);
+     valveMillOpenFreq = 100; //map(fuel_cell_pwm,0,255,100, 0);
      controlValve();
      
       
