@@ -183,7 +183,7 @@ class System(QtWidgets.QWidget):
         solar = sensor_data.get('zonFlow')
         wind = sensor_data.get('windFlow')
         load = sensor_data.get('loadI')
-        elek = sensor_data.get('flow_tot')
+        elek = sensor_data.get('flowTot')
 
         tank = sensor_data.get('tank_level')
         

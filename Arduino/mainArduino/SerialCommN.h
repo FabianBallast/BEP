@@ -71,7 +71,7 @@ void comm_send(){
       Serial.print(", \"windY\":");            Serial.print(wind_mosfet);      
       break;   
     case 15:
-      Serial.print(", \"flow_tot\":");            Serial.print(flow_total());      
+      Serial.print(", \"flowTot\":");            Serial.print(flow_total());      
       break;   
     case 16:
       Serial.println("}ed");

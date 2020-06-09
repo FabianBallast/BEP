@@ -46,6 +46,7 @@ class SerialCommunicator:
                 windU = 2,
                 FC_U = 2,
                 FC_Y = 2,
+                flowTot = 10,
                 EL_U = 2,
                 EL_I = 7,
                 EL_Y = 2,

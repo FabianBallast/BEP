@@ -22,6 +22,7 @@ def read(place): #'zonI', 'windI', 'loadI', 'EL_I',     'PS_I', 'FC_I', 'OptWind
                 loopT = 2,
                 PS_I = 2,
                 fan = 2,
+                flowTot = 2,
                 dummy_serial = 2)
                 
     return str(vals)

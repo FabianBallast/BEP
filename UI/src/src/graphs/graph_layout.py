@@ -115,8 +115,8 @@ class GraphLayout(QtWidgets.QWidget):
             
         
         self.x_curr.append(readings['time'])
-        self.solar.append(readings['zonI'])
-        self.wind.append(readings['windI'])
+        self.solar.append(readings['zonFlow'])
+        self.wind.append(readings['windFlow'])
         self.demand.append(readings['loadI'])
         self.storage.append(readings['tank_level'])
 

@@ -5,6 +5,7 @@ from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.windControl import WindMPPT
+from ..backend.purger import ValvePurger
 from ..backend.halogen import HalogenLight
 from ..serial.serial_page import SerialRaw
 
@@ -36,6 +37,7 @@ class DataManager():
 
 
         self.windMPPT = WindMPPT()
+        self.valve = ValvePurger()
         self.light = HalogenLight(self.printer, 0)
         
         self.serial_connection = SerialCommunicator(self.printer)
@@ -125,8 +127,8 @@ class DataManager():
         self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:
-            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU',
-                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','gridU', 'loopT', 'windY']
+            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU','flowTot',
+                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','FC_Y','gridU', 'loopT', 'windY']
             
             for sensor in sensors:
                 try:
@@ -134,7 +136,7 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-
+        self.valve.timeValve(readings['FC_Y'], 100)
         
         readings['windControl'] = windControl
         #readings['windDuty'] = windDuty
