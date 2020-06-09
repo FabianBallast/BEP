@@ -36,7 +36,9 @@ void setup() {
   
   ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
-
+  //calibrates, now turn on power supply
+  analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+  
   fan_start();
 
   Serial.print("Setup done \n");

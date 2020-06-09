@@ -64,7 +64,7 @@ void mosfets_setup(){
 
     analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
     analogWrite(FUEL_CELL_MOSFET_PIN, 0);
-    analogWrite(POWER_SUPPLY_MOSFET_PIN, 255);
+    analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
     analogWrite(TURIBNE_MOSFET_PIN, 0);
     digitalWrite(VALVE_PIN, LOW);
 
@@ -84,8 +84,8 @@ void mosfets_setup(){
 //
 
 float controlGridCurrent(float target_current_ps){
-    pwm_value_power_supply = 255;
-    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+//    pwm_value_power_supply = 255;
+//    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
   
     curr_ps_error = target_current_ps - current_power_supply;
     cum_ps_error += curr_ps_error * elapsedTime;
