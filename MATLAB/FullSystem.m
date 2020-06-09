@@ -5,7 +5,7 @@ R_LED_max = 75/4; %Ohm
 P_max_SP = 0.5; %W
 P_max_LED = 12*0.16*4; %W
 rho_air = 1.225; %kg/m^3
-pwm_timer = 1/50;
+pwm_timer = 1/10;
 t_sample = pwm_timer/10;
 n = 1000;
 

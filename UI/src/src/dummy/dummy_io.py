@@ -9,6 +9,9 @@ def setup(val1, val2):
 BCM = None
 OUT = None
 
+def output(val1,val2):
+    pass
+
 class PWM:
     def __init__(self, val1, val2):
         pass

@@ -1,9 +1,6 @@
 #define COMM_SIZE_A 3
 #define COMM_SIZE_P 13
 
-#define MULTIPLIER_SOLAR     6
-#define MULTIPLIER_WIND      8
-#define MULTIPLIER_FUEL_CELL 14
 
 extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
@@ -14,6 +11,10 @@ extern float wind_voltage;
 extern float grid_voltage;
 
 int i_send = -1;
+
+extern byte wind_mosfet;
+extern float flowTot;
+
 
 uint8_t comm_received[COMM_SIZE_A]; 
 uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
@@ -69,6 +70,12 @@ void comm_send(){
       Serial.print(", \"fan\":");            Serial.print(get_fan_power());      
       break;      
     case 14:
+      Serial.print(", \"windY\":");            Serial.print(wind_mosfet);      
+      break;   
+    case 15:
+      Serial.print(", \"flowTot\":");            Serial.print(flowTot);      
+      break;   
+    case 16:
       Serial.println("}ed");
       i_send = -1;
       break;

@@ -17,16 +17,20 @@
 //#define zerocross  2 // (NOT CHANGABLE)   
 //dimmerLamp FanDimmer(dimmer_outPin); 
 
-#define MULTIPLIER_SOLAR     6
-#define MULTIPLIER_WIND      8
-#define MULTIPLIER_FUEL_CELL 14
+#define MULTIPLIER_SOLAR     20.0
+#define MULTIPLIER_WIND      0.3
+#define MULTIPLIER_FUEL_CELL 14.0
+
+
+#define TURIBNE_MOSFET_PIN      10
 
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-uint8_t fanRef, zonRef;
+byte wind_mosfet, H2Ref;
+byte fanRef;
 
-
+float flowTot;
 
 //float opt_wind_current = 10;
 
@@ -55,8 +59,10 @@ void loop() {
   if (comm_read()){ // data received, handle accordingly
     
     fanRef = comm_received[0];
-    zonRef = comm_received[1];
+    H2Ref = comm_received[1];
     set_fan_power(fanRef);
+    wind_mosfet = comm_received[2];
+    analogWrite(TURIBNE_MOSFET_PIN, wind_mosfet);
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
@@ -76,8 +82,9 @@ void loop() {
   //mismatch = tot_curr - current_electrolyzer - current_ledload;
   read_ammeters();
   read_ammeters();
-  grid_control_value = controlGridFlow(flow_total(), 0);
-
+  flowTot = flow_total();
+  //grid_control_value = controlGridFlow(flowTot, 0);
+  grid_control_value = H2Ref - 50;
   processControlValue(grid_control_value);
 //  controlWind(opt_wind_current);
 
@@ -92,7 +99,7 @@ void loop() {
   
 }
 float flow_total(){
-    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
+    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND *fanRef +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
 }
 //float current_total(){
 //    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;

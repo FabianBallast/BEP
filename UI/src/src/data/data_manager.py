@@ -5,6 +5,7 @@ from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.windControl import WindMPPT
+from ..backend.purger import ValvePurger
 from ..backend.halogen import HalogenLight
 from ..serial.serial_page import SerialRaw
 
@@ -36,6 +37,7 @@ class DataManager():
 
 
         self.windMPPT = WindMPPT()
+        self.valve = ValvePurger(self.printer)
         self.light = HalogenLight(self.printer, 0)
         
         self.serial_connection = SerialCommunicator(self.printer)
@@ -107,24 +109,34 @@ class DataManager():
     def connect_for_all_values(self, handler):
         """Add a function that want to get the control values."""
         self.control_values_handlers.append(handler)
-        
+
+    def purge_valve_manual(self):
+        self.valve.timeValve(1000, 1000)
+
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control() 
 
+        
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
-        self.serial_connection.send_to_arduino(windPower=values[1])
-        self.loads.load_set(values[2])
+        
         
         readings = self.serial_connection.read_arduino()
         
+        windControl, windDuty = self.windMPPT.controlMPPT(readings)
+        if len(values)>3:
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3])
+        else:
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = 0)
+                
 
+        self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:
-            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU',
-                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','gridU', 'loopT']
+            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU','flowTot',
+                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','FC_Y','gridU', 'loopT', 'windY']
             
             for sensor in sensors:
                 try:
@@ -132,14 +144,14 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-
-        windControl, windDuty = self.windMPPT.controlMPPT(readings)
-        readings['windControl'] = windControl
-        readings['windDuty'] = windDuty
+        # self.valve.timeValve(readings['FC_Y'], 100)
         
-        readings['zonI'] = readings['zonU']*20
-        readings['windI']= readings['windU']*20
-        readings['FC_I'] = readings['FC_U']*20
+        readings['windControl'] = windControl
+        #readings['windDuty'] = windDuty
+        
+        readings['zonFlow'] = readings['zonU']*20
+        readings['windFlow']= readings['windU']*0.3
+        readings['FC_flow'] = readings['FC_U']*14
         #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
 
         readings['tank_level'] = self.tank_reader.read_tank_level()

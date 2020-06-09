@@ -9,8 +9,8 @@ class ManualLayout(QtWidgets.QWidget):
     def __init__(self, dataManager, MainWindow, parent):
 
         super().__init__()
-        self.mode_nl = ['Zon', 'Wind', 'Vraag']
-        self.mode = ['solar', 'wind', 'demand']
+        self.mode_nl = ['Zon', 'Wind', 'Vraag', 'h2']
+        self.mode = ['solar', 'wind', 'demand', 'h2']
 
         width = parent.width()
         height = parent.height()
@@ -37,8 +37,8 @@ class ManualLayout(QtWidgets.QWidget):
         """Creates the sliders, label for the slider, 
            text with value of slider and the percentage sign."""
         font = QtGui.QFont()
-
-        x_pos = [int(width * x) for x in [0.05, 0.3, 0.55]]
+       
+        x_pos = [int(width * x) for x in [0.05, 0.3, 0.55, 0.8]]
         y_pos = [int(height * y) for y in [0.24, 0.33, 0.80]]
         wid = [int(width * x) for x in [0.15, 0.05, 0.04]]
         hei = [int(height * y) for y in [0.09, 0.44, 0.09]]
@@ -85,7 +85,7 @@ class ManualLayout(QtWidgets.QWidget):
         font.setBold(True)
         font.setWeight(75)
 
-        buttons = ['stop']                         #pylint: disable=C0103 
+        buttons = ['stop', 'purge']                         #pylint: disable=C0103 
         y_pos = [int(0.50 * height), int(0.61 * height)]
 
         for button in buttons:
@@ -106,10 +106,15 @@ class ManualLayout(QtWidgets.QWidget):
     def update_data_manager(self):
         """Updates the data manager. 
            Is called when a Start/Stop button is pressed."""
-        if self.main_window.sender() != self.stop_button:
-            self.data_manager.set_mode('manual', 
-                	                   [self.solar_power_slider.value(), 
-                                        self.wind_power_slider.value(), 
-                                        self.demand_power_slider.value()])
-        else:
+        if self.main_window.sender() == self.stop_button:
             self.data_manager.set_mode('stop', None)
+
+        elif self.main_window.sender() == self.purge_button:    
+            self.data_manager.purge_valve_manual()
+        else:
+            self.data_manager.set_mode('manual', 
+                                       [self.solar_power_slider.value(), 
+                                        self.wind_power_slider.value(), 
+                                        self.demand_power_slider.value(), self.h2_power_slider.value()])
+
+            

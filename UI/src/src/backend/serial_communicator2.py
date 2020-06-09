@@ -30,10 +30,10 @@ class SerialCommunicator:
 
         #initial parameters
         self.send = {'windPower' : 0,
-                     'zonPower' : 0,
-                     'stest1' : 0}
+                     'h2' : 0,
+                     'windMosfet': 0}
         #comm protocol
-        self.send_order = ['windPower', 'zonPower', 'stest1']
+        self.send_order = ['windPower', 'h2', 'windMosfet']
         self.printer = printer
         if not printer:
                 print("Gebruikt terminal log" )
@@ -46,6 +46,7 @@ class SerialCommunicator:
                 windU = 2,
                 FC_U = 2,
                 FC_Y = 2,
+                flowTot = 10,
                 EL_U = 2,
                 EL_I = 7,
                 EL_Y = 2,
@@ -111,8 +112,9 @@ class SerialCommunicator:
         except Exception as error:
             rbytes = str(rbytes)
             self.all_received_data = ""
-            self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
-            self.CONNECTION = "Arduino niet verbonden"
+            if type(self.ser) == serial.Serial: 
+                self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
+            self.NO_CONNECTION = "Arduino niet verbonden"
             self.ser.reset_input_buffer()
             self.ser.reset_output_buffer()    
         

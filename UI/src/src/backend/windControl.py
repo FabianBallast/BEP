@@ -1,6 +1,6 @@
 """This class handles the sensor for reading the tank level."""
 
-from time import time
+import time
 try:
     import board
 except NotImplementedError:
@@ -13,7 +13,7 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 20
+Kp_wind = 18
 Ki_wind = 0
 Kd_wind = 0
 
@@ -30,7 +30,7 @@ class WindMPPT:
         self.current_error = 0
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
-        self.prev_time = time()
+        self.prev_time = time.time()
         
         IO.setmode(IO.BCM)
         IO.setup(WIND_MOSFET_PIN, IO.OUT)
@@ -51,8 +51,8 @@ class WindMPPT:
         return opt_wind_voltage
     
     def windPID(self, target_voltage, current_voltage):
-        newTime = time()
-        elapsedTime = self.prev_time - newTime
+        newTime = time.time()
+        elapsedTime = newTime - self.prev_time
         
         self.current_error = current_voltage - target_voltage
         self.cum_error += self.current_error*elapsedTime
@@ -60,11 +60,11 @@ class WindMPPT:
         
         self.prev_time = newTime
 
-        wind_control_value = 50 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
+        wind_control_value = 128 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
         
         
-        if wind_control_value > 100:
-            wind_duty_cycle    = 100
+        if wind_control_value > 255:
+            wind_duty_cycle    = 255
         elif wind_control_value < 0:
             wind_duty_cycle    = 0
         else:
@@ -75,5 +75,6 @@ class WindMPPT:
 
 if __name__ == '__main__':
     mppt = WindMPPT()
-    
+    mppt.pwm.ChangeDutyCycle(0)
+    time.sleep(10)
     
