@@ -13,9 +13,9 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 3
-Ki_wind = 2
-Kd_wind = 1
+Kp_wind = 20
+Ki_wind = 0
+Kd_wind = 0
 
 WIND_MOSFET_PIN = 24
 
@@ -54,10 +54,10 @@ class WindMPPT:
         newTime = time()
         elapsedTime = self.prev_time - newTime
         
-        self.current_error = target_voltage - current_voltage
+        self.current_error = current_voltage - target_voltage
         self.cum_error += self.current_error*elapsedTime
         self.rate_error = (self.current_error - self.prev_time)/elapsedTime
-    	
+        
         self.prev_time = newTime
 
         wind_control_value = 50 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
