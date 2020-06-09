@@ -18,13 +18,18 @@ void fan_setup() {
 
 void fan_start() {
   FanDimmer.begin(NORMAL_MODE, ON); 
-  FanDimmer.setPower(50);
+  FanDimmer.setPower(15);
   FanDimmer.setState(ON);
 }
 
 void set_fan_power(byte set_value){
-  set_value = map(set_value, 0, 100, 15, 95);
-  FanDimmer.setPower(set_value);
+  if (set_value==0)
+    FanDimmer.setState(OFF);
+  else{
+    FanDimmer.setState(ON);
+    set_value = map(set_value, 0, 100, 15, 95);
+    FanDimmer.setPower(set_value);
+  }
 }
 
 uint8_t get_fan_power(){
