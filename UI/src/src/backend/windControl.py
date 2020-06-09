@@ -13,7 +13,7 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 20
+Kp_wind = 12
 Ki_wind = 0
 Kd_wind = 0
 
