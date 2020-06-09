@@ -1,6 +1,6 @@
 """This class handles the sensor for reading the tank level."""
 
-from time import time
+import time
 try:
     import board
 except NotImplementedError:
@@ -30,7 +30,7 @@ class WindMPPT:
         self.current_error = 0
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
-        self.prev_time = time()
+        self.prev_time = time.time()
         
         IO.setmode(IO.BCM)
         IO.setup(WIND_MOSFET_PIN, IO.OUT)
@@ -51,7 +51,7 @@ class WindMPPT:
         return opt_wind_voltage
     
     def windPID(self, target_voltage, current_voltage):
-        newTime = time()
+        newTime = time.time()
         elapsedTime = self.prev_time - newTime
         
         self.current_error = current_voltage - target_voltage
@@ -75,5 +75,6 @@ class WindMPPT:
 
 if __name__ == '__main__':
     mppt = WindMPPT()
-    
+    mppt.pwm.ChangeDutyCycle(0)
+    time.sleep(10)
     

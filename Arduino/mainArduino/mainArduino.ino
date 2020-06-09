@@ -17,8 +17,8 @@
 //#define zerocross  2 // (NOT CHANGABLE)   
 //dimmerLamp FanDimmer(dimmer_outPin); 
 
-#define MULTIPLIER_SOLAR     6
-#define MULTIPLIER_WIND      8
+#define MULTIPLIER_SOLAR     20
+#define MULTIPLIER_WIND      30
 #define MULTIPLIER_FUEL_CELL 14
 
 unsigned long curr_time, prev_time;
@@ -54,9 +54,9 @@ void loop() {
   
   if (comm_read()){ // data received, handle accordingly
     
-    fanRef = comm_received[0];
-    zonRef = comm_received[1];
-    set_fan_power(fanRef);
+   // fanRef = ;
+    //zonRef = comm_received[1];
+    set_fan_power(comm_received[0]);
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
