@@ -30,10 +30,10 @@ class SerialCommunicator:
 
         #initial parameters
         self.send = {'windPower' : 0,
-                     'stest0' : 0,
+                     'zonPower' : 0,
                      'stest1' : 0}
         #comm protocol
-        self.send_order = ['windPower', 'stest0', 'stest1']
+        self.send_order = ['windPower', 'zonPower', 'stest1']
         self.printer = printer
         if not printer:
                 print("Gebruikt terminal log" )

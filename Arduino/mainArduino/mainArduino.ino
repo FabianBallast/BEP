@@ -1,7 +1,7 @@
 #include "ACdimmer.h" 
-
+#include "VoltageSensorsSMA.h"
 #include "ControlMosfets.h"
-#include "FailSafes.h"
+
 
 //USE ONLY ONE OF THE TWO BELOW
 //#include "SerialComm.h"
@@ -23,6 +23,10 @@
 
 unsigned long curr_time, prev_time;
 float elapsedTime;
+
+uint8_t fanRef, zonRef;
+
+
 
 //float opt_wind_current = 10;
 
@@ -46,10 +50,14 @@ void setup() {
 
 
 void loop() {
+  analogWrite(7, 255);
+  
   if (comm_read()){ // data received, handle accordingly
-    set_fan_power(comm_received[0]);
-    //opt_wind_current = comm_received[1]; ///add scaling;
     
+    fanRef = comm_received[0];
+    zonRef = comm_received[1];
+    set_fan_power(fanRef);
+
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
   

@@ -21,6 +21,7 @@ void setup() {
  
   pinMode(TURBINE_START_PIN,      OUTPUT);
   pinMode(TURBINE_MPPT_PIN, OUTPUT);
+  //pinMode(7, OUTPUT);
   analogWrite(TURBINE_START_PIN, 255);
   analogWrite(TURBINE_MPPT_PIN, 0);
   pinMode(7,      OUTPUT);
