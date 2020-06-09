@@ -21,6 +21,9 @@
 #define MULTIPLIER_WIND      0.3
 #define MULTIPLIER_FUEL_CELL 14.0
 
+
+#define TURIBNE_MOSFET_PIN      10
+
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
@@ -59,6 +62,7 @@ void loop() {
     H2Ref = comm_received[1];
     set_fan_power(fanRef);
     wind_mosfet = comm_received[2];
+    analogWrite(TURIBNE_MOSFET_PIN, wind_mosfet);
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }

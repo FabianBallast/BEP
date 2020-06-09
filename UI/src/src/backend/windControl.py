@@ -13,8 +13,8 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 12
-Ki_wind = 1
+Kp_wind = 18
+Ki_wind = 0
 Kd_wind = 0
 
 WIND_MOSFET_PIN = 24
@@ -63,8 +63,8 @@ class WindMPPT:
         wind_control_value = 128 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
         
         
-        if wind_control_value > 100:
-            wind_duty_cycle    = 100
+        if wind_control_value > 255:
+            wind_duty_cycle    = 255
         elif wind_control_value < 0:
             wind_duty_cycle    = 0
         else:
