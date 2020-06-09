@@ -5,7 +5,7 @@
 #define POWER_SUPPLY_MOSFET_PIN 7
 #define TURIBNE_MOSFET_PIN      10
 #define VALVE_PIN               12
-#define TURBINE_START_PIN       11
+
 #define valveOpenTime           50
 
 bool valveOpen = false;
@@ -59,6 +59,7 @@ void mosfets_setup(){
     pinMode(FUEL_CELL_MOSFET_PIN,    OUTPUT);
     pinMode(POWER_SUPPLY_MOSFET_PIN, OUTPUT);
     pinMode(TURIBNE_MOSFET_PIN,      OUTPUT);
+
  
 
     analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
@@ -83,6 +84,9 @@ void mosfets_setup(){
 //
 
 float controlGridCurrent(float target_current_ps){
+    pwm_value_power_supply = 255;
+    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+  
     curr_ps_error = target_current_ps - current_power_supply;
     cum_ps_error += curr_ps_error * elapsedTime;
     rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;

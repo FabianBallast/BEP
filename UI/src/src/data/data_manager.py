@@ -132,13 +132,13 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-<<<<<<< HEAD
+
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
         readings['windControl'] = windControl
         readings['windDuty'] = windDuty
-=======
+
         readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
->>>>>>> stash
+
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
         self.last_data_box.update(readings)

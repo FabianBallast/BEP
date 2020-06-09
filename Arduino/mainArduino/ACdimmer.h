@@ -1,3 +1,5 @@
+#define TURBINE_START_PIN       11
+
 
 #ifndef _ACDIMMER_H_
 #define _ACDIMMER_H_
@@ -14,6 +16,7 @@ dimmerLamp FanDimmer(dimmer_outPin);
 void fan_setup() {
   FanDimmer.begin(NORMAL_MODE, ON); 
   FanDimmer.setPower(10);
+  pinMode(TURBINE_START_PIN,       OUTPUT);
 }
 
 void fan_start() {
@@ -23,12 +26,16 @@ void fan_start() {
 }
 
 void set_fan_power(byte set_value){
-  if (set_value==0)
+  if (set_value==0){
     FanDimmer.setState(OFF);
+    analogWrite(TURBINE_START_PIN, 0);
+  }
   else{
     FanDimmer.setState(ON);
     set_value = map(set_value, 0, 100, 15, 95);
     FanDimmer.setPower(set_value);
+    analogWrite(TURBINE_START_PIN, 255);
+    
   }
 }
 
