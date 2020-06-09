@@ -25,17 +25,25 @@ extern float electrolyzer_voltage, fuel_cell_voltage;
 byte Kp_grid = 3;
 byte Ki_grid = 2;
 byte Kd_grid = 1;
+
 extern float grid_voltage; 
-float curr_volt_error, prev_volt_error;
+float curr_flow_error, prev_flow_error;
 float grid_control_value;
-float cum_volt_error, rate_volt_error;
+float cum_flow_error, rate_flow_error;
 byte fuel_cell_pwm;
 byte electrolyzer_pwm;
 
+//extern float grid_voltage; 
+//float curr_volt_error, prev_volt_error;
+//float grid_control_value;
+//float cum_volt_error, rate_volt_error;
+//byte fuel_cell_pwm;
+//byte electrolyzer_pwm;
+
 //GRID PID CURRENT
-byte Kp_ps_h2 = 3;
-byte Ki_ps_h2 = 2;
-byte Kd_ps_h2 = 1;
+//byte Kp_ps_h2 = 3;
+//byte Ki_ps_h2 = 2;
+//byte Kd_ps_h2 = 1;
 
 
 //TURBINE PID
@@ -49,14 +57,14 @@ byte Kd_ps_h2 = 1;
 //byte turbine_pwm;
 
 //POWER SUPPLY PID
-byte Kp_ps = 0.03;
-byte Ki_ps = 0.02;
-byte Kd_ps = 0.01;
-extern float current_power_supply;
-float curr_ps_error, prev_ps_error;
-float ps_control_value;
-float cum_ps_error, rate_ps_error;
-byte pwm_value_power_supply;
+//byte Kp_ps = 0.03;
+//byte Ki_ps = 0.02;
+//byte Kd_ps = 0.01;
+//extern float current_power_supply;
+//float curr_ps_error, prev_ps_error;
+//float ps_control_value;
+//float cum_ps_error, rate_ps_error;
+//byte pwm_value_power_supply;
 
 
 
@@ -78,31 +86,31 @@ void mosfets_setup(){
     lastValveSwitch = millis();
 }
 
-//float controlGridVoltage(float target_volt){
-//    curr_volt_error = target_volt - grid_voltage;
-//    cum_volt_error += curr_volt_error * elapsedTime;
-//    rate_volt_error = (curr_volt_error - prev_volt_error)/elapsedTime;
-//    
-//    grid_control_value = Kp_grid*curr_volt_error + Ki_grid*cum_volt_error + Kd_grid*rate_volt_error;
-//
-//    prev_volt_error = curr_volt_error;
-//    return grid_control_value;
-//}
-//
+float controlGridFlow(float grid_flow, float target_flow){
+    curr_flow_error = target_flow - grid_flow;
+    cum_flow_error += curr_flow_error * elapsedTime;
+    rate_flow_error = (curr_flow_error - prev_flow_error)/elapsedTime;
+    
+    grid_control_value = Kp_grid*curr_flow_error + Ki_grid*cum_flow_error + Kd_grid*rate_flow_error;
 
-float controlGridCurrent(float target_current_ps){
-//    pwm_value_power_supply = 255;
-//    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
-  
-    curr_ps_error = target_current_ps - current_power_supply;
-    cum_ps_error += curr_ps_error * elapsedTime;
-    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
-    
-    grid_control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
-    
-    prev_ps_error = curr_ps_error;
+    prev_flow_error = curr_flow_error;
     return grid_control_value;
 }
+//
+//
+//float controlGridCurrent(float target_current_ps){
+////    pwm_value_power_supply = 255;
+////    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+//  
+//    curr_ps_error = target_current_ps - current_power_supply;
+//    cum_ps_error += curr_ps_error * elapsedTime;
+//    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+//    
+//    grid_control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
+//    
+//    prev_ps_error = curr_ps_error;
+//    return grid_control_value;
+//}
 
 //float controlWind(float target_current){
 //    analogWrite(TURBINE_START_PIN, 255);

@@ -41,7 +41,7 @@ void setup() {
   ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
   //calibrates, now turn on power supply
-  analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+  analogWrite(POWER_SUPPLY_MOSFET_PIN, 255);
   
   fan_start();
 
@@ -74,29 +74,29 @@ void loop() {
   //METHOD 2: CONTROL CURRENT
   //tot_curr = 
   //mismatch = tot_curr - current_electrolyzer - current_ledload;
-  
-  grid_control_value = controlGridCurrent(current_total());
   read_ammeters();
+  read_ammeters();
+  grid_control_value = controlGridFlow(flow_total(), 0);
+
   processControlValue(grid_control_value);
-  read_ammeters();
 //  controlWind(opt_wind_current);
-  read_ammeters();
+
   
   prev_time = curr_time;
  // processControlValue(control_value);
  
   //////////////////////////////////
-  check_H2_voltages();
-  read_ammeters();
+  check_voltages();
 
-  //collect all data to send
   comm_send();
   
 }
-
-float current_total(){
-    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;
+float flow_total(){
+    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
 }
-float current_to_add(){
-    return current_solar_panels * (MULTIPLIER_SOLAR - 1) + current_wind_turbines * (MULTIPLIER_WIND - 1) + current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1);
-}
+//float current_total(){
+//    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;
+//}
+//float current_to_add(){
+//    return current_solar_panels * (MULTIPLIER_SOLAR - 1) + current_wind_turbines * (MULTIPLIER_WIND - 1) + current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1);
+//}

@@ -22,10 +22,6 @@ float wind_voltage;
 float grid_voltage; 
 float solar_voltage;
 
-float current_solar_panels;
-float current_wind_turbines;
-float current_fuel_cell;
-
 
 
 int rawEL   [N_FILTER_VOLTAGE];     
@@ -65,7 +61,7 @@ pinMode(WIND_VOLTAGE_READ,          INPUT);
 //  sumSolar = solar_voltage       * N_FILTER_VOLTAGE;
 }
 
-void check_H2_voltages(){
+void check_voltages(){
 
     valueEL = analogRead(ELECTROLYZER_VOLTAGE_READ_PLUS) - analogRead(ELECTROLYZER_VOLTAGE_READ_MIN); //na step down, direct naar electrolyzer
     valueFC    = analogRead(FUEL_CELL_VOLTAGE_READ); //na step down, direct naar fuel cell
@@ -99,12 +95,9 @@ void check_H2_voltages(){
     electrolyzer_voltage = sumEL / N_FILTER_VOLTAGE    /1000;
     fuel_cell_voltage = sumFC / N_FILTER_VOLTAGE       /1000;
     wind_voltage = sumWind / N_FILTER_VOLTAGE          /1000;
-    grid_voltage = sumGrid / N_FILTER_VOLTAGE;
+    grid_voltage = sumGrid / N_FILTER_VOLTAGE          /1000;
     solar_voltage = sumSolar / N_FILTER_VOLTAGE       /1000;        
 
-    current_solar_panels = solar_voltage*3;
-    current_wind_turbines = wind_voltage*3;
-    current_fuel_cell     = fuel_cell_voltage*3;
     
     
 }
