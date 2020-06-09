@@ -49,9 +49,9 @@ byte Kd_ps_h2 = 1;
 //byte turbine_pwm;
 
 //POWER SUPPLY PID
-byte Kp_ps = 3;
-byte Ki_ps = 2;
-byte Kd_ps = 1;
+byte Kp_ps = 0.03;
+byte Ki_ps = 0.02;
+byte Kd_ps = 0.01;
 extern float current_power_supply;
 float curr_ps_error, prev_ps_error;
 float ps_control_value;
