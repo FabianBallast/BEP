@@ -7,7 +7,7 @@ extern float elapsedTime;
 //extern byte turbine_pwm;
 extern byte electrolyzer_pwm;
 extern byte fuel_cell_pwm;
-//extern float opt_wind_current;
+extern float wind_voltage;
 extern float grid_voltage;
 
 int i_send = -1;
@@ -69,6 +69,9 @@ void comm_send(){
       Serial.print(", \"EL_Y\":");        Serial.print(electrolyzer_pwm);
       break;      
     case 15:
+      Serial.print(", \"windU\":");     Serial.print(wind_voltage);
+      break;
+    case 16:
       Serial.println("}ed");
       i_send = -1;
       break;

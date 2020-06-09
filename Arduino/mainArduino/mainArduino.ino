@@ -46,7 +46,7 @@ void setup() {
 void loop() {
   if (comm_read()){ // data received, handle accordingly
     set_fan_power(comm_received[0]);
-    opt_wind_current = comm_received[1]; ///add scaling;
+    //opt_wind_current = comm_received[1]; ///add scaling;
     
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
