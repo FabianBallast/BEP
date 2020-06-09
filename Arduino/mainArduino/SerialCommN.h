@@ -33,7 +33,7 @@ void comm_send(){
       Serial.print("\"zonU\":");          Serial.print(solar_voltage);
       break;
     case 2:
-      Serial.print("\"zonI\":");          Serial.print(current_solar_panels*MULTIPLIER_SOLAR);
+      Serial.print(", \"zonI\":");          Serial.print(current_solar_panels*MULTIPLIER_SOLAR);
       break;
     case 3:
       Serial.print(", \"loadI\":");         Serial.print(current_ledload);

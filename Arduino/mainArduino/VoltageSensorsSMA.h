@@ -99,7 +99,7 @@ void check_H2_voltages(){
     electrolyzer_voltage = sumEL / N_FILTER_VOLTAGE    /1000;
     fuel_cell_voltage = sumFC / N_FILTER_VOLTAGE       /1000;
     wind_voltage = sumWind / N_FILTER_VOLTAGE          /1000;
-    grid_voltage = sumGrid / N_FILTER_VOLTAGE          /1000;
+    grid_voltage = sumGrid / N_FILTER_VOLTAGE;
     solar_voltage = sumSolar / N_FILTER_VOLTAGE       /1000;        
 
     current_solar_panels = solar_voltage*3;
