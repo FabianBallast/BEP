@@ -4,10 +4,10 @@
 
 extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
-extern byte turbine_pwm;
+//extern byte turbine_pwm;
 extern byte electrolyzer_pwm;
 extern byte fuel_cell_pwm;
-extern float opt_wind_current;
+//extern float opt_wind_current;
 extern float grid_voltage;
 
 int i_send = -1;
@@ -36,53 +36,54 @@ void comm_send(){
       Serial.print(", \"loadI\":");         Serial.print(current_ledload);
       break;
     case 4:
-      Serial.print(", \"OptWindI\":");     Serial.print(opt_wind_current);
-      break;
-    case 5:
       Serial.print(", \"EL_I\":"); Serial.print(current_electrolyzer);
       break;
-    case 6:
+    case 5:
       Serial.print(", \"PS_I\":"); Serial.print(current_power_supply);
       break;
-    case 7:
+    case 6:
       Serial.print(", \"FC_C\":");    Serial.print(current_fuel_cell);          
       break;
-    case 8:
+    case 7:
       Serial.print(", \"fan\":");            Serial.print(get_fan_power());      
       break;
-    case 9:
+    case 8:
       Serial.print(", \"EL_U\":"); Serial.print(electrolyzer_voltage);        
       break;
-    case 10:
+    case 9:
       Serial.print(", \"FC_U\":");    Serial.print(fuel_cell_voltage);   
       break;
-    case 11:
+    case 10:
       Serial.print(", \"gridU\":");         Serial.print(grid_voltage);   
       break;
-    case 12:
+    case 11:
       Serial.print(", \"loopT\":");            Serial.print(elapsedTime);
       break;
-    case 13:
+    case 12:
       Serial.print(", \"gridX\":");   Serial.print(grid_control_value);
       break;
-    case 14:
-      Serial.print(", \"windX\":");   Serial.print(wind_control_value);   
-      break;
-    case 15:
-      Serial.print(", \"windY\":");     Serial.print(turbine_pwm);
-      break;
-    case 16:
+    case 13:
       Serial.print(", \"FC_Y\":");        Serial.print(fuel_cell_pwm);
       break;
-    case 17:
+    case 14:
       Serial.print(", \"EL_Y\":");        Serial.print(electrolyzer_pwm);
       break;      
-    case 18:
+    case 15:
       Serial.println("}ed");
       i_send = -1;
       break;
   }  
   i_send++;
+
+//    case 4:
+//      Serial.print(", \"OptWindI\":");     Serial.print(opt_wind_current);
+//      break;
+//      case 14:
+//      Serial.print(", \"windX\":");   Serial.print(wind_control_value);   
+//      break;
+//    case 15:
+//      Serial.print(", \"windY\":");     Serial.print(turbine_pwm);
+//      break;
 }
 
 int comm_read(){

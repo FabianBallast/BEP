@@ -32,14 +32,14 @@ byte Kd_ps_h2 = 1;
 
 
 //TURBINE PID
-byte Kp_wind = 3;
-byte Ki_wind = 2;
-byte Kd_wind = 1;
-extern float current_wind_turbines;
-float curr_wind_error, prev_wind_error;
-float wind_control_value;
-float cum_wind_error, rate_wind_error;
-byte turbine_pwm;
+//byte Kp_wind = 3;
+//byte Ki_wind = 2;
+//byte Kd_wind = 1;
+//extern float current_wind_turbines;
+//float curr_wind_error, prev_wind_error;
+//float wind_control_value;
+//float cum_wind_error, rate_wind_error;
+//byte turbine_pwm;
 
 //POWER SUPPLY PID
 byte Kp_ps = 3;
@@ -81,6 +81,7 @@ void mosfets_setup(){
 //    return grid_control_value;
 //}
 //
+
 float controlGridCurrent(float target_current_ps){
     curr_ps_error = target_current_ps - current_power_supply;
     cum_ps_error += curr_ps_error * elapsedTime;
@@ -92,30 +93,30 @@ float controlGridCurrent(float target_current_ps){
     return grid_control_value;
 }
 
-float controlWind(float target_current){
-    analogWrite(TURBINE_START_PIN, 255);
-    
-    curr_wind_error = target_current - current_wind_turbines;
-    cum_wind_error += curr_wind_error * elapsedTime;
-    rate_wind_error = (curr_wind_error - prev_wind_error)/elapsedTime;
-    
-    wind_control_value = Kp_wind*curr_wind_error + Ki_wind*cum_wind_error + Kd_wind*rate_wind_error;
-    turbine_pwm = map(wind_control_value, -100, 100, 0, 255);
-    if (turbine_pwm<=0)
-       turbine_pwm = 0;
-    if (turbine_pwm>=255)
-       turbine_pwm = 255;
-
-    prev_wind_error = curr_wind_error;
-
-    if (get_fan_power() < 5)
-      analogWrite(TURBINE_START_PIN, 0);
-    else
-      analogWrite(TURBINE_START_PIN, 255);
-
-    analogWrite(TURIBNE_MOSFET_PIN, turbine_pwm);
-    return wind_control_value, turbine_pwm;
-}
+//float controlWind(float target_current){
+//    analogWrite(TURBINE_START_PIN, 255);
+//    
+//    curr_wind_error = target_current - current_wind_turbines;
+//    cum_wind_error += curr_wind_error * elapsedTime;
+//    rate_wind_error = (curr_wind_error - prev_wind_error)/elapsedTime;
+//    
+//    wind_control_value = Kp_wind*curr_wind_error + Ki_wind*cum_wind_error + Kd_wind*rate_wind_error;
+//    turbine_pwm = map(wind_control_value, -100, 100, 0, 255);
+//    if (turbine_pwm<=0)
+//       turbine_pwm = 0;
+//    if (turbine_pwm>=255)
+//       turbine_pwm = 255;
+//
+//    prev_wind_error = curr_wind_error;
+//
+//    if (get_fan_power() < 5)
+//      analogWrite(TURBINE_START_PIN, 0);
+//    else
+//      analogWrite(TURBINE_START_PIN, 255);
+//
+//    analogWrite(TURIBNE_MOSFET_PIN, turbine_pwm);
+//    return wind_control_value, turbine_pwm;
+//}
 
 //float controlPowerSupply(float target_current_ps){
 //    curr_ps_error = target_current_ps - current_power_supply;

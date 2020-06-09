@@ -1,9 +1,10 @@
 """This module will handle all the data and the connection between the Pi and Arduino."""
 from PyQt5 import QtCore
 from ..data.log_handler import LogWriter
-#from ..backend.read_tank_sensor import TankReader
+from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
+from ..backend.windControl import WindMPPT
 from ..backend.halogen import HalogenLight
 from ..serial.serial_page import SerialRaw
 
@@ -34,11 +35,12 @@ class DataManager():
         self.last_data_box = last_data_box
 
         self.light = HalogenLight(self.printer, 100)
+        self.windMPPT = WindMPPT()
         
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
-        #self.tank_reader = TankReader(self.serial_connection)
+        self.tank_reader = TankReader(self.serial_connection)
 
         self.file = LogWriter()
 
@@ -120,8 +122,8 @@ class DataManager():
 
         
         if 'dummy_serial' in readings:
-            sensors = ['zonI', 'windI', 'loadI', 'EL_I', 
-                       'PS_I', 'FC_I', 'OptWindI', 'EV_U', 'FC_U','gridU', 'loopT']
+            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU',
+                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','gridU', 'loopT']
             
             for sensor in sensors:
                 try:
@@ -129,7 +131,9 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-
+        windControl, windDuty = self.windMPPT.controlMPPT(readings)
+        readings['windControl'] = windControl
+        readings['windDuty'] = windDuty
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
         self.last_data_box.update(readings)
