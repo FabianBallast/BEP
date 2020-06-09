@@ -41,19 +41,19 @@ class SerialCommunicator:
         self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
         self.printer.print("Printing all messages from arduino in log")
         self.ser.flush()
-        self.last_data = dict(zonI = 2, 
-                windI = 2, 
-                loadI = 2,
-                EL_I = 2,
-                PS_I = 2,
-                FC_I = 2,
-                windU = 6,
-                fan = 2,
-                EV_U = 2,
+        self.last_data = dict(zonU = 2, 
+                loadI = 2, 
+                windU = 2,
                 FC_U = 2,
+                FC_Y = 2,
+                EL_U = 2,
+                EL_I = 7,
+                EL_Y = 2,
                 gridU = 2,
+                gridX = 2,
                 loopT = 2,
-                dummy_serial = 2)
+                PS_I = 2,
+                fan = 2)
            
         self.all_received_data = ""
     

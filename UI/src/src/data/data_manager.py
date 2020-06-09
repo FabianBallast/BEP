@@ -136,8 +136,11 @@ class DataManager():
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
         readings['windControl'] = windControl
         readings['windDuty'] = windDuty
-
-        readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
+        
+        readings['zonI'] = readings['zonU']*20
+        readings['windI']= readings['windU']*20
+        readings['FC_I'] = readings['FC_U']*20
+        #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
