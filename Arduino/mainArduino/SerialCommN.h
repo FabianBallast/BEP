@@ -13,6 +13,8 @@ extern float grid_voltage;
 int i_send = -1;
 
 extern byte wind_mosfet;
+extern float flowTot;
+
 
 uint8_t comm_received[COMM_SIZE_A]; 
 uint8_t data_to_send[COMM_SIZE_P] = {255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254};     //index 0 and -1 are for communication protocal, DO NOT CHANGE
@@ -71,7 +73,7 @@ void comm_send(){
       Serial.print(", \"windY\":");            Serial.print(wind_mosfet);      
       break;   
     case 15:
-      Serial.print(", \"flowTot\":");            Serial.print(flow_total());      
+      Serial.print(", \"flowTot\":");            Serial.print(flowTot);      
       break;   
     case 16:
       Serial.println("}ed");

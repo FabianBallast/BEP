@@ -24,9 +24,10 @@
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-byte wind_mosfet, zonRef;
+byte wind_mosfet, H2Ref;
 byte fanRef;
 
+float flowTot;
 
 //float opt_wind_current = 10;
 
@@ -55,7 +56,7 @@ void loop() {
   if (comm_read()){ // data received, handle accordingly
     
     fanRef = comm_received[0];
-    //zonRef = comm_received[1];
+    H2Ref = comm_received[1];
     set_fan_power(comm_received[0]);
     wind_mosfet = comm_received[2];
 
@@ -77,8 +78,9 @@ void loop() {
   //mismatch = tot_curr - current_electrolyzer - current_ledload;
   read_ammeters();
   read_ammeters();
-  grid_control_value = controlGridFlow(flow_total(), 0);
-
+  flowTot = flow_total();
+  //grid_control_value = controlGridFlow(flowTot, 0);
+  grid_control_value = H2Ref - 50;
   processControlValue(grid_control_value);
 //  controlWind(opt_wind_current);
 

@@ -1,6 +1,7 @@
 {
-    "board": "arduino:avr:uno",
-    "programmer": "AVR ISP",
-    "sketch": "Arduino\\libs\\AC_dimmer\\AC_dimmer.ino",
-    "port": "COM3"
+    "board": "arduino:avr:mega",
+    "programmer": "Arduino as ISP",
+    "sketch": "Arduino\\mainArduino\\mainArduino.ino",
+    "port": "COM6",
+    "configuration": "cpu=atmega2560"
 }
