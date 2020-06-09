@@ -60,14 +60,14 @@ pinMode(WIND_VOLTAGE_READ,          INPUT);
 //  sumGrid  = grid_voltage         * N_FILTER_VOLTAGE;
 //  sumSolar = solar_voltage       * N_FILTER_VOLTAGE;
 }
-
+uint8_t ground;
 void check_voltages(){
-
+    ground = analogRead(GRID_VOLTAGE_READ2);
     valueEL = analogRead(ELECTROLYZER_VOLTAGE_READ_PLUS) - analogRead(ELECTROLYZER_VOLTAGE_READ_MIN); //na step down, direct naar electrolyzer
     valueFC    = analogRead(FUEL_CELL_VOLTAGE_READ); //na step down, direct naar fuel cell
     valueWind  = analogRead(WIND_VOLTAGE_READ);
-    valueGrid =      0.0168*analogRead(GRID_VOLTAGE_READ1) - 0.0151*analogRead(GRID_VOLTAGE_READ2);
-    valueSolar = analogRead(SOLAR_VOLTAGE_READ);
+    valueGrid =  0.0168*analogRead(GRID_VOLTAGE_READ1) - 0.0151*ground;
+    valueSolar = 0.0168* analogRead(SOLAR_VOLTAGE_READ) - 0.0151*ground;
 
 
     sumEL = sumEL - rawEL[filter_readIndex_volt] + valueEL;
@@ -92,11 +92,11 @@ void check_voltages(){
       filter_readIndex_volt = 0;
     }
 
-    electrolyzer_voltage = sumEL / N_FILTER_VOLTAGE    /1000;
-    fuel_cell_voltage = sumFC / N_FILTER_VOLTAGE       /1000;
-    wind_voltage = sumWind / N_FILTER_VOLTAGE          /1000;
-    grid_voltage = sumGrid / N_FILTER_VOLTAGE          /1000;
-    solar_voltage = sumSolar / N_FILTER_VOLTAGE       /1000;        
+    electrolyzer_voltage = sumEL / N_FILTER_VOLTAGE    *0.0104;
+    fuel_cell_voltage = sumFC / N_FILTER_VOLTAGE       *5.0/1024.0;
+    wind_voltage = sumWind / N_FILTER_VOLTAGE          *0.0168;
+    grid_voltage = sumGrid / N_FILTER_VOLTAGE;
+    solar_voltage = sumSolar / N_FILTER_VOLTAGE        *1.0;        
 
     
     
