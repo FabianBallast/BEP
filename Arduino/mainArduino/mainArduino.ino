@@ -46,6 +46,8 @@ void setup() {
 
 
 void loop() {
+  analogWrite(7, 255);
+  
   if (comm_read()){ // data received, handle accordingly
     set_fan_power(comm_received[0]);
     //opt_wind_current = comm_received[1]; ///add scaling;

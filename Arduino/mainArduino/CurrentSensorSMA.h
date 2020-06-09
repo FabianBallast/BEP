@@ -10,7 +10,7 @@
 //const int amm_pin_power_supply = A5;
 //const int amm_pin_fuel_cell = A6;
 
-float zero_load_min = 500*filter_numReadings; 
+float zero_load_min = 500.0*filter_numReadings; 
 float zero_load_max = 550.0*filter_numReadings; 
 
 
