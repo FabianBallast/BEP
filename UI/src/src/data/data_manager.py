@@ -127,7 +127,7 @@ class DataManager():
         
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
 
-        self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty)
+        self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3])
         self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:

@@ -22,9 +22,9 @@ extern float electrolyzer_voltage, fuel_cell_voltage;
 
 
 //GRID PID VOLTage
-byte Kp_grid = 0.7;
-byte Ki_grid = 0;
-byte Kd_grid = 0;
+float Kp_grid = 0.7;
+float Ki_grid = 0;
+float Kd_grid = 0;
 
 extern float grid_voltage; 
 float curr_flow_error, prev_flow_error;
