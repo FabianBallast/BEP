@@ -17,15 +17,15 @@
 //#define zerocross  2 // (NOT CHANGABLE)   
 //dimmerLamp FanDimmer(dimmer_outPin); 
 
-#define MULTIPLIER_SOLAR     20
-#define MULTIPLIER_WIND      30
-#define MULTIPLIER_FUEL_CELL 14
+#define MULTIPLIER_SOLAR     20.0
+#define MULTIPLIER_WIND      0.3
+#define MULTIPLIER_FUEL_CELL 14.0
 
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-uint8_t fanRef, zonRef;
-
+byte wind_mosfet, zonRef;
+byte fanRef;
 
 
 //float opt_wind_current = 10;
@@ -54,9 +54,10 @@ void loop() {
   
   if (comm_read()){ // data received, handle accordingly
     
-   // fanRef = ;
+    fanRef = comm_received[0];
     //zonRef = comm_received[1];
     set_fan_power(comm_received[0]);
+    wind_mosfet = comm_received[2];
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
@@ -92,7 +93,7 @@ void loop() {
   
 }
 float flow_total(){
-    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
+    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND *fanRef +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
 }
 //float current_total(){
 //    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;

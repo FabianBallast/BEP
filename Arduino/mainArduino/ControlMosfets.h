@@ -22,9 +22,9 @@ extern float electrolyzer_voltage, fuel_cell_voltage;
 
 
 //GRID PID VOLTage
-byte Kp_grid = 3;
-byte Ki_grid = 2;
-byte Kd_grid = 1;
+byte Kp_grid = 0.7;
+byte Ki_grid = 0;
+byte Kd_grid = 0;
 
 extern float grid_voltage; 
 float curr_flow_error, prev_flow_error;
@@ -32,6 +32,8 @@ float grid_control_value;
 float cum_flow_error, rate_flow_error;
 byte fuel_cell_pwm;
 byte electrolyzer_pwm;
+
+//extern byte wind_mosfet;
 
 //extern float grid_voltage; 
 //float curr_volt_error, prev_volt_error;

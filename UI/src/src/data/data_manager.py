@@ -115,16 +115,18 @@ class DataManager():
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
-        self.serial_connection.send_to_arduino(windPower=values[1])
-        self.loads.load_set(values[2])
+        
         
         readings = self.serial_connection.read_arduino()
         
+        windControl, windDuty = self.windMPPT.controlMPPT(readings)
 
+        self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty)
+        self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:
             sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU',
-                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','gridU', 'loopT']
+                       'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','gridU', 'loopT', 'windY']
             
             for sensor in sensors:
                 try:
@@ -133,13 +135,13 @@ class DataManager():
                     readings[sensor] = 0
             
 
-        windControl, windDuty = self.windMPPT.controlMPPT(readings)
-        readings['windControl'] = windControl
-        readings['windDuty'] = windDuty
         
-        readings['zonI'] = readings['zonU']*20
-        readings['windI']= readings['windU']*20
-        readings['FC_I'] = readings['FC_U']*20
+        readings['windControl'] = windControl
+        #readings['windDuty'] = windDuty
+        
+        readings['zonFlow'] = readings['zonU']*20
+        readings['windFlow']= readings['windU']*0.3
+        readings['FC_flow'] = readings['FC_U']*14
         #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
