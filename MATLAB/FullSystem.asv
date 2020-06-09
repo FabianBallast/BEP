@@ -34,13 +34,13 @@ ex2 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet2');
 ex3 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet3');
 
 % Places the Excel file values into variables
-r_WT_x = ex1(2, :)';
-r_SP_x = ex1(3, :)';
-r_LED_x = ex1(4, :)';
-r_PS_x = ex1(5,:)';
-lambda_data_x  = ex3(5, :)';
-r_wind_data_x = ex3(3, :)';
-V_w_data_x = ex3(4,:)';
+r_WT_x = ex1(3, :)';
+r_SP_x = ex1(4, :)';
+r_LED_x = ex1(5, :)';
+lambda_data_x  = ex1(6, :)';
+r_wind_data_x = ex1(7, :)';
+V_w_data_x = ex1(8,:)';
+r_PS_x = ex1(9,:)';
 C_T_matrix = ex2(2:12,2:21)';
 r_solar_data_x = ex3(1,:)';
 I_SP_data_x = ex3(2,:)';
