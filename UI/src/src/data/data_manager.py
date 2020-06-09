@@ -1,7 +1,7 @@
 """This module will handle all the data and the connection between the Pi and Arduino."""
 from PyQt5 import QtCore
 from ..data.log_handler import LogWriter
-#from ..backend.read_tank_sensor import TankReader
+from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.halogen import HalogenLight
@@ -33,12 +33,12 @@ class DataManager():
         
         self.last_data_box = last_data_box
 
-        self.light = HalogenLight(self.printer, 100)
+        self.light = HalogenLight(self.printer, 0)
         
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
-        #self.tank_reader = TankReader(self.serial_connection)
+        self.tank_reader = TankReader(self.serial_connection)
 
         self.file = LogWriter()
 
@@ -129,7 +129,7 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-
+        readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
         self.last_data_box.update(readings)

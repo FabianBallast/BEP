@@ -93,7 +93,7 @@ float controlGridCurrent(float target_current_ps){
 }
 
 float controlWind(float target_current){
-    analogWrite(TURBINE_START_PIN, 255);
+    //analogWrite(TURBINE_START_PIN, 255);
     
     curr_wind_error = target_current - current_wind_turbines;
     cum_wind_error += curr_wind_error * elapsedTime;
@@ -108,7 +108,7 @@ float controlWind(float target_current){
 
     prev_wind_error = curr_wind_error;
 
-    if (get_fan_power() < 5)
+    if (get_fan_power() < 16)
       analogWrite(TURBINE_START_PIN, 0);
     else
       analogWrite(TURBINE_START_PIN, 255);

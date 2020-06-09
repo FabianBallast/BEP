@@ -62,7 +62,8 @@ void loop() {
  /// controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
-  
+  //tot_curr = 
+  //mismatch = tot_curr - current_electrolyzer - current_ledload;
   grid_control_value = controlGridCurrent(current_total());
   read_ammeters();
   processControlValue(grid_control_value);

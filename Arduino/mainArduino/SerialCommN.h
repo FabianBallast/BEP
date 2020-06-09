@@ -1,6 +1,9 @@
 #define COMM_SIZE_A 3
 #define COMM_SIZE_P 13
 
+#define MULTIPLIER_SOLAR     6
+#define MULTIPLIER_WIND      8
+#define MULTIPLIER_FUEL_CELL 14
 
 extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
@@ -27,10 +30,10 @@ void comm_send(){
       Serial.print("nd={");
       break;
     case 1:
-      Serial.print("\"zonI\":");          Serial.print(current_solar_panels);
+      Serial.print("\"zonI\":");          Serial.print(current_solar_panels*MULTIPLIER_SOLAR);
       break;
     case 2:
-      Serial.print(", \"windI\":");         Serial.print(current_wind_turbines);
+      Serial.print(", \"windI\":");         Serial.print(current_wind_turbines*MULTIPLIER_WIND);
       break;
     case 3:
       Serial.print(", \"loadI\":");         Serial.print(current_ledload);
@@ -39,13 +42,13 @@ void comm_send(){
       Serial.print(", \"OptWindI\":");     Serial.print(opt_wind_current);
       break;
     case 5:
-      Serial.print(", \"EL_I\":"); Serial.print(current_electrolyzer);
+      Serial.print(", \"EL_I\":"); Serial.print(current_electrolyzer*MULTIPLIER_FUEL_CELL);
       break;
     case 6:
       Serial.print(", \"PS_I\":"); Serial.print(current_power_supply);
       break;
     case 7:
-      Serial.print(", \"FC_C\":");    Serial.print(current_fuel_cell);          
+      Serial.print(", \"FC_I\":");    Serial.print(current_fuel_cell);          
       break;
     case 8:
       Serial.print(", \"fan\":");            Serial.print(get_fan_power());      
