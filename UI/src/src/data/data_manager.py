@@ -37,7 +37,7 @@ class DataManager():
 
 
         self.windMPPT = WindMPPT()
-        self.valve = ValvePurger()
+        self.valve = ValvePurger(self.printer)
         self.light = HalogenLight(self.printer, 0)
         
         self.serial_connection = SerialCommunicator(self.printer)
@@ -109,11 +109,15 @@ class DataManager():
     def connect_for_all_values(self, handler):
         """Add a function that want to get the control values."""
         self.control_values_handlers.append(handler)
-        
+
+    def purge_valve_manual(self):
+        self.valve.timeValve(1000, 100)
+
     def update_data(self):
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control() 
 
+        
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
@@ -136,7 +140,7 @@ class DataManager():
                 except IndexError:
                     readings[sensor] = 0
             
-        self.valve.timeValve(readings['FC_Y'], 100)
+        # self.valve.timeValve(readings['FC_Y'], 100)
         
         readings['windControl'] = windControl
         #readings['windDuty'] = windDuty

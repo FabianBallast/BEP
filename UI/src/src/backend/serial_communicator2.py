@@ -112,8 +112,9 @@ class SerialCommunicator:
         except Exception as error:
             rbytes = str(rbytes)
             self.all_received_data = ""
-            self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
-            self.CONNECTION = "Arduino niet verbonden"
+            if type(self.ser) == serial.Serial: 
+                self.printer.print(f"Attribute error reading data from arduino: {error}, bytes: {rbytes}")
+            self.NO_CONNECTION = "Arduino niet verbonden"
             self.ser.reset_input_buffer()
             self.ser.reset_output_buffer()    
         

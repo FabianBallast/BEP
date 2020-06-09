@@ -85,7 +85,7 @@ class ManualLayout(QtWidgets.QWidget):
         font.setBold(True)
         font.setWeight(75)
 
-        buttons = ['stop']                         #pylint: disable=C0103 
+        buttons = ['stop', 'purge']                         #pylint: disable=C0103 
         y_pos = [int(0.50 * height), int(0.61 * height)]
 
         for button in buttons:
@@ -107,9 +107,10 @@ class ManualLayout(QtWidgets.QWidget):
         """Updates the data manager. 
            Is called when a Start/Stop button is pressed."""
         if self.main_window.sender() != self.stop_button:
-            self.data_manager.set_mode('manual', 
-                	                   [self.solar_power_slider.value(), 
-                                        self.wind_power_slider.value(), 
-                                        self.demand_power_slider.value()])
+            self.data_manager.purge_valve_manual()
+            # self.data_manager.set_mode('manual', 
+            #     	                   [self.solar_power_slider.value(), 
+            #                             self.wind_power_slider.value(), 
+            #                             self.demand_power_slider.value()])
         else:
             self.data_manager.set_mode('stop', None)

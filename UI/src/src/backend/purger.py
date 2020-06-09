@@ -21,13 +21,14 @@ class ValvePurger:
 
 
     """This class represents the sensor."""
-    def __init__(self, N_FILTER=30):
+    def __init__(self, printer):
         self.current_wind_voltage = 0
         
         IO.setmode(IO.BCM)
         IO.setup(VALVE_PIN, IO.OUT)
         IO.output(VALVE_PIN,0)
         self.lastOpen = time.time()
+        self.printer = printer
 
     def timeValve(self, periodMillis, timeOpenMillis):
         if time.time() - self.lastOpen > periodMillis/1000:
@@ -36,6 +37,7 @@ class ValvePurger:
     
     def openValve(self, timeOpenMillis):
         IO.output(VALVE_PIN, 1)
+        self.printer.print("Valve opened")
         self.lastOpen = time.time()
         self.close_timer = QtCore.QTimer()
         self.close_timer.timeout.connect(self.closeValve)
@@ -43,4 +45,10 @@ class ValvePurger:
     
     def closeValve(self):
         IO.output(VALVE_PIN, 0)
+        self.printer.print("Valve closed")
         self.close_timer.stop()
+
+
+if __name__ == "__main__":
+    purge = ValvePurger()
+    purge.openValve(100)
