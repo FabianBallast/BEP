@@ -31,7 +31,9 @@ class WindMPPT:
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
         self.prev_time = time()
-
+        
+        IO.setmode(IO.BCM)
+        IO.setup(WIND_MOSFET_PIN, IO.OUT)
         self.pwm = IO.PWM(WIND_MOSFET_PIN, 100)
         self.pwm.start(100)
 
