@@ -12,13 +12,16 @@ class HalogenLight:
     """This class represents the halogen lamp."""
     def __init__(self, printer, start_value=0):
         """Wrapper for dimmable halogenlight with slow start."""
-        HALOGEN_MOSFET_PIN = 4                             #pylint: disable=invalid-name
+
+        HALOGEN_MOSFET_PIN =23                             #pylint: disable=invalid-name
+
         IO.setmode(IO.BCM)
         IO.setup(HALOGEN_MOSFET_PIN, IO.OUT)
         self.pwm = IO.PWM(HALOGEN_MOSFET_PIN, 100)
         self.pwm.start(start_value)
         self.intermediate_value = start_value
         self.printer = printer
+        self.printer.print("Halogen lamp initialized")
         self.end_value = start_value
     
     def set_light(self, set_value):
@@ -26,7 +29,7 @@ class HalogenLight:
         #self.adjust(set_value)########
         
         self.end_value = set_value
-        #self.printer.print("End goal light: ", set_value,  ' intermediate' , self.intermediate_value)
+        #self.printer.print("st ;ogtj" )
         # self.adjust(set_value)
         if set_value > self.intermediate_value:
             self.animate_timer = QtCore.QTimer()
@@ -61,6 +64,7 @@ class HalogenLight:
             
             
 if __name__ == '__main__':
+    from read_tank_sensor import TankReader
     class SerialRaw():
         """Class for when there is no second screen and still print stuff."""
         def __init__(self):
@@ -68,6 +72,7 @@ if __name__ == '__main__':
         def print(self, *stuff):
             """Print stuff to the terminal."""
             print(*stuff)
-    light = HalogenLight(SerialRaw(), 50)
+    light = HalogenLight(SerialRaw(), 100)
+    time.sleep(10)
     light.set_light(30)
     time.sleep(2)

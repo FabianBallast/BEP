@@ -1,6 +1,7 @@
-#define filter_numReadings 30   //max = 63, see below
+#define filter_numReadings 100   //max = 63, see below
 #define corr_factor (5/1024)/filter_numReadings
 #define sampleTime 3
+#define discardNloops 3
 
 //const int amm_pin_solar_panels = A1;
 //const int amm_pin_wind_turbines  = A2;
@@ -9,8 +10,8 @@
 //const int amm_pin_power_supply = A5;
 //const int amm_pin_fuel_cell = A6;
 
-#define zero_load_min 511*filter_numReadings
-#define zero_load_max 516*filter_numReadings
+float zero_load_min = 500*filter_numReadings; 
+float zero_load_max = 550.0*filter_numReadings; 
 
 
 #define sensitivity_1 -11.5   / filter_numReadings; 
@@ -61,10 +62,13 @@ float    current_fuel_cell;
 
 
 void ammeters_setup(){
+    Serial.print("max");
+    Serial.print(zero_load_max);
+  
    Serial.print("skipping first values (using SMA filter)... \n");
     /////////////////////////////CALIBRATE
      //////////discard first values
-   for (filter_readIndex = 0; filter_readIndex < filter_numReadings; filter_readIndex++) {
+   for (filter_readIndex = 0; filter_readIndex < discardNloops*filter_numReadings; filter_readIndex++) {
         analogRead(A1);
         analogRead(A2);
         analogRead(A3);
@@ -81,8 +85,7 @@ void ammeters_setup(){
 //        raw_readings_5[filter_readIndex]=0;     
 //        raw_readings_6[filter_readIndex]=0;   
     }
-    Serial.print("Starting calibration... \n, sum =");
-    Serial.print(runningSum1);
+    Serial.print("Starting calibration... \n");
       ///find average zero load value
     for (filter_readIndex = 0; filter_readIndex < filter_numReadings; filter_readIndex++) {
 
@@ -113,17 +116,22 @@ void ammeters_setup(){
 
     Serial.print("Running1   ");
     Serial.print(runningSum1);
-    if((runningSum1>zero_load_min)&(runningSum1<zero_load_max)) // reality check
+    Serial.print("max");
+    Serial.print(zero_load_max);
+    if((runningSum1>zero_load_min)&&(runningSum1<zero_load_max)) {// reality check
+      Serial.print("yeah");
       sensor_value_zero_load_1 = runningSum1;
-    if((runningSum2>zero_load_min)&(runningSum2<zero_load_max)) // reality check
+    }
+    if((runningSum2>zero_load_min)&&(runningSum2<zero_load_max)) {// reality check
       sensor_value_zero_load_2 = runningSum2;
-    if((runningSum3>zero_load_min)&(runningSum3<zero_load_max)) // reality check
+    }
+    if((runningSum3>zero_load_min)&&(runningSum3<zero_load_max)) // reality check
       sensor_value_zero_load_3 = runningSum3;
-    if((runningSum4>zero_load_min)&(runningSum4<zero_load_max)) // reality check
+    if((runningSum4>zero_load_min)&&(runningSum4<zero_load_max)) // reality check
       sensor_value_zero_load_4 = runningSum4;
-    if((runningSum5>zero_load_min)&(runningSum5<zero_load_max)) // reality check
+    if((runningSum5>zero_load_min)&&(runningSum5<zero_load_max)) // reality check
       sensor_value_zero_load_5 = runningSum5;
-    if((runningSum6>zero_load_min)&(runningSum6<zero_load_max)) // reality check
+    if((runningSum6>zero_load_min)&&(runningSum6<zero_load_max)) // reality check
       sensor_value_zero_load_6 = runningSum6;
 
     Serial.print("Done calibrating \n");

@@ -3,20 +3,20 @@ try:
     import board
 except NotImplementedError:
     from ..dummy import dummy_board as board                            #pylint: disable=relative-beyond-top-level
+    from ..dummy import dummy_range_sensor as sensor                        #pylint: disable=relative-beyond-top-level
 
 import busio
 import adafruit_vl6180x
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-from ..dummy import dummy_range_sensor as sensor                        #pylint: disable=relative-beyond-top-level
 
 class TankReader:
     """This class represents the sensor."""
     def __init__(self, serial_connection, N_FILTER=30):
 
         try:
-            raise ValueError()
+            
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
         except ValueError:

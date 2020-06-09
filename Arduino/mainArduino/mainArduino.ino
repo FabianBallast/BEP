@@ -24,7 +24,7 @@
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-float opt_wind_current = 10;
+//float opt_wind_current = 10;
 
 void setup() {
   serial_setup();
@@ -36,7 +36,9 @@ void setup() {
   
   ammeters_setup(); //CALIBRATES; ONLY USE WHEN MOSFETS ARE IN OFF-STATE
 
-
+  //calibrates, now turn on power supply
+  analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+  
   fan_start();
 
   Serial.print("Setup done \n");
@@ -46,7 +48,7 @@ void setup() {
 void loop() {
   if (comm_read()){ // data received, handle accordingly
     set_fan_power(comm_received[0]);
-    opt_wind_current = comm_received[1]; ///add scaling;
+    //opt_wind_current = comm_received[1]; ///add scaling;
     
     /// TODO add turn off possiblity for fuel cell + electrolyzer
   }
@@ -62,12 +64,14 @@ void loop() {
  /// controlPowerSupply(current_to_add());
   
   //METHOD 2: CONTROL CURRENT
+  //tot_curr = 
+  //mismatch = tot_curr - current_electrolyzer - current_ledload;
   
   grid_control_value = controlGridCurrent(current_total());
   read_ammeters();
   processControlValue(grid_control_value);
   read_ammeters();
-  controlWind(opt_wind_current);
+//  controlWind(opt_wind_current);
   read_ammeters();
   
   prev_time = curr_time;
