@@ -18,8 +18,8 @@ class SerialCommunicator:
     
     def __init__(self, printer):
         try:
-            self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
-            #self.ser = serial.Serial('COM5', 9600, timeout=0)
+            #self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
+            self.ser = serial.Serial('COM6', 9600, timeout=0)
             self.NO_CONNECTION = ""
             printer.print("Arduino verbonden")
         except serial.serialutil.SerialException:
@@ -31,9 +31,10 @@ class SerialCommunicator:
         #initial parameters
         self.send = {'windPower' : 0,
                      'h2' : 0,
-                     'windMosfet': 0}
+                     'windMosfet': 0,
+                     'ps_target': 0}
         #comm protocol
-        self.send_order = ['windPower', 'h2', 'windMosfet']
+        self.send_order = ['windPower', 'h2', 'windMosfet', 'ps_target']
         self.printer = printer
         if not printer:
                 print("Gebruikt terminal log" )

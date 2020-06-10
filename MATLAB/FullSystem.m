@@ -16,7 +16,7 @@ n = 1000;
 k_m_t = 23.8e-3; 
 d_turbine = 0.15; %m
 J_wind = 5.245e-6 * 1000; %kgm^2
-omega_0 = 1000; %rpm
+omega_0 = 2000; %rpm
 lambda_opt = 2.8; %lambda = R*omega/V_w
 P_max_WT = 0.2; %W
 a_friction = 0;

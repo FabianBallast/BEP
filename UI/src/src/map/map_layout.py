@@ -66,9 +66,9 @@ class MapLayout(QtWidgets.QWidget):
     def get_current_values(self, readings):
         """Update the map to match with the current data.
            Use multiple other functions to accomplish this."""
-        solar = readings['zonFlow']
-        wind = readings['windFlow'] 
-        demand = readings['loadI']
+        solar = readings['zonPower']
+        wind = readings['windPower'] 
+        demand = readings['loadPower']
         self.update_progress_bar(readings['tank_level'])
         self.update_background(solar, demand)
         self.update_leds(solar, wind, demand, solar + wind - demand)

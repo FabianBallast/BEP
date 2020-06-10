@@ -27,10 +27,12 @@
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-byte wind_mosfet, H2Ref;
+byte wind_mosfet;
+byte H2Ref = 50;
 byte fanRef;
+float current_to_add;
 
-float flowTot;
+float grid_control_value;
 
 //float opt_wind_current = 10;
 
@@ -62,6 +64,7 @@ void loop() {
     H2Ref = comm_received[1];
     set_fan_power(fanRef);
     wind_mosfet = comm_received[2];
+    current_to_add = comm_received[3] *2;
     analogWrite(TURIBNE_MOSFET_PIN, wind_mosfet);
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
@@ -82,9 +85,8 @@ void loop() {
   //mismatch = tot_curr - current_electrolyzer - current_ledload;
   read_ammeters();
   read_ammeters();
-  flowTot = flow_total();
-  //grid_control_value = controlGridFlow(flowTot, 0);
-  grid_control_value = H2Ref - 50;
+  grid_control_value = controlGridCurrent(current_to_add);
+  //grid_control_value = H2Ref - 50; ///delete later
   processControlValue(grid_control_value);
 //  controlWind(opt_wind_current);
 
@@ -98,12 +100,4 @@ void loop() {
   comm_send();
   
 }
-float flow_total(){
-    return solar_voltage* MULTIPLIER_SOLAR + wind_voltage * MULTIPLIER_WIND *fanRef +  fuel_cell_voltage* MULTIPLIER_FUEL_CELL - current_ledload;
-}
-//float current_total(){
-//    return current_solar_panels * MULTIPLIER_SOLAR + current_wind_turbines * MULTIPLIER_WIND + current_fuel_cell * MULTIPLIER_FUEL_CELL;
-//}
-//float current_to_add(){
-//    return current_solar_panels * (MULTIPLIER_SOLAR - 1) + current_wind_turbines * (MULTIPLIER_WIND - 1) + current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1);
-//}
+

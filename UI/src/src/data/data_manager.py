@@ -8,6 +8,18 @@ from ..backend.windControl import WindMPPT
 from ..backend.purger import ValvePurger
 from ..backend.halogen import HalogenLight
 from ..serial.serial_page import SerialRaw
+from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
+
+MULTIPLIER_SOLAR      = 12
+MULTIPLIER_WIND       = 16
+MULTIPLIER_FUEL_CELL  = 28
+
+
+def current_to_add(readings):
+        power_to_add = readings['zonPower'] * (MULTIPLIER_SOLAR - 1) + readings['windPower'] * (MULTIPLIER_WIND - 1) #+ current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1)
+        curr_to_add = power_to_add/readings['gridU']
+        return curr_to_add
+
 
 class DataManager():
     """This class contains all data."""
@@ -124,18 +136,32 @@ class DataManager():
         
         
         readings = self.serial_connection.read_arduino()
-        
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
+
+        readings['windControl'] = windControl
+        #readings['windDuty'] = windDuty
+        readings['zonPower'] = convertSolarToPower(values[0], readings['zonU'])
+        readings['windPower'] = convertWindToPower(readings['fan'], readings['windU'])
+        readings['loadPower'] = readings['gridU']*readings['loadI']
+
+        ps_target = current_to_add(readings)
+
+        readings['curr_to_add'] = ps_target
+        # readings['zonFlow'] = readings['zonU']*20
+        # readings['windFlow']= readings['windU']*0.3
+        # readings['FC_flow'] = readings['FC_U']*14
+        #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
+        
         if len(values)>3:
-            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3])
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3], ps_target=ps_target/2)
         else:
-            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = 0)
+            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = 0, ps_target=ps_target/2)
                 
 
         self.loads.load_set(values[2])
         
         if 'dummy_serial' in readings:
-            sensors = ['zonI', 'windI', 'loadI', 'EL_I','windU','flowTot',
+            sensors = ['zonU', 'windU', 'loadI', 'EL_I','windU','flowTot',
                        'PS_I', 'FC_I', 'fan', 'EV_U', 'FC_U','FC_Y','gridU', 'loopT', 'windY']
             
             for sensor in sensors:
@@ -146,13 +172,7 @@ class DataManager():
             
         # self.valve.timeValve(readings['FC_Y'], 100)
         
-        readings['windControl'] = windControl
-        #readings['windDuty'] = windDuty
-        
-        readings['zonFlow'] = readings['zonU']*20
-        readings['windFlow']= readings['windU']*0.3
-        readings['FC_flow'] = readings['FC_U']*14
-        #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
+
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000

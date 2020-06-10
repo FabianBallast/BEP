@@ -180,10 +180,10 @@ class System(QtWidgets.QWidget):
 
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        solar = sensor_data.get('zonFlow')
-        wind = sensor_data.get('windFlow')
-        load = sensor_data.get('loadI')
-        elek = sensor_data.get('flowTot')
+        solar = sensor_data.get('zonPower')
+        wind = sensor_data.get('windPower')
+        load = sensor_data.get('loadPower')
+        elek = solar + wind - load  +sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
 
         tank = sensor_data.get('tank_level')
         
