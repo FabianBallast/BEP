@@ -16,6 +16,8 @@ int i_send = -1;
 
 extern byte wind_mosfet;
 extern float grid_control_value;
+//extern float flowTot;
+extern bool valveOpen;
 
 
 uint8_t comm_received[COMM_SIZE_A]; 
@@ -78,6 +80,9 @@ void comm_send(){
       Serial.print(", \"currAdd\":");            Serial.print(current_to_add);      
       break;   
     case 16:
+      Serial.print(", \"valveOpen\":");            Serial.print(valveOpen);      
+      break;  
+    case 17:
       Serial.println("}ed");
       i_send = -1;
       break;
