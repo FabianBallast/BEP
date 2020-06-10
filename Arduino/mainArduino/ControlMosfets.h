@@ -4,9 +4,9 @@
 #define FUEL_CELL_MOSFET_PIN    6
 #define POWER_SUPPLY_MOSFET_PIN 7
 #define TURIBNE_MOSFET_PIN      10
-#define VALVE_PIN               12
+#define VALVE_PIN               13
 
-#define valveOpenTime           200
+#define valveOpenTime           300
 
 #define MAX_READING_ELECTROLYZER   (2.0/5.0)*2014.0
 #define MIN_READING_ELECTROLYZER   (0.9/5.0)*2014.0
@@ -179,8 +179,8 @@ void processControlValue(int control_value){
       //fuel_cell_pwm = (byte)255;
       electrolyzer_pwm = 0;
 
-      valveMillOpenFreq = 100; 
-     // controlValve();
+      valveMillOpenFreq = 1000; 
+      controlValve();
            
     }
     else if (control_value<-1){

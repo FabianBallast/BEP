@@ -30,8 +30,8 @@ class gridControlMultiply:
         
         self.current_error = current_current - target_current
         self.cum_error += self.current_error*elapsedTime
-        # if abs(self.cum_error)*Ki_grid > 255:
-        #     self.cum_error = np.sign(self.cum_error)*255/Ki_wind
+        if abs(self.cum_error)*Ki_grid > 30:
+            self.cum_error = np.sign(self.cum_error)*30/Ki_grid
         self.rate_error = (self.current_error - self.prev_error)/elapsedTime
         
         self.prev_time = newTime
