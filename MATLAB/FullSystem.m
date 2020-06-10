@@ -42,11 +42,11 @@ r_WT_x = ex1(2, :)';
 r_SP_x = ex1(3, :)';
 r_LED_x = ex1(4, :)';
 r_PS_x = ex1(5,:)';
-lambda_data_x  = ex3(5, :)';
-r_wind_data_x = ex3(3, :)';
-V_w_data_x = ex3(4,:)';
+lambda_data_x  = ex3(3, :)';
+r_wind_data_x = ex3(1, :)';
+V_w_data_x = ex3(2,:)';
 C_T_matrix = ex2(2:12,2:12)';
-r_solar_data = ex4(:,1);
+r_solar_data_x = ex4(:,1);
 V_oc_data = ex4(:,2);
 I_sc_data = ex4(:,3);
 V_mp_data = ex4(:,4);
@@ -99,3 +99,8 @@ V_w_data.signals.dimensions = 1;
 r_PS.time = [];
 r_PS.signals.values = [r_PS_x];
 r_PS.signals.dimensions = 1;
+
+r_solar_data.time = [];
+r_solar_data.values = [r_solar_data_x];
+r_solar_data.dimensions = 1;
+
