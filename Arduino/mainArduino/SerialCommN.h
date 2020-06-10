@@ -1,9 +1,11 @@
-#define COMM_SIZE_A 3
+#define COMM_SIZE_A 4
 #define COMM_SIZE_P 13
 
 
-extern float    current_solar_panels,  current_wind_turbines,  current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
+// extern float    current_solar_panels,  current_wind_turbines;
+extern float current_ledload, current_electrolyzer, current_power_supply, current_fuel_cell;
 extern float elapsedTime;
+extern float current_to_add;
 //extern byte turbine_pwm;
 extern byte electrolyzer_pwm;
 extern byte fuel_cell_pwm;
@@ -13,7 +15,9 @@ extern float grid_voltage;
 int i_send = -1;
 
 extern byte wind_mosfet;
-extern float flowTot;
+extern float grid_control_value;
+//extern float flowTot;
+extern bool valveOpen;
 
 
 uint8_t comm_received[COMM_SIZE_A]; 
@@ -73,9 +77,12 @@ void comm_send(){
       Serial.print(", \"windY\":");            Serial.print(wind_mosfet);      
       break;   
     case 15:
-      Serial.print(", \"flowTot\":");            Serial.print(flowTot);      
+      Serial.print(", \"currAdd\":");            Serial.print(current_to_add);      
       break;   
     case 16:
+      Serial.print(", \"valveOpen\":");            Serial.print(valveOpen);      
+      break;  
+    case 17:
       Serial.println("}ed");
       i_send = -1;
       break;
