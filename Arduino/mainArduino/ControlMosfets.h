@@ -30,8 +30,8 @@ extern float electrolyzer_voltage, fuel_cell_voltage;
 // float curr_flow_error, prev_flow_error;
 // float grid_control_value;
 // float cum_flow_error, rate_flow_error;
-byte fuel_cell_pwm;
-byte electrolyzer_pwm;
+int fuel_cell_pwm = 0;
+int electrolyzer_pwm = 0;
 
 //extern byte wind_mosfet;
 
@@ -39,8 +39,7 @@ byte electrolyzer_pwm;
 //float curr_volt_error, prev_volt_error;
 //float grid_control_value;
 //float cum_volt_error, rate_volt_error;
-//byte fuel_cell_pwm;
-//byte electrolyzer_pwm;
+
 
 //GRID PID CURRENT
 byte Kp_ps_h2 = 3;
@@ -100,19 +99,19 @@ void mosfets_setup(){
 // }
 //
 //
-float controlGridCurrent(float target_current_ps){
-//    pwm_value_power_supply = 255;
-//    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
+// float controlGridCurrent(float target_current_ps){
+// //    pwm_value_power_supply = 255;
+// //    analogWrite(POWER_SUPPLY_MOSFET_PIN, pwm_value_power_supply);
  
-   curr_ps_error = target_current_ps - current_power_supply;
-   cum_ps_error += curr_ps_error * elapsedTime;
-   rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
+//    curr_ps_error = target_current_ps - current_power_supply;
+//    cum_ps_error += curr_ps_error * elapsedTime;
+//    rate_ps_error = (curr_ps_error - prev_ps_error)/elapsedTime;
    
-   control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
+//    control_value = Kp_ps_h2*curr_ps_error + Ki_ps_h2*cum_ps_error + Kd_ps_h2*rate_ps_error;
    
-   prev_ps_error = curr_ps_error;
-   return control_value;
-}
+//    prev_ps_error = curr_ps_error;
+//    return control_value;
+// }
 
 //float controlWind(float target_current){
 //    analogWrite(TURBINE_START_PIN, 255);
@@ -174,22 +173,24 @@ void controlValve(){
       }
 }
 
-void processControlValue(float control_value){
-    if (control_value>0){
+void processControlValue(int control_value){
+    if (control_value>1){
       fuel_cell_pwm = control_value;
+      //fuel_cell_pwm = (byte)255;
       electrolyzer_pwm = 0;
-      if (fuel_cell_pwm>255)
-            fuel_cell_pwm = 255;
 
       valveMillOpenFreq = 100; 
-      controlValve();
+     // controlValve();
            
     }
-    else if (control_value<=0){
-      electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
+    else if (control_value<-1){
+     // electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
+      electrolyzer_pwm = 24;
       fuel_cell_pwm = 0;
-      if (electrolyzer_pwm>24)
-            electrolyzer_pwm = 24;
+    }
+    else{
+        electrolyzer_pwm = 0;
+        fuel_cell_pwm = 0;
     }
 
     // if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
@@ -201,7 +202,12 @@ void processControlValue(float control_value){
     
     if (electrolyzer_pwm>24)
         electrolyzer_pwm = 24;
-
+    if (electrolyzer_pwm<1)
+        electrolyzer_pwm = 0;
+    if (fuel_cell_pwm<1)
+        fuel_cell_pwm = 0;
+    if (fuel_cell_pwm>255)
+        fuel_cell_pwm = 255;
     //fuel_cell_pwm = 0;
    // electrolyzer_pwm = 0;
 

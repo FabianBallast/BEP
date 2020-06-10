@@ -31,10 +31,9 @@ class SerialCommunicator:
         #initial parameters
         self.send = {'windPower' : 0,
                      'h2' : 0,
-                     'windMosfet': 0,
-                     'ps_target': 0}
+                     'windMosfet': 0}
         #comm protocol
-        self.send_order = ['windPower', 'h2', 'windMosfet', 'ps_target']
+        self.send_order = ['windPower', 'h2', 'windMosfet']
         self.printer = printer
         if not printer:
                 print("Gebruikt terminal log" )
@@ -56,6 +55,7 @@ class SerialCommunicator:
                 loopT = 2,
                 PS_I = 2,
                 windY = 2,
+                H2ref = 2,
                 fan = 2)
            
         self.all_received_data = ""
@@ -68,9 +68,10 @@ class SerialCommunicator:
             #printer.print('Sending', self.send)
             
             array_to_send = [int(self.send[key]) for key in self.send_order]
+           # array_to_send[1] = 0
             bytes_to_send = bytes(array_to_send)
             
-            #self.printer.print(f'Pi to Arduino: {array_to_send}')
+            self.printer.print(f'Pi to Arduino: {array_to_send}')
             self.ser.write(bytes_to_send)
         return self.send
 

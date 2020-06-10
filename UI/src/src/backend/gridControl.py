@@ -1,85 +1,48 @@
 """This class handles the sensor for reading the tank level."""
 
 import time
-import numpy as np
-try:
-    import board
-except NotImplementedError:
-    from ..dummy import dummy_board as board                            #pylint: disable=relative-beyond-top-level
-
-try:
-    import RPi.GPIO as IO
-except ModuleNotFoundError:
-    print("using dummy gpio")
-    from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_grid = 90
-Ki_grid = 50
-Kd_grid = 10
 
-WIND_MOSFET_PIN = 24
+Kp_grid = 0.90
+Ki_grid = 0
+Kd_grid = 0
 
-class WindMPPT:
+class gridControlMultiply:
 
-
-    """This class represents the sensor."""
-    def __init__(self, N_FILTER=30):
-        self.current_wind_voltage = 0
-        
-        self.N_FILTER = N_FILTER     
+    def __init__(self):
+        self.current_PS_current = 0
         self.current_error = 0
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
         self.prev_time = time.time()
         self.prev_error = 0
         
-        IO.setmode(IO.BCM)
-        IO.setup(WIND_MOSFET_PIN, IO.OUT)
-        self.pwm = IO.PWM(WIND_MOSFET_PIN, 100)
-        self.pwm.start(100)
+    def controlPSmultiply(self, readings):
+        current_to_add_target = readings['curr_to_add']
+        grid_control_value = self.gridPID(current_to_add_target, readings['PS_I'])
 
-    def controlMPPT(self, readings):
-        opt = self.findMPPT(readings['windU'], readings['fan'])
-        wind_control_value, wind_duty_cycle = self.windPID(opt, readings['windU'])
-        #self.pwm.ChangeDutyCycle(wind_duty_cycle)    
-
-        return wind_control_value, wind_duty_cycle
+        return grid_control_value
     
-    def findMPPT(self, new_wind_voltage, current_wind_strength):
-        """Find optimal volt"""
-        opt_wind_voltage = 4.35
-        #insert lookup table
-        return opt_wind_voltage
-    
-    def windPID(self, target_voltage, current_voltage):
+    def gridPID(self, target_current, current_current):
         newTime = time.time()
         elapsedTime = newTime - self.prev_time
         
-        self.current_error = current_voltage - target_voltage
+        self.current_error = current_current - target_current
         self.cum_error += self.current_error*elapsedTime
-        #if abs(self.cum_error)*Ki_wind > 100:
-        #    self.cum_error = np.sign(self.cum_error)*128/Ki_wind
+        # if abs(self.cum_error)*Ki_grid > 255:
+        #     self.cum_error = np.sign(self.cum_error)*255/Ki_wind
         self.rate_error = (self.current_error - self.prev_error)/elapsedTime
         
         self.prev_time = newTime
         self.prev_error = self.current_error
 
-        wind_control_value = 128 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
-        
-        
-        if wind_control_value > 255:
-            wind_duty_cycle    = 255
-        elif wind_control_value < 0:
-            wind_duty_cycle    = 0
-        else:
-            wind_duty_cycle    = wind_control_value
-
-        return wind_control_value, wind_duty_cycle
+        grid_control_value = Kp_grid* self.current_error +  Ki_grid* self.cum_error + Kd_grid* self.rate_error
+            #self.printer.print("")
+        return grid_control_value
 
 
 if __name__ == '__main__':
-    mppt = WindMPPT()
-    mppt.pwm.ChangeDutyCycle(0)
+    mppt = gridControlMultiply()
     time.sleep(10)
     

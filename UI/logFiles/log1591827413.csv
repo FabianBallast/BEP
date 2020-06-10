@@ -1,0 +1,1 @@
+SolarRef (%),WindRef (%) UI,LoadRef (%),SolarU (V),LoadI (mA),WindU (V),Fuel cell U (V),Fuel cell pwm (0-255),ElectrolyzerU (V),ElectrolyzerI (mA),Electrolyzer pwm (0-255),gridU (V),H2Ref byte (0-255),looptime (ms),fanRaw (%) dimmer,wind pwm (0-255),Total current multiplier (mA),zon power (W),wind power (W),fuel cell flow (-),Tanklevel (mL),t (s)

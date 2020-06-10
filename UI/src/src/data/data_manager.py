@@ -5,10 +5,12 @@ from ..backend.read_tank_sensor import TankReader
 from ..backend.serial_communicator2 import SerialCommunicator
 from ..backend.loads import Loads
 from ..backend.windControl import WindMPPT
+from ..backend.gridControl import gridControlMultiply
 from ..backend.purger import ValvePurger
 from ..backend.halogen import HalogenLight
 from ..serial.serial_page import SerialRaw
 from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
+import numpy as np
 
 MULTIPLIER_SOLAR      = 12
 MULTIPLIER_WIND       = 16
@@ -17,7 +19,9 @@ MULTIPLIER_FUEL_CELL  = 28
 
 def current_to_add(readings):
         power_to_add = readings['zonPower'] * (MULTIPLIER_SOLAR - 1) + readings['windPower'] * (MULTIPLIER_WIND - 1) #+ current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1)
-        curr_to_add = power_to_add/readings['gridU']
+        volt = readings['gridU']
+        if volt < 1: volt = 12
+        curr_to_add = power_to_add/volt
         return curr_to_add
 
 
@@ -49,6 +53,7 @@ class DataManager():
 
 
         self.windMPPT = WindMPPT()
+        self.gridPID  = gridControlMultiply()
         self.valve = ValvePurger(self.printer)
         self.light = HalogenLight(self.printer, 0)
         
@@ -144,18 +149,28 @@ class DataManager():
         readings['windPower'] = convertWindToPower(readings['fan'], readings['windU'])
         readings['loadPower'] = readings['gridU']*readings['loadI']
 
-        ps_target = current_to_add(readings)
+        readings['curr_to_add'] = current_to_add(readings)
+        readings['h2_control_value'] = self.gridPID.controlPSmultiply(readings)
 
-        readings['curr_to_add'] = ps_target
+        h2ref = 0
+        # h2ref = readings['h2_control_value']+128
+        
+        if len(values)>3:
+            h2ref = (values[3] - 50) + 128
+        else:
+            h2ref = 0
+
         # readings['zonFlow'] = readings['zonU']*20
         # readings['windFlow']= readings['windU']*0.3
         # readings['FC_flow'] = readings['FC_U']*14
         #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
         
-        if len(values)>3:
-            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = values[3], ps_target=ps_target/2)
-        else:
-            self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = 0, ps_target=ps_target/2)
+        if h2ref>255:    h2ref = 255
+        if h2ref<1:      h2ref = 0
+        if np.isnan(h2ref): h2ref = 0
+        h2ref = int(h2ref)
+
+        self.serial_connection.send_to_arduino(windPower=values[1], windMosfet=windDuty, h2 = h2ref)
                 
 
         self.loads.load_set(values[2])
