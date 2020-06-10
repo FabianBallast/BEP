@@ -12,7 +12,7 @@ n = 1000;
 % Turbine parameters %
 k_m_t = 23.8e-3; 
 d_turbine = 0.15; %m
-J_wind = 5.245e-7 * 1000; %kgm^2
+J_wind = 5.245e-6 * 1000; %kgm^2
 omega_0 = 1000; %rpm
 lambda_opt = 2.8; %lambda = R*omega/V_w
 P_max_WT = 0.2; %W
@@ -29,9 +29,9 @@ P_max_EL = 3; %W
 P_max_FC = 1; %W
 
 %% Excel variables %%
-ex1 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet1');
-ex2 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet2');
-ex3 = xlsread('..\MATLAB\FullSystemData.xlsx','Sheet3');
+ex1 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet1');
+ex2 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet2');
+ex3 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet3');
 
 % Places the Excel file values into variables
 t =  ex1(2, :)';
@@ -52,6 +52,14 @@ I_SP_data_x = ex3(2,:)';
 for row = 1 : rows
    if isnan(lambda_data_x(rows - row + 1, 1))
        lambda_data_x(rows - row + 1, :) = [];
+   end
+   
+   if isnan(V_w_data_x(rows - row + 1, 1))
+       V_w_data_x(rows - row + 1, :) = [];
+   end
+   
+   if isnan(r_wind_data_x(rows - row + 1, 1))
+       r_wind_data_x(rows - row + 1, :) = [];
    end
 end
 
