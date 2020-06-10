@@ -1,4 +1,4 @@
-#define N_FILTER_VOLTAGE 40
+#define N_FILTER_VOLTAGE 140
 //A1-A6 wordt gebruikt voor currentsensors
 
 //#define NOT USED  A7
