@@ -191,9 +191,9 @@ void processControlValue(float control_value){
             electrolyzer_pwm = 24;
     }
 
-    if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
-      electrolyzer_pwm = 0;
-    }
+    // if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
+    //   electrolyzer_pwm = 0;
+    // }
     if (fuel_cell_voltage<MIN_READING_ELECTROLYZER){
         fuel_cell_pwm  = 0;
     }
