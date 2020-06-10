@@ -4,7 +4,7 @@ clear
 %% General model parameters %%
 T_sim = 10; %s
 R_load = 1e3; %Ohm
-R_LED_max = 75/4; %Ohm
+R_LED_max = 30; %Ohm
 P_max_SP = 0.5; %W
 P_max_LED = 12*0.16*4; %W
 rho_air = 1.225; %kg/m^3
@@ -16,7 +16,7 @@ n = 1000;
 k_m_t = 23.8e-3; 
 d_turbine = 0.15; %m
 J_wind = 5.245e-6 * 1000; %kgm^2
-omega_0 = 1000; %rpm
+omega_0 = 2000; %rpm
 lambda_opt = 2.8; %lambda = R*omega/V_w
 P_max_WT = 0.2; %W
 a_friction = 0;
