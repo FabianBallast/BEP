@@ -177,8 +177,8 @@ void controlValve(){
 void processControlValue(float control_value){
     if (control_value>0){
       fuel_cell_pwm = control_value;
-      if (electrolyzer_pwm>255)
-            electrolyzer_pwm = 255;
+      if (fuel_cell_pwm>255)
+            fuel_cell_pwm = 255;
 
       valveMillOpenFreq = 100; 
       controlValve();

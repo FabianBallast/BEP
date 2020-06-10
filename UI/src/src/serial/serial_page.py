@@ -15,8 +15,8 @@ class SerialPage(QtWidgets.QWidget):
         self.text_browser.setParent(self)
         
         self.last_data_box = last_data_box
-        self.last_data_box.setGeometry(QtCore.QRect(int(parent.width() * 0.50), int(parent.height() * 0.05),
-                                                   int(parent.width() * 0.90), int(parent.height() * 0.90)))
+        self.last_data_box.setGeometry(QtCore.QRect(int(parent.width() * 0.50), int(parent.height() * 0.0),
+                                                   int(parent.width() * 0.90), int(parent.height() * 1.0)))
         self.last_data_box.setParent(self)
         #self.last_data_box.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
         
