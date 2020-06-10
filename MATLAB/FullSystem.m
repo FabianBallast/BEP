@@ -4,7 +4,7 @@ clear
 %% General model parameters %%
 T_sim = 10; %s
 R_load = 1e3; %Ohm
-R_LED_max = 75/4; %Ohm
+R_LED_max = 30; %Ohm
 P_max_SP = 0.5; %W
 P_max_LED = 12*0.16*4; %W
 rho_air = 1.225; %kg/m^3
