@@ -27,7 +27,8 @@
 unsigned long curr_time, prev_time;
 float elapsedTime;
 
-byte wind_mosfet, H2Ref;
+byte wind_mosfet;
+byte H2Ref = 50;
 byte fanRef;
 
 float flowTot;

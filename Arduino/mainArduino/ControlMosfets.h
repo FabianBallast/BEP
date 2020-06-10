@@ -6,7 +6,7 @@
 #define TURIBNE_MOSFET_PIN      10
 #define VALVE_PIN               12
 
-#define valveOpenTime           50
+#define valveOpenTime           200
 
 #define MAX_READING_ELECTROLYZER   (2.0/5.0)*2014.0
 #define MIN_READING_ELECTROLYZER   (0.9/5.0)*2014.0
@@ -14,7 +14,7 @@
 
 bool valveOpen = false;
 unsigned long lastValveSwitch;
-int valveMillOpenFreq = 100;
+int valveMillOpenFreq = 1000;
 
 extern float elapsedTime;
 
@@ -76,7 +76,7 @@ void mosfets_setup(){
     pinMode(FUEL_CELL_MOSFET_PIN,    OUTPUT);
     pinMode(POWER_SUPPLY_MOSFET_PIN, OUTPUT);
     pinMode(TURIBNE_MOSFET_PIN,      OUTPUT);
-
+    pinMode(VALVE_PIN,               OUTPUT);
  
 
     analogWrite(ELECTROLYZER_MOSFET_PIN, 0);
@@ -162,12 +162,12 @@ float controlGridFlow(float grid_flow, float target_flow){
 
 void controlValve(){
         
-      if (!valveOpen && (lastValveSwitch - millis() > valveMillOpenFreq)){
+      if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenFreq)){
           valveOpen = true;
           lastValveSwitch = millis();
           digitalWrite(VALVE_PIN, HIGH);
       }
-      else if (valveOpen && (lastValveSwitch - millis() > valveOpenTime)){
+      else if (valveOpen && (millis() - lastValveSwitch> valveOpenTime)){
           valveOpen = false;
           lastValveSwitch = millis();
           digitalWrite(VALVE_PIN, LOW);
@@ -177,6 +177,7 @@ void controlValve(){
 void processControlValue(float control_value){
     if (control_value>0){
       fuel_cell_pwm = control_value;
+      electrolyzer_pwm = 0;
       if (fuel_cell_pwm>255)
             fuel_cell_pwm = 255;
 
@@ -184,9 +185,9 @@ void processControlValue(float control_value){
       controlValve();
            
     }
-    else if (control_value<0){
-      electrolyzer_pwm = map(abs(control_value),0,255,0, 24);
-
+    else if (control_value<=0){
+      electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
+      fuel_cell_pwm = 0;
       if (electrolyzer_pwm>24)
             electrolyzer_pwm = 24;
     }
@@ -194,15 +195,15 @@ void processControlValue(float control_value){
     // if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
     //   electrolyzer_pwm = 0;
     // }
-    if (fuel_cell_voltage<MIN_READING_ELECTROLYZER){
-        fuel_cell_pwm  = 0;
-    }
+//    if (fuel_cell_voltage<MIN_READING_ELECTROLYZER){
+//        fuel_cell_pwm  = 0;
+//    }
     
     if (electrolyzer_pwm>24)
         electrolyzer_pwm = 24;
 
-    fuel_cell_pwm = 0;
-    electrolyzer_pwm = 0;
+    //fuel_cell_pwm = 0;
+   // electrolyzer_pwm = 0;
 
     analogWrite(FUEL_CELL_MOSFET_PIN,   fuel_cell_pwm);
     analogWrite(ELECTROLYZER_MOSFET_PIN,electrolyzer_pwm);

@@ -58,8 +58,8 @@ class WindMPPT:
         
         self.current_error = current_voltage - target_voltage
         self.cum_error += self.current_error*elapsedTime
-        #if abs(self.cum_error)*Ki_wind > 100:
-        #    self.cum_error = np.sign(self.cum_error)*128/Ki_wind
+        if abs(self.cum_error)*Ki_wind > 255:
+            self.cum_error = np.sign(self.cum_error)*255/Ki_wind
         self.rate_error = (self.current_error - self.prev_error)/elapsedTime
         
         self.prev_time = newTime

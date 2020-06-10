@@ -64,7 +64,7 @@ class LogWriter():
             with open('UI/' + log_name, 'a', newline='') as file:
                 log_file = csv.writer(file)
                 data_t = np.array(self.data_matrix).T
-                self.printer.print(str(len(data_t)))
+                #self.printer.print(str(len(data_t)))
                 for i in range(len(data_t)):
                     log_file.writerow(data_t[i])
                     #self.n += 1
