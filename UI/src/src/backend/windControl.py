@@ -14,7 +14,7 @@ except ModuleNotFoundError:
 
 
 Kp_wind = 18
-Ki_wind = 0
+Ki_wind = 1
 Kd_wind = 0
 
 WIND_MOSFET_PIN = 24
@@ -40,7 +40,7 @@ class WindMPPT:
     def controlMPPT(self, readings):
         opt = self.findMPPT(readings['windU'], readings['fan'])
         wind_control_value, wind_duty_cycle = self.windPID(opt, readings['windU'])
-        self.pwm.ChangeDutyCycle(wind_duty_cycle)    
+        #self.pwm.ChangeDutyCycle(wind_duty_cycle)    
 
         return wind_control_value, wind_duty_cycle
     
