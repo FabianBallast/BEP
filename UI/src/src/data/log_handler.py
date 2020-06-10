@@ -44,6 +44,8 @@ class LogWriter():
                 value = data_write[i_key]
             else:
                 value = sensor_data[keys[i_key]]
+              #  if keys[i_key] =='windU' :
+               #     self.printer.print(str(value))
 
             #print(value)
             self.data_matrix[i_key].append(value)

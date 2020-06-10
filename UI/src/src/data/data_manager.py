@@ -156,16 +156,18 @@ class DataManager():
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
+        self.file.add_data_to_write(values, readings)
+
         self.last_data_box.update(readings)
         
         
         for handler in self.control_values_handlers:
             handler(values, readings)
         
+        
         self.send_sensor_readings(readings)
 
-        self.file.add_data_to_write(values, readings)
-        
+                
 
     def values_for_control(self):
         """Retrieve the values from the scenario/manual control."""
