@@ -30,23 +30,23 @@ class ToolBarTop(QtWidgets.QToolBar):
 
     def create_page_buttons(self):
         """Creates the different buttons used in the toolbar for moving to different pages."""
-        self.map_button = QtWidgets.QAction('Kaart')
+        self.map_button = QtWidgets.QAction('◉')
         self.map_button.setFont(self.toolbar_font)
         self.button_list.append(self.map_button)
 
-        self.graphs_button = QtWidgets.QAction('Geschiedenis')
+        self.graphs_button = QtWidgets.QAction('↝')
         self.graphs_button.setFont(self.toolbar_font)
         self.button_list.append(self.graphs_button)
 
-        self.scenario_button = QtWidgets.QAction("Scenario's")
+        self.scenario_button = QtWidgets.QAction("⇆")
         self.scenario_button.setFont(self.toolbar_font)
         self.button_list.append(self.scenario_button)
 
-        self.manual_control_button = QtWidgets.QAction("Handmatige Besturing")
+        self.manual_control_button = QtWidgets.QAction("↕")
         self.manual_control_button.setFont(self.toolbar_font)
         self.button_list.append(self.manual_control_button)
 
-        self.figure_button = QtWidgets.QAction("Systeem")
+        self.figure_button = QtWidgets.QAction("➤")
         self.figure_button.setFont(self.toolbar_font)
         self.button_list.append(self.figure_button)
     
@@ -59,7 +59,7 @@ class ToolBarTop(QtWidgets.QToolBar):
     
     def create_screen_button(self):
         """Creates the button to go to the second screen page."""
-        self.screen_button = QtWidgets.QAction('Tweede Scherm')
+        self.screen_button = QtWidgets.QAction('☆')
         self.screen_button.setFont(self.toolbar_font)
         self.button_list.append(self.screen_button)
     
@@ -76,7 +76,7 @@ class ToolBarTop(QtWidgets.QToolBar):
 
     def add_fixed_spacer(self, width):
         spacer = QtWidgets.QWidget(self)
-        spacer.setFixedWidth(int(width* 0.02))
+        spacer.setFixedWidth(int(width* 0.01))
         spacer.setStyleSheet("background-color: rgba(0,0,0,0)")
         self.addWidget(spacer)
     
@@ -119,7 +119,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
 
     def add_fixed_spacer(self, width):
         spacer = QtWidgets.QWidget(self, autoFillBackground=False)
-        spacer.setFixedWidth(int(width* 0.02))
+        spacer.setFixedWidth(int(width* 0.01))
         spacer.setStyleSheet("background-color: rgba(0,0,0,0)")
         self.addWidget(spacer)
 
@@ -188,7 +188,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
 
         self.addSpacer()
 
-        self.exit_button = QtWidgets.QAction('➥')
+        self.exit_button = QtWidgets.QAction('⊗')
         self.exit_button.setFont(self.toolbar_font)
         self.addAction(self.exit_button)
 
