@@ -2,6 +2,7 @@
 
 import csv
 import numpy as np
+from time import time
 
 headers = ['SolarRef (%)', 'WindRef (%) UI', 'LoadRef (%)', 'SolarU (V)','LoadI (mA)', 'WindU (V)',
                                     'Fuel cell U (V)', 'Fuel cell pwm (0-255)', 'ElectrolyzerU (V)', 'ElectrolyzerI (mA)','Electrolyzer pwm (0-255)',
@@ -18,13 +19,14 @@ class LogWriter():
     """This class writes data to the log-file."""
 
     def __init__(self):
+        log_name = 'log'+str(int(time()))+'.csv'
         try:
-            with open('UI/log.csv', 'w', newline='') as file:
+            with open('UI/' + log_name, 'w', newline='') as file:
                 log_file = csv.writer(file)
                 log_file.writerow(headers)
             #log_file = open('UI/log.txt', 'w')
         except FileNotFoundError:
-            with open('log.csv', 'w', newline='') as file:
+            with open(log_name, 'w', newline='') as file:
                 log_file = csv.writer(file)
                 log_file.writerow(headers)
 
