@@ -85,7 +85,7 @@ class ManualLayout(QtWidgets.QWidget):
         font.setBold(True)
         font.setWeight(75)
 
-        buttons = ['stop', 'purge']                         #pylint: disable=C0103 
+        buttons = ['stop']                         #pylint: disable=C0103 
         y_pos = [int(0.50 * height), int(0.61 * height)]
 
         for button in buttons:
@@ -109,8 +109,8 @@ class ManualLayout(QtWidgets.QWidget):
         if self.main_window.sender() == self.stop_button:
             self.data_manager.set_mode('stop', None)
 
-        elif self.main_window.sender() == self.purge_button:    
-            self.data_manager.purge_valve_manual()
+        # elif self.main_window.sender() == self.purge_button:    
+        #     self.data_manager.purge_valve_manual()
         else:
             self.data_manager.set_mode('manual', 
                                        [self.solar_power_slider.value(), 

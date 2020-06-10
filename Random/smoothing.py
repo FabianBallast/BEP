@@ -11,6 +11,9 @@ from tikzplotlib import save as tikz_save
 #xlabel('$x$-axis')
 #ylabel('$y$-axis')
 
+col1 = '#0042d6'
+col2 = '#4f7847'
+col3 = '#b76c00'
 
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
@@ -54,13 +57,13 @@ w *= f_s / (2 * pi)                      # Convert from rad/sample to Hz
 plt.subplot(2, 1, 1)
 #plt.suptitle('Bode Plot')
 plt.plot(w, 20 * np.log10(abs(h_sma)),   # Convert modulus to dB
-         color='#4472c4', label='SMA')
+         color=col1, label='SMA')
 plt.plot(w, 20 * np.log10(abs(h_ema)),
-         color='#ed7d31', label='EMA')
+         color=col2, label='EMA')
 plt.ylabel('Magnitude \n (dB)')
 plt.xlim(0, f_s / 2)
 plt.ylim(-60, 10)
-plt.axvline(f_c, color='#70ad47')
+plt.axvline(f_c, color=col3)
 plt.axhline(-3.01, linewidth=0.8, color='black', linestyle=':')
 plt.grid()
 plt.legend()
@@ -68,15 +71,15 @@ plt.legend()
 # Plot the phase response
 plt.subplot(2, 1, 2)
 plt.plot(w, 180 * np.angle(h_sma) / pi,  # Convert argument to degrees
-         color='#4472c4')
+         color=col1)
 plt.plot(w, 180 * np.angle(h_ema) / pi,
-         color='#ed7d31')
+         color=col2)
 plt.xlabel('Frequency \n (Hz)')
 plt.ylabel('Phase \n (°)')
 plt.xlim(0, f_s / 2)
 plt.ylim(-180, 90)
 plt.yticks([-180, -135, -90, -45, 0, 45, 90])
-plt.axvline(f_c, color='#70ad47')
+plt.axvline(f_c, color=col3)
 plt.grid()
 plt.savefig("bode.svg")
 plt.show()
@@ -86,9 +89,9 @@ t, y_sma = dimpulse((b_sma, a_sma, 1/f_s), n=2*N)
 t, y_ema = dimpulse((b_ema, a_ema, 1/f_s), n=2*N)
 #plt.suptitle('Impulse Response')
 plt.plot(t, y_sma[0], 'o-',
-         color='#4472c4', label='SMA')
+         color=col1, label='SMA')
 plt.plot(t, y_ema[0], 'o-',
-         color='#ed7d31', label='EMA')
+         color=col2, label='EMA')
 plt.xlabel('Time \n (seconds)')
 plt.ylabel('Output')
 plt.xlim(-1/f_s, 2*N/f_s)
@@ -101,9 +104,9 @@ t, y_sma = dstep((b_sma, a_sma, 1/f_s), n=2*N)
 t, y_ema = dstep((b_ema, a_ema, 1/f_s), n=2*N)
 #plt.suptitle('Step Response')
 plt.plot(t, y_sma[0], 'o-',
-         color='#4472c4', label='SMA')
+         color=col1, label='SMA')
 plt.plot(t, y_ema[0], 'o-',
-         color='#ed7d31', label='EMA')
+         color=col2, label='EMA')
 plt.xlabel('Time \n (seconds)')
 plt.ylabel('Output')
 plt.xlim(-1/f_s, 2*N/f_s)

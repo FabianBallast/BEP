@@ -14,9 +14,11 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 90
-Ki_wind = 50
-Kd_wind = 10
+Kp_grid = 90
+Ki_grid = 50
+Kd_grid = 10
+
+WIND_MOSFET_PIN = 24
 
 class WindMPPT:
 
@@ -32,10 +34,15 @@ class WindMPPT:
         self.prev_time = time.time()
         self.prev_error = 0
         
+        IO.setmode(IO.BCM)
+        IO.setup(WIND_MOSFET_PIN, IO.OUT)
+        self.pwm = IO.PWM(WIND_MOSFET_PIN, 100)
+        self.pwm.start(100)
 
     def controlMPPT(self, readings):
         opt = self.findMPPT(readings['windU'], readings['fan'])
         wind_control_value, wind_duty_cycle = self.windPID(opt, readings['windU'])
+        #self.pwm.ChangeDutyCycle(wind_duty_cycle)    
 
         return wind_control_value, wind_duty_cycle
     

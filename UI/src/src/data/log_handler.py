@@ -6,13 +6,13 @@ from time import time
 
 headers = ['SolarRef (%)', 'WindRef (%) UI', 'LoadRef (%)', 'SolarU (V)','LoadI (mA)', 'WindU (V)',
                                     'Fuel cell U (V)', 'Fuel cell pwm (0-255)', 'ElectrolyzerU (V)', 'ElectrolyzerI (mA)','Electrolyzer pwm (0-255)',
-                                    'gridU (V)','H2 pwm (0-255)', 'looptime (ms)','fanRaw (%) dimmer', 'wind pwm (0-255)',  'mismatch flow (-)',
-                                    'zon flow (-)', 'wind flow (-)', 'fuel cell flow (-)', 'Tanklevel (mL)', 't (s)']
+                                    'gridU (V)','H2 pwm (0-255)', 'looptime (ms)','fanRaw (%) dimmer', 'wind pwm (0-255)',  'Total current multiplier (mA)',
+                                    'zon power (W)', 'wind power (W)', 'fuel cell flow (-)', 'Tanklevel (mL)', 't (s)']
 
 keys = ['-', '-', '-', 'zonU', 'loadI', 'windU', 'FC_U', 'FC_Y', 'EL_U', 'EL_I', 'EL_Y', 'gridU', 'gridX', 'loopT', 'fan', 'windY',
-        'flowTot', 'zonFlow','windFlow', 'FC_flow', 'tank_level', 'time']
+        'curr_to_add', 'zonPower','windPower', 'loadPower', 'tank_level', 'time']
 
-log_name = 'log'+str(int(time()))+'.csv'
+log_name = 'logFiles/log'+str(int(time()))+'.csv'
 
 assert len(headers)==len(keys)
 
