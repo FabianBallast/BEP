@@ -1,6 +1,7 @@
 """This class handles the sensor for reading the tank level."""
 
 import time
+import numpy as np
 try:
     import board
 except NotImplementedError:
@@ -13,9 +14,9 @@ except ModuleNotFoundError:
     from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
-Kp_wind = 18
-Ki_wind = 1
-Kd_wind = 0
+Kp_wind = 90
+Ki_wind = 50
+Kd_wind = 10
 
 WIND_MOSFET_PIN = 24
 
@@ -31,6 +32,7 @@ class WindMPPT:
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
         self.prev_time = time.time()
+        self.prev_error = 0
         
         IO.setmode(IO.BCM)
         IO.setup(WIND_MOSFET_PIN, IO.OUT)
@@ -56,9 +58,12 @@ class WindMPPT:
         
         self.current_error = current_voltage - target_voltage
         self.cum_error += self.current_error*elapsedTime
-        self.rate_error = (self.current_error - self.prev_time)/elapsedTime
+        #if abs(self.cum_error)*Ki_wind > 100:
+        #    self.cum_error = np.sign(self.cum_error)*128/Ki_wind
+        self.rate_error = (self.current_error - self.prev_error)/elapsedTime
         
         self.prev_time = newTime
+        self.prev_error = self.current_error
 
         wind_control_value = 128 + Kp_wind* self.current_error +  Ki_wind* self.cum_error + Kd_wind* self.rate_error
         

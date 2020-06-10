@@ -54,7 +54,7 @@ void setup() {
 
 
 void loop() {
-  analogWrite(7, 255);
+  analogWrite(7, 0);   ///change later
   
   if (comm_read()){ // data received, handle accordingly
     

@@ -12,14 +12,16 @@ headers = ['SolarRef (%)', 'WindRef (%) UI', 'LoadRef (%)', 'SolarU (V)','LoadI 
 keys = ['-', '-', '-', 'zonU', 'loadI', 'windU', 'FC_U', 'FC_Y', 'EL_U', 'EL_I', 'EL_Y', 'gridU', 'gridX', 'loopT', 'fan', 'windY',
         'flowTot', 'zonFlow','windFlow', 'FC_flow', 'tank_level', 'time']
 
+log_name = 'log'+str(int(time()))+'.csv'
 
 assert len(headers)==len(keys)
 
 class LogWriter():
     """This class writes data to the log-file."""
 
-    def __init__(self):
-        log_name = 'log'+str(int(time()))+'.csv'
+    def __init__(self, printer):
+        self.printer = printer
+
         try:
             with open('UI/' + log_name, 'w', newline='') as file:
                 log_file = csv.writer(file)
@@ -30,7 +32,7 @@ class LogWriter():
                 log_file = csv.writer(file)
                 log_file.writerow(headers)
 
-        self.max_length = 1000
+        self.max_length = 100
         self.n = 1
         self.data_matrix = [[] for i in range(len(headers))]
        
@@ -51,26 +53,28 @@ class LogWriter():
         if len(self.data_matrix[0]) >= self.max_length:
             self.write()
 
-            self.data_matrix = [[]]*len(headers)
+            self.data_matrix = [[] for i in range(len(headers))]
         
     def write(self):
         """Write data to the file."""
-
+        self.printer.print('Data opgeslagen' )
         try: 
-            with open('UI/log.csv', 'a', newline='') as file:
+            with open('UI/' + log_name, 'a', newline='') as file:
                 log_file = csv.writer(file)
                 data_t = np.array(self.data_matrix).T
+                self.printer.print(str(len(data_t)))
                 for i in range(len(data_t)):
                     log_file.writerow(data_t[i])
                     #self.n += 1
         
         except FileNotFoundError:
-            with open('log.csv', 'a', newline='') as file:
+            with open(log_name, 'a', newline='') as file:
                 log_file = csv.writer(file)
                 data_t = np.array(self.data_matrix).T
                 for i in range(len(data_t)):
                     log_file.writerow(data_t[i])
-          
+        
+        self.data_matrix = [[]]*len(headers)
     
     def close(self):
         """When closed, the last data should still be written to the file."""

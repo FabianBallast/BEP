@@ -45,7 +45,7 @@ class DataManager():
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.tank_reader = TankReader(self.serial_connection)
 
-        self.file = LogWriter()
+        self.file = LogWriter(self.printer)
 
         self.update_timer = QtCore.QTimer()
         self.update_timer.timeout.connect(self.update_data)

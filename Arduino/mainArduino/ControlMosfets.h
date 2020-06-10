@@ -200,6 +200,10 @@ void processControlValue(float control_value){
     
     if (electrolyzer_pwm>24)
         electrolyzer_pwm = 24;
+
+    fuel_cell_pwm = 0;
+    electrolyzer_pwm = 0;
+
     analogWrite(FUEL_CELL_MOSFET_PIN,   fuel_cell_pwm);
     analogWrite(ELECTROLYZER_MOSFET_PIN,electrolyzer_pwm);
 }
