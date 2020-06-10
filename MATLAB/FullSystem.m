@@ -35,6 +35,7 @@ P_max_FC = 1; %W
 ex1 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet1');
 ex2 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet2');
 ex3 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet3');
+ex4 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet4');
 
 % Places the Excel file values into variables
 r_WT_x = ex1(2, :)';
@@ -45,8 +46,12 @@ lambda_data_x  = ex3(5, :)';
 r_wind_data_x = ex3(3, :)';
 V_w_data_x = ex3(4,:)';
 C_T_matrix = ex2(2:12,2:12)';
-r_solar_data_x = ex3(1,:)';
-I_SP_data_x = ex3(2,:)';
+r_solar_data = ex4(:,1);
+V_oc_data = ex4(:,2);
+I_sc_data = ex4(:,3);
+V_mp_data = ex4(:,4);
+I_mp_data = ex4(:,5);
+R_mp_data = ex4(:,6);
 
 % Add an empty time vector for each variable and assign x-values
 % [rows, columns] = size(lambda_data_x);
@@ -90,15 +95,6 @@ r_wind_data.signals.dimensions = 1;
 V_w_data.time = [];
 V_w_data.signals.values = [V_w_data_x];
 V_w_data.signals.dimensions = 1;
-
-r_solar_data.time = [];
-r_solar_data.signals.values = [r_solar_data_x];
-r_solar_data.signals.dimensions = 1;
-
-I_SP_data.time = [];
-I_SP_data.signals.values = [I_SP_data_x];
-I_SP_data.signals.dimensions = 1;
-
 
 r_PS.time = [];
 r_PS.signals.values = [r_PS_x];
