@@ -1,3 +1,6 @@
+clc
+clear
+
 %% General model parameters %%
 T_sim = 10; %s
 R_load = 1e3; %Ohm
@@ -41,26 +44,26 @@ r_PS_x = ex1(5,:)';
 lambda_data_x  = ex3(5, :)';
 r_wind_data_x = ex3(3, :)';
 V_w_data_x = ex3(4,:)';
-C_T_matrix = ex2(2:12,2:21)';
+C_T_matrix = ex2(2:12,2:12)';
 r_solar_data_x = ex3(1,:)';
 I_SP_data_x = ex3(2,:)';
 
 % Add an empty time vector for each variable and assign x-values
-[rows, columns] = size(lambda_data_x);
-
-for row = 1 : rows
-   if isnan(lambda_data_x(rows - row + 1, 1))
-       lambda_data_x(rows - row + 1, :) = [];
-   end
-   
-   if isnan(V_w_data_x(rows - row + 1, 1))
-       V_w_data_x(rows - row + 1, :) = [];
-   end
-   
-   if isnan(r_wind_data_x(rows - row + 1, 1))
-       r_wind_data_x(rows - row + 1, :) = [];
-   end
-end
+% [rows, columns] = size(lambda_data_x);
+% 
+% for row = 1 : rows
+%    if isnan(lambda_data_x(rows - row + 1, 1))
+%        lambda_data_x(rows - row + 1, :) = [];
+%    end
+%    
+%    if isnan(V_w_data_x(rows - row + 1, 1))
+%        V_w_data_x(rows - row + 1, :) = [];
+%    end
+%    
+%    if isnan(r_wind_data_x(rows - row + 1, 1))
+%        r_wind_data_x(rows - row + 1, :) = [];
+%    end
+% end
 
 step_size = T_sim/n;%s
 
