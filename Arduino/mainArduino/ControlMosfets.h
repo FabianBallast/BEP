@@ -176,17 +176,19 @@ void controlValve(){
 
 void processControlValue(float control_value){
     if (control_value>0){
-      //fuel_cell_pwm = map(control_value,..., ...., ...,...);
-      fuel_cell_pwm = 255;
+      fuel_cell_pwm = control_value;
+      if (electrolyzer_pwm>255)
+            electrolyzer_pwm = 255;
 
-     valveMillOpenFreq = 100; //map(fuel_cell_pwm,0,255,100, 0);
-     controlValve();
-     
-      
+      valveMillOpenFreq = 100; 
+      controlValve();
+           
     }
     else if (control_value<0){
-      //electrolyzer_pwm = map(..., ...., ...,...);
-      electrolyzer_pwm = 255;
+      electrolyzer_pwm = map(abs(control_value),0,255,0, 24);
+
+      if (electrolyzer_pwm>24)
+            electrolyzer_pwm = 24;
     }
 
     if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){
@@ -196,6 +198,8 @@ void processControlValue(float control_value){
         fuel_cell_pwm  = 0;
     }
     
+    if (electrolyzer_pwm>24)
+        electrolyzer_pwm = 24;
     analogWrite(FUEL_CELL_MOSFET_PIN,   fuel_cell_pwm);
     analogWrite(ELECTROLYZER_MOSFET_PIN,electrolyzer_pwm);
 }

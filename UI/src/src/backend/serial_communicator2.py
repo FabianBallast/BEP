@@ -54,6 +54,7 @@ class SerialCommunicator:
                 gridX = 2,
                 loopT = 2,
                 PS_I = 2,
+                windY = 2,
                 fan = 2)
            
         self.all_received_data = ""
