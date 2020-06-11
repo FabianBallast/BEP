@@ -12,9 +12,9 @@ from ..serial.serial_page import SerialRaw
 from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
 import numpy as np
 
-MULTIPLIER_SOLAR      = 60
-MULTIPLIER_WIND       = 35
-MULTIPLIER_FUEL_CELL  = 28
+MULTIPLIER_SOLAR      = 3
+MULTIPLIER_WIND       = 24
+MULTIPLIER_FUEL_CELL  = 0
 
 
 def current_to_add(readings):
