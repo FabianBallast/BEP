@@ -13,6 +13,8 @@ from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPow
 import numpy as np
 
 MULTIPLIER_SOLAR      = 20
+
+
 MULTIPLIER_WIND       = 24
 MULTIPLIER_FUEL_CELL  = 0
 
