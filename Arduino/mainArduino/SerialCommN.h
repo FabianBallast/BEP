@@ -1,4 +1,4 @@
-#define COMM_SIZE_A 3
+#define COMM_SIZE_A 4
 #define COMM_SIZE_P 13
 
 
@@ -7,15 +7,15 @@ extern float current_ledload, current_electrolyzer, current_power_supply, curren
 extern float elapsedTime;
 extern float current_to_add;
 //extern byte turbine_pwm;
-extern int electrolyzer_pwm;
-extern int fuel_cell_pwm;
+extern byte electrolyzer_pwm;
+extern byte fuel_cell_pwm;
 extern float wind_voltage;
 extern float grid_voltage;
 
 int i_send = -1;
 
 extern byte wind_mosfet;
-extern int H2Ref;
+extern float grid_control_value;
 //extern float flowTot;
 extern bool valveOpen;
 
@@ -62,7 +62,7 @@ void comm_send(){
       Serial.print(", \"gridU\":");         Serial.print(grid_voltage);   
       break;
     case 10:
-      Serial.print(", \"H2ref\":");   Serial.print(H2Ref);
+      Serial.print(", \"gridX\":");   Serial.print(grid_control_value);
       break;
     case 11:
       Serial.print(", \"loopT\":");            Serial.print(elapsedTime);

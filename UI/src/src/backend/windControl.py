@@ -2,7 +2,16 @@
 
 import time
 import numpy as np
+try:
+    import board
+except NotImplementedError:
+    from ..dummy import dummy_board as board                            #pylint: disable=relative-beyond-top-level
 
+try:
+    import RPi.GPIO as IO
+except ModuleNotFoundError:
+    print("using dummy gpio")
+    from ..dummy import dummy_io as IO                      #pylint: disable=relative-beyond-top-level
 
 
 Kp_wind = 90
@@ -12,8 +21,11 @@ Kd_wind = 10
 class WindMPPT:
 
 
-    def __init__(self):
-        self.current_wind_voltage = 0   
+    """This class represents the sensor."""
+    def __init__(self, N_FILTER=30):
+        self.current_wind_voltage = 0
+        
+        self.N_FILTER = N_FILTER     
         self.current_error = 0
         self.prev_error = 0
         self.cum_error = 0                               #pylint: disable=invalid-name
@@ -61,5 +73,6 @@ class WindMPPT:
 
 if __name__ == '__main__':
     mppt = WindMPPT()
+    mppt.pwm.ChangeDutyCycle(0)
     time.sleep(10)
     
