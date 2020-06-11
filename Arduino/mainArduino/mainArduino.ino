@@ -28,11 +28,11 @@ unsigned long curr_time, prev_time;
 float elapsedTime;
 
 byte wind_mosfet;
-byte H2Ref = 50;
+int H2Ref = 0;
 byte fanRef;
 float current_to_add;
 
-float grid_control_value;
+// float grid_control_value;
 
 //float opt_wind_current = 10;
 
@@ -61,10 +61,9 @@ void loop() {
   if (comm_read()){ // data received, handle accordingly
     
     fanRef = comm_received[0];
-    H2Ref = comm_received[1];
+    H2Ref = (int)comm_received[1] - 128;
     set_fan_power(fanRef);
     wind_mosfet = comm_received[2];
-    current_to_add = comm_received[3] *2;
     analogWrite(TURIBNE_MOSFET_PIN, wind_mosfet);
 
     /// TODO add turn off possiblity for fuel cell + electrolyzer
@@ -85,9 +84,9 @@ void loop() {
   //mismatch = tot_curr - current_electrolyzer - current_ledload;
   read_ammeters();
   read_ammeters();
-  grid_control_value = controlGridCurrent(current_to_add);
+  
   //grid_control_value = H2Ref - 50; ///delete later
-  processControlValue(grid_control_value);
+  processControlValue(H2Ref);
 //  controlWind(opt_wind_current);
 
   
