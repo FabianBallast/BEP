@@ -4,7 +4,7 @@ import time
 
 
 
-Kp_grid = 20
+Kp_grid = 70
 Ki_grid = 0
 Kd_grid = 0
 
