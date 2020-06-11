@@ -175,17 +175,18 @@ void controlValve(){
 
 void processControlValue(int control_value){
     if (control_value>1){
-      fuel_cell_pwm = control_value;
+      //fuel_cell_pwm = control_value;
       //fuel_cell_pwm = (byte)255;
+      fuel_cell_pwm = 100;
       electrolyzer_pwm = 0;
 
       valveMillOpenFreq = 1000; 
-      controlValve();
+    //  controlValve();
            
     }
     else if (control_value<-1){
-     // electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
-      electrolyzer_pwm = 24;
+      electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
+     // electrolyzer_pwm = 24;
       fuel_cell_pwm = 0;
     }
     else{

@@ -12,8 +12,8 @@ from ..serial.serial_page import SerialRaw
 from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
 import numpy as np
 
-MULTIPLIER_SOLAR      = 12
-MULTIPLIER_WIND       = 16
+MULTIPLIER_SOLAR      = 60
+MULTIPLIER_WIND       = 35
 MULTIPLIER_FUEL_CELL  = 28
 
 
@@ -24,6 +24,13 @@ def current_to_add(readings):
         curr_to_add = power_to_add/volt
         return curr_to_add
 
+
+def current_mismatch(readings):
+        power_to_add = readings['zonPower'] * (MULTIPLIER_SOLAR) + readings['windPower'] * (MULTIPLIER_WIND) - readings['loadPower'] #+ current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1)
+        volt = readings['gridU']
+        if volt < 1: volt = 12
+        curr_to_add = power_to_add/volt
+        return curr_to_add
 
 class DataManager():
     """This class contains all data."""
@@ -149,16 +156,16 @@ class DataManager():
         readings['windPower'] = convertWindToPower(readings['fan'], readings['windU'])
         readings['loadPower'] = readings['gridU']*readings['loadI']
 
-        readings['curr_to_add'] = current_to_add(readings)
+        readings['curr_to_add'] = current_mismatch(readings)
         readings['h2_control_value'] = self.gridPID.controlPSmultiply(readings)
 
-        h2ref = 0
-        # h2ref = readings['h2_control_value']+128
+        #h2ref = 0
+        h2ref = readings['h2_control_value']+128
         
-        if len(values)>3:
-            h2ref = (values[3] - 50) + 128
-        else:
-            h2ref = 0
+        #if len(values)>3:
+        #    h2ref = (values[3] - 50) + 128
+        #else:
+        #    h2ref = 0
 
         # readings['zonFlow'] = readings['zonU']*20
         # readings['windFlow']= readings['windU']*0.3

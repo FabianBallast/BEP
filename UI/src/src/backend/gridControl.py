@@ -4,7 +4,7 @@ import time
 
 
 
-Kp_grid = 0.90
+Kp_grid = 20
 Ki_grid = 0
 Kd_grid = 0
 
@@ -20,7 +20,8 @@ class gridControlMultiply:
         
     def controlPSmultiply(self, readings):
         current_to_add_target = readings['curr_to_add']
-        grid_control_value = self.gridPID(current_to_add_target, readings['PS_I'])
+        grid_control_value = -current_to_add_target/20
+        #grid_control_value = self.gridPID(current_to_add_target, readings['PS_I'])
 
         return grid_control_value
     

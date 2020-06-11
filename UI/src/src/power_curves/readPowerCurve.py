@@ -17,7 +17,7 @@ def convertSolarToPower (zonRef, U):
     if x_index < 0: x_index = 0
 
     power = solar_pc.values[y_index, x_index]
-    return power
+    return power*1000
 
 
 def convertWindToPower (windRef, U):

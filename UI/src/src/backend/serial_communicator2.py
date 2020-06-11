@@ -18,8 +18,8 @@ class SerialCommunicator:
     
     def __init__(self, printer):
         try:
-            #self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0)
-            self.ser = serial.Serial('COM6', 9600, timeout=0)
+            self.ser = serial.Serial('/dev/ttyACM1', 9600, timeout=0)
+#            self.ser = serial.Serial('COM6', 9600, timeout=0)
             self.NO_CONNECTION = ""
             printer.print("Arduino verbonden")
         except serial.serialutil.SerialException:
