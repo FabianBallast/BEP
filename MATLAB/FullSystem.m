@@ -28,8 +28,8 @@ R_motor = 22.222; %Ohm
 % Hydrogen parameters %
 max_tank_capacity = 80e-9; %m^3
 d_tank = 0.07; %m
-P_max_EL = 3; %W
-P_max_FC = 1; %W
+P_max_EL = 4/3.2; %W
+P_max_FC = 4; %W
 
 %% Excel variables %%
 ex1 = xlsread('..\MATLAB\FullSystemData_TEST.xlsx','Sheet1');
