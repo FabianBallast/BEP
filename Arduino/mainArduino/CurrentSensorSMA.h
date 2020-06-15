@@ -1,4 +1,4 @@
-#define filter_numReadings 100   //max = 63, see below
+#define filter_numReadings 80   //max = 63, see below
 #define corr_factor (5/1024)/filter_numReadings
 #define sampleTime 3
 #define discardNloops 3
@@ -10,8 +10,8 @@
 //const int amm_pin_power_supply = A5;
 //const int amm_pin_fuel_cell = A6;
 
-float zero_load_min = 500.0*filter_numReadings; 
-float zero_load_max = 550.0*filter_numReadings; 
+float zero_load_min = 400.0*filter_numReadings; 
+float zero_load_max = 800.0*filter_numReadings; 
 
 
 //#define sensitivity_1 -11.5   / filter_numReadings; 

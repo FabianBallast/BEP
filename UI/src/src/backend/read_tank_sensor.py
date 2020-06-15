@@ -65,7 +65,7 @@ def plot_tank_level(i):                         #pylint: disable=unused-argument
     ax1.plot(volume_data)
 
 if __name__ == '__main__':
-    h2_tank = TankReader()
+    h2_tank = TankReader(" " )
     
     volume_data = []
     
