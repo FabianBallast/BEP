@@ -41,6 +41,7 @@ class DataManager():
         self.last_mode = ''
         self.scenario = ''
         self.manual = [0, 0, 0]
+        self.h2_slide = None
 
         self.solar_val = 0
         self.wind_val = 0
@@ -70,6 +71,7 @@ class DataManager():
         self.loads = Loads(self.printer)
         self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.tank_reader = TankReader(self.serial_connection)
+
 
         self.file = LogWriter(self.printer)
 
@@ -161,6 +163,10 @@ class DataManager():
         readings['curr_to_add'] = current_mismatch(readings)
         readings['h2_control_value'] = self.gridPID.controlPSmultiply(readings)
 
+        self.control_value = readings['h2_control_value']
+
+        if self.h2_slide:
+            self.h2_slide.setValue(readings['h2_control_value'])
         #h2ref = 0
         h2ref = readings['h2_control_value']+128
         
