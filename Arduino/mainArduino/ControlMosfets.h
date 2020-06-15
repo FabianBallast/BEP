@@ -181,7 +181,7 @@ void processControlValue(int control_value){
       electrolyzer_pwm = 0;
 
       valveMillOpenFreq = 1000; 
-    //  controlValve();
+      controlValve();
            
     }
     else if (control_value<-1){
