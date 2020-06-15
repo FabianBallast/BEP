@@ -178,12 +178,14 @@ class System(QtWidgets.QWidget):
     def setArrow(self, arrowIndex, val):
         self.arrows[arrowIndex].setStyle(tipAngle=60, tailLen=20*val,tailWidth=10*val, headLen=20*val, pen=None, brush='fc0303')
 
+
+
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        solar = sensor_data.get('zonPower')
-        wind = sensor_data.get('windPower')
-        load = sensor_data.get('loadPower')
-        elek = solar + wind - load  +sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
+        solar = sensor_data.get('zonPower')/1000
+        wind = sensor_data.get('windPower')/1000
+        load = sensor_data.get('loadPower')/1000
+        elek = sensor_data.get('h2_control_value')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
 
         tank = sensor_data.get('tank_level')
         
@@ -201,15 +203,15 @@ class System(QtWidgets.QWidget):
             self.arrows[self.arrow_fuelcell].hide()
             self.arrows[self.arrow_electrolyzer].show()
 
-            self.setArrow(self.arrow_electrolyzer, abs(elek))
-            self.setArrow(self.arrow_ledloads, abs(load))
+            self.setArrow(self.arrow_electrolyzer, int(abs(elek)))
+            self.setArrow(self.arrow_ledloads, int(abs(load)*10))
 
         elif elek<0:
             self.arrows[self.arrow_electrolyzer].hide()
             self.arrows[self.arrow_fuelcell].show()
 
-            self.setArrow(self.arrow_fuelcell, abs(elek))
-            self.setArrow(self.arrow_ledloads, abs(solar+wind))
+            self.setArrow(self.arrow_fuelcell, int(abs(elek)*1))
+            self.setArrow(self.arrow_ledloads, int(abs(solar+wind)*10))
         
         
         

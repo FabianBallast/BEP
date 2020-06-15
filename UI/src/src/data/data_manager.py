@@ -12,11 +12,8 @@ from ..serial.serial_page import SerialRaw
 from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
 import numpy as np
 
-MULTIPLIER_SOLAR      = 20
-
-
+MULTIPLIER_SOLAR      = 40
 MULTIPLIER_WIND       = 24
-MULTIPLIER_FUEL_CELL  = 0
 
 
 def current_to_add(readings):
@@ -166,7 +163,7 @@ class DataManager():
         self.control_value = readings['h2_control_value']
 
         if self.h2_slide:
-            self.h2_slide.setValue(readings['h2_control_value'])
+            self.h2_slide.setValue(-readings['h2_control_value'])
         #h2ref = 0
         h2ref = readings['h2_control_value']+128
         

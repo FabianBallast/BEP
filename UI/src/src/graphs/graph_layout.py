@@ -3,10 +3,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
 
-MAX_TANK = 80
-MAX_SOLAR = 400
-MAX_WIND  = 80
-MAX_LOAD = 500
+MAX_TANK = 80    /100
+MAX_SOLAR = 70  /100
+MAX_WIND  = 150  /100
+MAX_LOAD = 4200 /100
 
 class GraphLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
