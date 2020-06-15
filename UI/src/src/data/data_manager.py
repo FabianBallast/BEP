@@ -15,6 +15,9 @@ import numpy as np
 MULTIPLIER_SOLAR      = 40
 MULTIPLIER_WIND       = 24
 
+MAX_SOLAR = 70  /100
+MAX_WIND  = 150  /100
+MAX_LOAD = 4200 /100
 
 def current_to_add(readings):
         power_to_add = readings['zonPower'] * (MULTIPLIER_SOLAR - 1) + readings['windPower'] * (MULTIPLIER_WIND - 1) #+ current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1)
@@ -162,8 +165,7 @@ class DataManager():
 
         self.control_value = readings['h2_control_value']
 
-        if self.h2_slide:
-            self.h2_slide.setValue(-readings['h2_control_value'])
+       
         #h2ref = 0
         h2ref = readings['h2_control_value']+128
         
@@ -207,7 +209,15 @@ class DataManager():
 
         self.last_data_box.update(readings)
         
-        
+
+        readings['zonPC']  = readings['zonPower'] / MAX_SOLAR
+        readings['windPC'] = readings['windPower'] / MAX_WIND 
+        readings['loadPC'] = readings['loadPower'] / MAX_LOAD
+        readings['H2_PC'] = readings['h2_control_value'] *100/ 24
+
+        if self.h2_slide:
+            self.h2_slide.setValue(-readings['H2_PC'])
+
         for handler in self.control_values_handlers:
             handler(values, readings)
         

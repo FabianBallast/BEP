@@ -4,9 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
 
 MAX_TANK = 80    /100
-MAX_SOLAR = 70  /100
-MAX_WIND  = 150  /100
-MAX_LOAD = 4200 /100
+
 
 class GraphLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
@@ -121,9 +119,9 @@ class GraphLayout(QtWidgets.QWidget):
             
         
         self.x_curr.append(readings['time'])
-        self.solar.append(readings['zonPower'] / MAX_SOLAR)  
-        self.wind.append(readings['windPower'] / MAX_WIND )  
-        self.demand.append(readings['loadPower'] / MAX_LOAD) 
+        self.solar.append(readings['zonPC'])  
+        self.wind.append(readings['windPC'])  
+        self.demand.append(readings['loadPC']) 
         self.storage.append(readings['tank_level'] /  MAX_TANK)
 
         self.solar_graph.setData(self.x_curr, self.solar)

@@ -101,7 +101,7 @@ class ManualLayout(QtWidgets.QWidget):
         overhead3.setBackground('w')
         
         self.h2_slide = QtWidgets.QSlider(self)
-        self.h2_slide.setRange(-24,24)
+        self.h2_slide.setRange(-100,100)
         self.h2_slide.setOrientation(QtCore.Qt.Vertical)
         self.h2_slide.setGeometry(int(width * 0.8), y_pos[1],wid[0], hei[1])
         self.h2_slide.setStyleSheet("""QSlider {background-color: rgba(255, 255, 255, 0)}

@@ -182,18 +182,18 @@ class System(QtWidgets.QWidget):
 
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        solar = sensor_data.get('zonPower')/1000
-        wind = sensor_data.get('windPower')/1000
-        load = sensor_data.get('loadPower')/1000
-        elek = sensor_data.get('h2_control_value')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
-
+        solar = sensor_data.get('zonPC')
+        wind = sensor_data.get('windPC')
+        load = sensor_data.get('loadPC')
+        elek = sensor_data.get('H2_PC')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
+        
         tank = sensor_data.get('tank_level')
         
-        self.source_figures_curr.setText(f"{solar:.2f} \n{wind:.2f} ")
-        self.source_figures_per.setText(f"{input_data[0]:.1f}%\n{input_data[1]:.1f}%")
-        self.hydrogen_figures.setText(f"{elek:.2f} \n{tank:.2f}%")
-        self.load_figures_curr.setText(f"{load:.2f} \n0.00 ")
-        self.load_figures_per.setText(f"{input_data[2]:.1f}%\n0.0%")
+        self.source_figures_curr.setText(f"{solar:.2f} %\n{wind:.2f} %")
+        self.source_figures_per.setText(f"{input_data[0]:.1f} %\n{input_data[1]:.1f} %")
+        self.hydrogen_figures.setText(f"{elek:.2f} %\n{tank:.2f} mL")
+        self.load_figures_curr.setText(f"{load:.2f} % \n  ")
+        self.load_figures_per.setText(f"{input_data[2]:.1f}%\n ")
         
         # self.update_i+=1
         # if self.update_i > 10:
