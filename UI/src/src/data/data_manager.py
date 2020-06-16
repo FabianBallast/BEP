@@ -94,6 +94,7 @@ class DataManager():
             self.scenario = mode_details
             self.time_running.restart()
         elif mode == 'stop':
+            ##UPDATE DATA
             pass
         else:
             raise ValueError(f"Mode should be either 'manual', 'scenario' or 'stop',"
@@ -207,7 +208,7 @@ class DataManager():
         readings['time'] = self.time_running.elapsed() / 1000
         self.file.add_data_to_write(values, readings)
 
-        self.last_data_box.update(readings)
+        
         
 
         readings['zonPC']  = readings['zonPower'] / MAX_SOLAR
@@ -215,6 +216,19 @@ class DataManager():
         readings['loadPC'] = readings['loadPower'] / MAX_LOAD
         readings['H2_PC'] = readings['h2_control_value'] *100/ 24
 
+        if readings['zonPC']>100: readings['zonPC']=100
+        elif readings['zonPC']<0: readings['zonPC']=0
+        if readings['windPC']>100: readings['windPC']=100
+        elif readings['windPC']<0: readings['windPC']=0
+        if readings['loadPC']>100: readings['loadPC']=100
+        elif readings['loadPC']<0: readings['loadPC']=0
+        if readings['H2_PC']>100: readings['H2_PC']=100
+        elif readings['H2_PC']<-100: readings['H2_PC']=-100
+
+
+
+
+        self.last_data_box.update(readings)
         if self.h2_slide:
             self.h2_slide.setValue(-readings['H2_PC'])
 

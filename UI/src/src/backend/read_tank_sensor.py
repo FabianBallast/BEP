@@ -24,6 +24,7 @@ class TankReader:
             self.sensor = sensor
             serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
         except ModuleNotFoundError:
+            from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor  
             serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
         

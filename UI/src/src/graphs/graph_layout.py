@@ -59,19 +59,34 @@ class GraphLayout(QtWidgets.QWidget):
 
         self.graph = pg.PlotWidget(self) 
         self.graph.showGrid(x=True, y=True, alpha=1)
-        self.graph.getPlotItem().getAxis('left').setPen('w')
-        self.graph.getPlotItem().getAxis('bottom').setPen('w')
+
+        xaxis = self.graph.getPlotItem().getAxis('bottom')
+        yaxis = self.graph.getPlotItem().getAxis('left')
+        xaxis.setPen('w')
+        yaxis.setPen('w')
+        font=QtGui.QFont()
+        font.setPixelSize(25)
+        xaxis.tickFont = font
+        yaxis.tickFont = font
+        xaxis.setStyle(tickTextWidth=70, tickTextHeight=40, tickTextOffset = 40)
+        yaxis.setStyle(tickTextWidth =100, tickTextHeight=100, tickTextOffset = 40)
+
         if screen_number == 1:
-            self.graph.setGeometry(QtCore.QRect(0, int(height * 0.015), 
+            self.graph.setGeometry(QtCore.QRect(int(width * 0.01), int(height * 0.015), 
                                                 int(width * 0.775), int(height * 0.95)))
         else:
-            self.graph.setGeometry(QtCore.QRect(0, int(height * 0.015), 
+            self.graph.setGeometry(QtCore.QRect(int(width * 0.01), int(height * 0.015), 
                                                 int(width * 0.95), int(height * 0.975)))
         #self.graph.enableAutoRange('y', False)
         self.graph.enableAutoRange('x', True)
-        self.graph.setYRange(0, 104)
+        self.graph.setYRange(0, 104, padding=0)
+
         self.graph.setBackground(None)
-        self.graph.addLegend(size=(int(width * 0.14), int(height * 0.20)), offset=(-1, 1))
+        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.80)), offset=(-1, 1))
+
+        self.graph.setLabel('left', "<span style=\"color:white;font-size:30px\">%</span>")
+        self.graph.setLabel('bottom', "<span style=\"color:white;font-size:30px\">Time (s)</span>")
+        #self.graph.set
 
         for i in range(len(self.mode)):
             pen = f"""pg.mkPen(color=({self.colors[i] + ', ' + self.opa[i]}),  

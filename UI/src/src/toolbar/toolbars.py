@@ -182,7 +182,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
         """Creates the button to go exit the application."""
         self.addSpacer()
 
-        self.serial_button = QtWidgets.QAction('Logboek')
+        self.serial_button = QtWidgets.QAction('☷')
         self.serial_button.setFont(self.toolbar_font)
         self.addAction(self.serial_button)
 
