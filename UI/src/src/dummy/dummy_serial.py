@@ -6,7 +6,10 @@ def flush():
 def write(bytes):
     pass
 
-in_waiting = [0] * 4
+in_waiting = 0
+
+def close():
+    pass
 
 def read(place): #'zonI', 'windI', 'loadI', 'EL_I',     'PS_I', 'FC_I', 'OptWindI', 'EV_U', 'FC_U','gridU', 'loopT']
     vals = dict(zonU = 2, 

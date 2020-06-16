@@ -42,6 +42,7 @@ class DataManager():
         self.scenario = ''
         self.manual = [0, 0, 0]
         self.h2_slide = None
+        self.connection_label = None
 
         self.solar_val = 0
         self.wind_val = 0
@@ -69,7 +70,6 @@ class DataManager():
         
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
-        self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.tank_reader = TankReader(self.serial_connection)
 
 
@@ -150,13 +150,15 @@ class DataManager():
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
-        
-        
+                
         readings = self.serial_connection.read_arduino()
+        #self.connection_label.setText("")
+        if self.connection_label:
+            self.connection_label.setText(self.serial_connection.NO_CONNECTION)
+
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
 
         readings['windControl'] = windControl
-        #readings['windDuty'] = windDuty
         readings['zonPower'] = convertSolarToPower(values[0], readings['zonU'])
         readings['windPower'] = convertWindToPower(readings['fan'], readings['windU'])
         readings['loadPower'] = readings['gridU']*readings['loadI']
@@ -164,10 +166,6 @@ class DataManager():
         readings['curr_to_add'] = current_mismatch(readings)
         readings['h2_control_value'] = self.gridPID.controlPSmultiply(readings)
 
-        self.control_value = readings['h2_control_value']
-
-       
-        #h2ref = 0
         h2ref = readings['h2_control_value']+128
         
         #if len(values)>3:
@@ -175,11 +173,6 @@ class DataManager():
         #else:
         #    h2ref = 0
 
-        # readings['zonFlow'] = readings['zonU']*20
-        # readings['windFlow']= readings['windU']*0.3
-        # readings['FC_flow'] = readings['FC_U']*14
-        #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
-        
         if h2ref>255:    h2ref = 255
         if h2ref<1:      h2ref = 0
         if np.isnan(h2ref): h2ref = 0

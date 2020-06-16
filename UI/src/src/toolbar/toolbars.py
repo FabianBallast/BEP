@@ -117,6 +117,8 @@ class ToolBarBottom(QtWidgets.QToolBar):
         
         self.add_fixed_spacer(width)
 
+        self.data.connection_label = self.connection_label
+
     def add_fixed_spacer(self, width):
         spacer = QtWidgets.QWidget(self, autoFillBackground=False)
         spacer.setFixedWidth(int(width* 0.01))
@@ -149,16 +151,19 @@ class ToolBarBottom(QtWidgets.QToolBar):
         
         self.addSpacer()
 
-        if self.data.NOT_CONNECTED:
-            text = self.data.NOT_CONNECTED
-            self.connection_label = QtWidgets.QLabel(self)
-            # self.connection_label.setFixedWidth(int(width * 0.25))
-            self.mode_label.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-            self.connection_label.setFixedHeight(self.height())
-            self.connection_label.setText(f" {text} ")
-            self.connection_label.setFont(self.toolbar_font)
-            self.addWidget(self.connection_label)
-        
+        self.connection_label = QtWidgets.QLabel(self)
+        # self.connection_label.setFixedWidth(int(width * 0.25))
+        self.mode_label.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        self.connection_label.setFixedHeight(self.height())
+        self.connection_label.setFont(self.toolbar_font)
+        self.connection_label.setText("Verbinden...")
+        self.addWidget(self.connection_label)
+
+           
+
+   # def updateConnectionLabel(self):
+  #      self.connection_label.setText('called')
+
     def addSpacer(self):
         spacer = QtWidgets.QWidget(self)
         spacer.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)

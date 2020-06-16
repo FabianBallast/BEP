@@ -22,11 +22,11 @@ class TankReader:
         except ValueError:
             from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor
-            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION = "Tank sensor niet verbonden"
         except ModuleNotFoundError:
             from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor  
-            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION = "Tank sensor niet verbonden"
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=invalid-name
