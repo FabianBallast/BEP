@@ -9,8 +9,8 @@ class ManualLayout(QtWidgets.QWidget):
     def __init__(self, dataManager, MainWindow, parent):
 
         super().__init__()
-        self.mode_nl = ['Zon', 'Wind', 'Vraag', 'h2']
-        self.mode = ['solar', 'wind', 'demand', 'h2']
+        self.mode_nl = ['Zon', 'Wind', 'Vraag']
+        self.mode = ['solar', 'wind', 'demand']
 
         width = parent.width()
         height = parent.height()

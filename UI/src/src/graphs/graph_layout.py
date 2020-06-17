@@ -53,6 +53,9 @@ class GraphLayout(QtWidgets.QWidget):
     def create_plots(self, width, height, screen_number):
         """"Create a plot to show all the graphs."""
 
+        font = QtGui.QFont()
+        font.setPixelSize(int(height*0.05))
+
         self.graph = pg.PlotWidget(self) 
         self.graph.showGrid(x=True, y=True, alpha=1)
         self.graph.getPlotItem().getAxis('left').setPen('w')
@@ -67,7 +70,8 @@ class GraphLayout(QtWidgets.QWidget):
         self.graph.enableAutoRange('x', True)
         self.graph.setYRange(0, 104)
         self.graph.setBackground(None)
-        self.graph.addLegend(size=(int(width * 0.14), int(height * 0.20)), offset=(-1, 1))
+        self.legend = self.graph.addLegend(size=(int(width * 0.14), int(height * 0.20)), offset=(-1, 1), text_size='20pt')
+        self.graph.setFont(font)
 
         for i in range(len(self.mode)):
             pen = f"""pg.mkPen(color=({self.colors[i] + ', ' + self.opa[i]}),  
