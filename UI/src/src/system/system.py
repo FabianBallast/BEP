@@ -186,7 +186,6 @@ class System(QtWidgets.QWidget):
         """Update the text."""
 
         if self.parent.currentWidget() == self:
-            print("Run")
             if self.state == 'Paused':
                 for animation in self.animations:
                     animation.start()
