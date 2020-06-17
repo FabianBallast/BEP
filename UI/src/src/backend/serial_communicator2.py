@@ -92,7 +92,7 @@ class SerialCommunicator:
                 #self.ser.reset_input_buffer()
                 #self.ser.reset_output_buffer()
                 self.printer.print(f'Retrying to connect with Arduino...')
-                self.ser.close()
+                self.ser.__del__()
                 self.attachSerial()
                 #self.ser.open() 
                 self.last_connect_event = time.time()
