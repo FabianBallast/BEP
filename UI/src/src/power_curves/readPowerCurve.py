@@ -1,6 +1,8 @@
 import pandas as pd
-solar_pc = pd.read_csv("UI/src/src/power_curves/solar.csv") 
-wind_pc = pd.read_csv("UI/src/src/power_curves/wind.csv") 
+import pathlib, os
+
+solar_pc = pd.read_csv(os.path.join(pathlib.Path(__file__).parent.absolute(), './solar.csv'))
+wind_pc = pd.read_csv(os.path.join(pathlib.Path(__file__).parent.absolute(), './wind.csv')) 
 
 shapeSolar = solar_pc.shape
 shapeWind  = wind_pc.shape

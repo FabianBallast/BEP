@@ -2,6 +2,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
+from ..pg_overrides.graph import Graph
 
 MAX_TANK = 80    /100
 
@@ -60,7 +61,7 @@ class GraphLayout(QtWidgets.QWidget):
         font = QtGui.QFont()
         font.setPixelSize(int(height*0.05))
 
-        self.graph = pg.PlotWidget(self) 
+        self.graph = Graph(self) 
         self.graph.showGrid(x=True, y=True, alpha=1)
 
         xaxis = self.graph.getPlotItem().getAxis('bottom')
@@ -85,7 +86,7 @@ class GraphLayout(QtWidgets.QWidget):
         self.graph.setYRange(0, 104, padding=0)
 
         self.graph.setBackground(None)
-        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.80)), offset=(-1, 1), text_size='20pt')
+        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.40)), offset=(-1, 1), text_size='10pt')
 
         self.graph.setLabel('left', "<span style=\"color:white;font-size:30px\">%</span>")
         self.graph.setLabel('bottom', "<span style=\"color:white;font-size:30px\">Time (s)</span>")
