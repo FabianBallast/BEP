@@ -32,6 +32,8 @@ class System(QtWidgets.QWidget):
         self.create_hydrogen_text(parent.width(), parent.height())
         self.create_load_text(parent.width(), parent.height())
         self.create_arrows(parent, parent.width(), parent.height())
+        self.parent = parent
+        self.state = 'Running'
 
 
 
@@ -182,39 +184,61 @@ class System(QtWidgets.QWidget):
 
     def update_text(self, input_data, sensor_data):
         """Update the text."""
-        solar = sensor_data.get('zonPC')
-        wind = sensor_data.get('windPC')
-        load = sensor_data.get('loadPC')
-        elek = sensor_data.get('H2_PC')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
-        
-        tank = sensor_data.get('tank_level')
-        
-        self.source_figures_curr.setText(f"{solar:.0f} %\n{wind:.0f} %")
-        self.source_figures_per.setText(f"{input_data[0]:.0f} %\n{input_data[1]:.0f} %")
-        self.hydrogen_figures.setText(f"{elek:.0f} %\n{tank:.1f} mL")
-        self.load_figures_curr.setText(f"{load:.0f} % \n  ")
-        self.load_figures_per.setText(f"{input_data[2]:.0f}% ")
-        
-        # self.update_i+=1
-        # if self.update_i > 10:
-        #     self.update_i = 0
-        self.arrows[self.arrow_electrolyzer].setStyle()
 
-        scale = self.width/50000
+        if self.parent.currentWidget() == self:
+            print("Run")
+            if self.state == 'Paused':
+                for animation in self.animations:
+                    animation.start()
+                self.state == 'Running'
 
-        if elek<0:
-            self.arrows[self.arrow_fuelcell].hide()
-            self.arrows[self.arrow_electrolyzer].show()
+            solar = sensor_data.get('zonPC')
+            wind = sensor_data.get('windPC')
+            load = sensor_data.get('loadPC')
+            elek = sensor_data.get('H2_PC')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
+            
+            tank = sensor_data.get('tank_level')
+            
+            self.source_figures_curr.setText(f"{solar:.0f} %\n{wind:.0f} %")
+            self.source_figures_per.setText(f"{input_data[0]:.0f} %\n{input_data[1]:.0f} %")
+            self.hydrogen_figures.setText(f"{elek:.0f} %\n{tank:.1f} mL")
+            self.load_figures_curr.setText(f"{load:.0f} % \n  ")
+            self.load_figures_per.setText(f"{input_data[2]:.0f}% ")
+            
+            # self.update_i+=1
+            # if self.update_i > 10:
+            #     self.update_i = 0
+            self.arrows[self.arrow_electrolyzer].setStyle()
 
-            self.setArrow(self.arrow_electrolyzer, int(abs(elek)*scale))
-            self.setArrow(self.arrow_ledloads, int(abs(load)*scale))
+            scale = self.width/50000
 
-        elif elek>0:
-            self.arrows[self.arrow_electrolyzer].hide()
-            self.arrows[self.arrow_fuelcell].show()
+            if elek<0:
+                self.arrows[self.arrow_fuelcell].hide()
+                self.animations[1].pause()
 
-            self.setArrow(self.arrow_fuelcell, int(abs(elek)*scale))
-            self.setArrow(self.arrow_ledloads, int((solar+wind)*scale/2))
+                self.arrows[self.arrow_electrolyzer].show()
+                if self.animations[2].state() == 1: # Paused
+                    self.animations[2].start()
+
+                self.setArrow(self.arrow_electrolyzer, int(abs(elek)*scale))
+                self.setArrow(self.arrow_ledloads, int(abs(load)*scale))
+
+            elif elek>0:
+                self.arrows[self.arrow_electrolyzer].hide()
+                self.animations[2].pause()
+
+                self.arrows[self.arrow_fuelcell].show()
+                if self.animations[1].state() == 1: # Paused
+                    self.animations[1].start()
+
+                self.setArrow(self.arrow_fuelcell, int(abs(elek)*scale))
+                self.setArrow(self.arrow_ledloads, int((solar+wind)*scale/2))
+        else:
+            if self.state == 'Running':
+                for animation in self.animations:
+                    animation.pause()
+                self.state == 'Paused' 
+
         
         
         

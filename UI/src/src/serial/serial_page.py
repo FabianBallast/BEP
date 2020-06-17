@@ -27,6 +27,7 @@ class SerialPage(QtWidgets.QWidget):
         self.last_data_box.setFont(font)
         self.last_data_box.setText("Last data: ")
         self.last_data_box.setWordWrap(True)
+        self.parent = parent
         
 
     #def print(self, text):
@@ -38,8 +39,8 @@ class LastDataBox(QtWidgets.QLabel):
     It contains a text box."""
 
     def update(self, data):
-        self.setText(str(json.dumps(data, indent=2)))
-
+        if self.parent().parent.currentWidget() == self.parent():
+            self.setText(str(json.dumps(data, indent=2)))
 class SerialTextBox(QtWidgets.QTextBrowser):
     """This class inherits from a QTextBrowser.
        It contains the text box."""

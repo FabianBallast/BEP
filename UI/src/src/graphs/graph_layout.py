@@ -34,6 +34,7 @@ class GraphLayout(QtWidgets.QWidget):
             self.create_reset_button(width, height)
 
         self.create_plots(width, height, screen_number)
+        self.parent = parent
     
     def create_checks(self, width, height):
         """Create checkboxes to show/hide graphs."""
@@ -143,10 +144,12 @@ class GraphLayout(QtWidgets.QWidget):
         self.demand.append(readings['loadPC']) 
         self.storage.append(readings['tank_level'] /  MAX_TANK)
 
-        self.solar_graph.setData(self.x_curr, self.solar)
-        self.wind_graph.setData(self.x_curr, self.wind)
-        self.demand_graph.setData(self.x_curr, self.demand)
-        self.storage_graph.setData(self.x_curr, self.storage)    
+        if self.parent.currentWidget() == self:
+            self.solar_graph.setData(self.x_curr, self.solar)
+            self.wind_graph.setData(self.x_curr, self.wind)
+            self.demand_graph.setData(self.x_curr, self.demand)
+            self.storage_graph.setData(self.x_curr, self.storage)  
+             
 
     def reset_graph(self):
         """Clear the graph and all the data."""
