@@ -14,7 +14,7 @@
 
 bool valveOpen = false;
 unsigned long lastValveSwitch;
-float valveMillOpenInterval = 1000;
+float valveMillOpenInterval = 1000.0;
 
 extern float elapsedTime;
 
@@ -71,6 +71,7 @@ float cum_ps_error, rate_ps_error;
 void closeValve(){
   digitalWrite(VALVE_PIN, 1);
   valveOpen = false;
+  lastValveSwitch = millis();
 }
 
 void mosfets_setup(){
@@ -170,9 +171,7 @@ void controlValve(){
           digitalWrite(VALVE_PIN, 0);
       }
       else if (valveOpen && (millis() - lastValveSwitch > valveOpenTime)){
-        digitalWrite(VALVE_PIN, 1);
-        valveOpen = false;
-        lastValveSwitch = millis();
+        closeValve();
       }
         
 }
