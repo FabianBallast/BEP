@@ -6,7 +6,7 @@
 #define TURIBNE_MOSFET_PIN      10
 #define VALVE_PIN               12
 
-#define valveOpenTime           100
+#define valveOpenTime           60
 
 #define MAX_READING_ELECTROLYZER   (2.0/5.0)*2014.0
 #define MIN_READING_ELECTROLYZER   (0.9/5.0)*2014.0
@@ -69,7 +69,7 @@ float cum_ps_error, rate_ps_error;
 
 
 void closeValve(){
- // digitalWrite(VALVE_PIN, 1);
+  digitalWrite(VALVE_PIN, 1);
   valveOpen = false;
   lastValveSwitch = millis();
 }
@@ -168,7 +168,7 @@ void controlValve(){
       if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenInterval)){
           valveOpen = true;
           lastValveSwitch = millis();
-          //digitalWrite(VALVE_PIN, 0);
+          digitalWrite(VALVE_PIN, 0);
       }
       else if (valveOpen && (millis() - lastValveSwitch > valveOpenTime)){
         closeValve();
@@ -183,7 +183,7 @@ void processControlValue(int control_value){
       fuel_cell_pwm = 100;
       electrolyzer_pwm = 0;
 
-      valveMillOpenInterval = 2000.0 / control_value; //control_value ranges from 1-24
+      valveMillOpenInterval = 24*2000.0 / control_value; //control_value ranges from 1-24
       controlValve();
            
     }
