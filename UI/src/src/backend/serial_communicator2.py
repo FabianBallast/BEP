@@ -19,21 +19,7 @@ class SerialCommunicator:
     def __init__(self, printer):
         self.printer = printer
         self.NO_CONNECTION = ""
-        
-        self.attachSerial()
-        #initial parameters
-        self.send = {'windPower' : 0,
-                     'h2' : 0,
-                     'windMosfet': 0}
-        #comm protocol
-        self.send_order = ['windPower', 'h2', 'windMosfet']
-        
-        if not printer:
-                print("Gebruikt terminal log" )
-                self.printer = rawPrinter()
-        self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
-        self.printer.print("Printing all messages from arduino in log")
-        self.ser.flush()
+
         self.last_data = dict(zonU = 2, 
                 loadI = 2, 
                 windU = 2,
@@ -50,6 +36,21 @@ class SerialCommunicator:
                 windY = 2,
                 H2ref = 2,
                 fan = 2)
+        
+        self.attachSerial()
+        #initial parameters
+        self.send = {'windPower' : 0,
+                     'h2' : 0,
+                     'windMosfet': 0}
+        #comm protocol
+        self.send_order = ['windPower', 'h2', 'windMosfet']
+        
+        if not printer:
+                print("Gebruikt terminal log" )
+                self.printer = rawPrinter()
+        self.printer.print(f'comm_size_to_Arduino: {len(self.send)}')
+        self.printer.print("Printing all messages from arduino in log")
+        self.ser.flush()
            
         self.all_received_data = ""
         self.last_connect_event = time.time() + 3
@@ -62,6 +63,7 @@ class SerialCommunicator:
         except serial.serialutil.SerialException:
             from ..dummy import dummy_serial
             self.ser = dummy_serial
+            self.last_data['dummy_serial'] = 0
             self.NO_CONNECTION = "Arduino niet gevonden"
 
     def send_to_arduino(self, **kwargs):

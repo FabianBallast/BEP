@@ -94,8 +94,8 @@ class DataManager():
             self.scenario = mode_details
             self.time_running.restart()
         elif mode == 'stop':
-            ##UPDATE DATA
-            pass
+            self.light.set_light(0)
+            self.serial_connection.send_to_arduino(windPower=0, windMosfet=0, h2=128)
         else:
             raise ValueError(f"Mode should be either 'manual', 'scenario' or 'stop',"
                              f"but was equal to '{mode}'")
@@ -146,13 +146,10 @@ class DataManager():
         """First send data to Arduino and to lamp/loads. Then get readings."""
         values = self.values_for_control() 
 
-        
-        #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
-        
                 
         readings = self.serial_connection.read_arduino()
-        #self.connection_label.setText("")
+
         if self.connection_label:
             self.connection_label.setText(self.serial_connection.NO_CONNECTION)
 
@@ -168,10 +165,7 @@ class DataManager():
 
         h2ref = readings['h2_control_value']+128
         
-        #if len(values)>3:
-        #    h2ref = (values[3] - 50) + 128
-        #else:
-        #    h2ref = 0
+        
 
         if h2ref>255:    h2ref = 255
         if h2ref<1:      h2ref = 0
@@ -192,22 +186,26 @@ class DataManager():
                     readings[sensor] = values[sensors.index(sensor)]
                 except IndexError:
                     readings[sensor] = 0
-            
+                
         # self.valve.timeValve(readings['FC_Y'], 100)
         
 
 
         readings['tank_level'] = self.tank_reader.read_tank_level()
         readings['time'] = self.time_running.elapsed() / 1000
-        self.file.add_data_to_write(values, readings)
+        self.file.add_data_to_write(values, readings)   
 
         
-        
-
-        readings['zonPC']  = readings['zonPower'] / MAX_SOLAR
-        readings['windPC'] = readings['windPower'] / MAX_WIND 
-        readings['loadPC'] = readings['loadPower'] / MAX_LOAD
-        readings['H2_PC'] = readings['h2_control_value'] *100/ 24
+        if 'dummy_serial' in readings:
+            readings['H2_PC'] = -(readings['zonU'] + readings['windU']) / 2 + readings['loadI']
+            readings['zonPC']  = readings['zonU']
+            readings['windPC'] = readings['windU'] 
+            readings['loadPC'] = readings['loadI']
+        else:
+            readings['H2_PC'] = readings['h2_control_value'] *100/ 24
+            readings['zonPC']  = readings['zonPower'] / MAX_SOLAR
+            readings['windPC'] = readings['windPower'] / MAX_WIND 
+            readings['loadPC'] = readings['loadPower'] / MAX_LOAD
 
         if readings['zonPC']>100: readings['zonPC']=100
         elif readings['zonPC']<0: readings['zonPC']=0
@@ -217,8 +215,6 @@ class DataManager():
         elif readings['loadPC']<0: readings['loadPC']=0
         if readings['H2_PC']>100: readings['H2_PC']=100
         elif readings['H2_PC']<-100: readings['H2_PC']=-100
-
-
 
 
         self.last_data_box.update(readings)

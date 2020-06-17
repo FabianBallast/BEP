@@ -36,3 +36,6 @@ def reset_input_buffer():
 
 def reset_output_buffer():
     pass
+
+def __del__():
+    pass

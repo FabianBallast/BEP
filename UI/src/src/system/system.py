@@ -179,7 +179,7 @@ class System(QtWidgets.QWidget):
         self.load_figures_per.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
     
     def setArrow(self, arrowIndex, val):
-        self.arrows[arrowIndex].setStyle(tipAngle=60, tailLen=20*val,tailWidth=10*val, headLen=20*val, pen=None, brush='fc0303')
+        self.arrows[arrowIndex].setStyle(tipAngle=60, tailLen=int(20*val),tailWidth=int(10*val), headLen=int(20*val), pen=None, brush='fc0303')
 
 
 
@@ -190,13 +190,13 @@ class System(QtWidgets.QWidget):
             if self.state == 'Paused':
                 for animation in self.animations:
                     animation.start()
-                self.state == 'Running'
+                self.state = 'Running'
 
             solar = sensor_data.get('zonPC')
             wind = sensor_data.get('windPC')
             load = sensor_data.get('loadPC')
             elek = sensor_data.get('H2_PC')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
-            
+
             tank = sensor_data.get('tank_level')
             
             self.source_figures_curr.setText(f"{solar:.0f} %\n{wind:.0f} %")
@@ -210,7 +210,7 @@ class System(QtWidgets.QWidget):
             #     self.update_i = 0
             self.arrows[self.arrow_electrolyzer].setStyle()
 
-            scale = self.width/50000
+            scale = self.width/40000
 
             if elek<0:
                 self.arrows[self.arrow_fuelcell].hide()
@@ -220,8 +220,8 @@ class System(QtWidgets.QWidget):
                 if self.animations[2].state() == 1: # Paused
                     self.animations[2].start()
 
-                self.setArrow(self.arrow_electrolyzer, int(abs(elek)*scale))
-                self.setArrow(self.arrow_ledloads, int(abs(load)*scale))
+                self.setArrow(self.arrow_electrolyzer, abs(elek)*scale)
+                self.setArrow(self.arrow_ledloads, abs(load)*scale)
 
             elif elek>0:
                 self.arrows[self.arrow_electrolyzer].hide()
@@ -231,14 +231,14 @@ class System(QtWidgets.QWidget):
                 if self.animations[1].state() == 1: # Paused
                     self.animations[1].start()
 
-                self.setArrow(self.arrow_fuelcell, int(abs(elek)*scale))
-                self.setArrow(self.arrow_ledloads, int((solar+wind)*scale/2))
+                self.setArrow(self.arrow_fuelcell, abs(elek)*scale)
+                self.setArrow(self.arrow_ledloads, (solar+wind)*scale/2)
         else:
             if self.state == 'Running':
                 for animation in self.animations:
                     animation.pause()
-                self.state == 'Paused' 
-
+                self.state = 'Paused' 
+            
         
         
         
