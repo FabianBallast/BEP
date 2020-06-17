@@ -69,7 +69,7 @@ float cum_ps_error, rate_ps_error;
 
 
 void closeValve(){
-  digitalWrite(VALVE_PIN, 1);
+ // digitalWrite(VALVE_PIN, 1);
   valveOpen = false;
   lastValveSwitch = millis();
 }
