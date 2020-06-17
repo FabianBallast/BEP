@@ -79,7 +79,8 @@ class System(QtWidgets.QWidget):
         """"Create all the arrows."""
         self.curves.append(pg.PlotCurveItem(x=curv[0], y=curv[1]))
         self.arrows.append(pg.CurveArrow(self.curves[-1]))
-        self.arrows[-1].setStyle(tipAngle=60, tailLen=20,tailWidth=10, headLen=20, pen=None, brush='fc0303')
+        val = 50* self.width/50000
+        self.arrows[-1].setStyle(tipAngle=60, tailLen=20*val,tailWidth=10*val, headLen=20*val, pen=None, brush='fc0303')
         
         self.vb.addItem(self.arrows[-1])
         self.animations.append(self.arrows[-1].makeAnimation(loop=-1))

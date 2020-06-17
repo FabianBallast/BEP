@@ -14,7 +14,7 @@
 
 bool valveOpen = false;
 unsigned long lastValveSwitch;
-int valveMillOpenInterval = 1000;
+float valveMillOpenInterval = 1000;
 
 extern float elapsedTime;
 
@@ -184,7 +184,7 @@ void processControlValue(int control_value){
       fuel_cell_pwm = 100;
       electrolyzer_pwm = 0;
 
-      valveMillOpenInterval = 2000 / control_value; //control_value ranges from 1-24
+      valveMillOpenInterval = 2000.0 / control_value; //control_value ranges from 1-24
       controlValve();
            
     }
