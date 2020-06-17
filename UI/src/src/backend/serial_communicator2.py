@@ -78,7 +78,7 @@ class SerialCommunicator:
             self.printer.print(f'Pi to Arduino: {array_to_send}')
             try:
                 self.ser.write(bytes_to_send)
-            catch Exception as error:
+            except Exception as error:
                 self.printer.print("Arduino crashed")
                 self.NO_CONNECTION = "Verbinding verloren"
 
