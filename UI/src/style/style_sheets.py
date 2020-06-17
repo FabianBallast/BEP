@@ -21,6 +21,7 @@ WINDOW_1 = """QWidget {background-color: qlineargradient(spread:pad, x1:0, y1:0,
                                 border: 1px solid;
                                 height: 80px;
                                      }
+              QPlotWidget {font-size:50px}
               QSlider::groove:vertical {
                                 background: yellow;
                                 width: 10px;

@@ -22,7 +22,7 @@ class SerialPage(QtWidgets.QWidget):
         
 
         font = QtGui.QFont()
-        font.setPixelSize(int(parent.height() * 0.03))
+        font.setPixelSize(int(parent.height() * 0.025))
         self.text_browser.setFont(font)
         self.last_data_box.setFont(font)
         self.last_data_box.setText("Last data: ")

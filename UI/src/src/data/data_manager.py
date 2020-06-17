@@ -12,12 +12,12 @@ from ..serial.serial_page import SerialRaw
 from ..power_curves.readPowerCurve  import convertSolarToPower, convertWindToPower
 import numpy as np
 
-MULTIPLIER_SOLAR      = 20
-
-
+MULTIPLIER_SOLAR      = 40
 MULTIPLIER_WIND       = 24
-MULTIPLIER_FUEL_CELL  = 0
 
+MAX_SOLAR = 70  /100
+MAX_WIND  = 150  /100
+MAX_LOAD = 4200 /100
 
 def current_to_add(readings):
         power_to_add = readings['zonPower'] * (MULTIPLIER_SOLAR - 1) + readings['windPower'] * (MULTIPLIER_WIND - 1) #+ current_fuel_cell * (MULTIPLIER_FUEL_CELL - 1)
@@ -41,6 +41,8 @@ class DataManager():
         self.last_mode = ''
         self.scenario = ''
         self.manual = [0, 0, 0]
+        self.h2_slide = None
+        self.connection_label = None
 
         self.solar_val = 0
         self.wind_val = 0
@@ -68,8 +70,8 @@ class DataManager():
         
         self.serial_connection = SerialCommunicator(self.printer)
         self.loads = Loads(self.printer)
-        self.NOT_CONNECTED = self.serial_connection.NO_CONNECTION              #pylint: disable=invalid-name
         self.tank_reader = TankReader(self.serial_connection)
+
 
         self.file = LogWriter(self.printer)
 
@@ -92,6 +94,7 @@ class DataManager():
             self.scenario = mode_details
             self.time_running.restart()
         elif mode == 'stop':
+            ##UPDATE DATA
             pass
         else:
             raise ValueError(f"Mode should be either 'manual', 'scenario' or 'stop',"
@@ -147,13 +150,15 @@ class DataManager():
         #To do: sent data for solar panel to dimmer.
         self.light.set_light(values[0])
         
-        
-        
+                
         readings = self.serial_connection.read_arduino()
+        #self.connection_label.setText("")
+        if self.connection_label:
+            self.connection_label.setText(self.serial_connection.NO_CONNECTION)
+
         windControl, windDuty = self.windMPPT.controlMPPT(readings)
 
         readings['windControl'] = windControl
-        #readings['windDuty'] = windDuty
         readings['zonPower'] = convertSolarToPower(values[0], readings['zonU'])
         readings['windPower'] = convertWindToPower(readings['fan'], readings['windU'])
         readings['loadPower'] = readings['gridU']*readings['loadI']
@@ -161,7 +166,6 @@ class DataManager():
         readings['curr_to_add'] = current_mismatch(readings)
         readings['h2_control_value'] = self.gridPID.controlPSmultiply(readings)
 
-        #h2ref = 0
         h2ref = readings['h2_control_value']+128
         
         #if len(values)>3:
@@ -169,11 +173,6 @@ class DataManager():
         #else:
         #    h2ref = 0
 
-        # readings['zonFlow'] = readings['zonU']*20
-        # readings['windFlow']= readings['windU']*0.3
-        # readings['FC_flow'] = readings['FC_U']*14
-        #readings['mismatch'] = readings['PS_I'] - readings['zonI'] - readings['windI'] - readings['FC_I']
-        
         if h2ref>255:    h2ref = 255
         if h2ref<1:      h2ref = 0
         if np.isnan(h2ref): h2ref = 0
@@ -202,9 +201,30 @@ class DataManager():
         readings['time'] = self.time_running.elapsed() / 1000
         self.file.add_data_to_write(values, readings)
 
+        
+        
+
+        readings['zonPC']  = readings['zonPower'] / MAX_SOLAR
+        readings['windPC'] = readings['windPower'] / MAX_WIND 
+        readings['loadPC'] = readings['loadPower'] / MAX_LOAD
+        readings['H2_PC'] = readings['h2_control_value'] *100/ 24
+
+        if readings['zonPC']>100: readings['zonPC']=100
+        elif readings['zonPC']<0: readings['zonPC']=0
+        if readings['windPC']>100: readings['windPC']=100
+        elif readings['windPC']<0: readings['windPC']=0
+        if readings['loadPC']>100: readings['loadPC']=100
+        elif readings['loadPC']<0: readings['loadPC']=0
+        if readings['H2_PC']>100: readings['H2_PC']=100
+        elif readings['H2_PC']<-100: readings['H2_PC']=-100
+
+
+
+
         self.last_data_box.update(readings)
-        
-        
+        if self.h2_slide:
+            self.h2_slide.setValue(-readings['H2_PC'])
+
         for handler in self.control_values_handlers:
             handler(values, readings)
         

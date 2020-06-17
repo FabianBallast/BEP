@@ -1,6 +1,6 @@
 import pandas as pd
-solar_pc = pd.read_csv("C:/Users/fabia/Documents/TUD-3/BEP/Code/UI/src/src/power_curves/solar.csv") 
-wind_pc = pd.read_csv("C:/Users/fabia/Documents/TUD-3/BEP/Code/UI/src/src/power_curves/wind.csv") 
+solar_pc = pd.read_csv("UI/src/src/power_curves/solar.csv") 
+wind_pc = pd.read_csv("UI/src/src/power_curves/wind.csv") 
 
 shapeSolar = solar_pc.shape
 shapeWind  = wind_pc.shape

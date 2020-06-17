@@ -20,11 +20,13 @@ class TankReader:
             i2c = busio.I2C(board.SCL, board.SDA)
             self.sensor = adafruit_vl6180x.VL6180X(i2c)
         except ValueError:
+            from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor
-            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION = "Tank sensor niet verbonden"
         except ModuleNotFoundError:
+            from ..dummy import dummy_range_sensor as sensor
             self.sensor = sensor  
-            serial_connection.NO_CONNECTION += "Tank sensor niet verbonden"
+            serial_connection.NO_CONNECTION = "Tank sensor niet verbonden"
         
         #Main loop print
         self.N_FILTER = N_FILTER                                    #pylint: disable=invalid-name

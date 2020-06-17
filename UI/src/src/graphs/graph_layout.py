@@ -2,6 +2,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import pyqtgraph as pg
+
+MAX_TANK = 80    /100
+
+
 class GraphLayout(QtWidgets.QWidget):
     """This class inherits from a QWidget.
        It contains all components on the 'graph' page."""
@@ -58,20 +62,34 @@ class GraphLayout(QtWidgets.QWidget):
 
         self.graph = pg.PlotWidget(self) 
         self.graph.showGrid(x=True, y=True, alpha=1)
-        self.graph.getPlotItem().getAxis('left').setPen('w')
-        self.graph.getPlotItem().getAxis('bottom').setPen('w')
+
+        xaxis = self.graph.getPlotItem().getAxis('bottom')
+        yaxis = self.graph.getPlotItem().getAxis('left')
+        xaxis.setPen('w')
+        yaxis.setPen('w')
+        font=QtGui.QFont()
+        font.setPixelSize(25)
+        xaxis.tickFont = font
+        yaxis.tickFont = font
+        xaxis.setStyle(tickTextWidth=70, tickTextHeight=40, tickTextOffset = 40)
+        yaxis.setStyle(tickTextWidth =100, tickTextHeight=100, tickTextOffset = 40)
+
         if screen_number == 1:
-            self.graph.setGeometry(QtCore.QRect(0, int(height * 0.015), 
+            self.graph.setGeometry(QtCore.QRect(int(width * 0.01), int(height * 0.015), 
                                                 int(width * 0.775), int(height * 0.95)))
         else:
-            self.graph.setGeometry(QtCore.QRect(0, int(height * 0.015), 
+            self.graph.setGeometry(QtCore.QRect(int(width * 0.01), int(height * 0.015), 
                                                 int(width * 0.95), int(height * 0.975)))
         #self.graph.enableAutoRange('y', False)
         self.graph.enableAutoRange('x', True)
-        self.graph.setYRange(0, 104)
+        self.graph.setYRange(0, 104, padding=0)
+
         self.graph.setBackground(None)
-        self.legend = self.graph.addLegend(size=(int(width * 0.14), int(height * 0.20)), offset=(-1, 1), text_size='20pt')
-        self.graph.setFont(font)
+        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.80)), offset=(-1, 1), text_size='20pt')
+
+        self.graph.setLabel('left', "<span style=\"color:white;font-size:30px\">%</span>")
+        self.graph.setLabel('bottom', "<span style=\"color:white;font-size:30px\">Time (s)</span>")
+        #self.graph.set
 
         for i in range(len(self.mode)):
             pen = f"""pg.mkPen(color=({self.colors[i] + ', ' + self.opa[i]}),  
@@ -119,10 +137,10 @@ class GraphLayout(QtWidgets.QWidget):
             
         
         self.x_curr.append(readings['time'])
-        self.solar.append(readings['zonPower'])
-        self.wind.append(readings['windPower'])
-        self.demand.append(readings['loadPower'])
-        self.storage.append(readings['tank_level'])
+        self.solar.append(readings['zonPC'])  
+        self.wind.append(readings['windPC'])  
+        self.demand.append(readings['loadPC']) 
+        self.storage.append(readings['tank_level'] /  MAX_TANK)
 
         self.solar_graph.setData(self.x_curr, self.solar)
         self.wind_graph.setData(self.x_curr, self.wind)

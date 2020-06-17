@@ -4,9 +4,9 @@
 #define FUEL_CELL_MOSFET_PIN    6
 #define POWER_SUPPLY_MOSFET_PIN 7
 #define TURIBNE_MOSFET_PIN      10
-#define VALVE_PIN               13
+#define VALVE_PIN               12
 
-#define valveOpenTime           300
+#define valveOpenTime           100
 
 #define MAX_READING_ELECTROLYZER   (2.0/5.0)*2014.0
 #define MIN_READING_ELECTROLYZER   (0.9/5.0)*2014.0
@@ -14,7 +14,7 @@
 
 bool valveOpen = false;
 unsigned long lastValveSwitch;
-int valveMillOpenFreq = 1000;
+int valveMillOpenInterval = 1000;
 
 extern float elapsedTime;
 
@@ -68,7 +68,10 @@ float cum_ps_error, rate_ps_error;
 //byte pwm_value_power_supply;
 
 
-
+void closeValve(){
+  digitalWrite(VALVE_PIN, 1);
+  valveOpen = false;
+}
 
 void mosfets_setup(){
     pinMode(ELECTROLYZER_MOSFET_PIN, OUTPUT);
@@ -82,9 +85,7 @@ void mosfets_setup(){
     analogWrite(FUEL_CELL_MOSFET_PIN, 0);
     analogWrite(POWER_SUPPLY_MOSFET_PIN, 0);
     analogWrite(TURIBNE_MOSFET_PIN, 0);
-    digitalWrite(VALVE_PIN, LOW);
-
-    lastValveSwitch = millis();
+    closeValve();
 }
 
 // float controlGridFlow(float grid_flow, float target_flow){
@@ -159,18 +160,21 @@ void mosfets_setup(){
 //    return ps_control_value, pwm_value_power_supply;
 //}
 
+
+
 void controlValve(){
         
-      if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenFreq)){
+      if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenInterval)){
           valveOpen = true;
           lastValveSwitch = millis();
-          digitalWrite(VALVE_PIN, HIGH);
+          digitalWrite(VALVE_PIN, 0);
       }
-      else if (valveOpen && (millis() - lastValveSwitch> valveOpenTime)){
-          valveOpen = false;
-          lastValveSwitch = millis();
-          digitalWrite(VALVE_PIN, LOW);
+      else if (valveOpen && (millis() - lastValveSwitch > valveOpenTime)){
+        digitalWrite(VALVE_PIN, 1);
+        valveOpen = false;
+        lastValveSwitch = millis();
       }
+        
 }
 
 void processControlValue(int control_value){
@@ -180,18 +184,20 @@ void processControlValue(int control_value){
       fuel_cell_pwm = 100;
       electrolyzer_pwm = 0;
 
-      valveMillOpenFreq = 1000; 
-    //  controlValve();
+      valveMillOpenInterval = 2000 / control_value; //control_value ranges from 1-24
+      controlValve();
            
     }
     else if (control_value<-1){
-      electrolyzer_pwm = map(abs(control_value),0,50,0, 24);
+      closeValve();
+      electrolyzer_pwm = abs(control_value);
      // electrolyzer_pwm = 24;
       fuel_cell_pwm = 0;
     }
     else{
         electrolyzer_pwm = 0;
         fuel_cell_pwm = 0;
+        closeValve();
     }
 
     // if (electrolyzer_voltage>MAX_READING_ELECTROLYZER){

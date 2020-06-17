@@ -93,7 +93,7 @@ class UiMainWindow(object):
         self.stacked_widget_2.addWidget(self.system_2)
         if self.serial_box:
             self.stacked_widget_2.addWidget(self.serial)
-        self.stacked_widget_2.setCurrentIndex(3)
+        self.stacked_widget_2.setCurrentIndex(0)
     
     def connect_special_actions(self):
         """Connect specific actions to each other."""
@@ -136,6 +136,8 @@ class UiMainWindow(object):
         )
 
         if reply == QtWidgets.QMessageBox.Yes:
+            self.data.set_mode('stop', None)
+            
             self.data.file.close()
             sys.exit()
     
