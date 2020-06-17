@@ -76,7 +76,12 @@ class SerialCommunicator:
             bytes_to_send = bytes(array_to_send)
             
             self.printer.print(f'Pi to Arduino: {array_to_send}')
-            self.ser.write(bytes_to_send)
+            try:
+                self.ser.write(bytes_to_send)
+            except Exception as error:
+                self.printer.print("Arduino crashed")
+                self.NO_CONNECTION = "Verbinding verloren"
+
         return self.send
 
     def read_arduino(self):
@@ -87,7 +92,7 @@ class SerialCommunicator:
                 #self.ser.reset_input_buffer()
                 #self.ser.reset_output_buffer()
                 self.printer.print(f'Retrying to connect with Arduino...')
-                self.ser.close()
+                self.ser.__del__()
                 self.attachSerial()
                 #self.ser.open() 
                 self.last_connect_event = time.time()

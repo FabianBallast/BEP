@@ -14,7 +14,7 @@
 
 bool valveOpen = false;
 unsigned long lastValveSwitch;
-int valveMillOpenInterval = 1000;
+float valveMillOpenInterval = 1000.0;
 
 extern float elapsedTime;
 
@@ -69,8 +69,9 @@ float cum_ps_error, rate_ps_error;
 
 
 void closeValve(){
-  digitalWrite(VALVE_PIN, 1);
+ // digitalWrite(VALVE_PIN, 1);
   valveOpen = false;
+  lastValveSwitch = millis();
 }
 
 void mosfets_setup(){
@@ -167,12 +168,10 @@ void controlValve(){
       if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenInterval)){
           valveOpen = true;
           lastValveSwitch = millis();
-          digitalWrite(VALVE_PIN, 0);
+          //digitalWrite(VALVE_PIN, 0);
       }
       else if (valveOpen && (millis() - lastValveSwitch > valveOpenTime)){
-        digitalWrite(VALVE_PIN, 1);
-        valveOpen = false;
-        lastValveSwitch = millis();
+        closeValve();
       }
         
 }
@@ -184,7 +183,7 @@ void processControlValue(int control_value){
       fuel_cell_pwm = 100;
       electrolyzer_pwm = 0;
 
-      valveMillOpenInterval = 2000 / control_value; //control_value ranges from 1-24
+      valveMillOpenInterval = 2000.0 / control_value; //control_value ranges from 1-24
       controlValve();
            
     }
