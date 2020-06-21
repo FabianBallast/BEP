@@ -58,6 +58,7 @@ class SerialCommunicator:
     def attachSerial(self):
         try:
             self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0, write_timeout=0.5, inter_byte_timeout=1)
+            self.ser.open()
             #self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0, write_timeout=0.5, inter_byte_timeout=1)
             self.printer.print("Arduino verbonden")
         except serial.serialutil.SerialException:
@@ -94,6 +95,7 @@ class SerialCommunicator:
                 #self.ser.reset_input_buffer()
                 #self.ser.reset_output_buffer()
                 self.printer.print(f'Retrying to connect with Arduino...')
+                self.ser.close()
                 self.ser.__del__()
                 self.attachSerial()
                 #self.ser.open() 

@@ -12,7 +12,7 @@ headers = ['SolarRef (%)', 'WindRef (%) UI', 'LoadRef (%)', 'SolarU (V)','LoadI 
 keys = ['-', '-', '-', 'zonU', 'loadI', 'windU', 'FC_U', 'FC_Y', 'EL_U', 'EL_I', 'EL_Y', 'gridU', 'H2ref', 'loopT', 'fan', 'windY',
         'curr_to_add', 'zonPower','windPower', 'loadPower', 'tank_level', 'time']
 
-log_name = 'logFiles/log'+str(int(time()))+'.csv'
+log_name = 'logFiles/log.csv'
 
 assert len(headers)==len(keys)
 
