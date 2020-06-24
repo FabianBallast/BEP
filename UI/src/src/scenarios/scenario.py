@@ -50,7 +50,15 @@ class Scenario():
 
         all_data = [self.solar, self.wind, self.demand]
         val_raw = [mode[ind] for mode in all_data]
-        return [round(val_raw[x] * 100 / max(all_data[x]), 0) for x in range(len(val_raw))]
+
+        final_data = []
+        for x in range(len(val_raw)):
+            maxx = max(all_data[x])
+            if maxx==0: maxx = 100
+            val = round(val_raw[x] * 100 / maxx, 0)
+            final_data.append(val)
+
+        return final_data
     
     def summary_scenario(self, label):
         """Changes the text of the label to the summary of this scenario."""

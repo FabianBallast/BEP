@@ -55,7 +55,7 @@ class System(QtWidgets.QWidget):
         """Create moving arrow 1."""
         direction = np.array([[1],[0]])
         zero      = np.array([[0],[7]])
-        t         = np.array([[-2.5,4]])
+        t         = np.array([[-1.6,4]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 0, 1)
 
@@ -63,7 +63,7 @@ class System(QtWidgets.QWidget):
         """Create moving arrow 2."""
         direction = np.array([[1],[2]])
         zero      = np.array([[4],[-4]])
-        t         = np.array([[-0.1,4.6]])
+        t         = np.array([[0,4.9]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 1, 2)
     
@@ -71,7 +71,7 @@ class System(QtWidgets.QWidget):
         """Create moving arrow 3."""
         direction = np.array([[1], [-2]])
         zero      = np.array([[-3], [-3]])
-        t         = np.array([[-3.1, 0.8]])
+        t         = np.array([[-3.5, 0.8]])
         curv = zero + direction.dot(t)
         return self.create_arrow(curv, 1, 0)
 
@@ -143,16 +143,16 @@ class System(QtWidgets.QWidget):
         """Create the text for the hydrogen text."""
         self.hydrogen_text = QtWidgets.QLabel(self)
         self.hydrogen_text.setFont(self.text_font)
-        self.hydrogen_text.setText("Balans:\nOpslag:")
-        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.38), int(height * 0.70),
-                                                    int(width * 0.15), int(height * 0.15)))
+        self.hydrogen_text.setText("Electrolyzer:\nBrandstofcel:\nOpslag:")
+        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.345), int(height * 0.70),
+                                                    int(width * 0.15), int(height * 0.225)))
         self.hydrogen_text.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignLeft)
 
         self.hydrogen_figures = QtWidgets.QLabel(self)
         self.hydrogen_figures.setFont(self.text_font)
         self.hydrogen_figures.setText("0 %")
         self.hydrogen_figures.setGeometry(QtCore.QRect(int(width * 0.505), int(height * 0.70),
-                                                       int(width * 0.15), int(height * 0.15)))
+                                                       int(width * 0.15), int(height * 0.225)))
         self.hydrogen_figures.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
     
     def create_load_text(self, width, height):
@@ -198,10 +198,14 @@ class System(QtWidgets.QWidget):
             elek = sensor_data.get('H2_PC')  #+sensor_data.get('curr_to_add')     #sensor_data.get('flowTot')
 
             tank = sensor_data.get('tank_level')
+            fc   = 0 if elek<0 else abs(elek)
+            el   = 0 if elek>0 else abs(elek)
             
             self.source_figures_curr.setText(f"{solar:.0f} %\n{wind:.0f} %")
             self.source_figures_per.setText(f"{input_data[0]:.0f} %\n{input_data[1]:.0f} %")
-            self.hydrogen_figures.setText(f"{elek:.0f} %\n{tank:.1f} mL")
+            
+            
+            self.hydrogen_figures.setText(f"{el:.0f} %\n {fc:.0f} %\n {tank:.1f} mL")
             self.load_figures_curr.setText(f"{load:.0f} % \n  ")
             self.load_figures_per.setText(f"{input_data[2]:.0f}% ")
             
