@@ -76,12 +76,12 @@ class MapLayout(QtWidgets.QWidget):
         self.map_picture.setScaledContents(True)
         self.map_picture.lower()
 
-    def get_current_values(self, readings):
+    def get_current_values(self, values, readings):
         """Update the map to match with the current data.
            Use multiple other functions to accomplish this."""
-        solar = readings['zonPC']
-        wind = readings['windPC'] 
-        demand = readings['loadPC']
+        solar = values[0][#readings['zonPC']
+        wind = values[1]  #readings['windPC'] 
+        demand = values[2]  #readings['loadPC']
         h2ref  = readings['H2_PC']
         self.storage_level.setText("{0:.0f} mL".format(readings['tank_level']))
         self.update_background(solar, demand)

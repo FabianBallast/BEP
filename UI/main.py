@@ -101,8 +101,8 @@ class UiMainWindow(object):
         self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
         self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
-        self.data.connect_for_sensor_readings(self.map_1.get_current_values)
-        self.data.connect_for_sensor_readings(self.map_2.get_current_values)
+        self.data.connect_for_all_values(self.map_1.get_current_values)
+        self.data.connect_for_all_values(self.map_2.get_current_values)
         self.data.connect_for_sensor_readings(self.graphs_1.update_graph)
         self.data.connect_for_sensor_readings(self.graphs_2.update_graph)
         self.data.connect_for_all_values(self.system_1.update_text)
