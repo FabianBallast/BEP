@@ -93,8 +93,8 @@ class SerialCommunicator:
         if self.ser.in_waiting == 0:
             if time.time() - self.last_connect_event > 3:
                 #3 sec fallout, needs a reset
-                #self.ser.reset_input_buffer()
-                #self.ser.reset_output_buffer()
+                self.ser.reset_input_buffer()
+                self.ser.reset_output_buffer()
                 self.printer.print(f'Retrying to connect with Arduino...')
                 self.ser.close()
                 self.ser.__del__()
