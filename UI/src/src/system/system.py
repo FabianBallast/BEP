@@ -27,7 +27,7 @@ class System(QtWidgets.QWidget):
         self.arrows = []
         self.preview = preview_version
         self.width = parent.width()
-        self.create_fonts(parent.height())   
+        self.create_fonts(parent.width())   
         self.create_source_text(parent.width(), parent.height())
         self.create_hydrogen_text(parent.width(), parent.height())
         self.create_load_text(parent.width(), parent.height())
@@ -111,10 +111,10 @@ class System(QtWidgets.QWidget):
         #self.label3 = self.pw2.addLabel("", row=1,col=1, color='ffffff',size='20pt')
     
 
-    def create_fonts(self, height):
+    def create_fonts(self, width):
         """Create the fonts used for the figures."""
         self.text_font = QtGui.QFont()
-        self.text_font.setPixelSize(int(height * 0.05))
+        self.text_font.setPixelSize(int(width * 0.023))
     
     def create_source_text(self, width, height):
         """Create the text and values for the sources."""
