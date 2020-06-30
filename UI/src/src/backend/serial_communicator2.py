@@ -58,10 +58,11 @@ class SerialCommunicator:
     def attachSerial(self):
         try:
             self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0, write_timeout=0.5, inter_byte_timeout=1)
-            self.ser.open()
+            #self.ser.open()
             #self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0, write_timeout=0.5, inter_byte_timeout=1)
             self.printer.print("Arduino verbonden")
         except serial.serialutil.SerialException:
+            self.printer.print("Fout met verbinden met Arduino")
             from ..dummy import dummy_serial
             self.ser = dummy_serial
             self.last_data['dummy_serial'] = 0
