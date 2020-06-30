@@ -16,9 +16,9 @@ class SecondScreenController(QtWidgets.QWidget):
         width = parent.width()
         height = parent.height()
         
-        self.create_page_images(width, height)
+        #self.create_page_images(width, height)
         self.create_list(width, height)
-        self.create_select_button(width, height)
+       # self.create_select_button(width, height)
         
     
     def create_list(self, width, height):
@@ -27,17 +27,17 @@ class SecondScreenController(QtWidgets.QWidget):
         font.setPixelSize(int(height * 0.05))
 
         self.scenarios_list = QtWidgets.QListWidget(self)
-        self.scenarios_list.setGeometry(QtCore.QRect(int(width * 0.25), int(height * 0.05), 
-                                                     int(width * 0.50), int(height * 0.76)))
+        self.scenarios_list.setGeometry(QtCore.QRect(int(width * 0.4), int(height * 0.05), 
+                                                     int(width * 0.2), int(height * 0.76)))
         self.scenarios_list.setFont(font)
         self.scenarios_list.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.scenarios_list.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
-        item_graph = QtWidgets.QListWidgetItem("Grafieken", self.scenarios_list)
+        item_graph = QtWidgets.QListWidgetItem(  "  ↝   Grafieken  ", self.scenarios_list)
         item_graph.setSizeHint(QtCore.QSize(int(width * 0.8), int(height * 0.25)))
-        item_map = QtWidgets.QListWidgetItem("Map", self.scenarios_list)
+        item_map = QtWidgets.QListWidgetItem(    "  ◉    Kaart  ", self.scenarios_list)
         item_map.setSizeHint(QtCore.QSize(int(width * 0.8), int(height * 0.25)))
-        item_figures = QtWidgets.QListWidgetItem("Cijfers", self.scenarios_list)
+        item_figures = QtWidgets.QListWidgetItem("  ➤  Systeem  ", self.scenarios_list)
         item_figures.setSizeHint(QtCore.QSize(int(width * 0.8), int(height * 0.25)))
 
     def create_select_button(self, width, height):
@@ -77,8 +77,3 @@ class SecondScreenController(QtWidgets.QWidget):
         System(self.figure_widget, preview_version=True)
         #self.figure_widget.raise_()
         
-
-
-    def get_selected_item(self):
-        """Returns the current row that is selected in the list."""
-        return self.scenarios_list.currentRow()

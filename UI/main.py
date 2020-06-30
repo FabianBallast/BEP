@@ -97,7 +97,10 @@ class UiMainWindow(object):
     
     def connect_special_actions(self):
         """Connect specific actions to each other."""
-        self.second_screen.accept_button.clicked.connect(self.change_screen)
+        #self.second_screen.accept_button.clicked.connect(self.change_screen)
+        self.second_screen.scenarios_list.currentRowChanged.connect(self.stacked_widget_2.setCurrentIndex)#(self.change_screen)
+        #itemSelectionChanged.connect(self.change_screen)
+        
         self.toolbar_bottom.exit_button.triggered.connect(self.close_app)
         
         self.data.connect_for_mode_change(self.toolbar_bottom.update_text)
@@ -121,9 +124,9 @@ class UiMainWindow(object):
         if self.serial_box:
             self.toolbar_bottom.serial_button.triggered.connect(lambda: self.stacked_widget_2.setCurrentIndex(3))           #pylint: disable=C0301
     
-    def change_screen(self):
+    def change_screen(self, row):
         """Change the page on the second screen."""
-        self.stacked_widget_2.setCurrentIndex(self.second_screen.get_selected_item())
+        self.stacked_widget_2.setCurrentIndex(row)
     
     def close_app(self):
         """Close app when button is pressed."""
