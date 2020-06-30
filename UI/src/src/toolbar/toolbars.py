@@ -174,8 +174,7 @@ class ToolBarBottom(QtWidgets.QToolBar):
         mode, details = self.data.get_mode()
 
         if mode == 'manual':
-            self.mode_label.setText(f" Handmatige besturing (Zon: {details[0]}%, "
-                                    f" Wind: {details[1]}%, Vraag: {details[2]}%)")
+            self.mode_label.setText(" Handmatige besturing")
         elif mode == 'scenario':
             self.mode_label.setText(f" Scenario-modus ({details})")
         elif mode == 'stop':

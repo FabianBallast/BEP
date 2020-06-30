@@ -144,15 +144,15 @@ class System(QtWidgets.QWidget):
         self.hydrogen_text = QtWidgets.QLabel(self)
         self.hydrogen_text.setFont(self.text_font)
         self.hydrogen_text.setText("Electrolyzer:\nBrandstofcel:\nOpslag:")
-        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.345), int(height * 0.70),
-                                                    int(width * 0.15), int(height * 0.225)))
+        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.335), int(height * 0.70),
+                                                    int(width * 0.16), int(height * 0.225)))
         self.hydrogen_text.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignLeft)
 
         self.hydrogen_figures = QtWidgets.QLabel(self)
         self.hydrogen_figures.setFont(self.text_font)
         self.hydrogen_figures.setText("0 %")
         self.hydrogen_figures.setGeometry(QtCore.QRect(int(width * 0.505), int(height * 0.70),
-                                                       int(width * 0.15), int(height * 0.225)))
+                                                       int(width * 0.16),  int(height * 0.225)))
         self.hydrogen_figures.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignRight)
     
     def create_load_text(self, width, height):

@@ -85,14 +85,15 @@ class ManualLayout(QtWidgets.QWidget):
         self.opslag_title.setFont(font)
         self.opslag_title.setAlignment(QtCore.Qt.AlignCenter)
         self.opslag_title.setText('Opslaan')
-        self.opslag_title.setGeometry(QtCore.QRect(int(width * 0.8), y_pos[0],wid[0], hei[0]))
+        fac_scale = 0.2
+        self.opslag_title.setGeometry(QtCore.QRect(int(width * 0.8 - hei[0]*fac_scale/2), y_pos[0],wid[0]*(1+fac_scale), hei[0]))
         self.opslag_title.setStyleSheet("QLabel { color : rgba(21, 255, 0, 255); }")
 
         self.bijspring_title = QtWidgets.QLabel(self)
         self.bijspring_title.setFont(font)
         self.bijspring_title.setAlignment(QtCore.Qt.AlignCenter)
         self.bijspring_title.setText('Verbruiken')
-        self.bijspring_title.setGeometry(QtCore.QRect(int(width * 0.8), y_pos[2],wid[0], hei[0]))
+        self.bijspring_title.setGeometry(QtCore.QRect(int(width * 0.8 - hei[0]*fac_scale/2), y_pos[2],wid[0]*(1+fac_scale), hei[0]))
         self.bijspring_title.setStyleSheet("QLabel {color : red; }")
         font.setPixelSize(int(height * 0.03))
         

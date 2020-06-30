@@ -19,6 +19,7 @@ class SerialCommunicator:
     def __init__(self, printer):
         self.printer = printer
         self.NO_CONNECTION = ""
+        self.amount_resets = 0
 
         self.last_data = dict(zonU = 2, 
                 loadI = 2, 
@@ -61,6 +62,7 @@ class SerialCommunicator:
             #self.ser.open()
             #self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0, write_timeout=0.5, inter_byte_timeout=1)
             self.printer.print("Arduino verbonden")
+
         except serial.serialutil.SerialException:
             self.printer.print("Fout met verbinden met Arduino")
             from ..dummy import dummy_serial
@@ -99,6 +101,10 @@ class SerialCommunicator:
                 self.ser.close()
                 self.ser.__del__()
                 self.attachSerial()
+                self.amount_resets += 1
+                if self.amount_resets >3:
+                    self.printer.print("Arduino is gecrashed, start apparaat opnieuw op")
+                    self.NO_CONNECTION = "Herstart apparaat"
                 #self.ser.open() 
                 self.last_connect_event = time.time()
                 
