@@ -8,9 +8,9 @@ class HelpLayout(QtWidgets.QWidget):
         super().__init__()
         self.data_manager = data_manager    
         self.create_text(parent.width(), parent.height())
-        self.create_tuner(parent.width(), parent.height())
-        self.create_button(parent.width(), parent.height())
-        self.create_calibration_text(parent.width(), parent.height())
+       # self.create_tuner(parent.width(), parent.height())
+       # self.create_button(parent.width(), parent.height())
+       # self.create_calibration_text(parent.width(), parent.height())
     
     def create_text(self, width, height):
         """Creates the main info text with safety precautions."""
@@ -19,8 +19,8 @@ class HelpLayout(QtWidgets.QWidget):
         self.help_label = QtWidgets.QLabel(self)
         self.help_label.setText("Wees voorzichtig. \n\n\n"
                                 "1. Alleen bijvullen met gedemineraliseerd water.\n\n"
-                                "2. Raak alleen het besturingsscherm aan " 
-                                   "als de opstelling aan staat.\n\n"
+                                "2. Pas op voor de roterende onderdelen en voor de warme lamp.\n\n"
+                                "3. Lees de gebruikershandleiding.\n\n"
                                 "3. Zorg dat er altijd minstens één iemand aanwezig is " 
                                    "om toezicht te houden op de opstelling. \n\n"
                                 "4. Rook niet in de buurt van de opstelling. ")

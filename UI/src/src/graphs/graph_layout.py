@@ -87,7 +87,7 @@ class GraphLayout(QtWidgets.QWidget):
         self.graph.setYRange(0, 104, padding=0)
 
         self.graph.setBackground(None)
-        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.40)), offset=(-1, 1), text_size='10pt')
+        self.graph.addLegend(size=(int(width * 0.2), int(height * 0.40)), offset=(-1, 1), text_size='20pt')
 
         self.graph.setLabel('left', "<span style=\"color:white;font-size:30px\">%</span>")
         self.graph.setLabel('bottom', "<span style=\"color:white;font-size:30px\">Time (s)</span>")
