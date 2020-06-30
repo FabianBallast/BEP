@@ -144,7 +144,7 @@ class System(QtWidgets.QWidget):
         self.hydrogen_text = QtWidgets.QLabel(self)
         self.hydrogen_text.setFont(self.text_font)
         self.hydrogen_text.setText("Electrolyzer:\nBrandstofcel:\nOpslag:")
-        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.335), int(height * 0.70),
+        self.hydrogen_text.setGeometry(QtCore.QRect(int(width * 0.325), int(height * 0.70),
                                                     int(width * 0.16), int(height * 0.225)))
         self.hydrogen_text.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignLeft)
 

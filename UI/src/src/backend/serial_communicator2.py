@@ -81,7 +81,7 @@ class SerialCommunicator:
            # array_to_send[1] = 0
             bytes_to_send = bytes(array_to_send)
             
-            self.printer.print(f'Pi to Arduino: {array_to_send}')
+            #self.printer.print(f'Pi to Arduino: {array_to_send}')
             try:
                 self.ser.write(bytes_to_send)
             except Exception as error:
@@ -131,7 +131,8 @@ class SerialCommunicator:
                                 if "nd=" in split:
                                     start_splits = split.split("nd=")
                                     if len(start_splits[0]) > 0:
-                                        self.printer.print(f'Received from Arduino {start_splits[0]}')
+                                        #self.printer.print(f'Received from Arduino {start_splits[0]}')
+                                        pass
                                     self.last_data = eval(start_splits[1])
                                     #self.printer.print('Data updated from Arduino')
                                 elif "}" not in split:
