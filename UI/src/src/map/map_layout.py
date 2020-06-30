@@ -59,7 +59,7 @@ class MapLayout(QtWidgets.QWidget):
         self.storage_level = QtWidgets.QLabel(self)
         self.storage_level.setFont(self.text_font)
         self.storage_level.setText("0 mL")
-        self.storage_level.setGeometry(QtCore.QRect(int(width * 0.390), int(height * 0.5), 
+        self.storage_level.setGeometry(QtCore.QRect(int(width * 0.395), int(height * 0.5), 
                                                   int(width * 0.1), int(height * 0.25)))
        # self.hydrogen_text.setAlignment(QtCore.Qt.AlignTop|QtCore.Qt.AlignLeft)
 
@@ -79,7 +79,7 @@ class MapLayout(QtWidgets.QWidget):
     def get_current_values(self, values, readings):
         """Update the map to match with the current data.
            Use multiple other functions to accomplish this."""
-        solar = values[0][#readings['zonPC']
+        solar = values[0] #readings['zonPC']
         wind = values[1]  #readings['windPC'] 
         demand = values[2]  #readings['loadPC']
         h2ref  = readings['H2_PC']
