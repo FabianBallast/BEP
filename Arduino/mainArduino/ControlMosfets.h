@@ -69,7 +69,7 @@ float cum_ps_error, rate_ps_error;
 
 
 void closeValve(){
-  //digitalWrite(VALVE_PIN, 1);
+  digitalWrite(VALVE_PIN, 1);
   valveOpen = false;
   lastValveSwitch = millis();
 }
@@ -169,7 +169,7 @@ void controlValve(){
       if (!valveOpen && (millis() - lastValveSwitch > valveMillOpenInterval)){
           valveOpen = true;
           lastValveSwitch = millis();
-         // digitalWrite(VALVE_PIN, 0);
+          digitalWrite(VALVE_PIN, 0);
       }
       else if (valveOpen && (millis() - lastValveSwitch > valveOpenTime)){
         closeValve();
